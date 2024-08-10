@@ -7,6 +7,12 @@ import InstagramSocial from '../svg/social/instagram';
 import TwitterSocial from '../svg/social/twitter';
 import moment from 'moment';
 import Image from 'next/image';
+// import ins1 from '../../../public/images/fb.svg';
+// import ins2 from '../../../public/images/twitter.svg';
+// import ins3 from '../../../public/images/linkedin.svg';
+// import ins4 from '../../../public/images/insta.svg'
+
+import twitter from '../../../components/img/twitter.svg'
 
 export default function Footer(footerProps) {
   if(typeof footerProps.footerProps == "undefined" || footerProps.footerProps == false){ return ""; }
@@ -30,7 +36,7 @@ export default function Footer(footerProps) {
       <footer className={style.footer} style={itemsSetting} role="contentinfo">
 
 
-        <div className='container'>
+        <div className='container foot_coming'>
 
           <div className={style.parent}>
             
@@ -57,6 +63,7 @@ export default function Footer(footerProps) {
                       <h4 className={style.footerItemsHead}>
                         {ls.parentItems.link != '' ? (<a href={ls.parentItems.link} target={ls.parentItems.linkType == 'true' ? "_blank" : "_self" }>{ls.parentItems.title}</a>): ls.parentItems.title}
                       </h4>
+                      
 
                       {ls.subItems.length > 0 ? (
                       <ul className={style.footerItemsUL}>
@@ -103,27 +110,31 @@ export default function Footer(footerProps) {
               </div>
               <div className={style.crRight}>
                 <ul>
-                  {/* <li>
+                <p className='connect'>Connect:</p>
+                  <li>
                     <Link href={'https://twitter.com/'} target='_blank' >
-                      <TwitterSocial />
+                      <img src='./images/fb.svg'/>
                     </Link>
                   </li> 
                   <li>
                     <a href={'https://www.facebook.com/FUNaddictFairchild/'} target='_blank' >
-                      <FaceBookSocial />
+                      {/* <FaceBookSocial /> */}
+                      <img src='./images/twitter.svg'/>
                     </a>
                   </li>
                   <li>
                     <a href={'https://www.linkedin.com/company/fairchildairforcebase/'} target='_blank' >
-                      <LinkedinSocial />
+                      {/* <LinkedinSocial /> */}
+                      <img src='./images/linkedin.svg'/>
                     </a>
                   </li>
                   <li>
                     <a href={'https://www.instagram.com/fairchildfun/'} target='_blank' >
-                      <InstagramSocial />
+                      {/* <InstagramSocial /> */}
+                      <img src='./images/insta.svg'/>
                     </a>
                   </li>
-                  */}
+                 
                 </ul>
               </div>
             </div>
