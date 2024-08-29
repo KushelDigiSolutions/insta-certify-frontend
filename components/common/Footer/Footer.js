@@ -106,7 +106,7 @@ export default function Footer(footerProps) {
           <div className='container'>
             <div className={style.crParent}>
               <div className={style.crLeft}>
-                <p>Copyrights ©{ moment().format('Y') } MadFish Solutions.</p>
+                <p>Copyrights ©{ moment().format('Y') } Instacertify Solutions.</p>
               </div>
               <div className={style.crRight}>
                 <ul>

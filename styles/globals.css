@@ -3,6 +3,7 @@
 @tailwind utilities; */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://92fssadmin.mwrweb.com/backend/admin/css/afb-styles.css");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -326,7 +327,7 @@ button {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0px 60px;
+  padding: 5px 60px;
   /* padding-bottom: 15px; */
   border-bottom: 1px solid #9f9f9f;
 }
@@ -334,13 +335,34 @@ button {
 #some {
   flex-direction: column;
 }
+.header_header__UxNqT .header_navItems__Y_vRd > li > a{
+  color: #444444 !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  font-family: "Poppins", sans-serif !important;
+}
+.safaio{
+  display: flex;
+  align-items: center;
+}
+.safaio p{
+  color: #444444 !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  font-family: "Poppins", sans-serif !important;
+  margin-left: 6px !important;
+}
 
 .insta-certify-header-searchbar-menu {
   display: flex;
   align-items: center;
   position: relative;
 }
-
+.insta-certify-header-searchbar{
+  width: 200px !important;
+  height: 54px !important;
+  max-width: 200px !important;
+}
 .insta-certify-header-searchbar-menu input {
   max-width: 100%;
   border: 1px solid #00000080;
@@ -350,9 +372,9 @@ button {
   font-weight: 300;
   line-height: 25px;
   text-align: left;
-  width: 524px;
-  border-radius: 27px;
-  height: 54px;
+  width: 200px !important;
+  border-radius: 22px;
+  height: 44px;
   padding: 0px 15px;
 }
 .header_header__UxNqT .header_navItemsLeave1__Z0_2Y{
@@ -388,13 +410,35 @@ button {
   align-items: center;
   gap: 5px;
 }
-
+.headline{
+  display: none;
+}
+.search_das{
+  position: relative;
+}
+.search_das input{
+  width: 200px !important;
+  height: 44px !important;
+  border-radius: 22px !important;
+  border: 1px solid #00000080 !important;
+  color: #444444;
+  font-weight: 300;
+  font-size: 14px !important;
+  outline: none !important;
+  padding: 0px 15px !important;
+}
+.search_das svg{
+  position: absolute;
+  right: 20px !important;
+  top: 12px !important;
+}
 .headline hr {
   width: 1px;
   height: 90px;
   background-color: #9f9f9f;
   margin-top: 0rem !important;
   margin-bottom: 0rem !important;
+  display: none;
 }
 
 #lower_head {
@@ -1204,6 +1248,87 @@ button {
  font-size: 18px;
  margin-left: 10px;
 }
+.up_ev{
+  color: #444444;
+  font-weight: 700;
+  font-size: 34px !important;
+  font-family: "Poppins", sans-serif !important;
+}
+.serach_dasa{
+  position: relative;
+}
+.serach_dasa input{
+  width: 377px;
+  max-width: 100%;
+  height: 54px !important;
+  border-radius: 27px;
+  border: 1px solid #00000080;
+  outline: none;
+  box-shadow: 0px 16px 40px 0px #7090B026;
+  color: #444444;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  font-family: "Poppins", sans-serif !important;
+  padding: 0px 15px;
+}
+.serach_dasa svg{
+  position: absolute;
+  right: 22px;
+  top: 15px;
+}
+.eventList_eventlistGrid__R0bnz .eventList_parent__BmFam .eventList_eventDateTime__ryk7d{
+  background-color: #EC691F !important;
+}
+.sofiast{
+  color: #3F4254 !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  font-family: "Poppins", sans-serif !important;
+}
+.eventList_page_top_banner__lVpth{
+  height: 400px !important;
+}
+.soma{
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+.soma h5{
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif !important;
+}
+.eve{
+  text-align: start !important;
+  margin-top: -22px !important;
+}
+.alloys{
+  border: 1px solid #BFC8D1 !important;
+  padding: 5px 22px !important;
+  border-radius: 30px !important;
+}
+.eventList_categoryList__HtwVZ .eventList_card__G7GNC .eventList_cateTitle__oQf60{
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+.alloys:hover{
+  border: 1px solid #EC691F !important;
+  background-color: #F07A400D !important;
+}
+.alloys:hover h4{
+  color: #EC691F !important;
+  transition: .5s !important;
+}
+.active{
+  background-color: red !important;
+}
+.eve span{
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 34px;
+  font-family: "Poppins", sans-serif !important;
+}
 .svg_pant span{
   color: #1D1E23;
   font-weight: 400;
@@ -1219,6 +1344,15 @@ button {
   color: #EC691F;
   font-weight: 700;
   font-size: 12px;
+}
+.eventList_categoryList__HtwVZ{
+  justify-content: center !important;
+  align-items: center !important;
+}
+@media only screen and (max-width:1500px){
+  .header_header__UxNqT .header_navItems__Y_vRd > li{
+    margin: 0px 10px !important;
+  }
 }
 
 @media (max-width:460px) {
@@ -1277,6 +1411,12 @@ button {
   #serif {
     display: block !important;
   }
+  #jhjhj{
+    display: block !important;
+  }
+  .search_das{
+    display: none !important;
+  }
 }
 
 
@@ -1300,7 +1440,9 @@ button {
   .all_fastners{
     flex-wrap: wrap;
   }
+  
 }
+
 
 @media only screen and (max-width:520px){
   .catalog_box{

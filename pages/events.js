@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import GlobalHeaderFooter from "../utils/common/global-header-footer";
 import HeadSEO from "../components/common/Head/head";
-
+import { usePathname } from 'next/navigation';
 
 export default function EventLists(pageProp) {
   const [filterEvents, setFilterEvents] = useState(false);
@@ -13,9 +13,13 @@ export default function EventLists(pageProp) {
 
   const category_all = pageProp.page_content?.events?.category_all;
 
+  const pathName = usePathname();
+
+  const isActive = (path) => path === pathName;
+
   return (
     <div>
-      <HeadSEO title={"All Events"} description={"All Events"} image={null}  />
+      <HeadSEO title={"All Events"} description={"All Events"} image={null} />
 
       {/* Section banner */}
       <div className={style.page_top_banner}>
@@ -38,8 +42,8 @@ export default function EventLists(pageProp) {
         <ul className={style.categoryList}>
           {category_all?.map((ls, i) => (
             <li key={ls.id} className={style.card}>
-              <Link href={'/events/'+ls.slug}>
-                <div className={style.figureContainer}>
+              <Link href={'/events/' + ls.slug}>
+                {/* <div className={style.figureContainer}>
                   {ls?.image != null ? (
                     <Image
                       className={style.figure}
@@ -49,9 +53,11 @@ export default function EventLists(pageProp) {
                       alt="Event List"
                     />
                   ):""}
+                </div> */}
+                <div className={`${isActive(ls.path) ? 'active' : ''} alloys`}>
+                  <h4 className={style.cateTitle}>{ls?.name}</h4>
                 </div>
-                <h4 className={style.cateTitle}>{ls?.name}</h4>
-                <span className={style.cateCount}>{ls?.count} events</span>
+                {/* <span className={style.cateCount}>{ls?.count} events</span> */}
               </Link>
             </li>
           ))}
@@ -64,21 +70,21 @@ export default function EventLists(pageProp) {
 
 export async function getServerSideProps(context) {
 
-  
+
   const globalSettings = await GlobalHeaderFooter();
-	const eventsFetch = await fetch(process.env.server.api+"get-event-by-category/test");
-	const events = await eventsFetch.json();
-	const page_content = { events: events }
+  const eventsFetch = await fetch(process.env.server.api + "get-event-by-category/test");
+  const events = await eventsFetch.json();
+  const page_content = { events: events }
 
-	return {
-		props: {
-			page_content: page_content,
-			navbar: globalSettings?.header,
-			footer: globalSettings?.footer
-		},
-	};
+  return {
+    props: {
+      page_content: page_content,
+      navbar: globalSettings?.header,
+      footer: globalSettings?.footer
+    },
+  };
 
-    
 
-  
+
+
 }
