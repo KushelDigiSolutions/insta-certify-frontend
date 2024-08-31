@@ -24,7 +24,7 @@ export default function MenuToggel() {
        }
 
         if(windowWidth <= 991){ menuLoad(); }
-        window.addEventListener('resize', function(event) {
+        window?.addEventListener('resize', function(event) {
             console.log('re')
             menuLoad();
         }, true);

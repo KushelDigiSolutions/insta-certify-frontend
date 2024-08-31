@@ -8,7 +8,7 @@ const useBodyOutsideClick = (ref, callback) => {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClick);
+    document?.addEventListener("click", handleClick);
 
     return () => {
       document.removeEventListener("click", handleClick);

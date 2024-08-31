@@ -131,10 +131,11 @@ export default function Navbar(props) {
                                   <h3>BIS</h3>
                                   <ul className="soj">
                                     <li>
-                                      <a href="">
+                                    <Link href={"/bis-mark"}>  
                                         BIS (ISI MARK) for Foreign <br />
                                         Manufacturers
-                                      </a>
+
+                                      </Link>
                                     </li>
                                     <li>
                                       <a href="">
@@ -272,9 +273,10 @@ export default function Navbar(props) {
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="">
+                                   <Link href={"/food-testing"}> 
                                     SFDA for Food
-                                    </a>
+                                    
+                                    </Link>
                                   </li>
                                   <li>
                                     <a href="">
@@ -361,7 +363,7 @@ export default function Navbar(props) {
                   </div>
                 </li>
                 <li>
-                  <a href="">About Us</a>
+                <Link href={"/aboutus"}> About Us </Link>
                 </li>
                 <li className="soki">
                   <a href="">Resources</a>
@@ -373,7 +375,7 @@ export default function Navbar(props) {
                       <div className="nav_img">
                         <ul>
                           <li>
-                            <a href="">News</a>
+                          <Link href={"/news"}> News </Link> 
                           </li>
                           <li>
                             <a href="">Case Study</a>
@@ -381,7 +383,7 @@ export default function Navbar(props) {
                         </ul>
                         <ul>
                           <li>
-                            <a href="">Events</a>
+                          <Link href={"/eventsnew"}> Events </Link> 
                           </li>
                           <li>
                             <a href="">Products</a>
@@ -401,7 +403,7 @@ export default function Navbar(props) {
                   </div>
                 </li>
                 <li>
-                  <a href="">Contact us </a>
+                <Link href={"/contact-us"}> Contact us </Link> 
                 </li>
                 <li>
                   <div className="search_bar">
