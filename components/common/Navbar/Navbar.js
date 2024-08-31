@@ -24,6 +24,7 @@ export default function Navbar(props) {
   const [authPopup1, setAuthPopup1] = useState(false)
   const refAuthPopup = useRef(null);
   const refAuthPopup1 = useRef(null)
+  const [start, setStart] = useState(1);
   const { data: userSession } = useSession();
   const router = useRouter();
   MenuToggel();
@@ -68,8 +69,445 @@ export default function Navbar(props) {
       "--headerSubmenuItemHoverColor": navigation?.link_hover_color,
     };
 
+    const tab1 = () => {
+      setStart(1);
+      document.getElementById("one").style.background = "#F07A40"
+      document.getElementById("two").style.background = "none"
+      document.getElementById("three").style.background = "none"
+    }
+
+    const tab2 = () => {
+      setStart(2);
+      document.getElementById("one").style.background = "none"
+      document.getElementById("two").style.background = "#F07A40"
+      document.getElementById("three").style.background = "none"
+    }
+
+    const tab3 = () => {
+      setStart(3);
+      document.getElementById("one").style.background = "none"
+      document.getElementById("two").style.background = "none"
+      document.getElementById("three").style.background = "#F07A40"
+    }
+
+
     return (
-      <header
+      <>
+        <nav className="navbars">
+          <div className="nav_test">
+            <div className="nav_logo">
+              <img src="./images/safari.png" alt="" />
+            </div>
+            <div className="ul_nav">
+              <ul className="ul_sofa">
+                <li className="sog">
+                  <a href="">Our Services</a>
+                  <div className="navItem">
+                    <div className="sidebar_nav1">
+                      <ul className="certify">
+                        <li id="one" onClick={tab1} className="cert">
+                          <p>Certifications</p>
+                        </li>
+                        <li id="two" onClick={tab2}>
+                          <p>Testing</p>
+                        </li>
+                        <li id="three" onClick={tab3}>
+                          <p>Equipment</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="sidebar_nav2">
+
+                      {
+                        start === 1 && (
+                          <div>
+                            <div className="some">
+                              <p>Certifications</p>
+                            </div>
+                            <div className="bs">
+                              <div className="bs1">
+                                <div>
+                                  <hr className="bis" />
+                                  <h3>BIS</h3>
+                                  <ul className="soj">
+                                    <li>
+                                      <a href="">
+                                        BIS (ISI MARK) for Foreign <br />
+                                        Manufacturers
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="">
+                                        BIS (ISI Mark) for Domestic <br />
+                                        Product Certification
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="">
+                                        BIS (CRS Mark) for Compulsory <br /> Registration
+                                        Scheme
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="so">
+                                  <hr className="bis" />
+                                  <h3>EPR</h3>
+                                  <ul className="soj">
+                                    <li>
+                                      <a href="">
+                                      EPR Plastic Waste
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="">
+                                      EPR E-Waste
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="">
+                                      EPR Battery Waste
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="">
+                                      EPR for Used Oil
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="">
+                                      EPR for Tyre
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div className="bs1">
+                                <div>
+                                  <hr className="bis" />
+                                  <h3>OTHER</h3>
+                                  <ul className="soj">
+                                    <li>
+                                      <a href="">Peso Certification</a>
+                                    </li>
+                                    <li>
+                                      <a href="">NSIC of MSME</a>
+                                    </li>
+                                    <li>
+                                      <a href="">STQC Certification</a>
+                                    </li>
+                                    <li>
+                                      <a href="">FSSAI Registration</a>
+                                    </li>
+                                    <li>
+                                      <a href="">CDSCO Registration</a>
+                                    </li>
+                                    <li>
+                                      <a href="">NOC for Steel</a>
+                                    </li>
+                                    <li>
+                                      <a href="">BEE Certification</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div className="so">
+                                  <hr className="bis" />
+                                  <h3>TELECOM</h3>
+                                  <ul className="soj">
+                                    <li>
+                                      <a href="">WPC-ETA Approval</a>
+                                    </li>
+                                    <li>
+                                      <a href="">FCC Certification</a>
+                                    </li>
+                                    <li>
+                                      <a href="">IMEI Registration</a>
+                                    </li>
+                                    <li>
+                                      <a href="">IMEI ICDR Registration</a>
+                                    </li>
+                                    <li>
+                                      <a href="">TEC Approval</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                              <div className="bs1">
+                                <hr className="bis" />
+                                <h3>GLOBAL</h3>
+                                <ul className="soj">
+                                  <li>
+                                    <a href="">
+                                    ISO Certification
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    HACCP
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    HALAL
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    SABER
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    G MARK for Toys
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    G MARK for Low Voltage <br/> Electrical Devices (LVED)
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    SFDA for Rice
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    SFDA for Food
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    SFDA for Cosmetics
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="">
+                                    CE Certification
+                                    </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      }
+
+                      {
+                        start === 2 && (
+                          <div>
+                            <div className="some">
+                              <p>Testing</p>
+                            </div>
+                            <div className="img_item">
+                              <div className="nav_img">
+                                <ul>
+                                  <li>
+                                    <a href="">Electronic and Electricity</a>
+                                  </li>
+                                  <li>
+                                    <a href="">Construction and Engineering</a>
+                                  </li>
+                                </ul>
+                                <ul>
+                                  <li>
+                                    <a href="">Chemicals</a>
+                                  </li>
+                                  <li>
+                                    <a href="">Wireless</a>
+                                  </li>
+                                </ul>
+                                <ul>
+                                  <li>
+                                    <a href="">Food</a>
+                                  </li>
+                                  <li>
+                                    <a href="">Cosmetics</a>
+                                  </li>
+                                </ul>
+                                <ul>
+                                  <li>
+                                    <a href="">Toys</a>
+                                  </li>
+                                  <li>
+                                    <a href="">Software</a>
+                                  </li>
+                                </ul>
+                                <ul>
+                                  <li>
+                                    <a href="">Metal and Alloys</a>
+                                  </li>
+                                  <li>
+                                    <a href="">Environment</a>
+                                  </li>
+                                </ul>
+                                <ul>
+                                  <li>
+                                    <a href="">Polymers and Plastics</a>
+                                  </li>
+                                  
+                                </ul>
+                              </div>
+                              <div className="logo_img">
+                                <img src="./images/apk.png" alt="" />
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      }
+
+
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="">About Us</a>
+                </li>
+                <li className="soki">
+                  <a href="">Resources</a>
+                  <div className="navItem2">
+                    <div className="some">
+                      <p>Resources</p>
+                    </div>
+                    <div className="img_item">
+                      <div className="nav_img">
+                        <ul>
+                          <li>
+                            <a href="">News</a>
+                          </li>
+                          <li>
+                            <a href="">Case Study</a>
+                          </li>
+                        </ul>
+                        <ul>
+                          <li>
+                            <a href="">Events</a>
+                          </li>
+                          <li>
+                            <a href="">Products</a>
+                          </li>
+                        </ul>
+                        <ul>
+                          <li>
+                            <a href="">QCO Orders</a>
+                          </li>
+
+                        </ul>
+                      </div>
+                      <div className="logo_img">
+                        <img src="./images/latest.png" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="">Contact us </a>
+                </li>
+                <li>
+                  <div className="search_bar">
+                    <input type="text" placeholder="Search" />
+                    <svg
+                      width={20}
+                      height={20}
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14.7547 13.7078V13.9149L14.9012 14.0614L19.4113 18.5713L18.5724 19.4111L14.0604 14.9006L13.7497 14.59L13.4017 14.8581C11.7892 16.1004 9.76435 16.6824 7.73832 16.4858C5.71229 16.2893 3.83703 15.329 2.49341 13.7999C1.14979 12.2709 0.438561 10.2878 0.504167 8.25341C0.569772 6.21901 1.40729 4.28585 2.84664 2.84656C4.28598 1.40727 6.21921 0.56977 8.2537 0.504166C10.2882 0.438563 12.2714 1.14977 13.8005 2.49335C15.3295 3.83692 16.2899 5.7121 16.4864 7.73805C16.683 9.764 16.101 11.7888 14.8587 13.4012L14.7547 13.5361V13.7064V13.7078ZM18.724 19.5626L18.7236 19.5622C18.7238 19.5625 18.724 19.5627 18.7242 19.5629L18.724 19.5626ZM8.50489 15.9684C9.48508 15.9684 10.4557 15.7753 11.3612 15.4002C12.2668 15.0251 13.0897 14.4754 13.7828 13.7823C14.4759 13.0892 15.0257 12.2664 15.4008 11.3609C15.7759 10.4553 15.9689 9.48475 15.9689 8.50459C15.9689 7.52443 15.7759 6.55386 15.4008 5.64831C15.0257 4.74276 14.4759 3.91996 13.7828 3.22688C13.0897 2.53381 12.2668 1.98403 11.3612 1.60894C10.4557 1.23385 9.48508 1.04079 8.50489 1.04079C6.52531 1.04079 4.6268 1.82715 3.22702 3.22688C1.82724 4.62661 1.04085 6.52506 1.04085 8.50459C1.04085 10.4841 1.82724 12.3826 3.22702 13.7823C4.6268 15.182 6.52531 15.9684 8.50489 15.9684Z"
+                        stroke="#808080"
+                      />
+                    </svg>
+                  </div>
+                </li>
+                <li>
+                  <div className="logo_photo">
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6.6 19.92V19.8C6.6 18.12 9 16.8 12 16.8C15 16.8 17.4 18.12 17.4 19.8V19.92C19.92 18.24 21.6 15.24 21.6 12C21.6 6.72 17.28 2.4 12 2.4C6.72 2.4 2.4 6.72 2.4 12C2.4 15.36 4.08 18.24 6.6 19.92ZM12 24C5.4 24 0 18.6 0 12C0 5.4 5.4 0 12 0C18.6 0 24 5.4 24 12C24 18.6 18.6 24 12 24ZM12 13.2C10.32 13.2 9 11.88 9 10.2C9 8.52 10.32 7.2 12 7.2C13.68 7.2 15 8.52 15 10.2C15 11.88 13.68 13.2 12 13.2Z"
+                        fill="#444444"
+                      />
+                    </svg>
+                  </div>
+                </li>
+                <li>
+                  <div className="cart">
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z"
+                        fill="#444444"
+                      />
+                    </svg>
+                    <p>Cart</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="lng">
+                    <svg
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                        stroke="#7D7D7D"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M2 12H22"
+                        stroke="#7D7D7D"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z"
+                        stroke="#7D7D7D"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <p>En</p>
+                    <svg
+                      width={14}
+                      height={8}
+                      viewBox="0 0 14 8"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 1L7 7L13 1"
+                        stroke="#7D7D7D"
+                        strokeWidth={2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+<header
         id="lower_head"
         className={style.header}
         style={itemsSetting}
@@ -194,11 +632,10 @@ export default function Navbar(props) {
                                           }}
                                           className="sosty"
                                         >
+                                        
+                                        
                                           <p className="hoving" style={{ color: "black" }}>{lss?.title}</p>
-                                          {/* <p style={{color:"black"}}>Case Study</p>
-                                        <p style={{color:"black"}}>Events</p>
-                                        <p style={{color:"black"}}>Products</p>
-                                        <p style={{color:"black"}}>QCO Orders</p> */}
+                                         
                                         </div>
 
                                         <img className="sofa" src="./images/rightimg.png" alt="" />
@@ -218,6 +655,7 @@ export default function Navbar(props) {
                                     </a>
 
                                     {lss?.childrenItems?.length > 0 ? (
+                                      <div className="sofas">
                                       <ul
                                         className={
                                           style.navItemsLeave2 + " navItemsLeave2"
@@ -244,6 +682,7 @@ export default function Navbar(props) {
                                             </li>
                                           ))}
                                       </ul>
+                                      </div>
                                     ) : (
                                       ""
                                     )}
@@ -777,6 +1216,8 @@ export default function Navbar(props) {
           ""
         )}
       </header>
+
+      </>
     );
   }
 }
