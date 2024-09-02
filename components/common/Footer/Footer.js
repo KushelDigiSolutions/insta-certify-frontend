@@ -45,7 +45,7 @@ export default function Footer(footerProps) {
               {
 
                 footerData?.footer_logo != null ? (
-                  <Image className={style.footerLogo} src={footerData?.footer_logo} width="200" height="60" alt={"Logo"} quality={100} />
+                  <Image className={style.footerLogo} src="" width="200" height="60" alt={"Logo"} quality={100} />
                 )
                 :
                 (<h4 className={style.footerTitle} dangerouslySetInnerHTML={ {__html:footerData?.global_title} }></h4>)

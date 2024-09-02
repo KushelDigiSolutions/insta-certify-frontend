@@ -1424,11 +1424,45 @@ button {
   justify-content: center !important;
   align-items: center !important;
 }
+.sft{
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 20px;
+}
 
 @media only screen and (max-width:1500px) {
   .header_header__UxNqT .header_navItems__Y_vRd>li {
     margin: 0px 10px !important;
   }
+}
+
+@media only screen and (max-width:1365px) {
+  .ul_sofa li a {
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media only screen and (max-width:1150px) {
+  .navbars {
+    display: none;
+  }
+
+  #lower_head {
+    display: flex;
+    background-color: #FDFDFD !important;
+  }
+  .fosty,
+  .listmi {
+    width: auto !important;
+  }
+  .listmi {
+    height: auto !important;
+    transform: translateX(0) !important;
+}
+.search_das {
+  display: none !important;
+}
 }
 
 @media (max-width:460px) {
@@ -1457,7 +1491,9 @@ button {
   #some {
     align-items: end !important;
   }
-
+  .header_header__UxNqT .header_navItemsUser__qIIiC .header_navUserLinkMobile__5CSGX > a{
+     font-size: 16px !important;
+  }
   .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL {
     padding: 0px 20px;
   }
@@ -1527,7 +1563,7 @@ button {
 }
 
 
-@media only screen and (max-width:520px) {
+@media only screen and (max-width:1150px) {
   .catalog_box {
     width: 100%;
   }
@@ -1535,6 +1571,10 @@ button {
   .form_flex {
     flex-wrap: wrap;
   }
+.klk{
+  padding: 10px 15px !important;
+  height: 0px !important;
+}
 
   .input_form {
     width: 100%;
@@ -1687,6 +1727,7 @@ button {
 
 .certify {
   margin-top: 30px;
+  padding: 0px 0px;
 }
 
 .certify li {
@@ -1736,28 +1777,52 @@ button {
   color: #F07A40;
   font-weight: 700;
   font-size: 24px;
+  margin-top: 10px;
 }
-
+.e_cart{
+  color: #444444;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 8px;
+}
+#iko{
+  margin-left: 30px ;
+  border-left: 0px;
+}
+.en{
+  color: #444444;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 8px;
+}
+.soj{
+  padding: 0px 0px !important;
+}
 .soj li {
   padding: 10px 0px !important;
 
 }
-.soj li a{
+
+.soj li a {
   color: #444444;
   font-weight: 500;
   font-size: 18px;
 }
-.soj li a:hover{
+
+.soj li a:hover {
   color: #EC691F;
 }
-.img_item li a{
+
+.img_item li a {
   color: #444444;
   font-weight: 500;
   font-size: 18px;
 }
-.img_item li a:hover{
+
+.img_item li a:hover {
   color: #EC691F;
 }
+
 .sidebar_nav2 {
   width: 100%;
 }
@@ -1781,6 +1846,7 @@ button {
 
 .nav_img ul li {
   padding: 12px 12px;
+  width: 100%;
 }
 
 .navItem {
@@ -1845,5 +1911,6 @@ button {
 }
 
 .logo_img {
-  margin-top: 12px;
+  /* margin-top: 12px; */
+  padding: 20px 0px;
 }
