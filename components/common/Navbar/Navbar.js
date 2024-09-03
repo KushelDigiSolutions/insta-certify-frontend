@@ -429,7 +429,7 @@ export default function Navbar(props) {
 
                 </li>
                 <li>
-                  <Link href={"/aboutus"} className="navitemss"> About Us </Link>
+                  <Link href={"/aboutus"} className=""> About Us </Link>
                 </li>
                 <li className="soki">
                   <a href="" className="navitemss">Resources</a>
@@ -469,7 +469,7 @@ export default function Navbar(props) {
                   </div>
                 </li>
                 <li>
-                  <Link href={"/contact-us"} className="navitemss"> Contact us </Link>
+                  <Link href={"/contact-us"} className=""> Contact us </Link>
                 </li>
                 <li>
                   <div className="search_bar">
