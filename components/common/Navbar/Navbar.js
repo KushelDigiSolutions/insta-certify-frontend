@@ -25,6 +25,7 @@ export default function Navbar(props) {
   const refAuthPopup = useRef(null);
   const refAuthPopup1 = useRef(null)
   const [start, setStart] = useState(1);
+  const [sus,setSus] = useState(false);
   const { data: userSession } = useSession();
   const router = useRouter();
   MenuToggel();
@@ -35,6 +36,10 @@ export default function Navbar(props) {
   useBodyOutsideClick(refAuthPopup1, () => {
     setAuthPopup1(false);
   });
+
+  const styleOff = {
+    display: sus ? "block" : "none"
+  }
 
   useEffect(() => {
     console.log(userSession);
@@ -521,7 +526,7 @@ export default function Navbar(props) {
                     <span className="e_cart">Cart</span>
                   </div>
                 </li>
-                <li>
+                <li onClick={()=> setSus(!sus)}>
                   <div className="lng">
                     <svg
                       width={24}
@@ -568,6 +573,10 @@ export default function Navbar(props) {
                         strokeLinejoin="round"
                       />
                     </svg>
+                  </div>
+                  <div style={styleOff} className="sofar">
+                     <p>Hindi</p>
+                     <p>English</p>
                   </div>
                 </li>
               </ul>

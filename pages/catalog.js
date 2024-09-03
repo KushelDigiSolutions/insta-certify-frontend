@@ -132,7 +132,7 @@ export default function catalog(pageProp) {
           <div className="all_fastners">
             <div className="left_fastner">
               <button>
-                <span>All Fasteners</span>
+                <span>All Tensile Machine</span>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_265_1423)">
                     <path d="M1 4.74977H3.736C3.95064 5.5395 4.41917 6.23666 5.06933 6.7337C5.71948 7.23074 6.51512 7.50003 7.3335 7.50003C8.15188 7.50003 8.94752 7.23074 9.59767 6.7337C10.2478 6.23666 10.7164 5.5395 10.931 4.74977H23C23.2652 4.74977 23.5196 4.64441 23.7071 4.45688C23.8946 4.26934 24 4.01499 24 3.74977C24 3.48455 23.8946 3.2302 23.7071 3.04266C23.5196 2.85513 23.2652 2.74977 23 2.74977H10.931C10.7164 1.96004 10.2478 1.26288 9.59767 0.76584C8.94752 0.268803 8.15188 -0.000488281 7.3335 -0.000488281C6.51512 -0.000488281 5.71948 0.268803 5.06933 0.76584C4.41917 1.26288 3.95064 1.96004 3.736 2.74977H1C0.734784 2.74977 0.48043 2.85513 0.292893 3.04266C0.105357 3.2302 0 3.48455 0 3.74977C0 4.01499 0.105357 4.26934 0.292893 4.45688C0.48043 4.64441 0.734784 4.74977 1 4.74977ZM7.333 1.99977C7.67912 1.99977 8.01746 2.10241 8.30525 2.2947C8.59303 2.48699 8.81734 2.7603 8.94979 3.08007C9.08224 3.39985 9.1169 3.75171 9.04937 4.09118C8.98185 4.43065 8.81518 4.74247 8.57044 4.98721C8.3257 5.23195 8.01388 5.39862 7.67441 5.46615C7.33494 5.53367 6.98307 5.49901 6.6633 5.36656C6.34353 5.23411 6.07022 5.0098 5.87793 4.72202C5.68564 4.43423 5.583 4.09589 5.583 3.74977C5.58353 3.2858 5.76807 2.84099 6.09615 2.51292C6.42422 2.18484 6.86903 2.0003 7.333 1.99977Z" fill="white" />
@@ -165,7 +165,7 @@ export default function catalog(pageProp) {
               <div className="catalog_box">
                 <img className="catalog_img" src='./images/tensile.png' alt="tensile" />
                 <div className="catalog_content">
-                  <span className="tensile_content">Tensile Machine</span>
+                <Link style={{textDecoration:"none"}} href="/catalogdetail"><span className="tensile_content">Tensile Machine</span></Link>
                   <div className="tensile_price">
                     <span className="real">₹ 395.85</span>
                     <span className="fake">₹413.67</span>
