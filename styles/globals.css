@@ -1711,7 +1711,7 @@ button {
   z-index: 100000;
 }
 
-/* .navitemss{
+.navitemss{
   position: relative;
 }
 
@@ -1727,7 +1727,7 @@ button {
   top: 100%; 
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
-} */
+}
 
 
 
