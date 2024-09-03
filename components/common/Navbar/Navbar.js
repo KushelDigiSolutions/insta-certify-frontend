@@ -101,7 +101,8 @@ export default function Navbar(props) {
             <div className="ul_nav">
               <ul className="ul_sofa">
                 <li className="sog">
-                  <a href="">Our Services</a>
+
+                  <a className="navitemss" href="">Our Services</a>
                   <div className="navItem">
                     <div className="sidebar_nav1">
                       <ul className="certify">
@@ -425,12 +426,13 @@ export default function Navbar(props) {
 
                     </div>
                   </div>
+
                 </li>
                 <li>
-                  <Link href={"/aboutus"}> About Us </Link>
+                  <Link href={"/aboutus"} className="navitemss"> About Us </Link>
                 </li>
                 <li className="soki">
-                  <a href="">Resources</a>
+                  <a href="" className="navitemss">Resources</a>
                   <div className="navItem2">
                     <div className="some">
                       <p>Resources</p>
@@ -467,7 +469,7 @@ export default function Navbar(props) {
                   </div>
                 </li>
                 <li>
-                  <Link href={"/contact-us"}> Contact us </Link>
+                  <Link href={"/contact-us"} className="navitemss"> Contact us </Link>
                 </li>
                 <li>
                   <div className="search_bar">
