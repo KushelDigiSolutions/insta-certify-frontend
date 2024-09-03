@@ -942,7 +942,7 @@ button {
   font-weight: 400;
   text-align: left;
   color: #333333;
-  margin-top: -12px;
+  /* margin-top: -12px; */
 }
 
 .starimg {
@@ -1078,13 +1078,11 @@ button {
   gap: 10px;
 }
 
-.toppad {
+/* .toppad {
   margin-top: -30px;
-}
+} */
 
-.topp {
-  margin-top: -12px;
-}
+/* .sidebar_nav1 */
 
 .shopadd p {
   font-size: 12px;
@@ -1463,11 +1461,26 @@ button {
 .search_das {
   display: none !important;
 }
+#jhjhj{
+  display: block !important;
+  opacity: 1 !important;
+}
+.header_header__UxNqT .header_navItemsUser__qIIiC .header_navUserLinkMobile__5CSGX > a{
+  font-size: 16px !important;
+}
+.insta-certify-header-searchbar-menu{
+  display: flex !important;
+}
+.insta-cartify-bbtn{
+  display: none;
+}
+/* .hj{
+  display: block !important;
+} */
 }
 
 @media (max-width:460px) {
   .guidance {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1477,6 +1490,10 @@ button {
     gap: 20px;
     max-height: 100%;
     padding: 20px 20px;
+  }
+  .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL{
+    position: relative;
+    left: 32px;
   }
 }
 
@@ -1496,6 +1513,8 @@ button {
   }
   .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL {
     padding: 0px 20px;
+    position: relative;
+    left: 30px;
   }
 
   .hj {
@@ -1675,6 +1694,7 @@ button {
 
 .search_bar {
   position: relative;
+  z-index: 100000;
 }
 
 .search_bar svg {
@@ -1723,6 +1743,7 @@ button {
   background-color: #065175;
   box-shadow: 0px 16px 40px 0px #7090B026;
   width: 280px;
+  margin-top: 27px;
 }
 
 .certify {
@@ -1808,7 +1829,10 @@ button {
   font-weight: 500;
   font-size: 18px;
 }
-
+.nav_logo{
+  position: relative;
+  z-index: 100000;
+}
 .soj li a:hover {
   color: #EC691F;
 }
@@ -1856,7 +1880,9 @@ button {
 .sog:hover>.navItem {
   display: flex !important;
 }
-
+.sog:hover .nav_logo{
+  width: 150px !important;
+}
 .navItem2 {
   position: absolute;
   right: 100px;

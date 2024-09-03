@@ -450,7 +450,7 @@ export default function Navbar(props) {
                             <Link href={"/eventsnew"}> Events </Link>
                           </li>
                           <li>
-                            <a href="">Products</a>
+                            <Link href="/catalog">Products</Link>
                           </li>
                         </ul>
                         <ul>
