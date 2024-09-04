@@ -154,7 +154,10 @@ export default function Navbar(props) {
 
     return (
       <>
+
+    
         <nav className="navbars">
+          
           <div className="nav_test">
             <div className="nav_logo">
               <Link href="/"><img src="./images/safari.png" alt="" /></Link>
@@ -190,9 +193,9 @@ export default function Navbar(props) {
                       {
                         start === 1 && (
                           <div>
-                            <div className="some">
+                          <div className="some">
                               <span>Certifications</span>
-                            </div>
+                            </div> 
                             <div className="bs">
                               <div className="bs1">
                                 <div>
