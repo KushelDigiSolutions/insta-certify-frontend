@@ -45,13 +45,13 @@ export default function Footer(footerProps) {
               {
 
                 footerData?.footer_logo != null ? (
-                  <Image className={style.footerLogo} src="" width="200" height="60" alt={"Logo"} quality={100} />
+                  <img  className="kalish" src="https://res.cloudinary.com/ecommerce-website/image/upload/v1725449711/60logo_1_m7ttuc.svg" alt="" />
                 )
                 :
                 (<h4 className={style.footerTitle} dangerouslySetInnerHTML={ {__html:footerData?.global_title} }></h4>)
                }
 
-              -<div className={style.footerSubTitle} dangerouslySetInnerHTML={ {__html:footerData?.sub_title} }></div>
+              <div className={style.footerSubTitle} dangerouslySetInnerHTML={ {__html:footerData?.sub_title} }></div>
               
             </div>
 

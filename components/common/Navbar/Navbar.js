@@ -26,7 +26,7 @@ export default function Navbar(props) {
   const refAuthPopup = useRef(null);
   const refAuthPopup1 = useRef(null)
   const [start, setStart] = useState(1);
-  const [sus,setSus] = useState(false);
+  // const [sus,setSus] = useState(false);
   const { data: userSession } = useSession();
   const router = useRouter();
   MenuToggel();
@@ -38,9 +38,9 @@ export default function Navbar(props) {
     setAuthPopup1(false);
   });
 
-  const styleOff = {
-    display: sus ? "block" : "none"
-  }
+  // const styleOff = {
+  //   display: sus ? "block" : "none"
+  // }
 
   useEffect(() => {
     console.log(userSession);
@@ -129,7 +129,7 @@ export default function Navbar(props) {
                         start === 1 && (
                           <div>
                             <div className="some">
-                              <p>Certifications</p>
+                              <span>Certifications</span>
                             </div>
                             <div className="bs">
                               <div className="bs1">
@@ -138,11 +138,11 @@ export default function Navbar(props) {
                                   <h3>BIS</h3>
                                   <ul className="soj">
                                     <li>
-                                      <Link href={"/bis-mark"}>
+                                      <a href="">
                                         BIS (ISI MARK) for Foreign <br />
                                         Manufacturers
 
-                                      </Link>
+                                      </a>
                                     </li>
                                     <li>
                                       <a href="">
@@ -151,7 +151,7 @@ export default function Navbar(props) {
                                       </a>
                                     </li>
                                     <li>
-                                      <a href="">
+                                      <a href="/bis-mark">
                                         BIS (CRS Mark) for Compulsory <br /> Registration
                                         Scheme
                                       </a>
@@ -280,10 +280,10 @@ export default function Navbar(props) {
                                     </a>
                                   </li>
                                   <li>
-                                    <Link href={"/food-testing"}>
+                                    <a href={"/food-testing"}>
                                       SFDA for Food
 
-                                    </Link>
+                                    </a>
                                   </li>
                                   <li>
                                     <a href="">
@@ -306,7 +306,7 @@ export default function Navbar(props) {
                         start === 2 && (
                           <div>
                             <div className="some">
-                              <p>Testing</p>
+                              <span>Testing</span>
                             </div>
                             <div className="img_item">
                               <div className="nav_img">
@@ -328,9 +328,9 @@ export default function Navbar(props) {
                                 </ul>
                                 <ul>
                                   <li>
-                                  <Link href={"/food-testing"}>
+                                  <a href={"/food-testing"}>
                                        Food
-                                    </Link>
+                                    </a>
                                   </li>
                                   <li>
                                     <a href="">Cosmetics</a>
@@ -371,7 +371,7 @@ export default function Navbar(props) {
                         start === 3 && (
                           <div>
                             <div className="some">
-                              <p>Equipment</p>
+                              <span>Equipment</span>
                             </div>
                             <div className="img_item">
                               <div className="nav_img">
@@ -447,7 +447,7 @@ export default function Navbar(props) {
                       <div className="nav_img">
                         <ul>
                           <li>
-                            <Link href={"/news"}> News </Link>
+                            <a href={"/news"}> News </a>
                           </li>
                           <li>
                             <a href="">Case Study</a>
@@ -455,10 +455,10 @@ export default function Navbar(props) {
                         </ul>
                         <ul>
                           <li>
-                            <Link href={"/eventsnew"}> Events </Link>
+                            <a href={"/eventsnew"}> Events </a>
                           </li>
                           <li>
-                            <Link href="/catalog">Products</Link>
+                            <a href="/catalog">Products</a>
                           </li>
                         </ul>
                         <ul>
@@ -510,8 +510,8 @@ export default function Navbar(props) {
                     </svg>
                   </div>
                   <div className="sofar1">
-                     <Link href={"/create-account"}><p>Create an account</p></Link>
-                     <Link href={"/login"}><p>login</p></Link>
+                     <Link href={"/create-account"}><span>Create an account</span></Link>
+                     <Link href={"/login"}><span>login</span></Link>
                   </div> 
                 </li>
                 <li>
@@ -532,7 +532,7 @@ export default function Navbar(props) {
                   </div></Link>
                 </li>
              
-                <li style={{cursor:"pointer"}} onClick={()=> setSus(!sus)}>
+                <li className="ponh1" style={{cursor:"pointer"}}>
                   <div className="lng">
                     <svg
                       width={24}
@@ -581,9 +581,9 @@ export default function Navbar(props) {
                     </svg>
                   </div>
                  
-                  <div style={styleOff} className="sofar">
-                     <p>Hindi</p>
-                     <p>English</p>
+                  <div  className="sofar">
+                     <span>Hindi</span>
+                     <span>English</span>
                   </div>
                 
                 </li>
