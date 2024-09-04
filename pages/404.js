@@ -29,7 +29,6 @@ export default function NotFound() {
   );
 }
 
-
 export async function getStaticProps(context) {
   const globalSettings = await GlobalHeaderFooter();
     return {
