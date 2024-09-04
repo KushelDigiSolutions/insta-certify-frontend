@@ -17,7 +17,7 @@ import GlobalOrder from "../svg/global/order";
 import GlobalCart from "../svg/global/cart";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
-import OutsideClickHandler from "react-outside-click-handler";
+
 
 export default function Navbar(props) {
   const [menuToggel, setMenuToggel] = useState(false);
@@ -531,9 +531,7 @@ export default function Navbar(props) {
                     <span className="e_cart">Cart</span>
                   </div></Link>
                 </li>
-                <OutsideClickHandler onOutsideClick={()=>{
-                  setSus(false);
-                }}>
+             
                 <li style={{cursor:"pointer"}} onClick={()=> setSus(!sus)}>
                   <div className="lng">
                     <svg
@@ -589,7 +587,7 @@ export default function Navbar(props) {
                   </div>
                 
                 </li>
-                </OutsideClickHandler>
+                
               </ul>
             </div>
           </div>
