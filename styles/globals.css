@@ -1747,6 +1747,10 @@ button {
 .makecolor{
   color: #EC691F;
 }
+.makecolor2{
+  color: #EC691F !important;
+}
+
 .dropdownTriangle {
   position: absolute;
   top: 100%; /* Place it right below the 'Our Services' text */

@@ -100,6 +100,11 @@ export default function Navbar(props) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
 
+    const router = useRouter();
+    const currentPath = router.asPath;
+
+    console.log("cur",currentPath);
+
     const dropdownRef = useRef(null);
     const dropdownRef2 = useRef(null);
   
@@ -495,7 +500,7 @@ export default function Navbar(props) {
                 </li>
 
                 <li>
-                  <Link href={"/aboutus"} className=""> About Us </Link>
+                  <Link href={"/aboutus"} className={`${currentPath === "/aboutus"? "makecolor2":""}`}> About Us </Link>
                 </li>
 
                 <li ref={dropdownRef2} className="soki">
@@ -545,7 +550,7 @@ export default function Navbar(props) {
                 </li>
 
                 <li>
-                  <Link href={"/contact-us"} className=""> Contact us </Link>
+                  <Link href={"/contact-us"}  className={`${currentPath === "/contact-us"? "makecolor2":""}`}> Contact us </Link>
                 </li>
 
                 <li>
