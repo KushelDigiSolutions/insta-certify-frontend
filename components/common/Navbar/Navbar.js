@@ -17,6 +17,7 @@ import GlobalOrder from "../svg/global/order";
 import GlobalCart from "../svg/global/cart";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 export default function Navbar(props) {
   const [menuToggel, setMenuToggel] = useState(false);
@@ -442,7 +443,7 @@ export default function Navbar(props) {
                     <div className="some">
                       <p>Resources</p>
                     </div>
-                    <div className="img_item">
+                    <div className="img_item lime_item">
                       <div className="nav_img">
                         <ul>
                           <li>
@@ -493,7 +494,7 @@ export default function Navbar(props) {
                     </svg>
                   </div>
                 </li>
-                <li>
+                <li className="ponh">
                   <div className="logo_photo">
                     <svg
                       width={24}
@@ -508,9 +509,13 @@ export default function Navbar(props) {
                       />
                     </svg>
                   </div>
+                  <div className="sofar1">
+                     <Link href={"/create-account"}><p>Create an account</p></Link>
+                     <Link href={"/login"}><p>login</p></Link>
+                  </div> 
                 </li>
                 <li>
-                  <div className="cart">
+                 <Link href={"/cart"}><div className="cart">
                     <svg
                       width={24}
                       height={24}
@@ -524,9 +529,12 @@ export default function Navbar(props) {
                       />
                     </svg>
                     <span className="e_cart">Cart</span>
-                  </div>
+                  </div></Link>
                 </li>
-                <li onClick={()=> setSus(!sus)}>
+                <OutsideClickHandler onOutsideClick={()=>{
+                  setSus(false);
+                }}>
+                <li style={{cursor:"pointer"}} onClick={()=> setSus(!sus)}>
                   <div className="lng">
                     <svg
                       width={24}
@@ -574,11 +582,14 @@ export default function Navbar(props) {
                       />
                     </svg>
                   </div>
+                 
                   <div style={styleOff} className="sofar">
                      <p>Hindi</p>
                      <p>English</p>
                   </div>
+                
                 </li>
+                </OutsideClickHandler>
               </ul>
             </div>
           </div>
