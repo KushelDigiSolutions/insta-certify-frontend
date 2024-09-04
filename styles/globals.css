@@ -1472,7 +1472,7 @@ button {
   display: flex !important;
 }
 .insta-cartify-bbtn{
-  display: none;
+  display: none !important;
 }
 /* .hj{
   display: block !important;
@@ -1494,6 +1494,16 @@ button {
   .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL{
     position: relative;
     left: 32px;
+  }
+  .kalish{
+    width: 120px;
+  }
+  .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL svg{
+    width: 25px !important;
+    height: 25px !important;
+  }
+  .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL{
+    left: 50px !important;
   }
 }
 

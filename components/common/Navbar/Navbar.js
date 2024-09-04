@@ -609,7 +609,7 @@ export default function Navbar(props) {
                         dangerouslySetInnerHTML={{ __html: settings?.text }}
                       ></div>
                     ) : settings ? (
-                      <img src="https://res.cloudinary.com/ecommerce-website/image/upload/v1725269227/logoFoot_cm3uxr.png" alt="" />
+                      <img className="kalish" src="https://res.cloudinary.com/ecommerce-website/image/upload/v1725269227/logoFoot_cm3uxr.png" alt="" />
                     ) : (
                       ""
                     )}
