@@ -97,6 +97,56 @@ export default function Navbar(props) {
     }
 
 
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+
+    const dropdownRef = useRef(null);
+    const dropdownRef2 = useRef(null);
+  
+    const handleDropdownToggle = () => {
+      setIsDropdownOpen((prev) => !prev);
+      // setIsDropdownOpen2(false);
+    };
+    
+    const handleDropdownToggle2 = () => {
+      setIsDropdownOpen(false);
+      setIsDropdownOpen2((prev) => !prev);
+    };
+  
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false); // Close dropdown if click is outside of it
+      }
+    };
+  
+    const handleClickOutside2 = (e) => {
+      if (dropdownRef2.current && !dropdownRef2.current.contains(e.target)) {
+        setIsDropdownOpen2(false); // Close dropdown if click is outside of it
+      }
+    };
+  
+    useEffect(() => {
+      if (isDropdownOpen) {
+        document.addEventListener("click", handleClickOutside);
+      } else {
+        document.removeEventListener("click", handleClickOutside);
+      }
+      return () => {
+        document.removeEventListener("click", handleClickOutside);
+      };
+    }, [isDropdownOpen]);
+
+    useEffect(() => {
+      if (isDropdownOpen2) {
+        document.addEventListener("click", handleClickOutside2);
+      } else {
+        document.removeEventListener("click", handleClickOutside2);
+      }
+      return () => {
+        document.removeEventListener("click", handleClickOutside2);
+      };
+    }, [isDropdownOpen2]);
+
     return (
       <>
         <nav className="navbars">
@@ -106,10 +156,17 @@ export default function Navbar(props) {
             </div>
             <div className="ul_nav">
               <ul className="ul_sofa">
-                <li className="sog">
 
-                  <a className="navitemss" href="">Our Services</a>
-                  <div className="navItem">
+                <li ref={dropdownRef} className="sog">
+
+                  <div  className={`normailcs ${isDropdownOpen && "makecolor"}`}  onClick={handleDropdownToggle}  href="">Our Services
+                  {isDropdownOpen && <div className="dropdownTriangle" />}
+                    </div>  
+
+                   {
+                    isDropdownOpen  && 
+                   
+                  <div  className="navItem">
                     <div className="sidebar_nav1">
                       <ul className="certify">
                         <li id="one" onClick={tab1} className="cert">
@@ -433,12 +490,22 @@ export default function Navbar(props) {
                     </div>
                   </div>
 
+                    }
+
                 </li>
+
                 <li>
                   <Link href={"/aboutus"} className=""> About Us </Link>
                 </li>
-                <li className="soki">
-                  <a href="" className="navitemss">Resources</a>
+
+                <li ref={dropdownRef2} className="soki">
+                  <div onClick={handleDropdownToggle2}   className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
+                  {isDropdownOpen2 && <div className="dropdownTriangle" />}
+
+                  </div>
+                  {
+                    isDropdownOpen2 && 
+                  
                   <div className="navItem2">
                     <div className="some">
                       <p>Resources</p>
@@ -473,10 +540,14 @@ export default function Navbar(props) {
                       </div>
                     </div>
                   </div>
+
+  }
                 </li>
+
                 <li>
                   <Link href={"/contact-us"} className=""> Contact us </Link>
                 </li>
+
                 <li>
                   <div className="search_bar">
                     <input type="text" placeholder="Search" />
@@ -494,6 +565,7 @@ export default function Navbar(props) {
                     </svg>
                   </div>
                 </li>
+
                 <li className="ponh">
                   <div className="logo_photo">
                     <svg
