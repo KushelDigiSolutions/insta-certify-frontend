@@ -20,6 +20,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 } */
+ body{
+  overflow-x: hidden;
+ }
 * {
   padding: 0;
   margin: 0;
@@ -1444,6 +1447,9 @@ button {
     font-size: 12px !important;
     white-space: nowrap !important;
   }
+  .normailcs{
+    font-size: 12px !important;
+  }
 }
 
 @media only screen and (max-width:1150px) {
@@ -1667,12 +1673,17 @@ button {
 .navbars {
   background-color: #FDFDFD;
   padding: 10px 60px;
-  border-bottom: 1px solid #FDFDFD;
+  /* border-bottom: 1px solid #FDFDFD; */
   width: 100%;
-  height: 74px;
+  height: 72px;
+  border-bottom: 1px solid #c9c0c0;
 
 }
-
+.soka{
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
 .nav_test {
   display: flex;
   align-items: center;
@@ -1821,7 +1832,7 @@ position: relative;
   width: 100vw;
   left: 0;
   right: 0;
-  top: 45px;
+  top: 61px;
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   background-color: white;
   z-index: 10;
@@ -1833,7 +1844,7 @@ position: relative;
   background-color: #065175;
   box-shadow: 0px 16px 40px 0px #7090B026;
   width: 280px;
-  margin-top: 27px;
+  /* margin-top: 27px; */
 }
 
 .certify {
@@ -1857,7 +1868,8 @@ position: relative;
   display: flex;
   align-items: center;
   padding: 0px 45px;
-  margin-top:57px;
+  /* margin-top:57px; */
+  margin-top: 30px;
 }
 .sofar{
   background-color: white;
@@ -1902,7 +1914,7 @@ position: relative;
 }
 
 .bs {
-  margin-top: 30px;
+  margin-top: 45px;
   padding: 0px 45px;
   display: flex;
   align-items: flex-start;
@@ -1950,6 +1962,7 @@ text-align: center;
 }
 .soj{
   padding: 0px 0px !important;
+  margin-top: 10px;
 }
 .soj li {
   padding: 10px 0px !important;
@@ -1989,24 +2002,26 @@ text-align: center;
 }
 
 .img_item {
-  /* display: flex;
-  align-items: flex-start;
-  justify-content: space-between; */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0px 30px;
+  padding:22px 30px;
 }
-
+.nav_img{
+  margin-top: 15px;
+}
 .nav_img ul {
-  /* display: flex;
-  align-items: flex-start;
-  gap: 100px; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
+  align-items: center;
   padding-left: 0px !important;
 }
-
+.okking{
+  display: none;
+}
+.sys:hover .logo_img .okking{
+  display: block !important;
+}
 .nav_img ul li {
   padding: 12px 12px;
   width: 100%;
@@ -2040,8 +2055,8 @@ text-align: center;
   max-width: 950px;
   width: 100%;
   /* height: 542px; */
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  top: 45px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  top: 61px;
 }
 .lime_item{
   padding-top: 30px;
