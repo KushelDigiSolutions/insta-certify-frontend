@@ -1818,13 +1818,14 @@ position: relative;
 
 .navItem {
   position: absolute;
-  width: 100%;
+  width: 100vw;
   left: 0;
   right: 0;
   top: 45px;
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   background-color: white;
   z-index: 10;
+  transform: translateX(-70px);
   display: flex;
 }
 
@@ -1979,7 +1980,7 @@ text-align: center;
 }
 
 .sidebar_nav2 {
-  width: 100%;
+  width: calc(100vw - 280px);
   z-index: 1;
 }
 
