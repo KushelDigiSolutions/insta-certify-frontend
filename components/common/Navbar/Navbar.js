@@ -958,7 +958,7 @@ const styleji11 = {
                   </div>
 
                   <div className="sofar">
-                    <span>Hindi</span>
+                    {/* <span>Hindi</span> */}
                     <span>English</span>
                   </div>
 
