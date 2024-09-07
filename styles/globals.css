@@ -1436,7 +1436,9 @@ button {
   font-size: 20px;
   font-family: "Poppins", sans-serif !important;
 }
-
+.somisk{
+  padding-left: 0rem !important;
+}
 @media only screen and (max-width:1500px) {
   .header_header__UxNqT .header_navItems__Y_vRd>li {
     margin: 0px 10px !important;
@@ -1450,6 +1452,7 @@ button {
   }
   .normailcs{
     font-size: 12px !important;
+    
   }
 }
 
@@ -1756,7 +1759,7 @@ position: relative;
   align-items: center;
 }
 .normailcs {
-  font-family: Poppins;
+    font-family: "Poppins", sans-serif !important;
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
@@ -2182,6 +2185,7 @@ text-align: center;
 }
 .lopl{
   margin-top: 20px;
+  padding-left: 0rem !important;
 }
 .lopl li{
   display: flex;
@@ -2246,8 +2250,11 @@ text-align: center;
   /* margin: 10px 0px; */
 }
 .rwing{
-  display: flex;
+  display: flex !important;
   justify-content: space-around;
+}
+.contactus-footer{
+  padding-left: 0rem !important;
 }
 .foot_map{
   background-color: #EC691F;
