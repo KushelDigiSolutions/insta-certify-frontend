@@ -2158,6 +2158,7 @@ text-align: center;
   display: block;
   margin-top: 6px;
   margin-left: 20px;
+  line-height: 26px;
 }
 .oklo{
   position: relative !important;
@@ -2194,6 +2195,7 @@ text-align: center;
   font-family: "DM Sans", sans-serif !important;
   text-decoration: none;
   margin-left: 10px;
+  line-height: 26px;
 }
 .lopl svg{
   width: 24px;
