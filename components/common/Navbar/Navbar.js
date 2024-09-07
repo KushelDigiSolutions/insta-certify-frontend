@@ -51,6 +51,13 @@ export default function Navbar(props) {
   const [pus9,setPus9] = useState(false);
   const [pus10,setPus10] = useState(false);
 
+  const [tus,setTus] = useState(false);
+  const [tus1,setTus1] = useState(false);
+  const [tus2,setTus2] = useState(false);
+
+  const [tus3,setTus3] = useState(false);
+  const [tus4,setTus4] = useState(false);
+
   const { data: userSession } = useSession();
   const router = useRouter();
   MenuToggel();
@@ -143,6 +150,30 @@ const styleji10 = {
 }
 const styleji11 = {
   display: pus10 ? "block" : "none"
+}
+
+const stylepi = {
+  display: tus ? "block" : "none"
+}
+
+const stylepi1 = {
+  display: tus || tus1 || tus2 || tus3 || tus4 ? "none" : "block"
+}
+
+const stylepi2 = {
+  display: tus1 ? "block" : "none"
+}
+
+const stylepi3 = {
+  display: tus2 ? "block" : "none"
+}
+
+const stylepi4 = {
+  display: tus3 ? "block" : "none"
+}
+
+const stylepi5 = {
+  display: tus4 ? "block" : "none"
 }
   useEffect(() => {
     console.log(userSession);
@@ -818,29 +849,64 @@ const styleji11 = {
                         <div className="nav_img">
                           <ul>
                             <li>
-                              <a href={"/news"}> News </a>
+                              <a onMouseOver={()=>{
+                                        setTus(true);
+                                      }}
+  
+                                      onMouseOut={()=>{
+                                        setTus(false);
+                                      }} href={"/news"}> News </a>
                             </li>
                             <li>
-                              <a href="">Case Study</a>
+                              <a onMouseOver={()=>{
+                                        setTus1(true);
+                                      }}
+  
+                                      onMouseOut={()=>{
+                                        setTus1(false);
+                                      }} href="">Case Study</a>
                             </li>
                           </ul>
                           <ul>
                             <li>
-                              <a href={"/eventsnew"}> Events </a>
+                              <a onMouseOver={()=>{
+                                        setTus2(true);
+                                      }}
+  
+                                      onMouseOut={()=>{
+                                        setTus2(false);
+                                      }} href={"/eventsnew"}> Events </a>
                             </li>
                             <li>
-                              <a href="/catalog">Products</a>
+                              <a onMouseOver={()=>{
+                                        setTus3(true);
+                                      }}
+  
+                                      onMouseOut={()=>{
+                                        setTus3(false);
+                                      }} href="/catalog">Products</a>
                             </li>
                           </ul>
                           <ul>
                             <li>
-                              <a href="">QCO Orders</a>
+                              <a onMouseOver={()=>{
+                                        setTus4(true);
+                                      }}
+  
+                                      onMouseOut={()=>{
+                                        setTus4(false);
+                                      }} href="">QCO Orders</a>
                             </li>
 
                           </ul>
                         </div>
                         <div className="logo_img">
-                          <img src="./images/latest.png" alt="" />
+                          <img style={stylepi1} src="./images/resource.svg" alt="" />
+                          <img style={stylepi} src="./images/latest.png" alt="" />
+                          <img style={stylepi2} src="./images/club.svg" alt="" />
+                          <img style={stylepi3} src="./images/events.svg" alt="" />
+                          <img style={stylepi4} src="./images/products.svg" alt="" />
+                          <img style={stylepi5} src="./images/qco.svg" alt="" />
                         </div>
                       </div>
                     </div>
