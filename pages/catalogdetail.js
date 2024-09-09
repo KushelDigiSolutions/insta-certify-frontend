@@ -194,7 +194,7 @@ export default function catalog(pageProp) {
       <div className="catalogs">
         <div className="container">
 
-          <div className="appWrapper">
+          <div className="appWrapper iuiu">
             <div className="appContainer">
               {/* section 1  */}
               <div className="appsec1">

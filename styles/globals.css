@@ -1452,7 +1452,14 @@ button {
   }
   .normailcs{
     font-size: 12px !important;
-    
+  }
+  .aosmk{
+    height: 550px;
+    overflow-y:scroll ;
+    padding-bottom: 40px;
+  }
+  .aosmk::-webkit-scrollbar{
+    width: 6px;
   }
 }
 
@@ -1675,13 +1682,69 @@ button {
 
 
 .navbars {
-  background-color: #FDFDFD;
+  /* background-color: #FDFDFD; */
   padding: 10px 60px;
   /* border-bottom: 1px solid #FDFDFD; */
   width: 100%;
   height: 72px;
-  border-bottom: 1px solid #c9c0c0;
+  /* border-bottom: 1px solid #c9c0c0; */
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 100;
 
+}
+#ll{
+   border: 1px solid #FFFFFF;
+
+}
+#kl input::placeholder{
+  font-weight: 300 !important;
+}
+#ll input{
+  background: none !important;
+  color: white;
+}
+#ll input::placeholder{
+  color: #FFFFFF;
+  font-weight: 300 !important;
+}
+.iuiu{
+  margin-top: 4rem;
+}
+#loi{
+  color: #FFFFFF;
+}
+#okii{
+  color: #FFFFFF;
+}
+.fas ul li a{
+  color: #444444 !important;
+}
+.fas ul li a:hover{
+  color: orange !important;
+}
+.fas .pii{
+  color: #7D7D7D !important;
+}
+.fas .normailcs{
+  color: #444444 !important;
+}
+.fas .pii1{
+  color: #444444 !important;
+}
+/* .fas svg path{
+  fill: #444444 !important;
+} */
+.mokl{
+  height: 550px;
+  overflow-y: scroll;
+  padding-bottom: 60px;
+}
+.mokl::-webkit-scrollbar{
+  width: 6px;
 }
 .soka{
   position: absolute;
@@ -1736,7 +1799,8 @@ position: relative;
 
 .ul_sofa li a {
   text-decoration: none;
-  color: #444444;
+  /* color: #444444; */
+  color: #FFFFFF;
   font-weight: 400;
   font-size: 16px;
   font-family: "Poppins", sans-serif !important;
@@ -1765,10 +1829,26 @@ position: relative;
   line-height: 16px;
   text-align: left;
   cursor: pointer;
-  color: #444444;
+  /* color: #444444; */
+  color: #FFFFFF;
   position: relative; /* Add relative positioning */
 }
+#tom{
 
+  color: white;
+}
+#nom{
+  color: #444444 ;
+}
+#mom{
+ color: white;
+}
+#kom{
+  color: #444444 ;
+}
+.us_sofa li a{
+  color: #444444 !important;
+}
 .normailcs:hover {
   color: #EC691F;
 }
@@ -1838,15 +1918,17 @@ position: relative;
 }
 
 .navItem {
-  position: absolute;
-  width: 100vw;
+  /* position: absolute; */
+  position: fixed;
+  width: 100%;
   left: 0;
   right: 0;
-  top: 61px;
+  /* top: 61px; */
+  top: 70px;
   /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
   background-color: white;
   z-index: 10;
-  transform: translateX(-70px);
+  /* transform: translateX(-70px); */
   display: flex;
 }
 

@@ -26,38 +26,50 @@ export default function Navbar(props) {
   const refAuthPopup = useRef(null);
   const refAuthPopup1 = useRef(null)
   const [start, setStart] = useState(1);
-  const [sus,setSus] = useState(false);
-  const [sus1,setSus1] = useState(false);
-  const [sus2,setSus2] = useState(false);
-  const [sus3,setSus3] = useState(false);
-  const [sus4,setSus4] = useState(false);
-  const [sus5,setSus5] = useState(false);
-  const [sus6,setSus6] = useState(false);
-  const [sus7,setSus7] = useState(false);
-  const [sus8,setSus8] = useState(false);
-  const [sus9,setSus9] = useState(false);
-  const [sus10,setSus10] = useState(false);
+  const [sus, setSus] = useState(false);
+  const [sus1, setSus1] = useState(false);
+  const [sus2, setSus2] = useState(false);
+  const [sus3, setSus3] = useState(false);
+  const [sus4, setSus4] = useState(false);
+  const [sus5, setSus5] = useState(false);
+  const [sus6, setSus6] = useState(false);
+  const [sus7, setSus7] = useState(false);
+  const [sus8, setSus8] = useState(false);
+  const [sus9, setSus9] = useState(false);
+  const [sus10, setSus10] = useState(false);
 
 
-  const [pus,setPus] = useState(false);
-  const [pus1,setPus1] = useState(false);
-  const [pus2,setPus2] = useState(false);
-  const [pus3,setPus3] = useState(false);
-  const [pus4,setPus4] = useState(false);
-  const [pus5,setPus5] = useState(false);
-  const [pus6,setPus6] = useState(false);
-  const [pus7,setPus7] = useState(false);
-  const [pus8,setPus8] = useState(false);
-  const [pus9,setPus9] = useState(false);
-  const [pus10,setPus10] = useState(false);
+  const [pus, setPus] = useState(false);
+  const [pus1, setPus1] = useState(false);
+  const [pus2, setPus2] = useState(false);
+  const [pus3, setPus3] = useState(false);
+  const [pus4, setPus4] = useState(false);
+  const [pus5, setPus5] = useState(false);
+  const [pus6, setPus6] = useState(false);
+  const [pus7, setPus7] = useState(false);
+  const [pus8, setPus8] = useState(false);
+  const [pus9, setPus9] = useState(false);
+  const [pus10, setPus10] = useState(false);
 
-  const [tus,setTus] = useState(false);
-  const [tus1,setTus1] = useState(false);
-  const [tus2,setTus2] = useState(false);
+  const [tus, setTus] = useState(false);
+  const [tus1, setTus1] = useState(false);
+  const [tus2, setTus2] = useState(false);
 
-  const [tus3,setTus3] = useState(false);
-  const [tus4,setTus4] = useState(false);
+  const [tus3, setTus3] = useState(false);
+  const [tus4, setTus4] = useState(false);
 
+  const [navBg, setNavBg] = useState(false);
+
+  const changeNavBg = () => {
+    window.scrollY >= 100 ? setNavBg(true) : setNavBg(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeNavBg);
+    return () => {
+      window.removeEventListener('scroll', changeNavBg);
+    }
+  }, [])
   const { data: userSession } = useSession();
   const router = useRouter();
   MenuToggel();
@@ -70,6 +82,7 @@ export default function Navbar(props) {
   });
 
   
+
 
   const styleOff = {
     display: sus ? "block" : "none"
@@ -109,72 +122,72 @@ export default function Navbar(props) {
   }
 
   const styleji = {
-     display: pus ? "block" : "none"
+    display: pus ? "block" : "none"
   }
   const styleji1 = {
     display: pus || pus1 || pus2 || pus3 || pus4 || pus5 || pus6 || pus7 || pus8 || pus9 || pus10 ? "none" : "block"
- }
+  }
 
- const styleji2 = {
-  display: pus1 ? "block" : "none"
-}
+  const styleji2 = {
+    display: pus1 ? "block" : "none"
+  }
 
-const styleji3 = {
-  display: pus2 ? "block" : "none"
-}
-const styleji4 = {
-  display: pus3 ? "block" : "none"
-}
-const styleji5 = {
-  display: pus4 ? "block" : "none"
-}
+  const styleji3 = {
+    display: pus2 ? "block" : "none"
+  }
+  const styleji4 = {
+    display: pus3 ? "block" : "none"
+  }
+  const styleji5 = {
+    display: pus4 ? "block" : "none"
+  }
 
-const styleji6 = {
-  display: pus5 ? "block" : "none"
-}
+  const styleji6 = {
+    display: pus5 ? "block" : "none"
+  }
 
-const styleji7 = {
-  display: pus6 ? "block" : "none"
-}
+  const styleji7 = {
+    display: pus6 ? "block" : "none"
+  }
 
-const styleji8 = {
-  display: pus7 ? "block" : "none"
-}
+  const styleji8 = {
+    display: pus7 ? "block" : "none"
+  }
 
-const styleji9 = {
-  display: pus8 ? "block" : "none"
-}
+  const styleji9 = {
+    display: pus8 ? "block" : "none"
+  }
 
-const styleji10 = {
-  display: pus9 ? "block" : "none"
-}
-const styleji11 = {
-  display: pus10 ? "block" : "none"
-}
+  const styleji10 = {
+    display: pus9 ? "block" : "none"
+  }
+  const styleji11 = {
+    display: pus10 ? "block" : "none"
+  }
 
-const stylepi = {
-  display: tus ? "block" : "none"
-}
+  const stylepi = {
+    display: tus ? "block" : "none"
+  }
 
-const stylepi1 = {
-  display: tus || tus1 || tus2 || tus3 || tus4 ? "none" : "block"
-}
+  const stylepi1 = {
+    display: tus || tus1 || tus2 || tus3 || tus4 ? "none" : "block"
+  }
 
-const stylepi2 = {
-  display: tus1 ? "block" : "none"
-}
+  const stylepi2 = {
+    display: tus1 ? "block" : "none"
+  }
 
-const stylepi3 = {
-  display: tus2 ? "block" : "none"
-}
+  const stylepi3 = {
+    display: tus2 ? "block" : "none"
+  }
 
-const stylepi4 = {
-  display: tus3 ? "block" : "none"
-}
+  const stylepi4 = {
+    display: tus3 ? "block" : "none"
+  }
 
-const stylepi5 = {
-  display: tus4 ? "block" : "none"
-}
+  const stylepi5 = {
+    display: tus4 ? "block" : "none"
+  }
   useEffect(() => {
     console.log(userSession);
     if (userSession?.user.error === "invalid-version") {
@@ -229,6 +242,9 @@ const stylepi5 = {
       document.getElementById("three").style.background = "#F07A40"
     }
 
+    const sop = {
+      backgroundColor: "white"
+    }
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
@@ -287,759 +303,788 @@ const stylepi5 = {
 
     return (
       <>
+      
+        <div onScroll={changeNavBg}>
+          <nav style={navBg ? sop : null} className={`${currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail"  ? "fas" : "navbars"} navbars` }>
 
+            <div className="nav_test">
+              <div className="nav_logo">
+                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" /></Link>
+              </div>
+              <div className="ul_nav">
+                <ul className={`${navBg ? "us_sofa" : "ul_sofa"} ul_sofa`}>
 
-        <nav className="navbars">
+                  <li ref={dropdownRef} className="sog">
 
-          <div className="nav_test">
-            <div className="nav_logo">
-              <Link href="/"><img src="./images/safari.png" alt="" /></Link>
-            </div>
-            <div className="ul_nav">
-              <ul className="ul_sofa">
-
-                <li ref={dropdownRef} className="sog">
-
-                  <div className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">Our Services
-                    {isDropdownOpen && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g filter="url(#filter0_d_295_242)">
-                        <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
-                      </g>
-                      <defs>
-                        <filter id="filter0_d_295_242" x="0.406738" y="0" width="98.1865" height="92.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                          <feOffset dy="16" />
-                          <feGaussianBlur stdDeviation="20" />
-                          <feComposite in2="hardAlpha" operator="out" />
-                          <feColorMatrix type="matrix" values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.15 0" />
-                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_295_242" />
-                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_295_242" result="shape" />
-                        </filter>
-                      </defs>
-                    </svg>
-                    }
-                  </div>
-
-                  {
-                    isDropdownOpen &&
-
-                    <div className="navItem">
-                      <div className="sidebar_nav1">
-                        <ul className="certify">
-                          <li id="one" onClick={tab1} className="cert">
-                            <span className="sft">Certifications</span>
-                          </li>
-                          <li id="two" onClick={tab2}>
-                            <span className="sft">Testing</span>
-                          </li>
-                          <li id="three" onClick={tab3}>
-                            <span className="sft">Equipment</span>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="sidebar_nav2">
-
-                        {
-                          start === 1 && (
-                            <div>
-                              <div className="some">
-                                <span>Certifications</span>
-                              </div>
-                              <div className="bs">
-                                <div className="bs1">
-                                  <div>
-                                    <hr className="bis" />
-                                    <h3>BIS</h3>
-                                    <ul className="soj">
-                                      <li>
-                                        <a href="">
-                                          BIS (ISI MARK) for Foreign <br />
-                                          Manufacturers
-
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="">
-                                          BIS (ISI Mark) for Domestic <br />
-                                          Product Certification
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="/bis-mark">
-                                          BIS (CRS Mark) for Compulsory <br /> Registration
-                                          Scheme
-                                        </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="so">
-                                    <hr className="bis" />
-                                    <h3>EPR</h3>
-                                    <ul className="soj">
-                                      <li>
-                                        <a href="">
-                                          EPR Plastic Waste
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="">
-                                          EPR E-Waste
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="">
-                                          EPR Battery Waste
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="">
-                                          EPR for Used Oil
-                                        </a>
-                                      </li>
-                                      <li>
-                                        <a href="">
-                                          EPR for Tyre
-                                        </a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div className="bs1">
-                                  <div>
-                                    <hr className="bis" />
-                                    <h3>OTHER</h3>
-                                    <ul className="soj">
-                                      <li>
-                                        <a href="">Peso Certification</a>
-                                      </li>
-                                      <li>
-                                        <a href="">NSIC of MSME</a>
-                                      </li>
-                                      <li>
-                                        <a href="">STQC Certification</a>
-                                      </li>
-                                      <li>
-                                        <a href="">FSSAI Registration</a>
-                                      </li>
-                                      <li>
-                                        <a href="">CDSCO Registration</a>
-                                      </li>
-                                      <li>
-                                        <a href="">NOC for Steel</a>
-                                      </li>
-                                      <li>
-                                        <a href="">BEE Certification</a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div className="so">
-                                    <hr className="bis" />
-                                    <h3>TELECOM</h3>
-                                    <ul className="soj">
-                                      <li>
-                                        <a href="">WPC-ETA Approval</a>
-                                      </li>
-                                      <li>
-                                        <a href="">FCC Certification</a>
-                                      </li>
-                                      <li>
-                                        <a href="">IMEI Registration</a>
-                                      </li>
-                                      <li>
-                                        <a href="">IMEI ICDR Registration</a>
-                                      </li>
-                                      <li>
-                                        <a href="">TEC Approval</a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                                <div className="bs1">
-                                  <hr className="bis" />
-                                  <h3>GLOBAL</h3>
-                                  <ul className="soj">
-                                    <li>
-                                      <a href="">
-                                        ISO Certification
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        HACCP
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        HALAL
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        SABER
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        G MARK for Toys
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        G MARK for Low Voltage <br /> Electrical Devices (LVED)
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        SFDA for Rice
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href={"/food-testing"}>
-                                        SFDA for Food
-
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        SFDA for Cosmetics
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="">
-                                        CE Certification
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        }
-
-                        {
-                          start === 2 && (
-                            <div>
-                              <div className="some">
-                                <span>Testing</span>
-                              </div>
-                              <div className="img_item">
-                                <div className="nav_img">
-                                  <ul>
-                                    <li 
-                                    >
-                                      <a onMouseOver={()=>{
-                                      setSus(true);
-                                    }}
-
-                                    onMouseOut={()=>{
-                                      setSus(false);
-                                    }}  href="">Electronic and Electricity</a>
-                                    </li>
-                                    <li >
-                                      <a onMouseOver={()=>{
-                                      setSus1(true);
-                                    }}
-
-                                    onMouseOut={()=>{
-                                      setSus1(false);
-                                    }} href="">Construction and Engineering</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li >
-                                      <a onMouseOver={()=>{
-                                      setSus2(true);
-                                    }}
-
-                                    onMouseOut={()=>{
-                                      setSus2(false);
-                                    }} href="">Chemicals</a>
-                                    </li>
-                                    <li
-                                     
-                                    >
-                                      <a  onMouseOver={()=>{
-                                        setSus3(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus3(false);
-                                      }}  href="">Wireless</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li  >
-                                      <a onMouseOver={()=>{
-                                        setSus4(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus4(false);
-                                      }} href={"/food-testing"}>
-                                        Food
-                                      </a>
-                                    </li>
-                                    <li >
-                                      <a onMouseOver={()=>{
-                                        setSus5(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus5(false);
-                                      }} href="">Cosmetics</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li >
-                                      <a onMouseOver={()=>{
-                                        setSus6(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus6(false);
-                                      }} href="">Toys</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setSus7(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus7(false);
-                                      }} href="">Software</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setSus8(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus8(false);
-                                      }} href="">Metal and Alloys</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setSus9(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus9(false);
-                                      }} href="">Environment</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setSus10(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setSus10(false);
-                                      }} href="">Polymers and Plastics</a>
-                                    </li>
-
-                                  </ul>
-                                </div>
-                                <div className="logo_img">
-                                  <img style={styleoff1} src="./images/rest.svg" alt="" />
-                                  <img style={styleOff} className="okking" src="./images/sert.svg" alt="svg" />
-                                  <img style={styleoff2} className="okking" src="./images/constuct.svg" alt="svg" />
-                                  <img style={styleoff3} className="okking" src="./images/chemicals.svg" alt="svg" />
-                                  <img style={styleoff4} className="okking" src="./images/wireless.svg" alt="svg" />
-                                  <img style={styleoff5} className="okking" src="./images/food.svg" alt="svg" />
-                                  <img style={styleoff6} className="okking" src="./images/cosmatic.svg" alt="svg" />
-                                  <img style={styleoff7} className="okking" src="./images/toys.svg" alt="svg" />
-                                  <img style={styleoff8} className="okking" src="./images/software.svg" alt="svg" />
-                                  <img style={styleoff9} className="okking" src="./images/metal.svg" alt="svg" />
-                                  <img style={styleoff10} className="okking" src="./images/en.svg" alt="svg" />
-                                  <img style={styleoff11} className="okking" src="./images/poly.svg" alt="svg" />
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        }
-
-                        {
-                          start === 3 && (
-                            <div>
-                              <div className="some">
-                                <span>Equipment</span>
-                              </div>
-                              <div className="img_item">
-                                <div className="nav_img">
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus(false);
-                                      }} href="">General Laboratory <br/>
-                                      Consumables</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus1(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus1(false);
-                                      }} href="">Analytical Measurement <br/>
-                                      and Testing</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus2(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus2(false);
-                                      }} href="">Occupational Safety, <br/> Security</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus3(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus3(false);
-                                      }} href="">Cleaning and Sterilization</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus4(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus4(false);
-                                      }} href="">Vacuum Technology, Drying, <br/> Dry Storage</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus5(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus5(false);
-                                      }} href="">Labware</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus6(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus6(false);
-                                      }} href="">Distillation, Separation, <br/>
-                                      Filtration</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus7(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus7(false);
-                                      }} href="">Lab Chemicals</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus8(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus8(false);
-                                      }} href="">Industry Specific Bundle</a>
-                                    </li>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus9(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus9(false);
-                                      }} href="">General Laboratory <br/> Consumables</a>
-                                    </li>
-                                  </ul>
-                                  <ul>
-                                    <li>
-                                      <a onMouseOver={()=>{
-                                        setPus10(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setPus10(false);
-                                      }} href="">Optical Instruments and <br/> Microscopes</a>
-                                    </li>
-
-                                  </ul>
-                                </div>
-                                <div className="logo_img">
-                                  <img style={styleji1} src="./images/stay.svg" alt="" />
-                                  <img style={styleji} src="./images/lab.svg" alt="" />
-                                  <img style={styleji2} src="./images/fax.svg" alt="" />
-                                  <img style={styleji3} src="./images/occuy.svg" alt="" />
-                                  <img style={styleji4} src="./images/clean.svg" alt="" />
-                                  <img style={styleji5} src="./images/sola.svg" alt="" />
-                                  <img style={styleji6} src="./images/labware.svg" alt="" />
-                                  <img style={styleji7} src="./images/dist.svg" alt="" />
-                                  <img style={styleji8} src="./images/chemical.svg" alt="" />
-                                  <img style={styleji9} src="./images/industry.svg" alt="" />
-                                  <img style={styleji10} src="./images/general.svg" alt="" />
-                                  <img style={styleji11} src="./images/optical.svg" alt="" />
-                                </div>
-                              </div>
-                            </div>
-                          )
-                        }
-
-                      </div>
+                    <div id={`${navBg ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">Our Services
+                      {isDropdownOpen && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_295_242)">
+                          <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
+                        </g>
+                        <defs>
+                          <filter id="filter0_d_295_242" x="0.406738" y="0" width="98.1865" height="92.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="16" />
+                            <feGaussianBlur stdDeviation="20" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.15 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_295_242" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_295_242" result="shape" />
+                          </filter>
+                        </defs>
+                      </svg>
+                      }
                     </div>
 
-                  }
+                    {
+                      isDropdownOpen &&
 
-                </li>
+                      <div className="navItem">
+                        <div className="sidebar_nav1">
+                          <ul className="certify">
+                            <li id="one" onClick={tab1} className="cert">
+                              <span className="sft">Certifications</span>
+                            </li>
+                            <li id="two" onClick={tab2}>
+                              <span className="sft">Testing</span>
+                            </li>
+                            <li id="three" onClick={tab3}>
+                              <span className="sft">Equipment</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="sidebar_nav2">
 
-                <li>
-                  <Link href={"/aboutus"} className={`${currentPath === "/aboutus" ? "makecolor2" : ""}`}> About Us </Link>
-                </li>
+                          {
+                            start === 1 && (
+                              <div className="mokl">
+                                <div className="some ">
+                                  <span>Certifications</span>
+                                </div>
+                                <div className="bs">
+                                  <div className="bs1">
+                                    <div>
+                                      <hr className="bis" />
+                                      <h3>BIS</h3>
+                                      <ul className="soj">
+                                        <li>
+                                          <a href="">
+                                            BIS (ISI MARK) for Foreign <br />
+                                            Manufacturers
 
-                <li ref={dropdownRef2} className="soki">
-                  <div onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
-                    {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g filter="url(#filter0_d_295_242)">
-                        <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
-                      </g>
-                      <defs>
-                        <filter id="filter0_d_295_242" x="0.406738" y="0" width="98.1865" height="92.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                          <feOffset dy="16" />
-                          <feGaussianBlur stdDeviation="20" />
-                          <feComposite in2="hardAlpha" operator="out" />
-                          <feColorMatrix type="matrix" values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.15 0" />
-                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_295_242" />
-                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_295_242" result="shape" />
-                        </filter>
-                      </defs>
-                    </svg>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            BIS (ISI Mark) for Domestic <br />
+                                            Product Certification
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="/bis-mark">
+                                            BIS (CRS Mark) for Compulsory <br /> Registration
+                                            Scheme
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div className="so">
+                                      <hr className="bis" />
+                                      <h3>EPR</h3>
+                                      <ul className="soj">
+                                        <li>
+                                          <a href="">
+                                            EPR Plastic Waste
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            EPR E-Waste
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            EPR Battery Waste
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            EPR for Used Oil
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            EPR for Tyre
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div className="bs1">
+                                    <div>
+                                      <hr className="bis" />
+                                      <h3>OTHER</h3>
+                                      <ul className="soj">
+                                        <li>
+                                          <a href="">Peso Certification</a>
+                                        </li>
+                                        <li>
+                                          <a href="">NSIC of MSME</a>
+                                        </li>
+                                        <li>
+                                          <a href="">STQC Certification</a>
+                                        </li>
+                                        <li>
+                                          <a href="">FSSAI Registration</a>
+                                        </li>
+                                        <li>
+                                          <a href="">CDSCO Registration</a>
+                                        </li>
+                                        <li>
+                                          <a href="">NOC for Steel</a>
+                                        </li>
+                                        <li>
+                                          <a href="">BEE Certification</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div className="so">
+                                      <hr className="bis" />
+                                      <h3>TELECOM</h3>
+                                      <ul className="soj">
+                                        <li>
+                                          <a href="">WPC-ETA Approval</a>
+                                        </li>
+                                        <li>
+                                          <a href="">FCC Certification</a>
+                                        </li>
+                                        <li>
+                                          <a href="">IMEI Registration</a>
+                                        </li>
+                                        <li>
+                                          <a href="">IMEI ICDR Registration</a>
+                                        </li>
+                                        <li>
+                                          <a href="">TEC Approval</a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div className="bs1">
+                                    <hr className="bis" />
+                                    <h3>GLOBAL</h3>
+                                    <ul className="soj">
+                                      <li>
+                                        <a href="">
+                                          ISO Certification
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          HACCP
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          HALAL
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          SABER
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          G MARK for Toys
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          G MARK for Low Voltage <br /> Electrical Devices (LVED)
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          SFDA for Rice
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href={"/food-testing"}>
+                                          SFDA for Food
+
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          SFDA for Cosmetics
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="">
+                                          CE Certification
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          }
+
+                          {
+                            start === 2 && (
+                              <div>
+                                <div className="some">
+                                  <span>Testing</span>
+                                </div>
+                                <div className="img_item">
+                                  <div className="nav_img">
+                                    <ul>
+                                      <li
+                                      >
+                                        <a onMouseOver={() => {
+                                          setSus(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus(false);
+                                          }} href="">Electronic and Electricity</a>
+                                      </li>
+                                      <li >
+                                        <a onMouseOver={() => {
+                                          setSus1(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus1(false);
+                                          }} href="">Construction and Engineering</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li >
+                                        <a onMouseOver={() => {
+                                          setSus2(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus2(false);
+                                          }} href="">Chemicals</a>
+                                      </li>
+                                      <li
+
+                                      >
+                                        <a onMouseOver={() => {
+                                          setSus3(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus3(false);
+                                          }} href="">Wireless</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li  >
+                                        <a onMouseOver={() => {
+                                          setSus4(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus4(false);
+                                          }} href={"/food-testing"}>
+                                          Food
+                                        </a>
+                                      </li>
+                                      <li >
+                                        <a onMouseOver={() => {
+                                          setSus5(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus5(false);
+                                          }} href="">Cosmetics</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li >
+                                        <a onMouseOver={() => {
+                                          setSus6(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus6(false);
+                                          }} href="">Toys</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setSus7(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus7(false);
+                                          }} href="">Software</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setSus8(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus8(false);
+                                          }} href="">Metal and Alloys</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setSus9(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus9(false);
+                                          }} href="">Environment</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setSus10(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setSus10(false);
+                                          }} href="">Polymers and Plastics</a>
+                                      </li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="logo_img">
+                                    <img style={styleoff1} src="./images/rest.svg" alt="" />
+                                    <img style={styleOff} className="okking" src="./images/sert.svg" alt="svg" />
+                                    <img style={styleoff2} className="okking" src="./images/constuct.svg" alt="svg" />
+                                    <img style={styleoff3} className="okking" src="./images/chemicals.svg" alt="svg" />
+                                    <img style={styleoff4} className="okking" src="./images/wireless.svg" alt="svg" />
+                                    <img style={styleoff5} className="okking" src="./images/food.svg" alt="svg" />
+                                    <img style={styleoff6} className="okking" src="./images/cosmatic.svg" alt="svg" />
+                                    <img style={styleoff7} className="okking" src="./images/toys.svg" alt="svg" />
+                                    <img style={styleoff8} className="okking" src="./images/software.svg" alt="svg" />
+                                    <img style={styleoff9} className="okking" src="./images/metal.svg" alt="svg" />
+                                    <img style={styleoff10} className="okking" src="./images/en.svg" alt="svg" />
+                                    <img style={styleoff11} className="okking" src="./images/poly.svg" alt="svg" />
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          }
+
+                          {
+                            start === 3 && (
+                              <div className="aosmk">
+                                <div className="some">
+                                  <span>Equipment</span>
+                                </div>
+                                <div className="img_item">
+                                  <div className="nav_img">
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus(false);
+                                          }} href="">General Laboratory <br />
+                                          Consumables</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus1(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus1(false);
+                                          }} href="">Analytical Measurement <br />
+                                          and Testing</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus2(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus2(false);
+                                          }} href="">Occupational Safety, <br /> Security</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus3(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus3(false);
+                                          }} href="">Cleaning and Sterilization</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus4(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus4(false);
+                                          }} href="">Vacuum Technology, Drying, <br /> Dry Storage</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus5(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus5(false);
+                                          }} href="">Labware</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus6(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus6(false);
+                                          }} href="">Distillation, Separation, <br />
+                                          Filtration</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus7(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus7(false);
+                                          }} href="">Lab Chemicals</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus8(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus8(false);
+                                          }} href="">Industry Specific Bundle</a>
+                                      </li>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus9(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus9(false);
+                                          }} href="">General Laboratory <br /> Consumables</a>
+                                      </li>
+                                    </ul>
+                                    <ul>
+                                      <li>
+                                        <a onMouseOver={() => {
+                                          setPus10(true);
+                                        }}
+
+                                          onMouseOut={() => {
+                                            setPus10(false);
+                                          }} href="">Optical Instruments and <br /> Microscopes</a>
+                                      </li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="logo_img">
+                                    <img style={styleji1} src="./images/stay.svg" alt="" />
+                                    <img style={styleji} src="./images/lab.svg" alt="" />
+                                    <img style={styleji2} src="./images/fax.svg" alt="" />
+                                    <img style={styleji3} src="./images/occuy.svg" alt="" />
+                                    <img style={styleji4} src="./images/clean.svg" alt="" />
+                                    <img style={styleji5} src="./images/sola.svg" alt="" />
+                                    <img style={styleji6} src="./images/labware.svg" alt="" />
+                                    <img style={styleji7} src="./images/dist.svg" alt="" />
+                                    <img style={styleji8} src="./images/chemical.svg" alt="" />
+                                    <img style={styleji9} src="./images/industry.svg" alt="" />
+                                    <img style={styleji10} src="./images/general.svg" alt="" />
+                                    <img style={styleji11} src="./images/optical.svg" alt="" />
+                                  </div>
+                                </div>
+                              </div>
+                            )
+                          }
+
+                        </div>
+                      </div>
+
                     }
 
-                  </div>
-                  {
-                    isDropdownOpen2 &&
+                  </li>
 
-                    <div className="navItem2">
-                      <div className="some">
-                        <p>Resources</p>
-                      </div>
-                      <div className="img_item lime_item">
-                        <div className="nav_img">
-                          <ul>
-                            <li>
-                              <a onMouseOver={()=>{
-                                        setTus(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setTus(false);
-                                      }} href={"/news"}> News </a>
-                            </li>
-                            <li>
-                              <a onMouseOver={()=>{
-                                        setTus1(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setTus1(false);
-                                      }} href="">Case Study</a>
-                            </li>
-                          </ul>
-                          <ul>
-                            <li>
-                              <a onMouseOver={()=>{
-                                        setTus2(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setTus2(false);
-                                      }} href={"/eventsnew"}> Events </a>
-                            </li>
-                            <li>
-                              <a onMouseOver={()=>{
-                                        setTus3(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setTus3(false);
-                                      }} href="/catalog">Products</a>
-                            </li>
-                          </ul>
-                          <ul>
-                            <li>
-                              <a onMouseOver={()=>{
-                                        setTus4(true);
-                                      }}
-  
-                                      onMouseOut={()=>{
-                                        setTus4(false);
-                                      }} href="">QCO Orders</a>
-                            </li>
+                  <li>
+                    <Link href={"/aboutus"} className={`${currentPath === "/aboutus" ? "makecolor2" : ""}`}> About Us </Link>
+                  </li>
 
-                          </ul>
+                  <li ref={dropdownRef2} className="soki">
+                    <div id={`${navBg ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
+                      {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_295_242)">
+                          <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
+                        </g>
+                        <defs>
+                          <filter id="filter0_d_295_242" x="0.406738" y="0" width="98.1865" height="92.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="16" />
+                            <feGaussianBlur stdDeviation="20" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.15 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_295_242" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_295_242" result="shape" />
+                          </filter>
+                        </defs>
+                      </svg>
+                      }
+
+                    </div>
+                    {
+                      isDropdownOpen2 &&
+
+                      <div className="navItem2">
+                        <div className="some">
+                          <p>Resources</p>
                         </div>
-                        <div className="logo_img">
-                          <img style={stylepi1} src="./images/resource.svg" alt="" />
-                          <img style={stylepi} src="./images/latest.png" alt="" />
-                          <img style={stylepi2} src="./images/club.svg" alt="" />
-                          <img style={stylepi3} src="./images/events.svg" alt="" />
-                          <img style={stylepi4} src="./images/products.svg" alt="" />
-                          <img style={stylepi5} src="./images/qco.svg" alt="" />
+                        <div className="img_item lime_item">
+                          <div className="nav_img">
+                            <ul>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus(false);
+                                  }} href={"/news"}> News </a>
+                              </li>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus1(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus1(false);
+                                  }} href="">Case Study</a>
+                              </li>
+                            </ul>
+                            <ul>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus2(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus2(false);
+                                  }} href={"/eventsnew"}> Events </a>
+                              </li>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus3(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus3(false);
+                                  }} href="/catalog">Products</a>
+                              </li>
+                            </ul>
+                            <ul>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus4(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus4(false);
+                                  }} href="">QCO Orders</a>
+                              </li>
+
+                            </ul>
+                          </div>
+                          <div className="logo_img">
+                            <img style={stylepi1} src="./images/resource.svg" alt="" />
+                            <img style={stylepi} src="./images/latest.png" alt="" />
+                            <img style={stylepi2} src="./images/club.svg" alt="" />
+                            <img style={stylepi3} src="./images/events.svg" alt="" />
+                            <img style={stylepi4} src="./images/products.svg" alt="" />
+                            <img style={stylepi5} src="./images/qco.svg" alt="" />
+                          </div>
                         </div>
                       </div>
+
+                    }
+                  </li>
+
+                  <li>
+                    <Link href={"/contact-us"} className={`${currentPath === "/contact-us" ? "makecolor2" : ""}`}> Contact us </Link>
+                  </li>
+
+                  <li>
+                    <div id={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail"  ? "kl" : "ll"}`} className="search_bar">
+                      <input type="text" placeholder="Search" />
+                      {
+                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" | currentPath === "/catalog" || currentPath === "/catalogdetail" ? <svg
+                          width={20}
+                          height={20}
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M14.7547 13.7078V13.9149L14.9012 14.0614L19.4113 18.5713L18.5724 19.4111L14.0604 14.9006L13.7497 14.59L13.4017 14.8581C11.7892 16.1004 9.76435 16.6824 7.73832 16.4858C5.71229 16.2893 3.83703 15.329 2.49341 13.7999C1.14979 12.2709 0.438561 10.2878 0.504167 8.25341C0.569772 6.21901 1.40729 4.28585 2.84664 2.84656C4.28598 1.40727 6.21921 0.56977 8.2537 0.504166C10.2882 0.438563 12.2714 1.14977 13.8005 2.49335C15.3295 3.83692 16.2899 5.7121 16.4864 7.73805C16.683 9.764 16.101 11.7888 14.8587 13.4012L14.7547 13.5361V13.7064V13.7078ZM18.724 19.5626L18.7236 19.5622C18.7238 19.5625 18.724 19.5627 18.7242 19.5629L18.724 19.5626ZM8.50489 15.9684C9.48508 15.9684 10.4557 15.7753 11.3612 15.4002C12.2668 15.0251 13.0897 14.4754 13.7828 13.7823C14.4759 13.0892 15.0257 12.2664 15.4008 11.3609C15.7759 10.4553 15.9689 9.48475 15.9689 8.50459C15.9689 7.52443 15.7759 6.55386 15.4008 5.64831C15.0257 4.74276 14.4759 3.91996 13.7828 3.22688C13.0897 2.53381 12.2668 1.98403 11.3612 1.60894C10.4557 1.23385 9.48508 1.04079 8.50489 1.04079C6.52531 1.04079 4.6268 1.82715 3.22702 3.22688C1.82724 4.62661 1.04085 6.52506 1.04085 8.50459C1.04085 10.4841 1.82724 12.3826 3.22702 13.7823C4.6268 15.182 6.52531 15.9684 8.50489 15.9684Z"
+                            stroke="#808080"
+                          />
+                        </svg>
+                          :
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.7547 13.7078V13.9149L14.9012 14.0614L19.4113 18.5713L18.5724 19.4111L14.0604 14.9006L13.7497 14.59L13.4017 14.8581C11.7892 16.1004 9.76435 16.6824 7.73832 16.4858C5.71229 16.2893 3.83703 15.329 2.49341 13.7999C1.14979 12.2709 0.438561 10.2878 0.504167 8.25341C0.569772 6.21901 1.40729 4.28585 2.84664 2.84656C4.28598 1.40727 6.21921 0.56977 8.2537 0.504166C10.2882 0.438563 12.2714 1.14977 13.8005 2.49335C15.3295 3.83692 16.2899 5.7121 16.4864 7.73805C16.683 9.764 16.101 11.7888 14.8587 13.4012L14.7547 13.5361V13.7064V13.7078ZM18.724 19.5626L18.7236 19.5622C18.7238 19.5625 18.724 19.5627 18.7242 19.5629L18.724 19.5626ZM8.50489 15.9684C9.48508 15.9684 10.4557 15.7753 11.3612 15.4002C12.2668 15.0251 13.0897 14.4754 13.7828 13.7823C14.4759 13.0892 15.0257 12.2664 15.4008 11.3609C15.7759 10.4553 15.9689 9.48475 15.9689 8.50459C15.9689 7.52443 15.7759 6.55386 15.4008 5.64831C15.0257 4.74276 14.4759 3.91996 13.7828 3.22688C13.0897 2.53381 12.2668 1.98403 11.3612 1.60894C10.4557 1.23385 9.48508 1.04079 8.50489 1.04079C6.52531 1.04079 4.6268 1.82715 3.22702 3.22688C1.82724 4.62661 1.04085 6.52506 1.04085 8.50459C1.04085 10.4841 1.82724 12.3826 3.22702 13.7823C4.6268 15.182 6.52531 15.9684 8.50489 15.9684Z" stroke="white" />
+                          </svg>
+
+                      }
+
+                    </div>
+                  </li>
+
+                  <li className="ponh">
+                    <div className="logo_photo">
+                      <svg
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M6.6 19.92V19.8C6.6 18.12 9 16.8 12 16.8C15 16.8 17.4 18.12 17.4 19.8V19.92C19.92 18.24 21.6 15.24 21.6 12C21.6 6.72 17.28 2.4 12 2.4C6.72 2.4 2.4 6.72 2.4 12C2.4 15.36 4.08 18.24 6.6 19.92ZM12 24C5.4 24 0 18.6 0 12C0 5.4 5.4 0 12 0C18.6 0 24 5.4 24 12C24 18.6 18.6 24 12 24ZM12 13.2C10.32 13.2 9 11.88 9 10.2C9 8.52 10.32 7.2 12 7.2C13.68 7.2 15 8.52 15 10.2C15 11.88 13.68 13.2 12 13.2Z"
+                          fill={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? "#444444" : "#ffffff"}`}
+                        />
+                      </svg>
+                    </div>
+                    <div className="sofar1">
+                      <Link href={"/create-account"}><span>Create an account</span></Link>
+                      <Link href={"/login"}><span>login</span></Link>
+                    </div>
+                  </li>
+                  <li>
+                    <Link href={"/cart"}><div className="cart">
+                      <svg
+                        width={24}
+                        height={24}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z"
+                          fill={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" ? "#444444" : "#ffffff"}`}
+                        />
+                      </svg>
+                      <span id={`${navBg ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
+                    </div></Link>
+                  </li>
+
+                  <li className="ponh1" style={{ cursor: "pointer" }}>
+                    <div className="lng">
+                      {
+                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" ?  <svg
+                          width={24}
+                          height={24}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                            stroke="#7D7D7D"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M2 12H22"
+                            stroke="#7D7D7D"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z"
+                            stroke="#7D7D7D"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                          :
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+
+                      }
+
+                      <span id={`${navBg ? "ok" : "okii"}`} className="en pii">En</span>
+                      {
+                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? <svg
+                          width={14}
+                          height={8}
+                          viewBox="0 0 14 8"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M1 1L7 7L13 1"
+                            stroke="#7D7D7D"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                          :
+                          <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L7 7L13 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+
+                      }
+
                     </div>
 
-                  }
-                </li>
+                    <div className="sofar">
+                      {/* <span>Hindi</span> */}
+                      <span >English</span>
+                    </div>
 
-                <li>
-                  <Link href={"/contact-us"} className={`${currentPath === "/contact-us" ? "makecolor2" : ""}`}> Contact us </Link>
-                </li>
+                  </li>
 
-                <li>
-                  <div className="search_bar">
-                    <input type="text" placeholder="Search" />
-                    <svg
-                      width={20}
-                      height={20}
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M14.7547 13.7078V13.9149L14.9012 14.0614L19.4113 18.5713L18.5724 19.4111L14.0604 14.9006L13.7497 14.59L13.4017 14.8581C11.7892 16.1004 9.76435 16.6824 7.73832 16.4858C5.71229 16.2893 3.83703 15.329 2.49341 13.7999C1.14979 12.2709 0.438561 10.2878 0.504167 8.25341C0.569772 6.21901 1.40729 4.28585 2.84664 2.84656C4.28598 1.40727 6.21921 0.56977 8.2537 0.504166C10.2882 0.438563 12.2714 1.14977 13.8005 2.49335C15.3295 3.83692 16.2899 5.7121 16.4864 7.73805C16.683 9.764 16.101 11.7888 14.8587 13.4012L14.7547 13.5361V13.7064V13.7078ZM18.724 19.5626L18.7236 19.5622C18.7238 19.5625 18.724 19.5627 18.7242 19.5629L18.724 19.5626ZM8.50489 15.9684C9.48508 15.9684 10.4557 15.7753 11.3612 15.4002C12.2668 15.0251 13.0897 14.4754 13.7828 13.7823C14.4759 13.0892 15.0257 12.2664 15.4008 11.3609C15.7759 10.4553 15.9689 9.48475 15.9689 8.50459C15.9689 7.52443 15.7759 6.55386 15.4008 5.64831C15.0257 4.74276 14.4759 3.91996 13.7828 3.22688C13.0897 2.53381 12.2668 1.98403 11.3612 1.60894C10.4557 1.23385 9.48508 1.04079 8.50489 1.04079C6.52531 1.04079 4.6268 1.82715 3.22702 3.22688C1.82724 4.62661 1.04085 6.52506 1.04085 8.50459C1.04085 10.4841 1.82724 12.3826 3.22702 13.7823C4.6268 15.182 6.52531 15.9684 8.50489 15.9684Z"
-                        stroke="#808080"
-                      />
-                    </svg>
-                  </div>
-                </li>
-
-                <li className="ponh">
-                  <div className="logo_photo">
-                    <svg
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6.6 19.92V19.8C6.6 18.12 9 16.8 12 16.8C15 16.8 17.4 18.12 17.4 19.8V19.92C19.92 18.24 21.6 15.24 21.6 12C21.6 6.72 17.28 2.4 12 2.4C6.72 2.4 2.4 6.72 2.4 12C2.4 15.36 4.08 18.24 6.6 19.92ZM12 24C5.4 24 0 18.6 0 12C0 5.4 5.4 0 12 0C18.6 0 24 5.4 24 12C24 18.6 18.6 24 12 24ZM12 13.2C10.32 13.2 9 11.88 9 10.2C9 8.52 10.32 7.2 12 7.2C13.68 7.2 15 8.52 15 10.2C15 11.88 13.68 13.2 12 13.2Z"
-                        fill="#444444"
-                      />
-                    </svg>
-                  </div>
-                  <div className="sofar1">
-                    <Link href={"/create-account"}><span>Create an account</span></Link>
-                    <Link href={"/login"}><span>login</span></Link>
-                  </div>
-                </li>
-                <li>
-                  <Link href={"/cart"}><div className="cart">
-                    <svg
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z"
-                        fill="#444444"
-                      />
-                    </svg>
-                    <span className="e_cart">Cart</span>
-                  </div></Link>
-                </li>
-
-                <li className="ponh1" style={{ cursor: "pointer" }}>
-                  <div className="lng">
-                    <svg
-                      width={24}
-                      height={24}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                        stroke="#7D7D7D"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M2 12H22"
-                        stroke="#7D7D7D"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z"
-                        stroke="#7D7D7D"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="en">En</span>
-                    <svg
-                      width={14}
-                      height={8}
-                      viewBox="0 0 14 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1 1L7 7L13 1"
-                        stroke="#7D7D7D"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-
-                  <div className="sofar">
-                    {/* <span>Hindi</span> */}
-                    <span>English</span>
-                  </div>
-
-                </li>
-
-              </ul>
+                </ul>
+              </div>
             </div>
-          </div>
-        </nav>
-
+          </nav>
+        </div>
+      
+      <div onScroll={changeNavBg}>
         <header
           id="lower_head"
           className={style.header}
           style={itemsSetting}
           role="banner"
+          // style={navBg ? sop : null}
         >
           <div className="nav_cont">
             <div className="">
@@ -1739,6 +1784,7 @@ const stylepi5 = {
             ""
           )}
         </header>
+        </div>
 
       </>
     );

@@ -128,7 +128,7 @@ export default function catalog(pageProp) {
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
       <div className="catalogs">
-        <div className="container">
+        <div className="container iuiu">
           <div className="all_fastners">
             <div className="left_fastner">
               <button>
