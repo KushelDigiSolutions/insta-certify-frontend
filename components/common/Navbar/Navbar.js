@@ -188,6 +188,8 @@ export default function Navbar(props) {
   const stylepi5 = {
     display: tus4 ? "block" : "none"
   }
+
+  
   useEffect(() => {
     console.log(userSession);
     if (userSession?.user.error === "invalid-version") {
@@ -300,6 +302,10 @@ export default function Navbar(props) {
         document.removeEventListener("click", handleClickOutside2);
       };
     }, [isDropdownOpen2]);
+
+    const jok = {
+      backgroundColor:"white !important"
+    }
 
     return (
       <>
@@ -1080,9 +1086,9 @@ export default function Navbar(props) {
       
       <div onScroll={changeNavBg}>
         <header
-          id="lower_head"
+          id={`${navBg ? "lower" : "lower_head"}`}
           className={style.header}
-          style={itemsSetting}
+          style={ navBg ? jok : itemsSetting}
           role="banner"
           // style={navBg ? sop : null}
         >
@@ -1096,7 +1102,7 @@ export default function Navbar(props) {
                         dangerouslySetInnerHTML={{ __html: settings?.text }}
                       ></div>
                     ) : settings ? (
-                      <img className="kalish" src="https://res.cloudinary.com/ecommerce-website/image/upload/v1725269227/logoFoot_cm3uxr.png" alt="" />
+                      <img className="kalish" src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" />
                     ) : (
                       ""
                     )}
@@ -1212,6 +1218,7 @@ export default function Navbar(props) {
 
                                         {lss?.childrenItems?.length > 0 ? (
                                           <span
+                                            id={`${navBg ? "lll" : "kkkk"}`}
                                             className={style.menuIcon + " menuIcon"}
                                           >
                                             <GlobalArrowDown />
@@ -1508,7 +1515,7 @@ export default function Navbar(props) {
                     className={style.hdrToggelIcon}
                     onClick={() => setMenuToggel((value) => !value)}
                   >
-                    {menuToggel == true ? <GlobalClose /> : <GlobalMenu />}
+                    {menuToggel == true ? <GlobalClose /> : <GlobalMenu navBg={navBg} currentPath={currentPath} />}
                   </div>
                   {/* <div class="insta-certify-header-searchbar">
                   <div class="insta-certify-header-searchbar-menu">
