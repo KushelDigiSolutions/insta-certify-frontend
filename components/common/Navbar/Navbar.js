@@ -865,7 +865,7 @@ export default function Navbar(props) {
 
                       <div className="navItem2">
                         <div className="some">
-                          <p>Resources</p>
+                          <span>Resources</span>
                         </div>
                         <div className="img_item lime_item">
                           <div className="nav_img">
