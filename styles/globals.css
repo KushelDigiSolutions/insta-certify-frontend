@@ -972,6 +972,7 @@ button {
   color: #757575;
 }
 
+#si
 .texespara .numbers {
   font-family: Inter;
   font-size: 32px;
@@ -1462,6 +1463,11 @@ button {
     width: 6px;
   }
 }
+@media only screen and (max-width:1190px){
+  .ul_sofa li{
+    padding: 0px 16px !important;
+  }
+}
 @media only screen and (max-width:1180px){
   .bis{
     width: 200px !important;
@@ -1472,7 +1478,13 @@ button {
     display: none !important;
 
   }
-
+  .hj{
+    display: block;
+    margin: 10px 0px !important;
+  }
+  .hj .insta-certify-header-searchbar {
+    display: flex !important;
+}
   #lower_head {
     display: flex;
    background: none !important;
@@ -1489,17 +1501,18 @@ button {
      left: 0;
      right: 0;
   }
+ 
   #lower svg{
     fill: black !important;
   }
   #lower svg path{
     /* fill: black !important; */
   }
- #lower #oll{
+ /* #lower #oll{
     background-color: black !important;
     border-radius: 50%;
     padding: 2px;
-  }
+  } */
   #lower #mjk path{
     fill: black !important;
   }
@@ -1513,6 +1526,7 @@ button {
     width:  auto !important;
     margin: 20px 0px !important;
   }
+ 
   /* #lower .menuIcon svg path{
     fill: black !important;
   } */
@@ -1522,9 +1536,9 @@ button {
   #lower .header_header__UxNqT .header_headerParent__Y0dqO .header_hdrToggelIcon__8IGGL svg{
     fill: black !important;
   }
-  #lower a{
+  /* #lower a{
     color: white !important;
-  }
+  } */
   /* #poop{
     background: white !important;
   }
@@ -1912,7 +1926,7 @@ position: relative;
   color: #444444 !important;
 }
 .normailcs:hover {
-  color: #EC691F;
+  color: #EC691F !important;
 }
 
 .makecolor{
@@ -1965,7 +1979,7 @@ position: relative;
   font-size: 14px;
   outline: none;
   border: none;
-  
+  background: none !important;
   font-family: Poppins;
 
 }
@@ -2032,7 +2046,8 @@ position: relative;
   width: 150px;
   padding: 10px 20px;
   right: 0px;
-  display: none;
+  top: 62px;
+  /* display: none; */
   /* left: 30px; */
 }
 .ponh1:hover > .sofar{
@@ -2048,7 +2063,8 @@ position: relative;
   position: absolute;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 15px 20px;
-  display: none;
+  top: 62px;
+  /* display: none; */
   }
   .sofar1 span{
     padding: 6px 0px;
@@ -2463,5 +2479,15 @@ text-align: center;
   .site-footer br{
     display: none !important;
   }
+}
+
+#siraf a{
+  color: #444444 !important;
+}
+#siraf a:hover{
+  color: #EC691F !important;
+}
+#siraf #normailcs{
+  color: #444444 !important;
 }
 

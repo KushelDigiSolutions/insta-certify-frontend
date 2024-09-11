@@ -214,7 +214,8 @@ export default function Navbar(props) {
     }
 
     const itemsSetting = {
-      "--headerBCColor": settings?.background_color,
+      // "--headerBCColor": settings?.background_color,
+      "--headerBCColor": "#ffffff",
       "--headerItemColor": navigation?.parent_text_color,
       "--headerItemHoverColor": navigation?.parent_text_hover_color,
       "--headerSubmenuBCColor": navigation?.background_color,
@@ -245,11 +246,17 @@ export default function Navbar(props) {
     }
 
     const sop = {
-      backgroundColor: "white"
+      backgroundColor: "white",
     }
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
     const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+
+
+    const [isDropdownOpen3, setIsDropdownOpen3] = useState(false);
+
+    const [isDropdownOpen4, setIsDropdownOpen4] = useState(false);
 
     const router = useRouter();
     const currentPath = router.asPath;
@@ -257,7 +264,14 @@ export default function Navbar(props) {
     console.log("cur", currentPath);
 
     const dropdownRef = useRef(null);
+
     const dropdownRef2 = useRef(null);
+
+    const dropdownRef3 = useRef(null);
+
+    const dropdownRef4 = useRef(null);
+
+    
 
     const handleDropdownToggle = () => {
       setIsDropdownOpen((prev) => !prev);
@@ -269,6 +283,16 @@ export default function Navbar(props) {
       setIsDropdownOpen2((prev) => !prev);
     };
 
+    const handleDropdownToggle3 = () => {
+      setIsDropdownOpen3(false);
+      setIsDropdownOpen3((prev) => !prev);
+    };
+
+    const handleDropdownToggle4 = () => {
+      setIsDropdownOpen4(false);
+      setIsDropdownOpen4((prev) => !prev);
+    };
+
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsDropdownOpen(false); // Close dropdown if click is outside of it
@@ -278,6 +302,18 @@ export default function Navbar(props) {
     const handleClickOutside2 = (e) => {
       if (dropdownRef2.current && !dropdownRef2.current.contains(e.target)) {
         setIsDropdownOpen2(false); // Close dropdown if click is outside of it
+      }
+    };
+
+    const handleClickOutside3 = (e) => {
+      if (dropdownRef3.current && !dropdownRef3.current.contains(e.target)) {
+        setIsDropdownOpen3(false); // Close dropdown if click is outside of it
+      }
+    };
+
+    const handleClickOutside4 = (e) => {
+      if (dropdownRef4.current && !dropdownRef4.current.contains(e.target)) {
+        setIsDropdownOpen4(false); // Close dropdown if click is outside of it
       }
     };
 
@@ -303,26 +339,50 @@ export default function Navbar(props) {
       };
     }, [isDropdownOpen2]);
 
+    useEffect(() => {
+      if (isDropdownOpen3) {
+        document.addEventListener("click", handleClickOutside3);
+      } else {
+        document.removeEventListener("click", handleClickOutside3);
+      }
+      return () => {
+        document.removeEventListener("click", handleClickOutside3);
+      };
+    }, [isDropdownOpen3]);
+
+    useEffect(() => {
+      if (isDropdownOpen4) {
+        document.addEventListener("click", handleClickOutside4);
+      } else {
+        document.removeEventListener("click", handleClickOutside4);
+      }
+      return () => {
+        document.removeEventListener("click", handleClickOutside4);
+      };
+    }, [isDropdownOpen4]);
+
     const jok = {
       backgroundColor:"white !important"
     }
 
     return (
       <>
+
+      
       
         <div onScroll={changeNavBg}>
-          <nav style={navBg ? sop : null} className={`${currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail"  ? "fas" : "navbars"} navbars` }>
+          <nav id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "siraf" : "miraf" }`} style={navBg || currentPath === "/aboutus"  || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing"  ? sop :  null} className={`${currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/cart" ? "fas" : "navbars"} navbars kkkkl` }>
 
             <div className="nav_test">
               <div className="nav_logo">
-                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" /></Link>
+                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" /></Link>
               </div>
               <div className="ul_nav">
-                <ul className={`${navBg ? "us_sofa" : "ul_sofa"} ul_sofa`}>
+                <ul className={`${navBg  ? "us_sofa" : "ul_sofa"} ul_sofa`}>
 
                   <li ref={dropdownRef} className="sog">
 
-                    <div id={`${navBg ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">Our Services
+                    <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">Our Services
                       {isDropdownOpen && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_295_242)">
                           <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
@@ -839,7 +899,7 @@ export default function Navbar(props) {
                   </li>
 
                   <li ref={dropdownRef2} className="soki">
-                    <div id={`${navBg ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
+                    <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
                       {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_295_242)">
                           <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
@@ -941,10 +1001,10 @@ export default function Navbar(props) {
                   </li>
 
                   <li>
-                    <div id={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail"  ? "kl" : "ll"}`} className="search_bar">
+                    <div id={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart"  ? "kl" : "ll"}`} className="search_bar">
                       <input type="text" placeholder="Search" />
                       {
-                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" | currentPath === "/catalog" || currentPath === "/catalogdetail" ? <svg
+                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" | currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" ? <svg
                           width={20}
                           height={20}
                           viewBox="0 0 20 20"
@@ -966,8 +1026,8 @@ export default function Navbar(props) {
                     </div>
                   </li>
 
-                  <li className="ponh">
-                    <div className="logo_photo">
+                  <li ref={dropdownRef3} className="ponh">
+                    <div onClick={handleDropdownToggle3} className="logo_photo">
                       <svg
                         width={24}
                         height={24}
@@ -977,14 +1037,19 @@ export default function Navbar(props) {
                       >
                         <path
                           d="M6.6 19.92V19.8C6.6 18.12 9 16.8 12 16.8C15 16.8 17.4 18.12 17.4 19.8V19.92C19.92 18.24 21.6 15.24 21.6 12C21.6 6.72 17.28 2.4 12 2.4C6.72 2.4 2.4 6.72 2.4 12C2.4 15.36 4.08 18.24 6.6 19.92ZM12 24C5.4 24 0 18.6 0 12C0 5.4 5.4 0 12 0C18.6 0 24 5.4 24 12C24 18.6 18.6 24 12 24ZM12 13.2C10.32 13.2 9 11.88 9 10.2C9 8.52 10.32 7.2 12 7.2C13.68 7.2 15 8.52 15 10.2C15 11.88 13.68 13.2 12 13.2Z"
-                          fill={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? "#444444" : "#ffffff"}`}
+                          fill={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew"  || currentPath === "/food-testing" || currentPath === "/cart" ? "#444444" : "#ffffff"}`}
                         />
                       </svg>
                     </div>
-                    <div className="sofar1">
-                      <Link href={"/create-account"}><span>Create an account</span></Link>
-                      <Link href={"/login"}><span>login</span></Link>
-                    </div>
+                    {
+                      isDropdownOpen3 && (
+                        <div className="sofar1">
+                        <Link href={"/create-account"}><span>Create an account</span></Link>
+                        <Link href={"/login"}><span>login</span></Link>
+                      </div>
+                      )
+                    }
+                  
                   </li>
                   <li>
                     <Link href={"/cart"}><div className="cart">
@@ -997,17 +1062,17 @@ export default function Navbar(props) {
                       >
                         <path
                           d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z"
-                          fill={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" ? "#444444" : "#ffffff"}`}
+                          fill={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" ? "#444444" : "#ffffff"}`}
                         />
                       </svg>
-                      <span id={`${navBg ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
+                      <span id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
                     </div></Link>
                   </li>
 
-                  <li className="ponh1" style={{ cursor: "pointer" }}>
-                    <div className="lng">
+                  <li ref={dropdownRef4} className="ponh1" style={{ cursor: "pointer" }}>
+                    <div onClick={handleDropdownToggle4} className="lng">
                       {
-                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" ?  <svg
+                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" ?  <svg
                           width={24}
                           height={24}
                           viewBox="0 0 24 24"
@@ -1045,9 +1110,9 @@ export default function Navbar(props) {
 
                       }
 
-                      <span id={`${navBg ? "ok" : "okii"}`} className="en pii">En</span>
+                      <span id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "ok" : "okii"}`} className="en pii">En</span>
                       {
-                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? <svg
+                        navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" ? <svg
                           width={14}
                           height={8}
                           viewBox="0 0 14 8"
@@ -1070,12 +1135,14 @@ export default function Navbar(props) {
                       }
 
                     </div>
-
-                    <div className="sofar">
-                      {/* <span>Hindi</span> */}
-                      <span >English</span>
-                    </div>
-
+                      {
+                        isDropdownOpen4 && (
+                          <div className="sofar">
+                          {/* <span>Hindi</span> */}
+                          <span >English</span>
+                        </div>
+                        )
+                      }
                   </li>
 
                 </ul>
@@ -1088,7 +1155,7 @@ export default function Navbar(props) {
         <header
           id={`${navBg ? "lower" : "lower_head"}`}
           className={style.header}
-          style={ navBg ? jok : itemsSetting}
+          style={ navBg ? itemsSetting : itemsSetting}
           role="banner"
           // style={navBg ? sop : null}
         >
@@ -1102,7 +1169,7 @@ export default function Navbar(props) {
                         dangerouslySetInnerHTML={{ __html: settings?.text }}
                       ></div>
                     ) : settings ? (
-                      <img className="kalish" src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" />
+                      <img className="kalish" src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/cart" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" />
                     ) : (
                       ""
                     )}
