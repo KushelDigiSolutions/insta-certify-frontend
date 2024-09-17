@@ -2150,6 +2150,9 @@ text-align: center;
   position: relative;
   z-index: 100000;
 }
+.nav_logo img{
+  width: 225px ;
+}
 .soj li a:hover {
   color: #EC691F;
 }
