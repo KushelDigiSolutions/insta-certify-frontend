@@ -1440,6 +1440,10 @@ button {
 .somisk{
   padding-left: 0rem !important;
 }
+.foot_logs img{
+  width: 100% !important;
+  max-width: 100% !important;
+}
 @media only screen and (max-width:1500px) {
   .header_header__UxNqT .header_navItems__Y_vRd>li {
     margin: 0px 10px !important;
@@ -2151,7 +2155,8 @@ text-align: center;
   z-index: 100000;
 }
 .nav_logo img{
-  width: 225px ;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 .soj li a:hover {
   color: #EC691F;
