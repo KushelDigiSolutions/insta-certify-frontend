@@ -375,7 +375,7 @@ export default function Navbar(props) {
 
             <div className="nav_test">
               <div className="nav_logo">
-                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" /></Link>
+                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/transLogo.svg" : "./images/sad.svg"}`} alt="" /></Link>
               </div>
               <div className="ul_nav">
                 <ul className={`${navBg  ? "us_sofa" : "ul_sofa"} ul_sofa`}>
