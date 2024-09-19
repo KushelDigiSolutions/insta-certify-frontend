@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import GlobalArrowDown from "../svg/global/arrowDown";
 import GlobalAccount from "../svg/global/account";
-import GlobalSearch from "../svg/global/search";
 import GlobalVerified from "../svg/global/verified";
 import useBodyOutsideClick from "../../../utils/body-outside-click";
 import GlobalMenu from "../svg/global/menu";
@@ -80,8 +79,6 @@ export default function Navbar(props) {
   useBodyOutsideClick(refAuthPopup1, () => {
     setAuthPopup1(false);
   });
-
-  
 
 
   const styleOff = {
@@ -226,23 +223,23 @@ export default function Navbar(props) {
 
     const tab1 = () => {
       setStart(1);
-      document.getElementById("one").style.background = "#F07A40"
-      document.getElementById("two").style.background = "none"
-      document.getElementById("three").style.background = "none"
+      // document.getElementById("one").style.background = "#F07A40"
+      // document.getElementById("two").style.background = "none"
+      // document.getElementById("three").style.background = "none"
     }
 
     const tab2 = () => {
       setStart(2);
-      document.getElementById("one").style.background = "none"
-      document.getElementById("two").style.background = "#F07A40"
-      document.getElementById("three").style.background = "none"
+      // document.getElementById("one").style.background = "none"
+      // document.getElementById("two").style.background = "#F07A40"
+      // document.getElementById("three").style.background = "none"
     }
 
     const tab3 = () => {
       setStart(3);
-      document.getElementById("one").style.background = "none"
-      document.getElementById("two").style.background = "none"
-      document.getElementById("three").style.background = "#F07A40"
+      // document.getElementById("one").style.background = "none"
+      // document.getElementById("two").style.background = "none"
+      // document.getElementById("three").style.background = "#F07A40"
     }
 
     const sop = {
@@ -253,6 +250,8 @@ export default function Navbar(props) {
 
     const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
 
+    const [currccert , setcurrcert] = useState(0);
+
 
     const [isDropdownOpen3, setIsDropdownOpen3] = useState(false);
 
@@ -261,17 +260,13 @@ export default function Navbar(props) {
     const router = useRouter();
     const currentPath = router.asPath;
 
-    console.log("cur", currentPath);
-
     const dropdownRef = useRef(null);
 
     const dropdownRef2 = useRef(null);
 
     const dropdownRef3 = useRef(null);
 
-    const dropdownRef4 = useRef(null);
-
-    
+    const dropdownRef4 = useRef(null);  
 
     const handleDropdownToggle = () => {
       setIsDropdownOpen((prev) => !prev);
@@ -365,25 +360,569 @@ export default function Navbar(props) {
       backgroundColor:"white !important"
     }
 
+    console.log("navbarItems ", navbarItems);
+
     return (
       <>
 
       
-      
+      {/* desktop view  */}
         <div onScroll={changeNavBg}>
           <nav id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "siraf" : "miraf" }`} style={navBg || currentPath === "/aboutus"  || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing"  ? sop :  null} className={`${currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/cart" ? "fas" : "navbars"} navbars kkkkl` }>
 
+
             <div className="nav_test">
+
               <div className="nav_logo">
                 <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/transLogo.svg" : "./images/sad.svg"}`} alt="" /></Link>
               </div>
+
               <div className="ul_nav">
+
                 <ul className={`${navBg  ? "us_sofa" : "ul_sofa"} ul_sofa`}>
 
-                  <li ref={dropdownRef} className="sog">
+                  {
+                    navbarItems?.length > 0 && 
+                    <>
+                     {
+                      navbarItems?.map((l , index)=>(
+                      index === 0 ?
+                      <li ref={dropdownRef} className="sog addbgred">
 
-                    <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">Our Services
-                      {isDropdownOpen && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
+                      {l?.parentItems?.title} 
+                        {isDropdownOpen && 
+                        <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g filter="url(#filter0_d_295_242)">
+                            <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
+                          </g>
+                          <defs>
+                            <filter id="filter0_d_295_242" x="0.406738" y="0" width="98.1865" height="92.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="16" />
+                              <feGaussianBlur stdDeviation="20" />
+                              <feComposite in2=" hardAlpha" operator="out" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.15 0" />
+                              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_295_242" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_295_242" result="shape" />
+                            </filter>
+                          </defs>
+                        </svg>
+                        }
+                      </div>
+  
+                      {
+                        isDropdownOpen &&
+  
+                        <div className="navItem">
+  
+                          <div className="sidebar_nav1">
+  
+                            <ul className="certify">
+                              {
+                                l?.subItems?.length > 0 && 
+                                l?.subItems?.map((ls , ind)=>(
+                                  <li key={ind} id="one" onClick={()=>{
+                                     setcurrcert(ind);
+                                     setStart(ind+1);
+
+                                  }} className={`${currccert === ind && "cert"}`} >
+                                  <span className="sft">{ls?.title}</span>
+                                </li>
+                                ))
+                              }
+                             
+                            </ul>
+  
+                          </div>
+  
+                          <div className="sidebar_nav2">
+  
+                            {
+                              start === 1 && (
+                                <div className="mokl">
+                                  <div className="some ">
+                                    <span>Certifications</span>
+                                  </div>
+                                  <div className="bs">
+                                    <div className="bs1">
+                                      <div>
+                                        <hr className="bis" />
+                                        <h3>BIS</h3>
+                                        <ul className="soj">
+                                          <li>
+                                            <a href="">
+                                              BIS (ISI MARK) for Foreign <br />
+                                              Manufacturers
+  
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="">
+                                              BIS (ISI Mark) for Domestic <br />
+                                              Product Certification
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="/bis-mark">
+                                              BIS (CRS Mark) for Compulsory <br /> Registration
+                                              Scheme
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div className="so">
+                                        <hr className="bis" />
+                                        <h3>EPR</h3>
+                                        <ul className="soj">
+                                          <li>
+                                            <a href="">
+                                              EPR Plastic Waste
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="">
+                                              EPR E-Waste
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="">
+                                              EPR Battery Waste
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="">
+                                              EPR for Used Oil
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="">
+                                              EPR for Tyre
+                                            </a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div className="bs1">
+                                      <div>
+                                        <hr className="bis" />
+                                        <h3>OTHER</h3>
+                                        <ul className="soj">
+                                          <li>
+                                            <a href="">Peso Certification</a>
+                                          </li>
+                                          <li>
+                                            <a href="">NSIC of MSME</a>
+                                          </li>
+                                          <li>
+                                            <a href="">STQC Certification</a>
+                                          </li>
+                                          <li>
+                                            <a href="">FSSAI Registration</a>
+                                          </li>
+                                          <li>
+                                            <a href="">CDSCO Registration</a>
+                                          </li>
+                                          <li>
+                                            <a href="">NOC for Steel</a>
+                                          </li>
+                                          <li>
+                                            <a href="">BEE Certification</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div className="so">
+                                        <hr className="bis" />
+                                        <h3>TELECOM</h3>
+                                        <ul className="soj">
+                                          <li>
+                                            <a href="">WPC-ETA Approval</a>
+                                          </li>
+                                          <li>
+                                            <a href="">FCC Certification</a>
+                                          </li>
+                                          <li>
+                                            <a href="">IMEI Registration</a>
+                                          </li>
+                                          <li>
+                                            <a href="">IMEI ICDR Registration</a>
+                                          </li>
+                                          <li>
+                                            <a href="">TEC Approval</a>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div className="bs1">
+                                      <hr className="bis" />
+                                      <h3>GLOBAL</h3>
+                                      <ul className="soj">
+                                        <li>
+                                          <a href="">
+                                            ISO Certification
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            HACCP
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            HALAL
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            SABER
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            G MARK for Toys
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            G MARK for Low Voltage <br /> Electrical Devices (LVED)
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            SFDA for Rice
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href={"/food-testing"}>
+                                            SFDA for Food
+  
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            SFDA for Cosmetics
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="">
+                                            CE Certification
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              )
+                            }
+  
+                            {
+                              start === 2 && (
+                                <div>
+                                  <div className="some">
+                                    <span>Testing</span>
+                                  </div>
+                                  <div className="img_item">
+                                    <div className="nav_img">
+                                      <ul>
+                                        <li
+                                        >
+                                          <a onMouseOver={() => {
+                                            setSus(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus(false);
+                                            }} href="">Electronic and Electricity</a>
+                                        </li>
+                                        <li >
+                                          <a onMouseOver={() => {
+                                            setSus1(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus1(false);
+                                            }} href="">Construction and Engineering</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li >
+                                          <a onMouseOver={() => {
+                                            setSus2(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus2(false);
+                                            }} href="">Chemicals</a>
+                                        </li>
+                                        <li
+  
+                                        >
+                                          <a onMouseOver={() => {
+                                            setSus3(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus3(false);
+                                            }} href="">Wireless</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li  >
+                                          <a onMouseOver={() => {
+                                            setSus4(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus4(false);
+                                            }} href={"/food-testing"}>
+                                            Food
+                                          </a>
+                                        </li>
+                                        <li >
+                                          <a onMouseOver={() => {
+                                            setSus5(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus5(false);
+                                            }} href="">Cosmetics</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li >
+                                          <a onMouseOver={() => {
+                                            setSus6(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus6(false);
+                                            }} href="">Toys</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setSus7(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus7(false);
+                                            }} href="">Software</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setSus8(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus8(false);
+                                            }} href="">Metal and Alloys</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setSus9(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus9(false);
+                                            }} href="">Environment</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setSus10(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setSus10(false);
+                                            }} href="">Polymers and Plastics</a>
+                                        </li>
+  
+                                      </ul>
+                                    </div>
+                                    <div className="logo_img">
+                                      <img style={styleoff1} src="./images/rest.svg" alt="" />
+                                      <img style={styleOff} className="okking" src="./images/sert.svg" alt="svg" />
+                                      <img style={styleoff2} className="okking" src="./images/constuct.svg" alt="svg" />
+                                      <img style={styleoff3} className="okking" src="./images/chemicals.svg" alt="svg" />
+                                      <img style={styleoff4} className="okking" src="./images/wireless.svg" alt="svg" />
+                                      <img style={styleoff5} className="okking" src="./images/food.svg" alt="svg" />
+                                      <img style={styleoff6} className="okking" src="./images/cosmatic.svg" alt="svg" />
+                                      <img style={styleoff7} className="okking" src="./images/toys.svg" alt="svg" />
+                                      <img style={styleoff8} className="okking" src="./images/software.svg" alt="svg" />
+                                      <img style={styleoff9} className="okking" src="./images/metal.svg" alt="svg" />
+                                      <img style={styleoff10} className="okking" src="./images/en.svg" alt="svg" />
+                                      <img style={styleoff11} className="okking" src="./images/poly.svg" alt="svg" />
+                                    </div>
+                                  </div>
+                                </div>
+                              )
+                            }
+  
+                            {
+                              start === 3 && (
+                                <div className="aosmk">
+                                  <div className="some">
+                                    <span>Equipment</span>
+                                  </div>
+                                  <div className="img_item">
+                                    <div className="nav_img">
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus(false);
+                                            }} href="">General Laboratory <br />
+                                            Consumables</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus1(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus1(false);
+                                            }} href="">Analytical Measurement <br />
+                                            and Testing</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus2(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus2(false);
+                                            }} href="">Occupational Safety, <br /> Security</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus3(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus3(false);
+                                            }} href="">Cleaning and Sterilization</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus4(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus4(false);
+                                            }} href="">Vacuum Technology, Drying, <br /> Dry Storage</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus5(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus5(false);
+                                            }} href="">Labware</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus6(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus6(false);
+                                            }} href="">Distillation, Separation, <br />
+                                            Filtration</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus7(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus7(false);
+                                            }} href="">Lab Chemicals</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus8(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus8(false);
+                                            }} href="">Industry Specific Bundle</a>
+                                        </li>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus9(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus9(false);
+                                            }} href="">General Laboratory <br /> Consumables</a>
+                                        </li>
+                                      </ul>
+                                      <ul>
+                                        <li>
+                                          <a onMouseOver={() => {
+                                            setPus10(true);
+                                          }}
+  
+                                            onMouseOut={() => {
+                                              setPus10(false);
+                                            }} href="">Optical Instruments and <br /> Microscopes</a>
+                                        </li>
+  
+                                      </ul>
+                                    </div>
+                                    <div className="logo_img">
+                                      <img style={styleji1} src="./images/stay.svg" alt="" />
+                                      <img style={styleji} src="./images/lab.svg" alt="" />
+                                      <img style={styleji2} src="./images/fax.svg" alt="" />
+                                      <img style={styleji3} src="./images/occuy.svg" alt="" />
+                                      <img style={styleji4} src="./images/clean.svg" alt="" />
+                                      <img style={styleji5} src="./images/sola.svg" alt="" />
+                                      <img style={styleji6} src="./images/labware.svg" alt="" />
+                                      <img style={styleji7} src="./images/dist.svg" alt="" />
+                                      <img style={styleji8} src="./images/chemical.svg" alt="" />
+                                      <img style={styleji9} src="./images/industry.svg" alt="" />
+                                      <img style={styleji10} src="./images/general.svg" alt="" />
+                                      <img style={styleji11} src="./images/optical.svg" alt="" />
+                                    </div>
+                                  </div>
+                                </div>
+                              )
+                            }
+  
+                          </div>
+  
+                        </div>
+  
+                      }
+  
+                    </li>
+
+                    : 
+                      index ===1 ?
+                      <li>
+                      <Link href={"/aboutus"} className={`${currentPath === "/aboutus" ? "makecolor2" : ""}`}> About Us </Link>
+                    </li>
+
+                    : 
+                    index === 2 ?
+                    <li ref={dropdownRef2} className="soki">
+                    <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
+                      {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_295_242)">
                           <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
                         </g>
@@ -401,13 +940,126 @@ export default function Navbar(props) {
                         </defs>
                       </svg>
                       }
+
+                    </div>
+                    {
+                      isDropdownOpen2 &&
+
+                      <div className="navItem2">
+                        <div className="some">
+                          <span>Resources</span>
+                        </div>
+                        <div className="img_item lime_item">
+                          <div className="nav_img">
+                            <ul>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus(false);
+                                  }} href={"/news"}> News </a>
+                              </li>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus1(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus1(false);
+                                  }} href="">Case Study</a>
+                              </li>
+                            </ul>
+                            <ul>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus2(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus2(false);
+                                  }} href={"/eventsnew"}> Events </a>
+                              </li>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus3(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus3(false);
+                                  }} href="/catalog">Products</a>
+                              </li>
+                            </ul>
+                            <ul>
+                              <li>
+                                <a onMouseOver={() => {
+                                  setTus4(true);
+                                }}
+
+                                  onMouseOut={() => {
+                                    setTus4(false);
+                                  }} href="">QCO Orders</a>
+                              </li>
+
+                            </ul>
+                          </div>
+                          <div className="logo_img">
+                            <img style={stylepi1} src="./images/resource.svg" alt="" />
+                            <img style={stylepi} src="./images/latest.png" alt="" />
+                            <img style={stylepi2} src="./images/club.svg" alt="" />
+                            <img style={stylepi3} src="./images/events.svg" alt="" />
+                            <img style={stylepi4} src="./images/products.svg" alt="" />
+                            <img style={stylepi5} src="./images/qco.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+
+                    }
+                  </li>
+                  :
+
+                  <li>
+                  <Link href={"/contact-us"} className={`${currentPath === "/contact-us" ? "makecolor2" : ""}`}> Contact us </Link>
+                </li>
+
+
+                      ))
+                     }
+                    </>
+                  }
+
+                  {/* <li ref={dropdownRef} className="sog">
+
+                    <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
+                    Our Services
+                      {isDropdownOpen && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g filter="url(#filter0_d_295_242)">
+                          <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
+                        </g>
+                        <defs>
+                          <filter id="filter0_d_295_242" x="0.406738" y="0" width="98.1865" height="92.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="16" />
+                            <feGaussianBlur stdDeviation="20" />
+                            <feComposite in2=" hardAlpha" operator="out" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0.439216 0 0 0 0 0.564706 0 0 0 0 0.690196 0 0 0 0.15 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_295_242" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_295_242" result="shape" />
+                          </filter>
+                        </defs>
+                      </svg>
+                      }
                     </div>
 
                     {
                       isDropdownOpen &&
 
                       <div className="navItem">
+
                         <div className="sidebar_nav1">
+
                           <ul className="certify">
                             <li id="one" onClick={tab1} className="cert">
                               <span className="sft">Certifications</span>
@@ -419,7 +1071,9 @@ export default function Navbar(props) {
                               <span className="sft">Equipment</span>
                             </li>
                           </ul>
+
                         </div>
+
                         <div className="sidebar_nav2">
 
                           {
@@ -888,17 +1542,18 @@ export default function Navbar(props) {
                           }
 
                         </div>
+
                       </div>
 
                     }
 
-                  </li>
+                  </li> */}
 
-                  <li>
+                  {/* <li>
                     <Link href={"/aboutus"} className={`${currentPath === "/aboutus" ? "makecolor2" : ""}`}> About Us </Link>
-                  </li>
+                  </li> */}
 
-                  <li ref={dropdownRef2} className="soki">
+                  {/* <li ref={dropdownRef2} className="soki">
                     <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
                       {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_295_242)">
@@ -994,11 +1649,14 @@ export default function Navbar(props) {
                       </div>
 
                     }
-                  </li>
+                  </li> */}
 
-                  <li>
+                  {/* <li>
                     <Link href={"/contact-us"} className={`${currentPath === "/contact-us" ? "makecolor2" : ""}`}> Contact us </Link>
-                  </li>
+                  </li> */}
+
+
+{/*  yha tak dynamic  */}
 
                   <li>
                     <div id={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart"  ? "kl" : "ll"}`} className="search_bar">
@@ -1147,10 +1805,14 @@ export default function Navbar(props) {
 
                 </ul>
               </div>
+
             </div>
           </nav>
         </div>
       
+
+
+      {/* ipad mobile  */}
       <div onScroll={changeNavBg}>
         <header
           id={`${navBg ? "lower" : "lower_head"}`}
@@ -1188,6 +1850,7 @@ export default function Navbar(props) {
                         navbarItems?.length > 0 &&
                         navbarItems?.map((ls, i) => (
                           <li key={i}>
+
                             <a
                               href={
                                 ls?.parentItems?.link == null ||
@@ -1865,21 +2528,3 @@ export default function Navbar(props) {
   }
 }
 
-/* <>                     
-<div
-  style={{
-    width: "900px",
-    height: "500px",
-    position: "absolute",
-    backgroundColor: "white",
-    transform: "translateX(-400px)",
-    boxShadow: "0px 16px 40px 0px #7090B026"
-
-  }}
->
-
-
-
-//  
-// </div>
-// </> */
