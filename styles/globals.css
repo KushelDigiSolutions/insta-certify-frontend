@@ -2618,7 +2618,11 @@ button {
   font-family: "Poppins", sans-serif !important;
   opacity: 80%;
 }
-
+@media only screen and (max-width:1200px){
+  .header_header__UxNqT .header_navItemsLeave1__Z0_2Y{
+    border-left: 10px solid #065175 !important;
+  }
+}
 @media only screen and (max-width:776px) {
   .rwing {
     flex-direction: column;

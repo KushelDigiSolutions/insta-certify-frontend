@@ -374,7 +374,7 @@ export default function Navbar(props) {
             <div className="nav_test">
 
               <div className="nav_logo">
-                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/transLogo.svg" : "./images/sad.svg"}`} alt="" /></Link>
+                <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/sodag.svg" : "./images/sad.svg"}`} alt="" /></Link>
               </div>
 
               <div className="ul_nav">
@@ -1831,7 +1831,7 @@ export default function Navbar(props) {
                         dangerouslySetInnerHTML={{ __html: settings?.text }}
                       ></div>
                     ) : settings ? (
-                      <img className="kalish" src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/cart" ? "./images/safari.png" : "./images/sad.svg"}`} alt="" />
+                      <img className="kalish" src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/cart" ? "./images/sodag.svg" : "./images/sad.svg"}`} alt="" />
                     ) : (
                       ""
                     )}
