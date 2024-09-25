@@ -178,7 +178,8 @@ export default function Footer(footerProps) {
                           <h4>ADDRESS (CORPORATE <br /> OFFICE)</h4>
                         </div>
 
-                        <span className='bas'>35 Basement,  Basant Lok, <br /> Vasant Vihar, Delhi - 110054</span>
+                        <span className='bas'>A-34, Sector 63 A, Noida, <br/>
+                        Chotpur, Uttar Pradesh 201307</span>
 
                       </li>
                       {/* <li >
