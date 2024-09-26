@@ -35,6 +35,8 @@ export default function Footer(footerProps) {
       document.getElementById("jj").style.scrollBehavior = "none"
     }
 
+    console.log("footerItem ", footerItems);
+
     return (
 
       // <footer className={style.footer} style={itemsSetting} role="contentinfo">
@@ -154,7 +156,9 @@ export default function Footer(footerProps) {
         >
           <div className="footer-top">
             <div className="container amrgin-left10px">
+
               <div className="row rwing">
+
                 <div className="col-md-3 col-sm-12">
                   <div className="widget widget_getintuch" height="240px">
                     <div className='foot_logs'>
@@ -182,23 +186,7 @@ export default function Footer(footerProps) {
                         Chotpur, Uttar Pradesh 201307</span>
 
                       </li>
-                      {/* <li >
-                        <div className='cort'>
-                          <svg width="19" height="29" viewBox="0 0 19 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_2589_829)">
-                              <path d="M19 9.86526C18.9911 11.4905 18.5705 13.0019 17.7783 14.4147C15.2492 18.9248 12.7179 23.4338 10.1676 27.9328C10.0241 28.1847 9.72033 28.4772 9.46776 28.5002C9.26636 28.5177 8.95815 28.1913 8.82129 27.9504C6.27327 23.4513 3.72748 18.95 1.21395 14.4312C-1.93825 8.76677 1.333 1.92065 7.7687 0.667734C12.9226 -0.335473 18.1032 3.27761 18.8454 8.39988C18.9155 8.88505 18.9488 9.3757 18.9989 9.86417L19 9.86526ZM9.49001 5.20188C6.87634 5.20188 4.74669 7.27948 4.73333 9.84336C4.71998 12.3842 6.873 14.5177 9.46108 14.5286C12.0803 14.5396 14.2578 12.4083 14.2456 9.84445C14.2333 7.28167 12.1037 5.20188 9.49001 5.20188Z" fill="white" />
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_2589_829">
-                                <rect width="19" height="28" fill="white" transform="translate(0 0.5)" />
-                              </clipPath>
-                            </defs>
-                          </svg>
-                          <h4>ADDRESS (REGISTERED <br /> OFFICE)</h4>
-                        </div>
-
-                        <span className='bas'>A-34, Sector 63 A, Noida, <br /> Uttar Pradesh 201301</span>
-                      </li> */}
+                     
                       <li >
                         <div className='cort'>
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -209,6 +197,7 @@ export default function Footer(footerProps) {
 
                         <a style={{ textDecoration: "none" }} href='tel:+919999118039'><span className='bas'>+91 9999118039</span></a>
                       </li>
+
                       <li>
                         <div className='cort'>
                           <svg className='oklo' width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -230,138 +219,62 @@ export default function Footer(footerProps) {
 
                         <a style={{ textDecoration: "none" }} href='mailto:contact@instacertify.com'><span className='bas bask1'>Contact@instacertify.com</span></a>
                       </li>
+
                     </ul>
-                    {/* <h4 class="footer-title hidden-mobilesingle">Payments</h4> <img class="paymenti height40px hidden-mobilesingle" src="/images/razorpay.webp" alt="Aleph India" /> */}
+                
                   </div>
                 </div>
-                <div className="col-md-3 col-sm-12">
-                  <div className="widget">
-                    <h4 className="footer-title">Services</h4>
-                    <ul className="list-2 font-opensans lopl">
-                      <marquee
-                        behavior="static"
-                        direction="up"
-                        scrollamount={2}
-                        height="250px"
-                        onmouseover={() => { this.behavior = "static" }}
-                        onmouseout={() => { this.behavior = "scroll" }}
-                      >
-                        <li>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
-                          </svg>
 
-                          <a href="">
-                            BIS (ISI MARK) for Foreign <br />
-                            Manufacturers
-                          </a>
-                        </li>
-                        <li>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
-                          </svg>
 
-                          <a href="">
-                            BIS (ISI Mark) for Domestic <br /> Product Certification
-                          </a>
 
-                        </li>
-                        <li>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
-                          </svg>
+                {
+                  footerItems?.length > 0 && 
+                   footerItems?.map((footer , index)=>(
+                    <div key={index} className="col-md-3 col-sm-12">
+                    <div className="widget">
+                      <h4 className="footer-title">{footer?.parentItems?.title}</h4>
+                      {
+                        footer?.subItems?.length > 0 && 
+                      
+                      <ul className="list-2 font-opensans lopl">
+                        <marquee
+                          behavior="static"
+                          direction="up"
+                          scrollamount={2}
+                          height="250px"
+                          onmouseover={() => { this.behavior = "static" }}
+                          onmouseout={() => { this.behavior = "scroll" }}
+                        >
+                          {
+                            footer?.subItems?.map((subitem , index)=>(
+                              <li key={index}>
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
+                              </svg>
+    
+                              <a href={subitem?.link}>{subitem?.title}</a>
+                            </li>
+                            ))
+                          }
+                       
+                        
+                        </marquee>
+                      </ul>
 
-                          <Link href="/bis-mark">
-                            BIS (CRS Mark) for <br /> Compulsory Registration <br /> Scheme
-                          </Link>
-                        </li>
-                        <li>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
-                          </svg>
-
-                          <a href="">
-                            EPR Plastic Waste
-                          </a>
-                        </li>
-                        <li>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
-                          </svg>
-
-                          <a href="">
-                            EPR E-Waste
-                          </a>
-                        </li>
-                        <li>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0.00341941 11.9551C1.25998 11.8608 2.52204 11.8148 3.77091 11.6581C4.9813 11.5057 6.19498 11.3073 7.37679 11.0092C9.24899 10.5369 10.5154 9.32359 10.9486 7.44945C11.3202 5.84163 11.5071 4.18778 11.7269 2.54818C11.8402 1.70755 11.8457 0.852681 12.0051 0C12.06 0.819801 12.0853 1.64399 12.1777 2.4594C12.3371 3.87104 12.4833 5.28706 12.735 6.68335C13.1924 9.22714 14.7381 10.7933 17.2919 11.2142C19.2179 11.532 21.1737 11.6767 23.1173 11.8871C23.4043 11.9178 23.6978 11.8915 23.9891 11.8915C23.9935 11.9441 23.9968 11.9956 24.0012 12.0482C23.7561 12.0669 23.5098 12.08 23.2658 12.1063C21.3221 12.3145 19.3685 12.4592 17.437 12.7518C14.5567 13.1881 13.022 15.0162 12.6295 17.8109C12.3734 19.6325 12.2458 21.4715 12.0633 23.3029C12.0402 23.5331 12.038 23.7644 11.9061 23.9989C11.8501 23.1616 11.8237 22.3209 11.7324 21.488C11.5851 20.1487 11.4312 18.8083 11.2135 17.4789C10.7452 14.6139 8.95106 13.0697 6.14551 12.6707C4.35576 12.4165 2.54732 12.2871 0.746583 12.1085C0.500327 12.0844 0.249675 12.1052 0.0012207 12.1052C0.00232006 12.0548 0.00341941 12.0044 0.00451877 11.954L0.00341941 11.9551Z" fill="white" />
-                          </svg>
-
-                          <a href="">
-                            EPR for Used Oil
-                          </a>
-                        </li>
-                      </marquee>
-                    </ul>
-                    {/* <h4 className="footer-title">Social Presence</h4>
-                    <ul className="socialiconfooter socialiconfoo">
-                      <li>
-                        <a
-                          href="https://www.facebook.com/InAleph/"
-                          target="_blank"
-                          className="fa fa-facebook fa-3x"
-                        />
-                      </li>
-                      <li>
-                        <a href="https://twitter.com/inaleph?lang=en" target="_blank">
-                          <img
-                            src="/images/x-new.png"
-                            alt="aleph india twitter logo"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.linkedin.com/company/inaleph/"
-                          target="_blank"
-                          className="fa fa-linkedin fa-3x"
-                        />
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.youtube.com/channel/UCXjeA_EDSQCqHR4Lb0JYGRA"
-                          target="_blank"
-                          className="fa fa-youtube fa-3x"
-                        />
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.instagram.com/aleph_india/"
-                          target="_blank"
-                          className="fa fa-instagram fa-3x"
-                        />
-                      </li>
-                      <li>
-                        <a
-                          href="https://in.pinterest.com/InAleph/"
-                          target="_blank"
-                          className="fa fa-pinterest fa-3x"
-                        />
-                      </li>
-                    </ul> */}
-                    {/* <img
-                      src="../images/alephindia-qr.webp"
-                      alt="QR Code"
-                    /> */}
-
+  }
+                    
+  
+                    </div>
                   </div>
-                </div>
-                <div className="col-md-3 col-sm-12">
+                   ))
+                }
+
+             
+
+                {/* <div className="col-md-3 col-sm-12">
                   <div className="widget">
                     <h4 className="footer-title jk_tit">Industries</h4>
-                    <ul
-                      className="list-2 uppercase font-opensans lopl"
+                    <ul className="list-2 uppercase font-opensans lopl"
                     >
                       <marquee
                         behavior="scroll"
@@ -437,7 +350,9 @@ export default function Footer(footerProps) {
 
                       </marquee>
                     </ul>
+
                     <h4 className="footer-title jk_tit">Let’s Get Social</h4>
+
                     <ul
                       className="imagesmsme iq-greyscale-max somisk"
                     >
@@ -473,9 +388,11 @@ export default function Footer(footerProps) {
                     </ul>
 
                   </div>
-                </div>
+                </div> */}
+
                 <div className="col-md-3 col-sm-12 margin-top25">
                   <div className="widget">
+                    
                     <form
                       method="post"
                       action="phpmailer/sendmail_footer.php"
@@ -590,14 +507,19 @@ export default function Footer(footerProps) {
                         </div>
                       </div>
                     </form>
+
                   </div>
                 </div>
+
               </div>
+
               <div className="row">
                 <div className="col-md-12" />
               </div>
+
             </div>
           </div>
+
           <div
             className="footer-bottom footer-line"
           >
@@ -615,6 +537,7 @@ export default function Footer(footerProps) {
               <span>Copyright © instacertify Labs private Limited</span>
             </div>
           </div>
+
         </footer >
 
       </>

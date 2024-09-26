@@ -360,8 +360,6 @@ export default function Navbar(props) {
       backgroundColor:"white !important"
     }
 
-    console.log("navbarItems ", navbarItems);
-
     return (
       <>
 
