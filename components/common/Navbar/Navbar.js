@@ -16,8 +16,6 @@ import GlobalOrder from "../svg/global/order";
 import GlobalCart from "../svg/global/cart";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
-
-
 export default function Navbar(props) {
   const [menuToggel, setMenuToggel] = useState(false);
   const [authPopup, setAuthPopup] = useState(false);
@@ -245,6 +243,8 @@ export default function Navbar(props) {
     const sop = {
       backgroundColor: "white",
     }
+  
+  
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -368,15 +368,24 @@ export default function Navbar(props) {
         <div onScroll={changeNavBg}>
           <nav id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "siraf" : "miraf" }`} style={navBg || currentPath === "/aboutus"  || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing"  ? sop :  null} className={`${currentPath === "/contact-us" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/cart" ? "fas" : "navbars"} navbars kkkkl` }>
 
+          <div id="google_translate_element">
+    </div>
+
+    {/* <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en',  includedLanguages: 'zh-TW,es,fr,ar,de,ru' }, 'google_translate_element');
+        }
+    </script> */}
 
             <div className="nav_test">
 
               <div className="nav_logo">
                 <Link href="/"><img src={`${navBg || currentPath === "/contact-us" || currentPath === "/bis-mark" ||  currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ||  currentPath === "/cart" ? "./images/sodag.svg" : "./images/sad.svg"}`} alt="" /></Link>
               </div>
+              
 
               <div className="ul_nav">
-
+           
                 <ul className={`${navBg  ? "us_sofa" : "ul_sofa"} ul_sofa`}>
 
                   {
