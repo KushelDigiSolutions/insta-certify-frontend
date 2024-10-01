@@ -162,7 +162,7 @@ export default function Footer(footerProps) {
                 <div className="col-md-3 col-sm-12">
                   <div className="widget widget_getintuch" height="240px">
                     <div className='foot_logs'>
-                        <img src='./images/lo.svg'/>
+                        <img src='../images/lo.svg'/>
                     </div>
                     <h4 className="footer-title kl_title">Contact Us</h4>
 
