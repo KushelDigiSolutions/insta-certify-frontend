@@ -28,9 +28,9 @@ export default function EventLists(pageProp) {
         </div>
         <Image
           className={style.banner_image}
-          src={"/images/event-top-banner.png"}
+          src={"/images/former.png"}
           width="100"
-          height="304"
+          height="600"
           layout="responsive"
           objectFit="cover"
           alt="Event List"
