@@ -246,14 +246,11 @@ export default function Navbar(props) {
       backgroundColor: "white",
     }
 
-
-
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
 
     const [currccert, setcurrcert] = useState(0);
-
 
     const [isDropdownOpen3, setIsDropdownOpen3] = useState(false);
 
@@ -362,10 +359,10 @@ export default function Navbar(props) {
       backgroundColor: "white !important"
     }
 
+    console.log("navbarItems ", navbarItems);
+
     return (
       <>
-
-
         {/* desktop view  */}
         <div onScroll={changeNavBg}>
           <nav id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments"  ? "siraf" : "miraf"}`} 
@@ -395,7 +392,8 @@ export default function Navbar(props) {
                           index === 0 ?
                             <li ref={dropdownRef} className="sog addbgred">
 
-                              <div id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments"   ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
+                              <div
+                               id={`${navBg || currentPath === "/aboutus" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments"   ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
                                 {l?.parentItems?.title}
                                 {isDropdownOpen &&
                                   <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -452,6 +450,7 @@ export default function Navbar(props) {
                                            <a href="/certification"><span>Certifications</span></a>
                                           </div>
                                           <div className="bs">
+
                                             <div className="bs1">
                                               <div>
                                                 <hr className="bis" />
@@ -510,6 +509,7 @@ export default function Navbar(props) {
                                                 </ul>
                                               </div>
                                             </div>
+
                                             <div className="bs1">
                                               <div>
                                                 <hr className="bis" />
@@ -560,6 +560,7 @@ export default function Navbar(props) {
                                                 </ul>
                                               </div>
                                             </div>
+
                                             <div className="bs1">
                                               <hr className="bis" />
                                               <h3>GLOBAL</h3>
@@ -617,6 +618,7 @@ export default function Navbar(props) {
                                                 </li>
                                               </ul>
                                             </div>
+
                                           </div>
                                         </div>
                                       )
@@ -957,58 +959,27 @@ export default function Navbar(props) {
                                       </div>
                                       <div className="img_item lime_item">
                                         <div className="nav_img">
+
                                           <ul>
-                                            <li>
-                                              <a onMouseOver={() => {
-                                                setTus(true);
-                                              }}
-
-                                                onMouseOut={() => {
-                                                  setTus(false);
-                                                }} href={"/news"}> News </a>
-                                            </li>
-                                            <li>
-                                              <a onMouseOver={() => {
-                                                setTus1(true);
-                                              }}
-
-                                                onMouseOut={() => {
-                                                  setTus1(false);
-                                                }} href="/case-study">Case Study</a>
-                                            </li>
-                                          </ul>
-                                          <ul>
-                                            <li>
-                                              <a onMouseOver={() => {
-                                                setTus2(true);
-                                              }}
-
-                                                onMouseOut={() => {
-                                                  setTus2(false);
-                                                }} href={"/events"}> Events </a>
-                                            </li>
-                                            <li>
-                                              <a onMouseOver={() => {
-                                                setTus3(true);
-                                              }}
-
-                                                onMouseOut={() => {
-                                                  setTus3(false);
-                                                }} href="/catalog">Products</a>
-                                            </li>
-                                          </ul>
-                                          <ul>
-                                            <li>
-                                              <a onMouseOver={() => {
-                                                setTus4(true);
-                                              }}
-
-                                                onMouseOut={() => {
-                                                  setTus4(false);
-                                                }} href="/qco-orders">QCO Orders</a>
-                                            </li>
+                                            {
+                                              l?.subItems[0]?.childrenItems?.map((chi , index)=>(
+                                                <li key={index}> 
+                                                <a onMouseOver={() => {
+                                                  setTus(true);
+                                                }}
+  
+                                                  onMouseOut={() => {
+                                                    setTus(false);
+                                                  }} href={chi?.link}> {chi?.title} </a>
+                                              </li>
+                                              ))
+                                            }
+                                           
 
                                           </ul>
+
+                                        
+
                                         </div>
                                         <div className="logo_img">
                                           <img style={stylepi1} src="./images/resource.svg" alt="" />
@@ -1815,7 +1786,6 @@ export default function Navbar(props) {
             </div>
           </nav>
         </div>
-
 
 
         {/* ipad mobile  */}
