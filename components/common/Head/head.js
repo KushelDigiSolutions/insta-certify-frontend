@@ -10,6 +10,8 @@ export default function HeadSEO(props) {
         <meta name="author" content='Fairchild Air Force Base' />
         <meta name="publisher" content='Fairchild Air Force Base' />
         <meta name="Keywords" content='The Official Website of Fairchild FSS - United States Air Force - 92d Force Support Squadron - Fairchild Air Force Base' />
+        <link rel="icon" type="image/x-icon" href="./images/fav.png"></link>
+
 
         {/* Google / Search Engine Tags */}
         <meta itemprop="name" content={props?.title} />
