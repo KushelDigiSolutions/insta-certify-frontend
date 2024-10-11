@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "./css/shoppings-lists.module.scss";
 import Link from "next/link";
 
@@ -18,6 +18,8 @@ import { Navigation } from 'swiper';
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { useRouter } from 'next/router';
+
 // import { stat } from "fs";
 
 
@@ -187,14 +189,85 @@ export default function catalog(pageProp) {
     }
   };
 
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [productdetail  , setProductDetails] = useState({});
+  const [relatedProducts , setRelatedProducts] = useState([]);
+  const [reviews , setReviews] = useState([]);
+
+  const fetchProductDetails = async () => {
+    try {
+
+      const resp = await fetch(`https://admin.instacertify.com/api/products/${id}`, {
+        method: 'GET', 
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+  
+       if(resp.status === 200){
+        const formateddata = await resp.json();
+        setProductDetails(formateddata?.product);
+        setReviews(formateddata?.reviews);
+
+      }
+     
+    } catch (error) {
+     
+      console.error("There was an error fetching the categories:", error);
+    }
+  };
+
+  const getRelatedProducts = async () => {
+    try {
+
+      const resp = await fetch(`https://admin.instacertify.com/api/products/${productdetail?.id}/related`, {
+        method: 'GET', 
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+  
+       if(resp.status === 200){
+        const formateddata = await resp.json();
+        setRelatedProducts(formateddata?.related_products);
+
+      }
+     
+    } catch (error) {
+     
+      console.error("There was an error fetching the categories:", error);
+    }
+  };
+
+  console.log("productdetail " ,productdetail);
+
+
+  useEffect(()=>{
+
+    if(id){
+      fetchProductDetails();
+    }
+    else{
+       console.log("error");
+    }
+
+  },[id])
+
+  useEffect(()=>{
+      if(productdetail){
+         getRelatedProducts();
+      }
+  },[productdetail])
 
   return (
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
-      <div className="catalogs">
+      <div className="catalogs2">
         <div className="container">
 
-          <div className="appWrapper iuiu">
+          <div className="appWrapper iuiu2">
             <div className="appContainer">
               {/* section 1  */}
               <div className="appsec1">
@@ -214,26 +287,16 @@ export default function catalog(pageProp) {
                     modules={[Navigation]}
                     className="mySwiper"
                   >
-                    <SwiperSlide>
-                      <div className="tes1wrap">
-                        <img src='./images/tesnsimg.png' alt="" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="tes1wrap">
-                        <img src='./images/tesnsimg.png' alt="" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="tes1wrap">
-                        <img src='./images/tesnsimg.png' alt="" />
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div className="tes1wrap">
-                        <img src='./images/tesnsimg.png' alt="" />
-                      </div>
-                    </SwiperSlide>
+
+{
+    productdetail?.images?.map((image, index) => (
+      <SwiperSlide key={index}>
+        <div className="tes1wrap">
+          <img src={image} alt={`product-image-${index}`} />
+        </div>
+      </SwiperSlide>
+    ))
+  }
                   </Swiper>
 
 
@@ -242,10 +305,13 @@ export default function catalog(pageProp) {
 
 
                   <div className="moreImages">
-                    <img src='./images/singl1.png' className="cursor-pointer" onClick={() => goToSlide(0)}  alt="" />
-                    <img src='./images/singl1.png' className="cursor-pointer" onClick={() => goToSlide(1)}  alt="" />
-                    <img src='./images/singl1.png' className="cursor-pointer" onClick={() => goToSlide(2)}  alt="" />
-                    <img src='./images/singl1.png' className="cursor-pointer" onClick={() => goToSlide(3)}  alt="" />
+                    {
+                      productdetail?.images?.map((img , index)=>(
+
+                        <img src={img} key={index} className="cursor-pointer" onClick={() => goToSlide(index)}  alt="" />
+                      ))
+                    }
+                  
                   </div>
 
                 </div>
@@ -259,8 +325,8 @@ export default function catalog(pageProp) {
                     <p className="avpara">
                       <span>Availability</span>: Estimated to ship on 12 august 2024
                     </p>
-                    <h3>Tensile Machine</h3>
-                    <p className="mobilen">Model Number : W7600H3A</p>
+                    <h3>{productdetail?.product_name}</h3>
+                    <p className="mobilen">Model Number : {productdetail?.sku_name}</p>
                   </div>
 
                   <img src='./images/stars.png' className="starimg" alt="" />
@@ -268,7 +334,7 @@ export default function catalog(pageProp) {
                   <div className="texespara">
                     <p className="text">Local taxes included (where applicable)</p>
                     <p className="numbers">
-                      ₹959.99 <span>₹1199.99</span>
+                      ₹{productdetail?.sale_price} <span>₹{productdetail?.price}</span>
                     </p>
                   </div>
 
@@ -368,10 +434,7 @@ export default function catalog(pageProp) {
               {
                 start === 1 && (
                   <div className="description_information">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                   <p>{productdetail?.product_detail}</p>
                   </div>
                 )
               }
@@ -379,10 +442,7 @@ export default function catalog(pageProp) {
               {
                 start === 2 && (
                   <div className="description_information">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> */}
+                  <p>{productdetail?.product_specification}</p>
                   </div>
                 )
               }
@@ -390,10 +450,14 @@ export default function catalog(pageProp) {
               {
                 start === 3 && (
                   <div className="description_information">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                  {
+                    reviews?.map((r , index)=>(
+                      <div key={index} className="singreview">
+                              <h4>{r?.detail}</h4>
+                              <p>Post At: {new Date(r?.created_at).toLocaleDateString('en-GB')}</p>
+                              </div>
+                    ))
+                  }
                   </div>
                 )
               }
@@ -403,108 +467,40 @@ export default function catalog(pageProp) {
 
         <div className="container">
           <div className="catalog_cards cata_card1">
-            <h3>Related Prodiucts</h3>
+            <h3>Related Products</h3>
             <div className="catalog_card">
-              <div className="catalog_box">
-                <img className="catalog_img" src='./images/tensile.png' alt="tensile" />
-                <div className="catalog_content">
-                  <span className="tensile_content">Tensile Machine</span>
-                  <div className="tensile_price">
-                    <span className="real">₹ 395.85</span>
-                    <span className="fake">₹413.67</span>
-                  </div>
-                  <div className="reviews">
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/unstar.svg" alt="" />
-                  </div>
-                  <div className="add_cart_btn">
-                    <button>
-                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
-                      </svg>
-                      <span>Add to Cart</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="catalog_box">
-                <img className="catalog_img" src='./images/tensile.png' alt="tensile" />
-                <div className="catalog_content">
-                  <span className="tensile_content">Tensile Machine</span>
-                  <div className="tensile_price">
-                    <span className="real">₹ 395.85</span>
-                    <span className="fake">₹413.67</span>
-                  </div>
-                  <div className="reviews">
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/unstar.svg" alt="" />
-                  </div>
-                  <div className="add_cart_btn">
-                    <button>
-                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
-                      </svg>
-                      <span>Add to Cart</span>
-                    </button>
+              {
+                relatedProducts?.map((prod , index)=>(
+                  <div key={index} className="catalog_box">
+                  <img className="catalog_img" src={prod?.image} alt="tensile" />
+                  <div className="catalog_content">
+                    {/* <span className="tensile_content">{prod?.name}</span> */}
+                    <Link style={{textDecoration:"none"}}  href={`/catalogdetail?id=${prod?.slug}`}><span className="tensile_content">{prod?.name} </span></Link>
+                    <div className="tensile_price">
+                      <span className="real">₹{prod?.sale_price}</span>
+                      <span className="fake">₹{prod?.price}</span>
+                    </div>
+                    <div className="reviews">
+                      <img src="./images/star.svg" alt="" />
+                      <img src="./images/star.svg" alt="" />
+                      <img src="./images/star.svg" alt="" />
+                      <img src="./images/star.svg" alt="" />
+                      <img src="./images/unstar.svg" alt="" />
+                    </div>
+                    <div className="add_cart_btn">
+                      <button>
+                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
+                        </svg>
+                        <span>Add to Cart</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="catalog_box">
-                <img className="catalog_img" src='./images/tensile.png' alt="tensile" />
-                <div className="catalog_content">
-                  <span className="tensile_content">Tensile Machine</span>
-                  <div className="tensile_price">
-                    <span className="real">₹ 395.85</span>
-                    <span className="fake">₹413.67</span>
-                  </div>
-                  <div className="reviews">
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/unstar.svg" alt="" />
-                  </div>
-                  <div className="add_cart_btn">
-                    <button>
-                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
-                      </svg>
-                      <span>Add to Cart</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="catalog_box">
-                <img className="catalog_img" src='./images/tensile.png' alt="tensile" />
-                <div className="catalog_content">
-                  <span className="tensile_content">Tensile Machine</span>
-                  <div className="tensile_price">
-                    <span className="real">₹ 395.85</span>
-                    <span className="fake">₹413.67</span>
-                  </div>
-                  <div className="reviews">
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/star.svg" alt="" />
-                    <img src="./images/unstar.svg" alt="" />
-                  </div>
-                  <div className="add_cart_btn">
-                    <button>
-                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
-                      </svg>
-                      <span>Add to Cart</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
+                ))
+              }
+           
+              
             </div>
           </div>
         </div>
