@@ -11,6 +11,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ShoppingProductSlider from "../components/common/shopping/product-slider";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 import ShoppingCollections from "../components/common/shopping/collections";
 
 
@@ -239,12 +241,16 @@ export default function catalog(pageProp) {
   },[])
 
 
+  const [showdropdown , setshowdropdown ] = useState(false);
+
 
   return (
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
 
       <div className="catalogs">
+
+      <div className="catalogcont">
 
         <div className="iuiu">
           <div className="all_fastners">
@@ -289,9 +295,22 @@ export default function catalog(pageProp) {
               
               <div className="second_content">
               <p>Sort by:</p>
-               <select name="" id="">
-                <option value="Newly listed">Newly listed</option>
-               </select>
+
+              <div className="nwltwwrap">
+
+              <span onClick={()=> setshowdropdown(!showdropdown)}>Newly listed</span>
+              <MdKeyboardArrowDown  className="MdKeyboardArrowDownfgf"/>
+
+              {/* drodow */}
+           {
+            showdropdown &&   
+             <div className="newdropdown">
+            <p>Old</p>
+         </div>
+           }
+ 
+              </div>
+
               </div>
             </div>
           
@@ -353,6 +372,9 @@ export default function catalog(pageProp) {
             </div>
           </div>
         </div>
+
+        </div>
+
 
       </div>
 

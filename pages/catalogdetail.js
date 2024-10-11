@@ -241,9 +241,6 @@ export default function catalog(pageProp) {
     }
   };
 
-  console.log("productdetail " ,productdetail);
-
-
   useEffect(()=>{
 
     if(id){
@@ -264,6 +261,7 @@ export default function catalog(pageProp) {
   return (
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
+
       <div className="catalogs2">
         <div className="container">
 
