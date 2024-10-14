@@ -528,13 +528,13 @@ export default function Footer(footerProps) {
                 <li><a>PRIVACY POLICY</a></li>
                 <li><a>REFUND POLICY</a></li>
                 <li><a>TERMS AND CONDITIONS</a></li>
-                <li><Link href={"/aboutus"}>ABOUT US</Link></li>
-                <li><Link href={"/contact-us"}>CONTACT US</Link></li>
+                <li><Link href={"/about"}>ABOUT US</Link></li>
+                <li><Link href={"/contact"}>CONTACT US</Link></li>
               </ul>
             </div>
 
             <div className='lower_footer'>
-              <span>Copyright © instacertify Labs private Limited</span>
+              <span>Copyright © Instacertify Labs Private Limited</span>
             </div>
           </div>
 
