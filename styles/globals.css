@@ -863,7 +863,12 @@ border: 1px solid #141A24;
   gap: 20px;
 
 }
-
+.eventDetails_eventFigure__hqoHV .eventDetails_left__7v5OC img{
+ object-fit: initial !important;
+}
+.eventDetails_eventBody__W2zPZ .eventDetails_left__7v5OC .eventDetails_title__Ag6RS{
+  margin-top: 400px !important;
+}
 .catalog_box {
   background-color: #FFFFFF;
   max-width: 283px;
@@ -2947,9 +2952,9 @@ border: 1px solid #141A24;
   margin: auto !important;
   margin-top: 30px !important;
 }
-.eventDetails_eventBody__W2zPZ{
+/* .eventDetails_eventBody__W2zPZ{
   padding-top: 450px !important;
-}
+} */
 
 @media (max-width:550px) {
   .right_fastner span{
