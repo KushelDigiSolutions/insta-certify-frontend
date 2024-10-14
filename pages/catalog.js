@@ -197,6 +197,7 @@ export default function catalog(pageProp) {
 
       if(resp.status === 200){
         const formateddata = await resp.json();
+        console.log(formateddata);
         setAllProduct(formateddata?.products);
         // setAllCategory(formateddata?.categories)
 

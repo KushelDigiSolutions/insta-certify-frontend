@@ -297,16 +297,17 @@ export default function catalog(pageProp) {
   }
                   </Swiper>
 
-
+                    
                   <div className="swiper-button-prev"><img src='./images/leftionc.png' alt="" /></div>
                   <div className="swiper-button-next"><img src='./images/leftionc.png' alt="" /></div>
 
 
                   <div className="moreImages">
                     {
+                      productdetail?.images?.length > 1 &&
                       productdetail?.images?.map((img , index)=>(
 
-                        <img src={img} key={index} className="cursor-pointer" onClick={() => goToSlide(index)}  alt="" />
+                        <img width="84" height="84" src={img} key={index} className="cursor-pointer" onClick={() => goToSlide(index)}  alt="" />
                       ))
                     }
                   

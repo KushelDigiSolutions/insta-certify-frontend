@@ -2802,7 +2802,9 @@ border: 1px solid #141A24;
   display: flex !important;
   justify-content: space-around;
 }
-
+.catalog_img{
+  width: 100%;
+}
 .contactus-footer {
   padding-left: 0rem !important;
 }
