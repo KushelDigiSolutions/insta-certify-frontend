@@ -187,7 +187,7 @@ export default function catalog(pageProp) {
   
   const fetchProduct = async () => {
     try {
-      const resp = await fetch("https://admin.instacertify.com/api/products?limit=20&offset=0", {
+      const resp = await fetch(" https://admin.instacertify.com/api/products?limit=20&offset=0&all=1", {
         method: 'GET', 
         headers: {
           'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ export default function catalog(pageProp) {
 
         <div className="right_fastner">
 
-                <span>SHOWING 1-1600 RESULTS</span>
+                <span>SHOWING {allProduct?.length} RESULTS</span>
               
               <div className="second_content">
               <p>Sort by:</p>

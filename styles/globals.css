@@ -856,7 +856,7 @@ border: 1px solid #141A24;
 
 .catalog_card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
