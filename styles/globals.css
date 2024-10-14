@@ -875,7 +875,59 @@ border: 1px solid #141A24;
   width: 100%;
   padding: 20px 16px;
 }
+.pop_form{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 90;
+}
+.pop_form_cont{
+  width: 500px;
+  /* height: 500px; */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+}
+.avift{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.foml{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+.foml input{
+  padding: 10px;
+ 
 
+}
+.foml input,
+.foml textarea{
+  width: 100%;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #CED4DA;
+
+}
+.foml textarea{
+  height: 90px;
+  padding: 10px;
+  resize: none;
+}
+.foml button{
+  background-color: #EC691F;
+  width: 100%;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
 .tensile_content {
   color: #33475B;
   font-weight: 600;

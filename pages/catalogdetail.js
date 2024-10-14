@@ -41,6 +41,8 @@ export default function catalog(pageProp) {
 
   const [start, setStart] = useState(1);
 
+  const [popup, setPopup] = useState(false);
+
   const func1 = () => {
     setStart(1);
     document.getElementById("fast").style.color = "#EC691F"
@@ -363,10 +365,35 @@ export default function catalog(pageProp) {
                       </button>
                     </div>
 
-                    <button className="reqqbutns">
+                    <button onClick={() => setPopup(true)} className="reqqbutns">
                       <span>Request A Quote</span>
                     </button>
                   </div>
+
+
+                  {
+                    popup && <div className="pop_form">
+                      <div className="pop_form_cont">
+                        <div className="avift">
+                          <h3>Request a quote</h3>
+                          <img className="cursor-pointer" onClick={() => setPopup(false)} width={20} src="./images/same.avif" />
+                        </div>
+                        <div className="contact_formaaa">
+                          <form className="foml">
+                            <input type="text" name="name" placeholder="Name" />
+                            <input type="email" name="Email" placeholder="Email Address" />
+                            <input type="number" placeholder="Phone Number" />
+                            {/* <input type="number" placeholder="Quantity" /> */}
+                            <textarea placeholder="Message" />
+
+                            <button>Message</button>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  }
+
 
                   <div className="socialwrap">
 
