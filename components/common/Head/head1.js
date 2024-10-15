@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from "next/head";
 
-export default function HeadSEO(props) {
+export default function HeadSEO1(props) {
   return (
     <>
       <Head>
@@ -11,7 +11,8 @@ export default function HeadSEO(props) {
         <meta name="publisher" content='Fairchild Air Force Base' />
         <meta name="Keywords" content='The Official Website of Fairchild FSS - United States Air Force - 92d Force Support Squadron - Fairchild Air Force Base' />
         <link rel="icon" type="image/x-icon" href="./images/fav.png"></link>
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
 
         {/* Google / Search Engine Tags */}
         <meta itemprop="name" content={props?.title} />
@@ -29,6 +30,7 @@ export default function HeadSEO(props) {
         {props?.image != false ? (<meta property="og:image" content={props?.image} />):""}
         <meta property="og:title" content={props?.title} />
         <meta property="og:description" content={props?.description} />
+        
       </Head>
     </>
   )
