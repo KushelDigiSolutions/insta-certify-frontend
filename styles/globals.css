@@ -2230,7 +2230,7 @@ border: 1px solid #141A24;
   text-decoration: none;
   /* color: #444444; */
   color: #FFFFFF;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 16px;
   font-family: "Poppins", sans-serif !important;
   transition: all 0.3s;
@@ -2256,7 +2256,7 @@ border: 1px solid #141A24;
 .normailcs {
   font-family: "Poppins", sans-serif !important;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 16px;
   text-align: left;
   cursor: pointer;
