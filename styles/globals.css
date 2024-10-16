@@ -3517,7 +3517,7 @@ justify-content: center !important;
 }
 
 .aboutcontent2 span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 34px;
   font-weight: 700;
   line-height: 51px;
@@ -3562,7 +3562,7 @@ border: 1px solid #1D1E23BF;
 cursor: pointer;
 }
 .vvlogfilters span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 12px;
 font-weight: 500;
 line-height: 30px;
@@ -3582,7 +3582,7 @@ color: #1D1E23BF;
   border: 2px solid #EF8607;
 }
 .curentsfds span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 12px;
   font-weight: 500;
   line-height: 30px;
@@ -3620,7 +3620,7 @@ color: white;
   gap: 5px;
 }
 .steicons span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 10px;
   font-weight: 500;
   line-height: 22px;
@@ -3629,7 +3629,7 @@ color: #FF751C;
 }
 
 .itemtitle{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 16px;
 font-weight: 600;
 line-height: 25px;
@@ -3643,7 +3643,7 @@ color: #000000;
   gap: 5px;
 }
 .readmores span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 12px;
   font-weight: 500;
   line-height: 15px;
@@ -3745,7 +3745,7 @@ justify-content: center;
 }
 
 .aboutcontent3s span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 34px;
   font-weight: 700;
   line-height: 51px;
@@ -3790,7 +3790,7 @@ border: 1px solid #1D1E23BF;
 cursor: pointer;
 }
 .vvlogfilters span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 12px;
 font-weight: 500;
 line-height: 30px;
@@ -3810,7 +3810,7 @@ color: #1D1E23BF;
   border: 2px solid #EF8607;
 }
 .curentsfds span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 12px;
   font-weight: 500;
   line-height: 30px;
@@ -3848,7 +3848,7 @@ color: white;
   gap: 5px;
 }
 .steicons span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 10px;
   font-weight: 500;
   line-height: 22px;
@@ -3857,7 +3857,7 @@ color: #FF751C;
 }
 
 .itemtitle{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 16px;
 font-weight: 600;
 line-height: 25px;
@@ -3871,7 +3871,7 @@ color: #000000;
   gap: 5px;
 }
 .readmores span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 12px;
   font-weight: 500;
   line-height: 15px;
@@ -3973,7 +3973,7 @@ line-height: 12px;
   display: flex;
   align-items: center;
   padding-left: 30px;
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 18px;
 font-weight: 600;
 line-height: 27px;
@@ -3993,7 +3993,7 @@ color: white;
   display: flex;
   align-items: center;
   gap:5px;
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 18px;
 font-weight: 600;
 line-height: 27px;
@@ -4003,7 +4003,7 @@ color: #06163A;
 
 .blogtags span{
   color: #FF7300;
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 18px;
 font-weight: 400;
 line-height: 27px;
@@ -4017,7 +4017,7 @@ text-align: left;
 }
 
 .singblogw h2{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 18px;
 font-weight: 400;
 line-height: 40.8px;
@@ -4025,7 +4025,7 @@ text-align: left;
 color: #211D1F;
 }
 .singblogw p{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
@@ -4042,7 +4042,7 @@ color: #000000;
 }
 
 .intedata li{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 16px;
 font-weight: 300;
 line-height: 28px;
@@ -4065,7 +4065,7 @@ font-weight: 500;
   gap: 10px;
 }
 .subdatablog label h4{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 20px;
   font-weight: 400;
   line-height: 32px;
@@ -4073,7 +4073,7 @@ font-weight: 500;
 color: #141A24;    
 }
 .subdatablog label p{
-  font-family: Poppins;
+  /* font-family: Poppins; */
   font-size: 16px;
   font-weight: 300;
   line-height: 32px;
@@ -4091,7 +4091,7 @@ gap: 24px;
 background-color: white;
 }
 .blode2rightc h3{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 20px;
 font-weight: 600;
 line-height: 32px;
@@ -4109,7 +4109,7 @@ color: #080D17;
   gap: 10px;
 }
 .dateobje span{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 16px;
 font-weight: 600;
 line-height: 28px;
@@ -4117,7 +4117,7 @@ text-align: left;
 color: #080D17;
 }
 .singblosdarslidd h4{
-  font-family: Poppins;
+  /* font-family: Poppins; */
 font-size: 16px;
 font-weight: 400;
 line-height: 26px;
