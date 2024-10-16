@@ -251,7 +251,7 @@ export default function newss(pageProp) {
         <div className="page_shopping_list sop">
             <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
 
-         <HeadSEO1/>
+            <HeadSEO1 />
 
             <div id="event-update">
                 <section className="background-news">
@@ -340,7 +340,7 @@ export default function newss(pageProp) {
                                                     <h2 className="card-titless">
                                                         How AI Changing the Outlook of the Retail Market
                                                     </h2>
-                                                    <a href="#" className="read-more">
+                                                    <a href="/newssdetail" className="read-more">
                                                         READ MORE
                                                     </a>
                                                 </div>
@@ -358,7 +358,7 @@ export default function newss(pageProp) {
                                                         How Can Data and Automation Assist with Sustainability in
                                                         your Business
                                                     </h2>
-                                                    <a href="#" className="read-more">
+                                                    <a href="/newssdetail" className="read-more">
                                                         READ MORE
                                                     </a>
                                                 </div>
