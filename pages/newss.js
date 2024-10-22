@@ -33,6 +33,12 @@ export default function newss(pageProp) {
     const product = pageProp.page_content.product;
     const customFields = product?.customFields;
 
+    const fetchProduct1 = async() =>{
+       console.log("hi");
+    }
+
+
+
 
     //   const [section1, SetSection1] = useState(()=>{
     //     if(customFields?.edges?.length > 0) {
