@@ -35,7 +35,6 @@ export default function Footer(footerProps) {
       document.getElementById("jj").style.scrollBehavior = "none"
     }
 
-    console.log("footerItem ", footerItems);
 
     return (
 

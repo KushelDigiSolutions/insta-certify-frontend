@@ -241,12 +241,36 @@ export default function newss(pageProp) {
         }
     };
 
+    const [allNewsCat , setAllNewsCat] =useState([]);
+    console.log("allNewsCat " , allNewsCat);
 
+    const fetchcats = async () => {
+        try {
+
+            const resp = await fetch("https://admin.instacertify.com/api/get-news-category", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (resp.status === 200) {
+                const formateddata = await resp.json();
+                setAllNewsCat(formateddata?.categories)
+
+            }
+
+
+        } catch (error) {
+
+            console.error("There was an error fetching the categories:", error);
+        }
+    };
 
     useEffect(() => {
         fetchProduct();
         fetchCategory();
-
+         fetchcats();
     }, [])
 
 
@@ -305,31 +329,14 @@ export default function newss(pageProp) {
                                         role="group"
                                         aria-label="Default button group"
                                     >
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary first-one rander"
-                                        >
-                                            ALL
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary second-one rander"
-                                        >
-                                            LATEST
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary third-one rander"
-                                        >
-                                            TRENDING
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary fourth-one rander"
-                                        >
-                                            {" "}
-                                            INDUSTRY NEWS
-                                        </button>
+                                       
+                                        {
+                                            allNewsCat?.map((cat , index)=>(
+                                                <button key={index} type="button" className="btn btn-outline-secondary second-one rander">
+                                                {cat?.name}
+                                            </button>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className="container eleven-headinf-main mt-5">

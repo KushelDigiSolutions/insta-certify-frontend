@@ -3128,7 +3128,8 @@ justify-content: center !important;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  width: 94px;
+  /* width: 94px; */
+  width: fit-content;
   height: 37px;
 
 }
