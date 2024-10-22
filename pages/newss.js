@@ -242,7 +242,11 @@ export default function newss(pageProp) {
     };
 
     const [allNewsCat , setAllNewsCat] =useState([]);
-    console.log("allNewsCat " , allNewsCat);
+    const [alnews , setalnews] = useState([]);
+
+    console.log("alnews" , alnews);
+    console.log("allNewsCat" , allNewsCat);
+    
 
     const fetchcats = async () => {
         try {
@@ -267,14 +271,39 @@ export default function newss(pageProp) {
         }
     };
 
+    const fetchallnews = async()=>{
+
+        try {
+
+            const resp = await fetch("https://admin.instacertify.com/api/get-news", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (resp.status === 200) {
+                const formateddata = await resp.json();
+                setalnews(formateddata?.news);
+
+            }
+
+
+        } catch (error) {
+
+            console.error("There was an error fetching the categories:", error);
+        }
+    }
+
+
     useEffect(() => {
         fetchProduct();
         fetchCategory();
          fetchcats();
+         fetchallnews();
     }, [])
 
-
-    const [showdropdown, setshowdropdown] = useState(false);
+    console.log("alnews ",alnews);
 
 
     return (
@@ -339,176 +368,37 @@ export default function newss(pageProp) {
                                         }
                                     </div>
                                 </div>
+
                                 <div className="container eleven-headinf-main mt-5">
                                     <div className="row eleven-flex-wrap">
-                                        {/* First Row */}
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-1.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How AI Changing the Outlook of the Retail Market
-                                                    </h2>
-                                                    <a href="/newssdetail" className="read-more">
-                                                        READ MORE
-                                                    </a>
+
+                                        {
+                                            alnews?.map((news , index)=>(
+                                                <div   key={index} className="col-md-4 mb-4 singlwrap">
+                                                <div className="card eleven-card">
+                                                    <img
+                                                        src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${news?.images[0]}` }
+                                                        className="card-img-top"
+                                                        alt="Card image"
+                                                    />
+                                                    <div className="card-body">
+                                                        <h2 className="card-titless">
+                                                           {news?.title}
+                                                        </h2>
+                                                        <a href={`/newssdetail?id=${news?.slug}`} className="read-more">
+                                                            READ MORE
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-2.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How Can Data and Automation Assist with Sustainability in
-                                                        your Business
-                                                    </h2>
-                                                    <a href="/newssdetail" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-3.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How Can Big Data be Integrated into your Business to
-                                                        Improve Output?
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                </div>                                            
+                                            ))
+                                        }
+                                       
+                                      
                                     </div>
-                                    <div className="row eleven-flex-wrap">
-                                        {/* second Row */}
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-1.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How AI Changing the Outlook of the Retail Market
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-2.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How Can Data and Automation Assist with Sustainability in
-                                                        your Business
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-3.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How Can Big Data be Integrated into your Business to
-                                                        Improve Output?
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row eleven-flex-wrap">
-                                        {/* third Row */}
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-1.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How AI Changing the Outlook of the Retail Market
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-2.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How Can Data and Automation Assist with Sustainability in
-                                                        your Business
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 mb-4">
-                                            <div className="card eleven-card">
-                                                <img
-                                                    src="https://admin.instacertify.com/backend/admin/media/card-image-3.png"
-                                                    className="card-img-top"
-                                                    alt="Card image"
-                                                />
-                                                <div className="card-body">
-                                                    <h2 className="card-titless">
-                                                        How Can Big Data be Integrated into your Business to
-                                                        Improve Output?
-                                                    </h2>
-                                                    <a href="#" className="read-more">
-                                                        READ MORE
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
                                 </div>
+
                                 <div className="page-bottom-botton">
                                     <div className="button-down-content">
                                         <button
@@ -574,6 +464,7 @@ export default function newss(pageProp) {
                                         </button>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

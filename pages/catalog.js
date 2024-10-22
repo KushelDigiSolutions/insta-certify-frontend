@@ -133,6 +133,8 @@ export default function catalog(pageProp) {
   const [allProduct , setAllProduct] = useState([]);
   const [allCategory , setAllCategory] = useState([]);
 
+  console.log("alloroduct ",allProduct);
+
   // Function to toggle the dropdown visibility
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
@@ -234,6 +236,22 @@ export default function catalog(pageProp) {
   };
 
 
+  const addToCartApi = async()=>{
+      const resp = fetch('http://localhost:8081/instacertify-backend/public/api/cart/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            product_id: 1,
+            quantity: 2,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => console.log('Success:', data))
+    .catch(error => console.error('Error:', error));
+    
+  }
 
   useEffect(()=>{
     fetchProduct();
@@ -335,7 +353,10 @@ export default function catalog(pageProp) {
                       <img src="./images/unstar.svg" alt="" />
                     </div>
                     <div className="add_cart_btn">
-                      <button>
+                      <button onClick={()=>{
+                        console.log("product ",product);
+                        // addToCartApi();
+                      }}>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
                         </svg>

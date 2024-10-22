@@ -193,7 +193,7 @@ export default function catalog(pageProp) {
 
   const router = useRouter();
   const { id } = router.query;
-
+  
   const [productdetail, setProductDetails] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -261,6 +261,7 @@ export default function catalog(pageProp) {
   }, [productdetail])
 
   return (
+    
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
 

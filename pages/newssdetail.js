@@ -194,14 +194,12 @@ export default function newssdetail(pageProp) {
     const router = useRouter();
     const { id } = router.query;
 
-    const [productdetail, setProductDetails] = useState({});
-    const [relatedProducts, setRelatedProducts] = useState([]);
-    const [reviews, setReviews] = useState([]);
-
-    const fetchProductDetails = async () => {
+    const [aboutnew , setaboutnew] = useState({});
+    
+    const fetchnewsbyycat =async(name)=>{
         try {
 
-            const resp = await fetch(`https://admin.instacertify.com/api/products/${id}`, {
+            const resp = await fetch(`https://admin.instacertify.com/api/get-news-details/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -210,43 +208,23 @@ export default function newssdetail(pageProp) {
 
             if (resp.status === 200) {
                 const formateddata = await resp.json();
-                setProductDetails(formateddata?.product);
-                setReviews(formateddata?.reviews);
+                console.log("formare ",formateddata);
+                setaboutnew(formateddata?.news);
 
             }
+
 
         } catch (error) {
 
             console.error("There was an error fetching the categories:", error);
         }
-    };
-
-    const getRelatedProducts = async () => {
-        try {
-
-            const resp = await fetch(`https://admin.instacertify.com/api/products/${productdetail?.id}/related`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-            if (resp.status === 200) {
-                const formateddata = await resp.json();
-                setRelatedProducts(formateddata?.related_products);
-
-            }
-
-        } catch (error) {
-
-            console.error("There was an error fetching the categories:", error);
-        }
-    };
+    }
 
     useEffect(() => {
 
         if (id) {
-            fetchProductDetails();
+            // fetchProductDetails();
+            fetchnewsbyycat();
         }
         else {
             console.log("error");
@@ -254,34 +232,25 @@ export default function newssdetail(pageProp) {
 
     }, [id])
 
-    useEffect(() => {
-        if (productdetail) {
-            getRelatedProducts();
-        }
-    }, [productdetail])
-
+    console.log("news " , aboutnew);
+ 
     return (
+
         <div className="page_shopping_list sop">
             <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
 
             <div className="aboutwrap">
 
-
-
                 <div className="aboutcont">
 
-                    <img src={"https://admin.instacertify.com/backend/admin/media/journalist-taking.png"} className="aboutbanner" alt="" />
-                    {/* <img src={"https://admin.instacertify.com/backend/admin/media/journalist-taking.png"} className="bannerfilter" alt="" />
-
-                    <img src={"https://admin.instacertify.com/backend/admin/media/journalist-taking.png"} className="linesimg" alt="lines" /> */}
-
+                    <img src={aboutnew?.image} className="aboutbanner" alt="" />
+                 
                     <div className="aboutcontent3s">
                         <span>Blog detail</span>
                     </div>
 
 
                 </div>
-
 
             </div>
 
@@ -293,7 +262,7 @@ export default function newssdetail(pageProp) {
 
                         <div>
                             <img src={"https://admin.instacertify.com/backend/admin/media/journalist-taking.png"} alt="" className="blogdtaimgmain" />
-                            <div className="blogbantitle">  Indian Fasteners Distribution and Trading Market  </div>
+                            <div className="blogbantitle">  {aboutnew?.title}  </div>
                         </div>
 
                         <div className="blogtags">
@@ -303,42 +272,9 @@ export default function newssdetail(pageProp) {
                         </div>
 
 
-
-
                         <div className="singblogw">
-                            <h2>Title is very big</h2>
-
-
-                            <p>
-                                the lorem ipsum the things of the care of ipsum
-                            </p>
-
-
-
-                            <ul className="intedata">
-
-
-                                <li ><span>the: thief</span> paragraph  </li>
-
-
-                            </ul>
-
-
-
-
-                            <div className="subdatablog">
-
-
-                                <label>
-                                    <h4>Hi</h4>
-                                    <p>kese ho app</p>
-                                </label>
-
-
-                            </div>
-
-
-                        </div>
+  <div dangerouslySetInnerHTML={{ __html: aboutnew?.description }} />
+</div>
 
 
 
@@ -369,6 +305,7 @@ export default function newssdetail(pageProp) {
 
 
         </div>
+
     );
 }
 
