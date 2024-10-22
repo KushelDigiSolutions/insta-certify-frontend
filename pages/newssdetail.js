@@ -194,6 +194,8 @@ export default function newssdetail(pageProp) {
     const router = useRouter();
     const { id } = router.query;
 
+    console.log(id);
+
     const [aboutnew , setaboutnew] = useState({});
     
     const fetchnewsbyycat =async(name)=>{
