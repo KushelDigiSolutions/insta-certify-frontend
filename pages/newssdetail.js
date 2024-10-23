@@ -196,9 +196,12 @@ export default function newssdetail(pageProp) {
 
     console.log(id);
 
-    const [aboutnew , setaboutnew] = useState({});
-    
-    const fetchnewsbyycat =async(name)=>{
+    const [aboutnew, setaboutnew] = useState({});
+
+    const [alnews, setalnews] = useState([]);
+
+
+    const fetchnewsbyycat = async (name) => {
         try {
 
             const resp = await fetch(`https://admin.instacertify.com/api/get-news-details/${id}`, {
@@ -210,7 +213,7 @@ export default function newssdetail(pageProp) {
 
             if (resp.status === 200) {
                 const formateddata = await resp.json();
-                console.log("formare ",formateddata);
+                console.log("formare ", formateddata);
                 setaboutnew(formateddata?.news);
 
             }
@@ -222,6 +225,29 @@ export default function newssdetail(pageProp) {
         }
     }
 
+    const fetchallnews = async () => {
+
+        try {
+
+            const resp = await fetch("https://admin.instacertify.com/api/get-news", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (resp.status === 200) {
+                const formateddata = await resp.json();
+                setalnews(formateddata?.news);
+
+            }
+
+
+        } catch (error) {
+
+            console.error("There was an error fetching the categories:", error);
+        }
+    }
     useEffect(() => {
 
         if (id) {
@@ -234,8 +260,12 @@ export default function newssdetail(pageProp) {
 
     }, [id])
 
-    console.log("news " , aboutnew);
- 
+    useEffect(() => {
+        fetchallnews();
+    }, [])
+
+    console.log("news ", aboutnew);
+
     return (
 
         <div className="page_shopping_list sop">
@@ -246,7 +276,7 @@ export default function newssdetail(pageProp) {
                 <div className="aboutcont">
 
                     <img src={aboutnew?.image} className="aboutbanner" alt="" />
-                 
+
                     <div className="aboutcontent3s">
                         <span>Blog detail</span>
                     </div>
@@ -263,20 +293,20 @@ export default function newssdetail(pageProp) {
                     <div className="blode2leftcon">
 
                         <div>
-                            <img src={"https://admin.instacertify.com/backend/admin/media/journalist-taking.png"} alt="" className="blogdtaimgmain" />
+                            <img src={aboutnew?.image} alt="" className="blogdtaimgmain" />
                             <div className="blogbantitle">  {aboutnew?.title}  </div>
                         </div>
 
                         <div className="blogtags">
-                            <p><span>By</span> Usha Fasteners</p>
+                            {/* <p><span>By</span> Usha Fasteners</p>
                             <p><span>In</span> Fasteners</p>
-                            <p><span>On</span> 24-Sep-2024</p>
+                            <p><span>On</span>{abou}</p> */}
                         </div>
 
 
                         <div className="singblogw">
-  <div dangerouslySetInnerHTML={{ __html: aboutnew?.description }} />
-</div>
+                            <div dangerouslySetInnerHTML={{ __html: aboutnew?.description }} />
+                        </div>
 
 
 
@@ -286,16 +316,22 @@ export default function newssdetail(pageProp) {
 
                         <h3>Recent Blogs</h3>
 
+                        {
+                            alnews?.map((val, index) => {
+                                return <div key={index} className="singblosdarslidd">
+
+                                    <img className="yu" src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${val?.images[0]}`} alt="" />
+                                    <h4 >{val?.title}</h4>
+
+                                    <p className="dateobje"><img src="./images/renim.svg" alt="" /> <span>20 july,2025</span></p>
+
+                                </div>
+                            })
+                        }
 
 
-                        <div className="singblosdarslidd">
 
-                            <img className="yu" src={"https://admin.instacertify.com/backend/admin/media/journalist-taking.png"} alt="" />
-                            <h4 >the title is very big</h4>
 
-                            <p className="dateobje"><img src="./images/renim.svg" alt="" /> <span>20 july,2025</span></p>
-
-                        </div>
 
 
 
