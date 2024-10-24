@@ -3221,7 +3221,9 @@ justify-content: center !important;
 }
 
 .card-img-top {
-  max-height: 200px;
+  /* max-height: 200px; */
+  height: 140px;
+  max-height: 100%;
   object-fit: cover;
 }
 
@@ -3492,6 +3494,7 @@ justify-content: center !important;
   width: 100%;
   height: 100%;
   height: 444px;
+  background-color: #065175;
 }
 
 .aboutbanner{

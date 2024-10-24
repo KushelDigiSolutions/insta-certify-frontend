@@ -275,10 +275,10 @@ export default function newssdetail(pageProp) {
 
                 <div className="aboutcont">
 
-                    <img src={aboutnew?.image} className="aboutbanner" alt="" />
+                    {/* <img src={"https://res.cloudinary.com/dgif730br/image/upload/v1729498113/WhatsApp_Image_2024-10-21_at_1.35.14_PM.jpg"} className="aboutbanner" alt="" /> */}
 
                     <div className="aboutcontent3s">
-                        <span>Blog detail</span>
+                        <span>{aboutnew?.title}</span>
                     </div>
 
 
@@ -321,20 +321,13 @@ export default function newssdetail(pageProp) {
                                 return <div key={index} className="singblosdarslidd">
 
                                     <img className="yu" src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${val?.images[0]}`} alt="" />
-                                    <h4 >{val?.title}</h4>
+                                   <a style={{textDecoration:"none"}} href={`/newssdetail?id=${val?.slug}`}><h4 >{val?.title}</h4></a>
 
-                                    <p className="dateobje"><img src="./images/renim.svg" alt="" /> <span>20 july,2025</span></p>
+                                    <p className="dateobje"><img src="./images/renim.svg" alt="" /> <span>{new Date(aboutnew?.created_at).toLocaleDateString()}</span></p>
 
                                 </div>
                             })
                         }
-
-
-
-
-
-
-
                     </div>
                 </div>
 
