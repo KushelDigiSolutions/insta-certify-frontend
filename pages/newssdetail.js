@@ -264,7 +264,6 @@ export default function newssdetail(pageProp) {
         fetchallnews();
     }, [])
 
-    console.log("news ", aboutnew);
 
     return (
 

@@ -136,116 +136,15 @@ export default function newss(pageProp) {
     //   });
 
 
-    const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+   
 
-    const [allProduct, setAllProduct] = useState([]);
-    const [allCategory, setAllCategory] = useState([]);
-
-    // Function to toggle the dropdown visibility
-    const toggleDropdown = () => {
-        setIsDropdownVisible(!isDropdownVisible);
-    };
-
-    const category = [
-        {
-            title: "Labware",
-
-        },
-        {
-            title: "Lab Chemicals",
-
-        },
-        {
-            title: "General Laboratory Consumables",
-
-        },
-        {
-            title: "Occupational Safety, Security",
-
-        },
-        {
-            title: "Cleaning and Sterilization",
-
-        },
-        {
-            title: "Life Sciences",
-
-        },
-        {
-            title: "Analytical Measurement and Testing",
-
-        },
-        {
-            title: "Optical Instruments and Microscopes",
-
-        },
-        {
-            title: "Vacuum Technology, Drying, Dry Storage",
-
-        },
-        {
-            title: "Distillation, Separation, Filtration",
-
-        },
-        {
-            title: "Industry Specific Bundle",
-
-        },
-    ]
-
-    const fetchProduct = async () => {
-        try {
-            const resp = await fetch(" https://admin.instacertify.com/api/products?limit=20&offset=0&all=1", {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-
-            if (resp.status === 200) {
-                const formateddata = await resp.json();
-                console.log(formateddata);
-                setAllProduct(formateddata?.products);
-                // setAllCategory(formateddata?.categories)
-
-            }
-
-
-        } catch (error) {
-
-            console.error("There was an error fetching the categories:", error);
-        }
-    };
-
-    const fetchCategory = async () => {
-        try {
-
-            const resp = await fetch("https://admin.instacertify.com/api/categories", {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-            if (resp.status === 200) {
-                const formateddata = await resp.json();
-                setAllCategory(formateddata)
-
-            }
-
-
-        } catch (error) {
-
-            console.error("There was an error fetching the categories:", error);
-        }
-    };
+  
 
     const [allNewsCat , setAllNewsCat] =useState([]);
     const [alnews , setalnews] = useState([]);
-
-    console.log("alnews" , alnews);
-    console.log("allNewsCat" , allNewsCat);
+    const [currentPage, setCurrentPage] = useState(1);
+const [totalPages, setTotalPages] = useState(1);
+const [itemsPerPage, setItemsPerPage] = useState(6);
     
 
     const fetchcats = async () => {
@@ -271,40 +170,52 @@ export default function newss(pageProp) {
         }
     };
 
-    const fetchallnews = async()=>{
-
+    const fetchAllNews = async (page = 1) => {
         try {
-
-            const resp = await fetch("https://admin.instacertify.com/api/get-news", {
+            const resp = await fetch(`https://admin.instacertify.com/api/get-news?page=${page}&limit=${itemsPerPage}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 }
             });
-
+    
             if (resp.status === 200) {
                 const formateddata = await resp.json();
                 setalnews(formateddata?.news);
-
+                setTotalPages(Math.ceil(formateddata?.news?.length / itemsPerPage)); // Calculate total pages
             }
-
-
         } catch (error) {
-
-            console.error("There was an error fetching the categories:", error);
+            console.error("There was an error fetching the news:", error);
         }
-    }
+    };
+    
+    const fetchNewsByCat = async (name, page = 1) => {
+        try {
+            const resp = await fetch(`https://admin.instacertify.com/api/get-news-by-category/${name}?page=${page}&limit=${itemsPerPage}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (resp.status === 200) {
+                const formateddata = await resp.json();
+                setalnews(formateddata?.news);
+                setTotalPages(Math.ceil(formateddata?.news?.length / itemsPerPage)); // Update total pages for categories
+            }
+        } catch (error) {
+            console.error("There was an error fetching the news by category:", error);
+        }
+    };
 
 
     useEffect(() => {
-        fetchProduct();
-        fetchCategory();
          fetchcats();
-         fetchallnews();
+         fetchAllNews(currentPage);
     }, [])
 
-    console.log("alnews ",alnews);
 
+    console.log("allnew ",alnews)
 
     return (
         <div className="page_shopping_list sop">
@@ -313,6 +224,7 @@ export default function newss(pageProp) {
             <HeadSEO1 />
 
             <div id="event-update">
+
                 <section className="background-news">
                     <div className="container">
                         <div className="row ">
@@ -348,6 +260,7 @@ export default function newss(pageProp) {
                         </div>
                     </div>
                 </section>
+
                 <section className="cont-color-grey">
                     <div className="container col-three">
                         <div className="row">
@@ -361,8 +274,8 @@ export default function newss(pageProp) {
                                        
                                         {
                                             allNewsCat?.map((cat , index)=>(
-                                                <button key={index} type="button" className="btn btn-outline-secondary second-one rander">
-                                                {cat?.name}
+                                                <button onClick={()=>fetchNewsByCat(cat?.name)} key={index} type="button" className="btn btn-outline-secondary second-one rander">
+                                                {cat?.name} 
                                             </button>
                                             ))
                                         }
@@ -376,11 +289,11 @@ export default function newss(pageProp) {
                                             alnews?.map((news , index)=>(
                                                 <div   key={index} className="col-md-4 mb-4 singlwrap">
                                                 <div className="card eleven-card">
-                                                    <img
-                                                        src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${news?.images[0]}` }
-                                                        className="card-img-top"
-                                                        alt="Card image"
-                                                    />
+                                                    {
+                                                        news?.images ?
+                                                        <img src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${news?.images}`} className="card-img-top" alt="Card image"/>:
+                                                        <img src={news?.image} className="card-img-top" alt="Card image"/>
+                                                    }
                                                     <div className="card-body">
                                                         <h2 className="card-titless">
                                                            {news?.title}
@@ -399,76 +312,85 @@ export default function newss(pageProp) {
                                   
                                 </div>
 
-                                <div className="page-bottom-botton">
-                                    <div className="button-down-content">
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary dairy aeri"
-                                        >
-                                            <svg
-                                                width={10}
-                                                height={8}
-                                                viewBox="0 0 10 8"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M1.025 3.475L0.5 4L1.025 4.525L4.025 7.525C4.325 7.825 4.775 7.825 5.075 7.525C5.375 7.225 5.375 6.775 5.075 6.475L3.35 4.75H8.75C9.2 4.75 9.5 4.45 9.5 4C9.5 3.55 9.2 3.25 8.75 3.25H3.35L5.075 1.525C5.225 1.375 5.3 1.225 5.3 1C5.3 0.55 5 0.25 4.55 0.25C4.325 0.25 4.175 0.325 4.025 0.475L1.025 3.475Z"
-                                                    fill="#355684"
-                                                />
-                                            </svg>
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-dark shantara-hover"
-                                            style={{ width: 38 }}
-                                        >
-                                            1
-                                        </button>
-                                        <button type="button" className="btn btn-dark shantara-hover">
-                                            2
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary dairy aeri"
-                                        >
-                                            <svg
-                                                width={7}
-                                                height={2}
-                                                viewBox="0 0 7 2"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M1.17004 1.62963C1.00537 1.62963 0.864535 1.57113 0.747535 1.45413C0.634868 1.33713 0.578535 1.19413 0.578535 1.02513C0.578535 0.864799 0.634868 0.726132 0.747535 0.609132C0.864535 0.492132 1.00537 0.433632 1.17004 0.433632C1.33904 0.433632 1.48204 0.492132 1.59904 0.609132C1.71604 0.726132 1.77454 0.864799 1.77454 1.02513C1.77454 1.19413 1.71604 1.33713 1.59904 1.45413C1.48204 1.57113 1.33904 1.62963 1.17004 1.62963ZM3.67101 1.62963C3.50635 1.62963 3.36551 1.57113 3.24851 1.45413C3.13585 1.33713 3.07951 1.19413 3.07951 1.02513C3.07951 0.864799 3.13585 0.726132 3.24851 0.609132C3.36551 0.492132 3.50635 0.433632 3.67101 0.433632C3.84001 0.433632 3.98301 0.492132 4.10001 0.609132C4.21701 0.726132 4.27551 0.864799 4.27551 1.02513C4.27551 1.19413 4.21701 1.33713 4.10001 1.45413C3.98301 1.57113 3.84001 1.62963 3.67101 1.62963ZM6.17199 1.62963C6.00732 1.62963 5.86649 1.57113 5.74949 1.45413C5.63682 1.33713 5.58049 1.19413 5.58049 1.02513C5.58049 0.864799 5.63682 0.726132 5.74949 0.609132C5.86649 0.492132 6.00732 0.433632 6.17199 0.433632C6.34099 0.433632 6.48399 0.492132 6.60099 0.609132C6.71799 0.726132 6.77649 0.864799 6.77649 1.02513C6.77649 1.19413 6.71799 1.33713 6.60099 1.45413C6.48399 1.57113 6.34099 1.62963 6.17199 1.62963Z"
-                                                    fill="#355684"
-                                                />
-                                            </svg>
-                                        </button>
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-secondary dairy aeri"
-                                        >
-                                            <svg
-                                                width={10}
-                                                height={8}
-                                                viewBox="0 0 10 8"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M8.975 4.525L9.5 4L8.975 3.475L5.975 0.475C5.675 0.175 5.225 0.175 4.925 0.475C4.625 0.775 4.625 1.225 4.925 1.525L6.65 3.25H1.25C0.8 3.25 0.5 3.55 0.5 4C0.5 4.45 0.8 4.75 1.25 4.75H6.65L4.925 6.475C4.775 6.625 4.7 6.775 4.7 7C4.7 7.45 5 7.75 5.45 7.75C5.675 7.75 5.825 7.675 5.975 7.525L8.975 4.525Z"
-                                                    fill="#355684"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                <div className="page-bottom-button">
+    <div className="button-down-content">
+        {/* Previous Button */}
+        <button
+            type="button"
+            className="btn btn-outline-secondary"
+            disabled={currentPage === 1}
+            onClick={() => {
+                if (currentPage > 1) {
+                    setCurrentPage(prevPage => prevPage - 1);
+                    fetchAllNews(currentPage - 1); // Adjust for pagination
+                }
+            }}
+        >
+            <svg
+                width={10}
+                height={8}
+                viewBox="0 0 10 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                {/* Left Arrow Icon */}
+                <path
+                    d="M1.025 3.475L0.5 4L1.025 4.525L4.025 7.525C4.325 7.825 4.775 7.825 5.075 7.525C5.375 7.225 5.375 6.775 5.075 6.475L3.35 4.75H8.75C9.2 4.75 9.5 4.45 9.5 4C9.5 3.55 9.2 3.25 8.75 3.25H3.35L5.075 1.525C5.225 1.375 5.3 1.225 5.3 1C5.3 0.55 5 0.25 4.55 0.25C4.325 0.25 4.175 0.325 4.025 0.475L1.025 3.475Z"
+                    fill="#355684"
+                />
+            </svg>
+        </button>
+
+        {/* Page Numbers */}
+        {Array.from({ length: totalPages }, (_, index) => (
+            <button
+                key={index}
+                type="button"
+                className={`btn ${currentPage === index + 1 ? 'btn-dark' : 'btn-outline-secondary'}`}
+                onClick={() => {
+                    setCurrentPage(index + 1);
+                    fetchAllNews(index + 1); // Adjust for pagination
+                }}
+            >
+                {index + 1}
+            </button>
+        ))}
+
+        {/* Next Button */}
+        <button
+            type="button"
+            className="btn btn-outline-secondary"
+            disabled={currentPage === totalPages}
+            onClick={() => {
+                if (currentPage < totalPages) {
+                    setCurrentPage(prevPage => prevPage + 1);
+                    fetchAllNews(currentPage + 1); // Adjust for pagination
+                }
+            }}
+        >
+            <svg
+                width={10}
+                height={8}
+                viewBox="0 0 10 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                {/* Right Arrow Icon */}
+                <path
+                    d="M8.975 4.525L9.5 4L8.975 3.475L5.975 0.475C5.675 0.175 5.225 0.175 4.925 0.475C4.625 0.775 4.625 1.225 4.925 1.525L6.65 3.25H1.25C0.8 3.25 0.5 3.55 0.5 4C0.5 4.45 0.8 4.75 1.25 4.75H6.65L4.925 6.475C4.775 6.625 4.7 6.775 4.7 7C4.7 7.45 5 7.75 5.45 7.75C5.675 7.75 5.825 7.675 5.975 7.525L8.975 4.525Z"
+                    fill="#355684"
+                />
+            </svg>
+        </button>
+    </div>
+</div>
+
 
                             </div>
                         </div>
                     </div>
                 </section>
+
                 <section>
                     <div className="container-fluid  last">
                         <div className="row">
@@ -501,6 +423,7 @@ export default function newss(pageProp) {
                         </div>
                     </div>
                 </section>
+
             </div>
 
 
