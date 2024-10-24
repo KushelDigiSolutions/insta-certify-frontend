@@ -200,6 +200,7 @@ const [itemsPerPage, setItemsPerPage] = useState(6);
     
             if (resp.status === 200) {
                 const formateddata = await resp.json();
+                console.log(formateddata);
                 setalnews(formateddata?.news);
                 setTotalPages(Math.ceil(formateddata?.news?.length / itemsPerPage)); // Update total pages for categories
             }
