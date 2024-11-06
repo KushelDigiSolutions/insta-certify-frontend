@@ -19,7 +19,7 @@ export default function Logout(props) {
     }
     
     setTimeout(() => {
-      fetch(process.env.bc.store_url+"login.php?action=logout", {mode: 'no-cors',credentials: 'include'}).then(response => response.json()).then((json) => {
+      fetch("login.php?action=logout", {mode: 'no-cors',credentials: 'include'}).then(response => response.json()).then((json) => {
         signOut({redirect:false})
         window.location.href = "/";  
        }).catch((error) => { 

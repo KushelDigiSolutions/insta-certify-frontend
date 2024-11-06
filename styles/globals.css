@@ -3092,7 +3092,9 @@ border: 1px solid #141A24;
 .main-content-hoot {
   justify-content: center;
 }
-
+.login_loginForm__7N326 h1{
+  margin-top: 15px !important;
+}
 .apple button {
 
   border: 1px solid #535559 !important;
@@ -3271,10 +3273,8 @@ justify-content: center !important;
 }
 
 .shantara-hover:hover {
-
   background-color: #EC691F !important;
   border-color: #EC691F !important;
-
 }
 
 .dairy:hover {

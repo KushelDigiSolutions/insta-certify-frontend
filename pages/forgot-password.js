@@ -16,7 +16,7 @@ export default function ForgotPassword() {
 
     const submitForgot = (e) => {
         e.preventDefault();
-        if(email == ""){
+        if (email == "") {
             setMessage("Please enter the email address.")
             setMessageColor("red")
             setFormSubmit(false);
@@ -33,20 +33,20 @@ export default function ForgotPassword() {
         }
     }
 
-  return (
-    <div>
-      <Head>
-          <title>Forgot Password</title>
-          <meta name="description" content='Forgot Password'></meta>
-      </Head>
-      <div className="page_auth">
-            <div className={style.parent_registeration}>
-                <div className={style.left}>
-                    <div className={style.loginForm}>
+    return (
+        <div>
+            <Head>
+                <title>Forgot Password</title>
+                <meta name="description" content='Forgot Password'></meta>
+            </Head>
+            <div className="page_auth">
+                <div className={style.parent_registeration}>
+                    <div className={style.left}>
+                        <div className={style.loginForm}>
 
-                        { formSubmit == true ? (<span className='loadingOverlay' style={{display:'block'}} />) : "" }
+                            {formSubmit == true ? (<span className='loadingOverlay' style={{ display: 'block' }} />) : ""}
 
-                        {/* <Link href={'/'}>
+                            {/* <Link href={'/'}>
                             <Image
                             className={style.faf_logo}
                             src={'https://demoadmin.mwrweb.com/backend/admin/images/header/15504930851710902620.png&w=256&q=100'}
@@ -56,40 +56,42 @@ export default function ForgotPassword() {
                             alt={'Logo'} />
                         </Link> */}
 
-                        <h1>Forgot Password</h1>
-                        <p>
-                            Have to MadFish Solutions?
-                            <Link className={style.faf_anchor} href="/login"> <span>Log In</span> </Link>
+                            <a href="/"><img width="200" src='https://res.cloudinary.com/dgif730br/image/upload/v1730890917/Layer_1_2_zplfnk.png' /></a>
+
+                            <h1>Forgot Password</h1>
+                            <p>
+                                Have to Instacertify?
+                                <Link className={style.faf_anchor} href="/login"> <span>Log In</span> </Link>
+                            </p>
+
+                            {message != '' ? (<span style={{ color: ' ' + messageColor }} className={style.formMessge}>{message}</span>) : ""}
+
+                            <form onSubmit={submitForgot}>
+                                <p style={{ marginTop: '50px' }}>Enter your email and we'll send you a password reset link.</p>
+                                <div className={style.form_control}>
+                                    <input ref={emailRef} required type="email" placeholder="Email address" value={email} onChange={(e) => { setEmail(e.target.value); setMessage("") }} maxLength={'50'} />
+                                </div>
+                                <button className={style.faf_btn_primary}>Email reset link</button>
+                            </form>
+
+                        </div>
+                        <p className={style.footerCopyrgiht}>
+                            Copyright @{moment(new Date()).format('Y')} Instacertify.
                         </p>
-
-                        {message != '' ? (<span style={{color:' '+messageColor}} className={style.formMessge}>{message}</span>):""}
-
-                        <form onSubmit={submitForgot}>
-                            <p style={{marginTop:'50px'}}>Enter your email and we'll send you a password reset link.</p>
-                            <div className={style.form_control}>
-                                <input ref={emailRef} required type="email" placeholder="Email address" value={email} onChange={(e)=>{ setEmail(e.target.value);setMessage("") }}  maxLength={'50'} />
-                            </div>
-                            <button className={style.faf_btn_primary}>Email reset link</button>
-                        </form>
-
                     </div>
-                    <p className={style.footerCopyrgiht}>
-                        Copyright @{  moment(new Date()).format('Y') } MadFish Solutions.
-                    </p>
-                </div>
-                <div className={style.right}>
-                    <div style={{width: '100%', height: '100%', position: 'relative'}}>
-                    <Image
-                        className={style.faf_logo}
-                        src={'/images/create-account-back.png'}
-                        width="800"
-                        height="1024"
-                        quality={100}
-                        alt={'fairchild'} />
+                    <div className={style.right}>
+                        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+                            <Image
+                                className={style.faf_logo}
+                                src={'/images/create-account-back.png'}
+                                width="800"
+                                height="1024"
+                                quality={100}
+                                alt={'fairchild'} />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }

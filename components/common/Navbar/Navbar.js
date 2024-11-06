@@ -1679,8 +1679,8 @@ export default function Navbar(props) {
                     {
                       isDropdownOpen3 && (
                         <div className="sofar1">
-                          <Link href={"/create-account"}><span>Create an account</span></Link>
-                          <Link href={"/login"}><span>login</span></Link>
+                          <a href={"/create-account"}><span>Create an account</span></a>
+                          <a href={"/login"}><span>login</span></a>
                         </div>
                       )
                     }
@@ -1779,7 +1779,7 @@ export default function Navbar(props) {
                       )
                     }
                   </li>
-
+                  {/* <li><a href="/login">Login</a></li> */}
                 </ul>
               </div>
 

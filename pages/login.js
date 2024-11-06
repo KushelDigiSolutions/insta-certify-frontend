@@ -88,10 +88,12 @@ export default function Login() {
                             alt={'fairchild'} />
                         </Link> */}
 
+                      <a href="/"><img width="200"  src='https://res.cloudinary.com/dgif730br/image/upload/v1730890917/Layer_1_2_zplfnk.png'/></a>
+
                         <h1>Log in</h1>
 
                         <p>
-                            New to MadFish Solutions?
+                            New to Instacertify?
                             <Link className={style.faf_anchor} href="/create-account"> <span>Create on account</span> </Link>
                         </p>
                         
@@ -113,7 +115,7 @@ export default function Login() {
                         </form>
                     </div>
                     <p className={style.footerCopyrgiht}>
-                        Copyright @{  moment(new Date()).format('Y') } MadFish Solutions.
+                        Copyright @{  moment(new Date()).format('Y') } Instacertify.
                     </p>
                 </div>
                 <div className={style.right}>
