@@ -26,7 +26,7 @@ export default function Logout(props) {
         signOut({redirect:false})
         window.location.href = "/";
       });
-    }, 1500);
+    }, 10);
     //if(logoutRes?.status == true){}
   };
 

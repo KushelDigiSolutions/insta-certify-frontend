@@ -83,6 +83,7 @@ export default function CreateAccount() {
                 setConEmail('');
                 setPassword('');
                 setFormSubmit(false);
+                window.location.href="/login"
             }
 
         } catch (error) {

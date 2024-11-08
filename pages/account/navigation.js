@@ -7,8 +7,8 @@ export default function Navigation(props) {
     <>
       <div className={style.accountNavigation}>
           <ul>
-              <li className={props.isActive == "1" ? style.isActive :""}><Link href={'/account/order'}>Orders</Link></li>
-              <li className={props.isActive == "2" ? style.isActive :""}><Link href={'/account/address-book'}>Addresses</Link></li>
+              {/* <li className={props.isActive == "1" ? style.isActive :""}><Link href={'/account/order'}>Orders</Link></li>
+              <li className={props.isActive == "2" ? style.isActive :""}><Link href={'/account/address-book'}>Addresses</Link></li> */}
               <li className={props.isActive == "3" ? style.isActive :""}><Link href={'/account/account-details'}>Account Settings</Link></li>
           </ul>
       </div>

@@ -45,13 +45,13 @@ export default function Login() {
         else {
             setFormSubmit(true);
 
-            signIn("nextjs-mainlogin-form", {username: email, password:password, redirect:false, callbackUrl:'/account/order'}).then(async ({ ok, error }) => {
+            signIn("nextjs-mainlogin-form", {username: email, password:password, redirect:false, callbackUrl:'/account/account-details'}).then(async ({ ok, error }) => {
                 console.log('ok')
                 console.log(ok)
                 console.log(error)
                 if (ok) {
                     setMessage("User Login Successfully.");
-                    window.location.href = "/account/order"
+                    window.location.href = "/account/account-details"
                 } else {
                     signOut({redirect:false})
                     setMessage("Credentials do not match!")

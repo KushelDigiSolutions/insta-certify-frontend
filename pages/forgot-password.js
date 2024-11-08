@@ -95,3 +95,6 @@ export default function ForgotPassword() {
         </div>
     )
 }
+
+
+{/* <div class="g-recaptcha" data-sitekey="6Lf_-nYqAAAAAFQaoi8HhEofoJKPAW0gcSvHUAJ6"></div> */}

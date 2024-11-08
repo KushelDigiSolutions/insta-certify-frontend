@@ -233,7 +233,7 @@ export default function AccountDetails(props) {
                   <div className={style.formGroup}>
 
                       <div className={style.formControl}>
-                        <label>Company</label>
+                        <label>Company <small>*</small></label>
                         <input type="text" name="company" value={company} onChange={(e) => setCompany(e.target.value)} maxLength={'30'}  /> 
                       </div>
                       
