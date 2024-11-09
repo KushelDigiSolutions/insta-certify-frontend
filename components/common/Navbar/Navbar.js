@@ -1714,9 +1714,7 @@ export default function Navbar(props) {
                               </a> */}
 
 <Link href="/account/account-details">
-  <a>
     <span>Account Info</span>
-  </a>
 </Link>
 
 
