@@ -313,7 +313,7 @@ export default function Navbar(props) {
 
     useEffect(() => {
       if (isDropdownOpen) {
-        document.addEventListener("click", handleClickOutside);
+        document.ntListener("click", handleClickOutside);
       } else {
         document.removeEventListener("click", handleClickOutside);
       }
@@ -1713,7 +1713,7 @@ export default function Navbar(props) {
                               </a>
 
 
-                              <a href={"/logout"}><span>Logout</span></a>
+                              <a onClick={signOut} href={"/logout"}><span>Logout</span></a>
 
                             </>
                           )}

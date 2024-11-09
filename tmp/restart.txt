@@ -4,7 +4,7 @@ const nextConfig = {
     NEXTAUTH_SECRET:"farichildFun@09072023",
     NEXTAUTH_URL:"https://www.instacertify.com/",
     next:{
-      api_url:"https://www.instacertify.com/api/v1/"
+      api_url:"https://www.instacertify.com//api/v1/"
     },
     bc:{
       store_url : "https://fairchild-air-force-base-store-1.mybigcommerce.com/",
