@@ -2255,9 +2255,12 @@ export default function Navbar(props) {
                               </Link>
                             </li>
                             <li className={style.navUserLinkMobile}>
-                              <Link href={"/logout"}>
+                              {/* <Link href={"/logout"}>
                                 <GlobalLogout /> Logout
-                              </Link>
+                              </Link> */}
+                                <a onClick={() => signOut({ callbackUrl: "/logout" })}>
+  <span> <GlobalLogout/> Logout</span>
+</a>
                             </li>
                           </>
                         )}
