@@ -12,9 +12,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ShoppingProductSlider from "../components/common/shopping/product-slider";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
 import ShoppingCollections from "../components/common/shopping/collections";
-
 
 
 var settingsMorePhotos = {
@@ -133,8 +131,6 @@ export default function catalog(pageProp) {
   const [allProduct , setAllProduct] = useState([]);
   const [allCategory , setAllCategory] = useState([]);
 
-  console.log("alloroduct ",allProduct);
-
   // Function to toggle the dropdown visibility
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
@@ -235,21 +231,24 @@ export default function catalog(pageProp) {
     }
   };
 
-
   const addToCartApi = async()=>{
-      const resp = fetch('http://localhost:8081/instacertify-backend/public/api/cart/add', {
+    // http://localhost:8081/instacertify-backend/public/api/cart/add
+
+      const resp = fetch('https://admin.instacertify.com/instacertify-backend/public/api/cart/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             product_id: 1,
-            quantity: 2,
+            quantity: 1,
         }),
     })
     .then(response => response.json())
     .then(data => console.log('Success:', data))
     .catch(error => console.error('Error:', error));
+
+    console.log("vresp " , resp);
     
   }
 
@@ -354,7 +353,7 @@ export default function catalog(pageProp) {
                     </div>
                     <div className="add_cart_btn">
                       <button onClick={()=>{
-                        console.log("product ",product);
+                        // console.log("pricut ",product);
                         // addToCartApi();
                       }}>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">

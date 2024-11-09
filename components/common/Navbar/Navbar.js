@@ -2207,7 +2207,8 @@ export default function Navbar(props) {
                                           </Link>
                                         </li>
                                         <li>
-                                          <Link href={"/logout"}>Logout</Link>
+                                          {/* <Link href={"/logout"}>Logout</Link> */}
+                                          <a onClick={() => signOut({ callbackUrl: "/logout" })}> <span>Logout</span></a>
                                         </li>
                                       </>
                                     )}
