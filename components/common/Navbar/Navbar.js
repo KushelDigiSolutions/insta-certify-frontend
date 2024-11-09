@@ -16,6 +16,7 @@ import GlobalOrder from "../svg/global/order";
 import GlobalCart from "../svg/global/cart";
 import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
+
 export default function Navbar(props) {
   const [menuToggel, setMenuToggel] = useState(false);
   const [authPopup, setAuthPopup] = useState(false);
@@ -1708,12 +1709,22 @@ export default function Navbar(props) {
                               {/* <Link href={"/account/order"}><span>Orders</span></Link> */}
 
 
-                              <a href={"/account/account-details"}>
+                              {/* <a href={"/account/account-details"}>
                                 <span>Account info</span>
-                              </a>
+                              </a> */}
+
+<Link href="/account/account-details">
+  <a>
+    <span>Account Info</span>
+  </a>
+</Link>
 
 
-                              <a onClick={signOut} href={"/logout"}><span>Logout</span></a>
+                              {/* <a onClick={signOut} href={"/logout"}><span>Logout </span></a> */}
+                              <a onClick={() => signOut({ callbackUrl: "/logout" })}>
+  <span>Logout</span>
+</a>
+
 
                             </>
                           )}

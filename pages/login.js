@@ -8,6 +8,8 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 
+const baseurl = `https://admin.instacertify.com`
+
 export default function Login() {
 
     const [formSubmit, setFormSubmit] = useState(false);
@@ -64,6 +66,41 @@ export default function Login() {
     }
 
 
+    // const submitLogin = async (e) => {
+    //     e.preventDefault(); 
+
+    //     console.log("email ",email , "[asowrid" , password);
+    
+    //     const url = `${baseurl}/instacertify-backend/public/api/login`;
+    //     const payload = {
+    //         email: email, 
+    //         password: password 
+    //     };
+    
+    //     try {
+    //         const response = await fetch(url, {
+    //             method: "POST", 
+    //             headers: {
+    //                 "Content-Type": "application/json", 
+    //             },
+    //             body: JSON.stringify(payload), 
+    //         });
+
+    //         console.log("responsev " , response);
+    
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error! status: ${response.status}`);
+    //         }
+    
+    //         const data = await response.json(); 
+    //         console.log("Login successful:", data);
+    //     } catch (error) {
+    //         console.error("Error during login:", error);
+    //     }
+    // };
+    
+
+
   return (
     <div>
         <Head>
@@ -76,8 +113,7 @@ export default function Login() {
                     <div className={style.loginForm}>
 
                         { formSubmit == true ? (<span className='loadingOverlay' style={{display:'block'}} />) : "" }
-                        
-                        
+
                         {/* <Link href={'/'}>
                             <Image
                             className={style.faf_logo}

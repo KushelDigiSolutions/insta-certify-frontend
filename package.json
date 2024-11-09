@@ -2,6 +2,7 @@
   "name": "fairchildfun",
   "version": "1.0.0",
   "private": true,
+  "proxy": "https://admin.instacertify.com",
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",

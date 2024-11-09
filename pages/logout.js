@@ -6,6 +6,7 @@ import GlobalHeaderFooter from "../utils/common/global-header-footer";
 
 export default function Logout(props) {
   const { access_token } = props?.page_content?.session?.user;
+  
   const logout = async () => {
     if(typeof access_token != "undefined"){
       await fetch(`${process.env.server.api}logout`, {
