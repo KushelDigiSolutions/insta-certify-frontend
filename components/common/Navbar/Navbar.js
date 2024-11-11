@@ -363,12 +363,12 @@ export default function Navbar(props) {
 
     const [accessToken, setAccessToken] = useState(null);
     const [instaUser, setInstaUser] = useState(null);
-  
+
     useEffect(() => {
       if (typeof window !== "undefined") { // Ensures code only runs in the browser
         const storedAccessToken = localStorage.getItem("insta_Access");
         const storedInstaUser = localStorage.getItem("insta_User");
-  
+
         setAccessToken(storedAccessToken ? JSON.parse(storedAccessToken) : null);
         setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
       }
@@ -1730,19 +1730,19 @@ export default function Navbar(props) {
                                 <span>Account info</span>
                               </a> */}
 
-                              <Link  href="/account/account-details">
+                              <Link href="/account/account-details">
                                 <span>Account Info</span>
                               </Link>
 
 
                               {/* <a onClick={signOut} href={"/logout"}><span>Logout </span></a> */}
-                              <a onClick={() =>{
-                                  localStorage.removeItem("insta_Access")
-                                  localStorage.removeItem("insta_User")
-                                  setAccessToken(null)
-                                  setInstaUser(null)
-                                  alert("Successfuly logout")
-                                  
+                              <a onClick={() => {
+                                localStorage.removeItem("insta_Access")
+                                localStorage.removeItem("insta_User")
+                                setAccessToken(null)
+                                setInstaUser(null)
+                                alert("Successfuly logout")
+
                               }}>
                                 <span>Logout</span>
                               </a>
@@ -2200,12 +2200,12 @@ export default function Navbar(props) {
                                 </div>
                                 <div className={style.apRight}>
                                   <ul>
-                                    {userSession == null ||
-                                      typeof userSession == "undefined" ? (
+                                    {accessToken == null ||
+                                      typeof accessToken == "undefined" ? (
                                       <>
-                                        <li>
+                                        {/* <li>
                                           <Link href={"/cart"}>View Cart</Link>
-                                        </li>
+                                        </li> */}
                                         <li>
                                           <Link href={"/login"}>login</Link>
                                         </li>
@@ -2229,8 +2229,16 @@ export default function Navbar(props) {
                                           </Link>
                                         </li>
                                         <li>
-                                          {/* <Link href={"/logout"}>Logout</Link> */}
-                                          <a onClick={() => signOut({ callbackUrl: "https://www.instacertify.com/logout" })}> <span>Logout</span></a>
+                                          <a onClick={() => {
+                                            localStorage.removeItem("insta_Access")
+                                            localStorage.removeItem("insta_User")
+                                            setAccessToken(null)
+                                            setInstaUser(null)
+                                            alert("Successfuly logout")
+
+                                          }}>
+                                            <span>Logout</span>
+                                          </a>
                                         </li>
                                       </>
                                     )}
@@ -2243,7 +2251,7 @@ export default function Navbar(props) {
                           )}
                         </li>
 
-                        {userSession == null ? (
+                        {accessToken == null ? (
                           <>
                             <li className={style.navUserLinkMobile}>
                               <Link href={"/cart"}>
@@ -2282,8 +2290,15 @@ export default function Navbar(props) {
                               {/* <Link href={"/logout"}>
                                 <GlobalLogout /> Logout
                               </Link> */}
-                              <a onClick={() => signOut({ callbackUrl: "https://www.instacertify.com/logout" })}>
-                                <span> <GlobalLogout /> Logout</span>
+                              <a onClick={() =>{
+                                  localStorage.removeItem("insta_Access")
+                                  localStorage.removeItem("insta_User")
+                                  setAccessToken(null)
+                                  setInstaUser(null)
+                                  alert("Successfuly logout")
+                                  
+                              }}>
+                                <span>Logout</span>
                               </a>
                             </li>
                           </>

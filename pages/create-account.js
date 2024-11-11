@@ -180,6 +180,7 @@ export default function CreateAccount() {
         const payload = {
             name: name,
             email: email,
+            last_name:name,
             password: password,
         };
     
@@ -203,7 +204,7 @@ export default function CreateAccount() {
 
             if(data?.status){
                 alert("Successfuly register");
-                router.push("/");
+                router.push("/login");
             }
 
             if(!data?.status){
