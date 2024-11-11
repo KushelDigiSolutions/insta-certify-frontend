@@ -1719,7 +1719,7 @@ export default function Navbar(props) {
 
 
                               {/* <a onClick={signOut} href={"/logout"}><span>Logout </span></a> */}
-                              <a onClick={() => signOut({ callbackUrl: "/logout" })}>
+                              <a onClick={() => signOut({ callbackUrl: "https://www.instacertify.com/logout" })}>
   <span>Logout</span>
 </a>
 
@@ -2206,7 +2206,7 @@ export default function Navbar(props) {
                                         </li>
                                         <li>
                                           {/* <Link href={"/logout"}>Logout</Link> */}
-                                          <a onClick={() => signOut({ callbackUrl: "/logout" })}> <span>Logout</span></a>
+                                          <a onClick={() => signOut({ callbackUrl: "https://www.instacertify.com/logout" })}> <span>Logout</span></a>
                                         </li>
                                       </>
                                     )}
@@ -2258,7 +2258,7 @@ export default function Navbar(props) {
                               {/* <Link href={"/logout"}>
                                 <GlobalLogout /> Logout
                               </Link> */}
-                                <a onClick={() => signOut({ callbackUrl: "/logout" })}>
+                                <a onClick={() => signOut({ callbackUrl: "https://www.instacertify.com/logout" })}>
   <span> <GlobalLogout/> Logout</span>
 </a>
                             </li>

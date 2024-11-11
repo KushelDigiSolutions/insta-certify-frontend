@@ -22,10 +22,10 @@ export default function Logout(props) {
     setTimeout(() => {
       fetch("login.php?action=logout", {mode: 'no-cors',credentials: 'include'}).then(response => response.json()).then((json) => {
         signOut({redirect:false})
-        window.location.href = "/";  
+        window.location.href = "https://www.instacertify.com/";  
        }).catch((error) => { 
         signOut({redirect:false})
-        window.location.href = "/";
+        window.location.href = "https://www.instacertify.com/";
       });
     }, 10);
     //if(logoutRes?.status == true){}
