@@ -108,7 +108,6 @@ export default function AccountDetails(props) {
       getuserData();
   },[])
 
-  
   const updateData = async () => {
     setPageLoad(true)
     const formData = {
@@ -132,7 +131,6 @@ export default function AccountDetails(props) {
       }
       setPageLoad(false)
   }
-
 
   const handleSubmit = (e) => {
     e.preventDefault();

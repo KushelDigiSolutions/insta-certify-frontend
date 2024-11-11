@@ -189,7 +189,6 @@ export default function Navbar(props) {
 
 
   useEffect(() => {
-    console.log(userSession);
     if (userSession?.user.error === "invalid-version") {
       document.cookie =
         "access_token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
@@ -361,6 +360,19 @@ export default function Navbar(props) {
     }
 
     // console.log("navbarItems ", navbarItems);
+
+    const [accessToken, setAccessToken] = useState(null);
+    const [instaUser, setInstaUser] = useState(null);
+  
+    useEffect(() => {
+      if (typeof window !== "undefined") { // Ensures code only runs in the browser
+        const storedAccessToken = localStorage.getItem("insta_Access");
+        const storedInstaUser = localStorage.getItem("insta_User");
+  
+        setAccessToken(storedAccessToken ? JSON.parse(storedAccessToken) : null);
+        setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
+      }
+    }, []);
 
     return (
       <>
@@ -1688,8 +1700,8 @@ export default function Navbar(props) {
                           {/* <a href={"/create-account"}><span>Create an account</span></a>
                           <a href={"/login"}><span>login</span></a> */}
 
-                          {userSession == null ||
-                            typeof userSession == "undefined" ? (
+                          {accessToken === null ||
+                            typeof accessToken === "undefined" ? (
                             <>
 
                               {/* <Link href={"/cart"}>View Cart</Link> */}
@@ -1718,13 +1730,20 @@ export default function Navbar(props) {
                                 <span>Account info</span>
                               </a> */}
 
-                              <Link href="/account/account-details">
+                              <Link  href="/account/account-details">
                                 <span>Account Info</span>
                               </Link>
 
 
                               {/* <a onClick={signOut} href={"/logout"}><span>Logout </span></a> */}
-                              <a onClick={() => signOut({ callbackUrl: "https://www.instacertify.com/logout" })}>
+                              <a onClick={() =>{
+                                  localStorage.removeItem("insta_Access")
+                                  localStorage.removeItem("insta_User")
+                                  setAccessToken(null)
+                                  setInstaUser(null)
+                                  alert("Successfuly logout")
+                                  
+                              }}>
                                 <span>Logout</span>
                               </a>
 

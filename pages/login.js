@@ -68,8 +68,6 @@ export default function Login() {
 
     const submitLogin = async (e) => {
         e.preventDefault(); 
-
-        console.log("email ",email , "[asowrid" , password);
     
         const url = `https://admin.instacertify.com/api/login`;
         const payload = {
@@ -86,14 +84,18 @@ export default function Login() {
                 body: JSON.stringify(payload), 
             });
 
-            console.log("responsev " , response);
-    
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
     
             const data = await response.json(); 
             console.log("Login successful:", data);
+             if(data.status){
+                localStorage.setItem("insta_Access" , JSON.stringify(data?.data?.access_token));
+                localStorage.setItem("insta_User" , JSON.stringify(data?.data?.user_info));
+                    window.location.href = "/"
+}
         } catch (error) {
             console.error("Error during login:", error);
         }

@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
+
 const baseurl = `https://admin.instacertify.com`
 
 
@@ -163,9 +164,6 @@ export default function CreateAccount() {
     // }
 
 
-
-
-
     const submitAccount = async (e) => {
         e.preventDefault();
     
@@ -178,11 +176,9 @@ export default function CreateAccount() {
         }
     
 
-        // const url = "https://admin.instacertify.com/instacertify-backend/public/api/registration";
         const url = "https://admin.instacertify.com/api/registration"
         const payload = {
             name: name,
-            last_name: name,
             email: email,
             password: password,
         };
@@ -190,25 +186,39 @@ export default function CreateAccount() {
         try {
             const response = await fetch(url, {
                 method: "POST",
-                // mode:"no-cors" ,
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(payload),
             });
+
     
-            if (!response.ok) {
+            if (!response.status) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
     
             const data = await response.json();
-            console.log("Registration successful:", data);
+
+            console.log("Dataa " ,data);
+
+            if(data?.status){
+                alert("Successfuly register");
+                router.push("/");
+            }
+
+            if(!data?.status){
+                if(data?.message?.password){
+                    alert(data?.message?.password[0]);
+                }
+                else{
+                    alert(data?.message?.email[0]);
+                }
+            }
         } catch (error) {
             console.error("Error during registration:", error);
         }
     };
     
-
     
     return (
         <div>
