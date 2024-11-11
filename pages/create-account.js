@@ -98,113 +98,115 @@ export default function CreateAccount() {
 
     }
 
-    const submitAccount = (e) => {
-        e.preventDefault();
-
-        if (status == "authenticated") {
-            router.push("/");
-            return;
-        }
-
-        if (name == "") {
-            setMessage("Please enter name.")
-            setFormSubmit(false);
-            nameRef.current.focus();
-            return false;
-        }
-        else if (email == "") {
-            setMessage("Please enter the correct email address.")
-            setFormSubmit(false);
-            emailRef.current.focus();
-            return false;
-        }
-        else if (conEmail == "") {
-            setMessage("Please enter the correct confirm email address.")
-            setFormSubmit(false);
-            conEmailRef.current.focus();
-            return false;
-        }
-        else if (email != conEmail) {
-            setMessage("The confirmation email does not match the email address.")
-            setFormSubmit(false);
-            conEmailRef.current.focus();
-            return false;
-        }
-        else if (password == "") {
-            setMessage("Please enter the secure password.")
-            setFormSubmit(false);
-            passwordRef.current.focus();
-            return false;
-        }
-        else if (password.search(/[a-z]/i) < 0) {
-            setMessage("Your password must contain at least one letter.")
-            setFormSubmit(false);
-            passwordRef.current.focus();
-            return false;
-        }
-        else if (password.search(/[0-9]/) < 0) {
-            setMessage("Your password must contain at least one letter.")
-            setFormSubmit(false);
-            passwordRef.current.focus();
-            return false;
-        }
-        else if (password.length < 8) {
-            setMessage("The password must be at least 8 characters.")
-            setFormSubmit(false);
-            passwordRef.current.focus();
-            return false;
-        }
-        else {
-            setMessage("")
-            setFormSubmit(true);
-            createAccount();
-            return true;
-        }
-    }
-
-
-
-
-
-    // const submitAccount = async (e) => {
+    // const submitAccount = (e) => {
     //     e.preventDefault();
-    
-    //     if (email === "" || conEmail === "" || password === "" || name === "") {
-    //         return alert("Please Fill all fields");
+
+    //     if (status == "authenticated") {
+    //         router.push("/");
+    //         return;
     //     }
-    
-    //     if (email !== conEmail) {
-    //         return alert("Email Do not Match");
+
+    //     if (name == "") {
+    //         setMessage("Please enter name.")
+    //         setFormSubmit(false);
+    //         nameRef.current.focus();
+    //         return false;
     //     }
+    //     else if (email == "") {
+    //         setMessage("Please enter the correct email address.")
+    //         setFormSubmit(false);
+    //         emailRef.current.focus();
+    //         return false;
+    //     }
+    //     else if (conEmail == "") {
+    //         setMessage("Please enter the correct confirm email address.")
+    //         setFormSubmit(false);
+    //         conEmailRef.current.focus();
+    //         return false;
+    //     }
+    //     else if (email != conEmail) {
+    //         setMessage("The confirmation email does not match the email address.")
+    //         setFormSubmit(false);
+    //         conEmailRef.current.focus();
+    //         return false;
+    //     }
+    //     else if (password == "") {
+    //         setMessage("Please enter the secure password.")
+    //         setFormSubmit(false);
+    //         passwordRef.current.focus();
+    //         return false;
+    //     }
+    //     else if (password.search(/[a-z]/i) < 0) {
+    //         setMessage("Your password must contain at least one letter.")
+    //         setFormSubmit(false);
+    //         passwordRef.current.focus();
+    //         return false;
+    //     }
+    //     else if (password.search(/[0-9]/) < 0) {
+    //         setMessage("Your password must contain at least one letter.")
+    //         setFormSubmit(false);
+    //         passwordRef.current.focus();
+    //         return false;
+    //     }
+    //     else if (password.length < 8) {
+    //         setMessage("The password must be at least 8 characters.")
+    //         setFormSubmit(false);
+    //         passwordRef.current.focus();
+    //         return false;
+    //     }
+    //     else {
+    //         setMessage("")
+    //         setFormSubmit(true);
+    //         createAccount();
+    //         return true;
+    //     }
+    // }
+
+
+
+
+
+    const submitAccount = async (e) => {
+        e.preventDefault();
+    
+        if (email === "" || conEmail === "" || password === "" || name === "") {
+            return alert("Please Fill all fields");
+        }
+    
+        if (email !== conEmail) {
+            return alert("Email Do not Match");
+        }
     
 
-    //     const url = "https://admin.instacertify.com/instacertify-backend/public/api/registration";
-    //     const payload = {
-    //         name: name,
-    //         email: email,
-    //         password: password,
-    //     };
+        // const url = "https://admin.instacertify.com/instacertify-backend/public/api/registration";
+        const url = "https://admin.instacertify.com/api/registration"
+        const payload = {
+            name: name,
+            last_name: name,
+            email: email,
+            password: password,
+        };
     
-    //     try {
-    //         const response = await fetch(url, {
-    //             method: "POST",
-    //             mode:"no-cors" ,
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(payload),
-    //         });
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                // mode:"no-cors" ,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
     
-    //         if (!response.ok) {
-    //             throw new Error(`HTTP error! status: ${response.status}`);
-    //         }
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
     
-    //         const data = await response.json();
-    //         console.log("Registration successful:", data);
-    //     } catch (error) {
-    //         console.error("Error during registration:", error);
-    //     }
-    // };
+            const data = await response.json();
+            console.log("Registration successful:", data);
+        } catch (error) {
+            console.error("Error during registration:", error);
+        }
+    };
     
 
     

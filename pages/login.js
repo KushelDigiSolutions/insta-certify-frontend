@@ -26,78 +26,78 @@ export default function Login() {
         return;
     }
 
-    const submitLogin = async (e) => {
-        e.preventDefault();
-        if(status == "authenticated"){
-            router.push("/");
-            return;
-        }
-        if(email == ""){
-            setMessage("Please enter the correct email address.")
-            setFormSubmit(false);
-            emailRef.current.focus();
-            return false;
-        }
-        else if(password == ""){
-            setMessage("Please enter the password.")
-            setFormSubmit(false);
-            passwordRef.current.focus();
-            return false;
-        }
-        else {
-            setFormSubmit(true);
-
-            signIn("nextjs-mainlogin-form", {username: email, password:password, redirect:false, callbackUrl:'/'}).then(async ({ ok, error }) => {
-                console.log('ok')
-                console.log(ok)
-                console.log(error)
-                if (ok) {
-                    setMessage("User Login Successfully.");
-                    window.location.href = "/"
-                } else {
-                    signOut({redirect:false})
-                    setMessage("Credentials do not match!")
-                    setFormSubmit(false);
-                }
-            })
-
-            return true;
-        }
-    }
-
-
     // const submitLogin = async (e) => {
-    //     e.preventDefault(); 
-
-    //     console.log("email ",email , "[asowrid" , password);
-    
-    //     const url = `${baseurl}/instacertify-backend/public/api/login`;
-    //     const payload = {
-    //         email: email, 
-    //         password: password 
-    //     };
-    
-    //     try {
-    //         const response = await fetch(url, {
-    //             method: "POST", 
-    //             headers: {
-    //                 "Content-Type": "application/json", 
-    //             },
-    //             body: JSON.stringify(payload), 
-    //         });
-
-    //         console.log("responsev " , response);
-    
-    //         if (!response.ok) {
-    //             throw new Error(`HTTP error! status: ${response.status}`);
-    //         }
-    
-    //         const data = await response.json(); 
-    //         console.log("Login successful:", data);
-    //     } catch (error) {
-    //         console.error("Error during login:", error);
+    //     e.preventDefault();
+    //     if(status == "authenticated"){
+    //         router.push("/");
+    //         return;
     //     }
-    // };
+    //     if(email == ""){
+    //         setMessage("Please enter the correct email address.")
+    //         setFormSubmit(false);
+    //         emailRef.current.focus();
+    //         return false;
+    //     }
+    //     else if(password == ""){
+    //         setMessage("Please enter the password.")
+    //         setFormSubmit(false);
+    //         passwordRef.current.focus();
+    //         return false;
+    //     }
+    //     else {
+    //         setFormSubmit(true);
+
+    //         signIn("nextjs-mainlogin-form", {username: email, password:password, redirect:false, callbackUrl:'/'}).then(async ({ ok, error }) => {
+    //             console.log('ok')
+    //             console.log(ok)
+    //             console.log(error)
+    //             if (ok) {
+    //                 setMessage("User Login Successfully.");
+    //                 window.location.href = "/"
+    //             } else {
+    //                 signOut({redirect:false})
+    //                 setMessage("Credentials do not match!")
+    //                 setFormSubmit(false);
+    //             }
+    //         })
+
+    //         return true;
+    //     }
+    // }
+
+
+    const submitLogin = async (e) => {
+        e.preventDefault(); 
+
+        console.log("email ",email , "[asowrid" , password);
+    
+        const url = `https://admin.instacertify.com/api/login`;
+        const payload = {
+            email: email, 
+            password: password 
+        };
+    
+        try {
+            const response = await fetch(url, {
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json", 
+                },
+                body: JSON.stringify(payload), 
+            });
+
+            console.log("responsev " , response);
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const data = await response.json(); 
+            console.log("Login successful:", data);
+        } catch (error) {
+            console.error("Error during login:", error);
+        }
+    };
     
 
 
