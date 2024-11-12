@@ -179,6 +179,7 @@ export default function AccountDetails(props) {
   return (
     <div className={style.pageAccountBG}>
       <div className={style.pageAccount}>
+      
         <Head>
           <title>Account Details</title>
           <meta name="description" content="We're the 92d Force Support Squadron, at Fairchild Air Force Base, delivering exceptional experiences to REFUEL Airmen, their families and the Fairchild community. Join the FUN!"

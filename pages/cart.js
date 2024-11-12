@@ -58,10 +58,35 @@ export default function Cart() {
     }
   };
   
-
   useEffect(function () {
     getCartDetails();
   }, []);
+
+  //   useEffect(() => {
+  //     getCarts(); 
+  // }, []);
+
+
+  // const getCarts = async () => {
+
+  //   // https://admin.instacertify.com/instacertify-backend/public/api/cart
+  //     try {
+  //         const response = await fetch("https://admin.instacertify.com/api/cart", {
+  //             method: "GET",
+  //             headers: {
+  //                 "Content-Type": "application/json",
+  //             }
+  //         });
+
+  //         console.log("reponse" , response);
+
+  //         if (response.ok) {
+  //             const data = await response.json();
+             
+  //         } 
+  //     } catch (error) {
+  //     } 
+  // };
 
   
   return (
