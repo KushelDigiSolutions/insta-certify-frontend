@@ -339,7 +339,7 @@ export default function catalog(pageProp) {
                   <div key={index} className="catalog_box">
                   <img className="catalog_img" src={product?.image} alt="tensile" />
                   <div className="catalog_content">
-                  <Link  style={{textDecoration:"none"}}  href={`/catalogdetail?id=${product?.slug}`}><span className="tensile_content">{product?.name} </span></Link>
+                  <Link  style={{textDecoration:"none"}}  href={`/catalogdetail?id=${product?.slug}`}><span className="tensile_content">{(product?.name).slice(0,20)}...</span></Link>
                     <div className="tensile_price">
                       <span className="real">₹{product?.sale_price}</span>
                       <span className="fake">₹{product?.price}</span>
