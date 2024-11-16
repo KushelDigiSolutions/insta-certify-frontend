@@ -265,7 +265,7 @@ export default function catalog(pageProp) {
    const [currentPage, setCurrentPage] = useState(1);
 
    // Number of items per page
-   const itemsPerPage = 4;
+   const itemsPerPage = 6;
  
    // Calculate the total pages
    const totalPages = Math.ceil(allProduct.length / itemsPerPage);
