@@ -261,6 +261,31 @@ export default function catalog(pageProp) {
 
   const [showdropdown , setshowdropdown ] = useState(false);
 
+   // State to manage the current page
+   const [currentPage, setCurrentPage] = useState(1);
+
+   // Number of items per page
+   const itemsPerPage = 4;
+ 
+   // Calculate the total pages
+   const totalPages = Math.ceil(allProduct.length / itemsPerPage);
+ 
+   // Get items for the current page
+   const currentItems = allProduct.slice(
+     (currentPage - 1) * itemsPerPage,
+     currentPage * itemsPerPage
+   );
+ 
+   // Change page handler
+   const changePage = (page) => {
+     if (page >= 1 && page <= totalPages) {
+       setCurrentPage(page);
+     }
+   };
+ 
+
+
+
 
   return (
     <div className="page_shopping_list sop">
@@ -332,72 +357,94 @@ export default function catalog(pageProp) {
               </div>
             </div>
           
-          <div className="catalog_cards">
-            <div className="catalog_card">
-              {
-                allProduct?.map((product , index)=>(
-                  <div key={index} className="catalog_box">
-                  <img className="catalog_img" src={product?.image} alt="tensile" />
-                  <div className="catalog_content">
-                  <Link  style={{textDecoration:"none"}}  href={`/catalogdetail?id=${product?.slug}`}><span className="tensile_content">{(product?.name).slice(0,20)}...</span></Link>
-                    <div className="tensile_price">
-                      <span className="real">₹{product?.sale_price}</span>
-                      <span className="fake">₹{product?.price}</span>
-                    </div>
-                    <div className="reviews">
-                      <img src="./images/star.svg" alt="" />
-                      <img src="./images/star.svg" alt="" />
-                      <img src="./images/star.svg" alt="" />
-                      <img src="./images/star.svg" alt="" />
-                      <img src="./images/unstar.svg" alt="" />
-                    </div>
-                    <div className="add_cart_btn">
-                      <button onClick={()=>{
-                        // console.log("pricut ",product);
-                        // addToCartApi();
-                      }}>
-                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z" fill="white" />
-                        </svg>
-                        <span>Add to Cart</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                ))
-              }
-          
-          
-            </div>
-            <div className="pagination">
-              <div className="first_peg">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.025 3.475L0.5 4L1.025 4.525L4.025 7.525C4.325 7.825 4.775 7.825 5.075 7.525C5.375 7.225 5.375 6.775 5.075 6.475L3.35 4.75H8.75C9.2 4.75 9.5 4.45 9.5 4C9.5 3.55 9.2 3.25 8.75 3.25H3.35L5.075 1.525C5.225 1.375 5.3 1.225 5.3 1C5.3 0.55 5 0.25 4.55 0.25C4.325 0.25 4.175 0.325 4.025 0.475L1.025 3.475Z" fill="#355684" />
-                </svg>
+            <div className="catalog_cards">
+      <div className="catalog_card">
+        {currentItems.map((product, index) => (
+          <div key={index} className="catalog_box">
+            <img
+              className="catalog_img"
+              src={product?.image}
+              alt={product?.name}
+            />
+            <div className="catalog_content">
+              <Link
+                style={{ textDecoration: 'none' }}
+                href={`/catalogdetail?id=${product?.slug}`}
+              >
+                <span className="tensile_content">
+                  {product?.name?.slice(0, 20)}...
+                </span>
+              </Link>
+              <div className="tensile_price">
+                <span className="real">₹{product?.sale_price}</span>
+                <span className="fake">₹{product?.price}</span>
               </div>
-              <div className="second_peg">
-                <span>1</span>
+              <div className="reviews">
+                <img src="./images/star.svg" alt="star" />
+                <img src="./images/star.svg" alt="star" />
+                <img src="./images/star.svg" alt="star" />
+                <img src="./images/star.svg" alt="star" />
+                <img src="./images/unstar.svg" alt="unstar" />
               </div>
-              <div className="third_peg">
-                <span>2</span>
-              </div>
-              <div className="fourth_peg">
-                <span>...</span>
-              </div>
-              <div className="fifth_peg">
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.975 4.525L9.5 4L8.975 3.475L5.975 0.475C5.675 0.175 5.225 0.175 4.925 0.475C4.625 0.775 4.625 1.225 4.925 1.525L6.65 3.25H1.25C0.8 3.25 0.5 3.55 0.5 4C0.5 4.45 0.8 4.75 1.25 4.75H6.65L4.925 6.475C4.775 6.625 4.7 6.775 4.7 7C4.7 7.45 5 7.75 5.45 7.75C5.675 7.75 5.825 7.675 5.975 7.525L8.975 4.525Z" fill="white" />
-                </svg>
-
+              <div className="add_cart_btn">
+                <button
+                  onClick={() => {
+                    // addToCartApi logic here
+                  }}
+                >
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 13 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.33333 2.71512H13L11.5556 8.92688H2.88889V2.02492H0V0.644531H4.33333V2.71512ZM4.33333 4.09551V7.54649H10.4L11.1944 4.09551H4.33333ZM2.88889 12.3779V10.9975H5.56111V12.3779H2.88889ZM7.94444 12.3779V10.9975H10.6167V12.3779H7.94444Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <span>Add to Cart</span>
+                </button>
               </div>
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="pagination">
+
+        <div
+          className={`first_peg ${currentPage === 1 ? 'disabled' : 'cursor-pointer'}`}
+          onClick={() => changePage(currentPage - 1)}
+        >
+          <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.025 3.475L0.5 4L1.025 4.525L4.025 7.525C4.325 7.825 4.775 7.825 5.075 7.525C5.375 7.225 5.375 6.775 5.075 6.475L3.35 4.75H8.75C9.2 4.75 9.5 4.45 9.5 4C9.5 3.55 9.2 3.25 8.75 3.25H3.35L5.075 1.525C5.225 1.375 5.3 1.225 5.3 1C5.3 0.55 5 0.25 4.55 0.25C4.325 0.25 4.175 0.325 4.025 0.475L1.025 3.475Z" fill="#355684" />
+</svg>
+        </div>
+
+          <div className="curpagebox">{currentPage}</div>
+
+        <div
+          className={`fifth_peg ${currentPage === totalPages ? 'disabled' : 'cursor-pointer'}`}
+          onClick={() => changePage(currentPage + 1)}
+        >
+          <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.975 4.525L9.5 4L8.975 3.475L5.975 0.475C5.675 0.175 5.225 0.175 4.925 0.475C4.625 0.775 4.625 1.225 4.925 1.525L6.65 3.25H1.25C0.8 3.25 0.5 3.55 0.5 4C0.5 4.45 0.8 4.75 1.25 4.75H6.65L4.925 6.475C4.775 6.625 4.7 6.775 4.7 7C4.7 7.45 5 7.75 5.45 7.75C5.675 7.75 5.825 7.675 5.975 7.525L8.975 4.525Z" fill="white" />
+                </svg>
+        </div>
+
+      </div>
+    </div>
         </div>
 
         </div>
 
 
       </div>
+
+    
 
       <div className="request_callback">
         <div className="container">
