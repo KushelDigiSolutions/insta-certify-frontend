@@ -6,75 +6,81 @@ export default function Account(props) {
    
     const [pageLoad, setPageLoad] = useState(false);
     const [message, setMessage] = useState('');
-    const [firstName, setFirstName] = useState('');
+    const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
 
+//    const auth =  localStorage?.getItem("insta_Access" , JSON.stringify(data?.data?.access_token));
 
-    // const submitHandler = async (e) => {
-    //     e.preventDefault(); 
 
-    //     setPageLoad(true); 
+    const submitHandler = async (e) => {
+        e.preventDefault(); 
 
-    //     try {
-    //         const response = await fetch("https://admin.instacertify.com/instacertify-backend/public/api/profile-update", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             },
-    //             body: JSON.stringify({
-    //                 first_name: firstName,
-    //                 last_name: lastName,
-    //                 email: email
+        setPageLoad(true); 
+
+        try {
+            const response = await fetch("https://admin.instacertify.com/api/profile-update", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))} `
+                },
+                body: JSON.stringify({
+                    name: name,
+                    last_name: lastName,
+                    email: email
                  
-    //             })
-    //         });
+                })
+            });
 
-    //         const data = await response.json();
+            const data = await response.json();
+
+            console.log(data);
             
-    //         if (response.ok) {
-    //             setMessage("Profile updated successfully!");
-    //         } else {
-    //             setMessage(data.error || "Failed to update profile");
-    //         }
-    //     } catch (error) {
-    //         setMessage("An error occurred while updating profile");
-    //     } finally {
-    //         setPageLoad(false); 
-    //     }
-    // };
+            if (response.ok) {
+                setMessage("Profile updated successfully!");
+            } else {
+                setMessage(data.error || "Failed to update profile");
+            }
+        } catch (error) {
+            setMessage("An error occurred while updating profile");
+        } finally {
+            setPageLoad(false); 
+        }
+    };
 
-    //   useEffect(() => {
-    //     const fetchUserProfile = async () => {
-    //         setPageLoad(true); 
+      useEffect(() => {
+        const fetchUserProfile = async () => {
+            setPageLoad(true); 
 
-    //         try {
-    //             const response = await fetch("https://admin.instacertify.com/api/user-profile", {
-    //                 method: "GET",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     // Add authorization header if needed
-    //                     // "Authorization": `Bearer ${yourAuthToken}`
-    //                 }
-    //             });
+            try {
+                const response = await fetch("https://admin.instacertify.com/api/user-profile", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        // Add authorization header if needed
+                        "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+                        
+                    }
+                });
 
-    //             console.log("response" , response);
+                console.log("response" , response);
 
-    //             if (response.ok) {
-    //                 const data = await response.json();
-    //                 setFirstName(data.first_name);
-    //                 setLastName(data.last_name);
-    //                 setEmailAddress(data.email);
-    //             } 
-    //         } catch (error) {
-    //             setMessage("An error occurred while fetching profile data");
-    //         } finally {
-    //             setPageLoad(false); // Hide loading overlay
-    //         }
-    //     };
+                if (response.ok) {
+                    const data = await response.json();
+                    setName(data.name);
+                    setLastName(data.last_name);
+                    setEmailAddress(data.email);
+                } 
+            } catch (error) {
+                setMessage("An error occurred while fetching profile data");
+            } finally {
+                setPageLoad(false); // Hide loading overlay
+            }
+        };
 
-    //     fetchUserProfile();
-    // }, []); 
+        fetchUserProfile();
+    }, []); 
 
     return (
         <div className={style.pageAccountBG}>
@@ -92,13 +98,13 @@ export default function Account(props) {
                     <div className={style.accountContainer}>
                         <div className={style.formBuilder}>
                             <form method='POST' encType="multipart/form-data"
-                            //  onSubmit={submitHandler}
+                             onSubmit={submitHandler}
                              >
                                 {/* Form fields go here, e.g., firstName, lastName, etc. */}
                                 <div className={style.formGroup}>
                                     <div className={style.formControl}>
                                         <label>First Name <small>*</small></label>
-                                        <input type="text" name="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} maxLength="30" />
+                                        <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} maxLength="30" />
                                     </div>
                                     <div className={style.formControl}>
                                         <label>Last Name <small>*</small></label>

@@ -94,7 +94,8 @@ export default function Login() {
              if(data.status){
                 localStorage.setItem("insta_Access" , JSON.stringify(data?.data?.access_token));
                 localStorage.setItem("insta_User" , JSON.stringify(data?.data?.user_info));
-                    window.location.href = "/"
+                    // window.location.href = "/"
+                    router.push("/");
 }
         } catch (error) {
             console.error("Error during login:", error);

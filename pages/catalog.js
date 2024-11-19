@@ -234,7 +234,7 @@ export default function catalog(pageProp) {
   const addToCartApi = async()=>{
     // http://localhost:8081/instacertify-backend/public/api/cart/add
 
-      const resp = fetch('https://admin.instacertify.com/instacertify-backend/public/api/cart/add', {
+      const resp = fetch('https://admin.instacertify.com/api/cart/add', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

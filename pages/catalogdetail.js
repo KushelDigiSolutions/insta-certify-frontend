@@ -293,7 +293,7 @@ export default function catalog(pageProp) {
                       productdetail?.images?.map((image, index) => (
                         <SwiperSlide key={index}>
                           <div className="tes1wrap">
-                            <img src={image} alt={`product-image-${index}`} />
+                            <img className="suuu" src={image} alt={`product-image-${index}`} />
                           </div>
                         </SwiperSlide>
                       ))

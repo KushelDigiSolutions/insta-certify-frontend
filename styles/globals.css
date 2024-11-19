@@ -706,7 +706,12 @@ button {
   width: 100%;
   border-bottom: 1px solid #141A2461;
 }
-
+.suuu{
+  max-width: 600px;
+  width: 100%;
+  height: 445px;
+  object-fit: contain;
+}
 .MdKeyboardArrowDownfgf {
   color: white;
   font-size: 20px;
@@ -1502,7 +1507,9 @@ color:#FFFFFF;
     max-width: 100%;
 
   }
-
+  .moreImages{
+    display: none !important;
+  }
 }
 
 @media (max-width:400px) {
@@ -1511,11 +1518,14 @@ color:#FFFFFF;
     flex-direction: column;
     gap: 10px;
   }
-
+.swiper-button-prev, .swiper-button-next{
+  top: 58% !important;
+}
   .moreImages {
     display: flex;
     overflow-x: scroll;
     gap: 5px;
+    display: none;
   }
 
   /* For webkit browsers (Chrome, Safari) */
@@ -1555,6 +1565,8 @@ color:#FFFFFF;
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-top: 20px;
+  margin-left: 30px;
 }
 
 .appseleft {
@@ -1604,7 +1616,7 @@ color:#FFFFFF;
   color: #444444;
   font-weight: 400;
   font-size: 14px;
-  width: 55em;
+  /* width: 55em; */
   max-width: 100%;
 }
 
