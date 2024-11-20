@@ -33,8 +33,8 @@ export default function newss(pageProp) {
     const product = pageProp.page_content.product;
     const customFields = product?.customFields;
 
-    const fetchProduct1 = async() =>{
-       console.log("hi");
+    const fetchProduct1 = async () => {
+        console.log("hi");
     }
 
 
@@ -136,16 +136,16 @@ export default function newss(pageProp) {
     //   });
 
 
-   
 
-  
 
-    const [allNewsCat , setAllNewsCat] =useState([]);
-    const [alnews , setalnews] = useState([]);
+
+
+    const [allNewsCat, setAllNewsCat] = useState([]);
+    const [alnews, setalnews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-const [totalPages, setTotalPages] = useState(1);
-const [itemsPerPage, setItemsPerPage] = useState(6);
-    
+    const [totalPages, setTotalPages] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(6);
+
 
     const fetchcats = async () => {
         try {
@@ -178,7 +178,7 @@ const [itemsPerPage, setItemsPerPage] = useState(6);
                     'Content-Type': 'application/json',
                 }
             });
-    
+
             if (resp.status === 200) {
                 const formateddata = await resp.json();
                 setalnews(formateddata?.news);
@@ -188,16 +188,16 @@ const [itemsPerPage, setItemsPerPage] = useState(6);
             console.error("There was an error fetching the news:", error);
         }
     };
-    
-    const fetchNewsByCat = async (name, page = 1) => {
+
+    const fetchNewsByCat = async (slug, page = 1) => {
         try {
-            const resp = await fetch(`https://admin.instacertify.com/api/get-news-by-category/${name}?page=${page}&limit=${itemsPerPage}`, {
+            const resp = await fetch(`https://admin.instacertify.com/api/get-news-by-category/${slug}?page=${page}&limit=${itemsPerPage}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 }
             });
-    
+
             if (resp.status === 200) {
                 const formateddata = await resp.json();
                 console.log(formateddata);
@@ -211,12 +211,12 @@ const [itemsPerPage, setItemsPerPage] = useState(6);
 
 
     useEffect(() => {
-         fetchcats();
-         fetchAllNews(currentPage);
+        fetchcats();
+        fetchAllNews(currentPage);
     }, [])
 
 
-    console.log("allnew ",alnews)
+    console.log("allnew ", alnews)
 
     return (
         <div className="page_shopping_list sop">
@@ -272,12 +272,12 @@ const [itemsPerPage, setItemsPerPage] = useState(6);
                                         role="group"
                                         aria-label="Default button group"
                                     >
-                                       
+
                                         {
-                                            allNewsCat?.map((cat , index)=>(
-                                                <button onClick={()=>fetchNewsByCat(cat?.name)} key={index} type="button" className="btn btn-outline-secondary second-one rander">
-                                                {cat?.name} 
-                                            </button>
+                                            allNewsCat?.map((cat, index) => (
+                                                <button onClick={() => fetchNewsByCat(cat?.slug)} key={index} type="button" className="btn btn-outline-secondary second-one rander">
+                                                    {cat?.name}
+                                                </button>
                                             ))
                                         }
                                     </div>
@@ -287,104 +287,104 @@ const [itemsPerPage, setItemsPerPage] = useState(6);
                                     <div className="row eleven-flex-wrap">
 
                                         {
-                                            alnews?.map((news , index)=>(
-                                                <div   key={index} className="col-md-4 mb-4 singlwrap">
-                                                <div className="card eleven-card">
-                                                    {
-                                                        news?.images ?
-                                                        <img src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${news?.images}`} className="card-img-top" alt="Card image"/>:
-                                                        <img src={news?.image} className="card-img-top" alt="Card image"/>
-                                                    }
-                                                    <div className="card-body">
-                                                        <h2 className="card-titless">
-                                                           {news?.title}
-                                                        </h2>
-                                                        <a href={`/newssdetail?id=${news?.slug}`} className="read-more">
-                                                            READ MORE
-                                                        </a>
+                                            alnews?.map((news, index) => (
+                                                <div key={index} className="col-md-4 mb-4 singlwrap">
+                                                    <div className="card eleven-card">
+                                                        {
+                                                            news?.images ?
+                                                                <img src={`https://admin.instacertify.com/backend/admin/images/news_management/news/${news?.images}`} className="card-img-top" alt="Card image" /> :
+                                                                <img src={news?.image} className="card-img-top" alt="Card image" />
+                                                        }
+                                                        <div className="card-body">
+                                                            <h2 className="card-titless">
+                                                                {news?.title}
+                                                            </h2>
+                                                            <a href={`/newssdetail?id=${news?.slug}`} className="read-more">
+                                                                READ MORE
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                </div>                                            
                                             ))
                                         }
-                                       
-                                      
+
+
                                     </div>
-                                  
+
                                 </div>
 
                                 <div className="page-bottom-button">
-    <div className="button-down-content">
-        {/* Previous Button */}
-        <button
-            type="button"
-            className="btn btn-outline-secondary"
-            disabled={currentPage === 1}
-            onClick={() => {
-                if (currentPage > 1) {
-                    setCurrentPage(prevPage => prevPage - 1);
-                    fetchAllNews(currentPage - 1); // Adjust for pagination
-                }
-            }}
-        >
-            <svg
-                width={10}
-                height={8}
-                viewBox="0 0 10 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                {/* Left Arrow Icon */}
-                <path
-                    d="M1.025 3.475L0.5 4L1.025 4.525L4.025 7.525C4.325 7.825 4.775 7.825 5.075 7.525C5.375 7.225 5.375 6.775 5.075 6.475L3.35 4.75H8.75C9.2 4.75 9.5 4.45 9.5 4C9.5 3.55 9.2 3.25 8.75 3.25H3.35L5.075 1.525C5.225 1.375 5.3 1.225 5.3 1C5.3 0.55 5 0.25 4.55 0.25C4.325 0.25 4.175 0.325 4.025 0.475L1.025 3.475Z"
-                    fill="#355684"
-                />
-            </svg>
-        </button>
+                                    <div className="button-down-content">
+                                        {/* Previous Button */}
+                                        <button
+                                            type="button"
+                                            className="btn btn-outline-secondary"
+                                            disabled={currentPage === 1}
+                                            onClick={() => {
+                                                if (currentPage > 1) {
+                                                    setCurrentPage(prevPage => prevPage - 1);
+                                                    fetchAllNews(currentPage - 1); // Adjust for pagination
+                                                }
+                                            }}
+                                        >
+                                            <svg
+                                                width={10}
+                                                height={8}
+                                                viewBox="0 0 10 8"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                {/* Left Arrow Icon */}
+                                                <path
+                                                    d="M1.025 3.475L0.5 4L1.025 4.525L4.025 7.525C4.325 7.825 4.775 7.825 5.075 7.525C5.375 7.225 5.375 6.775 5.075 6.475L3.35 4.75H8.75C9.2 4.75 9.5 4.45 9.5 4C9.5 3.55 9.2 3.25 8.75 3.25H3.35L5.075 1.525C5.225 1.375 5.3 1.225 5.3 1C5.3 0.55 5 0.25 4.55 0.25C4.325 0.25 4.175 0.325 4.025 0.475L1.025 3.475Z"
+                                                    fill="#355684"
+                                                />
+                                            </svg>
+                                        </button>
 
-        {/* Page Numbers */}
-        {Array.from({ length: totalPages }, (_, index) => (
-            <button
-                key={index}
-                type="button"
-                className={`btn ${currentPage === index + 1 ? 'btn-dark' : 'btn-outline-secondary'}`}
-                onClick={() => {
-                    setCurrentPage(index + 1);
-                    fetchAllNews(index + 1); // Adjust for pagination
-                }}
-            >
-                {index + 1}
-            </button>
-        ))}
+                                        {/* Page Numbers */}
+                                        {Array.from({ length: totalPages }, (_, index) => (
+                                            <button
+                                                key={index}
+                                                type="button"
+                                                className={`btn ${currentPage === index + 1 ? 'btn-dark' : 'btn-outline-secondary'}`}
+                                                onClick={() => {
+                                                    setCurrentPage(index + 1);
+                                                    fetchAllNews(index + 1); // Adjust for pagination
+                                                }}
+                                            >
+                                                {index + 1}
+                                            </button>
+                                        ))}
 
-        {/* Next Button */}
-        <button
-            type="button"
-            className="btn btn-outline-secondary"
-            disabled={currentPage === totalPages}
-            onClick={() => {
-                if (currentPage < totalPages) {
-                    setCurrentPage(prevPage => prevPage + 1);
-                    fetchAllNews(currentPage + 1); // Adjust for pagination
-                }
-            }}
-        >
-            <svg
-                width={10}
-                height={8}
-                viewBox="0 0 10 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                {/* Right Arrow Icon */}
-                <path
-                    d="M8.975 4.525L9.5 4L8.975 3.475L5.975 0.475C5.675 0.175 5.225 0.175 4.925 0.475C4.625 0.775 4.625 1.225 4.925 1.525L6.65 3.25H1.25C0.8 3.25 0.5 3.55 0.5 4C0.5 4.45 0.8 4.75 1.25 4.75H6.65L4.925 6.475C4.775 6.625 4.7 6.775 4.7 7C4.7 7.45 5 7.75 5.45 7.75C5.675 7.75 5.825 7.675 5.975 7.525L8.975 4.525Z"
-                    fill="#355684"
-                />
-            </svg>
-        </button>
-    </div>
-</div>
+                                        {/* Next Button */}
+                                        <button
+                                            type="button"
+                                            className="btn btn-outline-secondary"
+                                            disabled={currentPage === totalPages}
+                                            onClick={() => {
+                                                if (currentPage < totalPages) {
+                                                    setCurrentPage(prevPage => prevPage + 1);
+                                                    fetchAllNews(currentPage + 1); // Adjust for pagination
+                                                }
+                                            }}
+                                        >
+                                            <svg
+                                                width={10}
+                                                height={8}
+                                                viewBox="0 0 10 8"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                {/* Right Arrow Icon */}
+                                                <path
+                                                    d="M8.975 4.525L9.5 4L8.975 3.475L5.975 0.475C5.675 0.175 5.225 0.175 4.925 0.475C4.625 0.775 4.625 1.225 4.925 1.525L6.65 3.25H1.25C0.8 3.25 0.5 3.55 0.5 4C0.5 4.45 0.8 4.75 1.25 4.75H6.65L4.925 6.475C4.775 6.625 4.7 6.775 4.7 7C4.7 7.45 5 7.75 5.45 7.75C5.675 7.75 5.825 7.675 5.975 7.525L8.975 4.525Z"
+                                                    fill="#355684"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
 
 
                             </div>

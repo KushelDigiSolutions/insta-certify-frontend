@@ -43,6 +43,13 @@ export default function catalog(pageProp) {
 
   const [popup, setPopup] = useState(false);
 
+  const phoneNumber = "9045301702";
+
+  const whatAppHandler = () => {
+    const whatsappUrl = `https://wa.me/${phoneNumber}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   const func1 = () => {
     setStart(1);
     document.getElementById("fast").style.color = "#EC691F"
@@ -324,9 +331,9 @@ export default function catalog(pageProp) {
 
                   <div className="slicons1">
 
-                    <p className="avpara">
+                    {/* <p className="avpara">
                       <span>Availability</span>: Estimated to ship on 12 august 2024
-                    </p>
+                    </p> */}
                     <h3>{productdetail?.product_name}</h3>
                     <p className="mobilen">Model Number : {productdetail?.sku_name}</p>
                   </div>
@@ -402,9 +409,9 @@ export default function catalog(pageProp) {
 
                     <div className="socialimgs">
 
-                      <img src="./images//Facebook.png" alt="" />
-                      <img src='./images/Instagram.png' alt="" />
-                      <img src='./images/whatsapp 1.png' alt="" />
+                     <a href="https://www.facebook.com/people/Instacertify-Labs-Private-Limited/61564980525561/" target="_blank"><img src="./images//Facebook.png" alt="" /></a>
+                      <img  src='./images/Instagram.png' alt="" />
+                      <img onClick={whatAppHandler} src='./images/whatsapp 1.png' alt="" />
 
                     </div>
 
@@ -502,7 +509,7 @@ export default function catalog(pageProp) {
                     <img className="catalog_img" src={prod?.image} alt="tensile" />
                     <div className="catalog_content">
                       {/* <span className="tensile_content">{prod?.name}</span> */}
-                      <Link style={{ textDecoration: "none" }} href={`/catalogdetail?id=${prod?.slug}`}><span className="tensile_content">{(prod?.name).slice(0,20)}... </span></Link>
+                      <Link style={{ textDecoration: "none" }} href={`/catalogdetail?id=${prod?.slug}`}><span className="tensile_content">{(prod?.name).slice(0,44)}... </span></Link>
                       <div className="tensile_price">
                         <span className="real">₹{prod?.sale_price}</span>
                         <span className="fake">₹{prod?.price}</span>

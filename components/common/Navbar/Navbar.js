@@ -1708,10 +1708,10 @@ export default function Navbar(props) {
 
 
                               <a href={"/create-account"}>
-                                <span>Create on account</span>
+                                <span>Create an Account</span>
                               </a>
                               <a href={"/login"}>
-                                <span> login</span>
+                                <span>Login</span>
                               </a>
 
 
