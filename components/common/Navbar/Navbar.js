@@ -364,6 +364,8 @@ export default function Navbar(props) {
     const [accessToken, setAccessToken] = useState(null);
     const [instaUser, setInstaUser] = useState(null);
 
+    const [allProduct, setAllProduct] = useState();
+
     useEffect(() => {
       if (typeof window !== "undefined") { // Ensures code only runs in the browser
         const storedAccessToken = localStorage.getItem("insta_Access");
@@ -373,6 +375,29 @@ export default function Navbar(props) {
         setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
       }
     }, []);
+
+    const fetchProductByCat = async (name) => {
+      try {
+        const resp = await fetch(`https://admin.instacertify.com/search?query=${name}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+
+        router.push("/catalog");
+
+        if (resp.status === 200) {
+          const formateddata = await resp.json();
+          console.log(formateddata);
+          setAllProduct(formateddata?.products);
+
+
+        }
+      } catch (error) {
+        console.error("There was an error fetching the news by category:", error);
+      }
+    };
 
     return (
       <>
@@ -1655,7 +1680,7 @@ export default function Navbar(props) {
 
                   <li>
                     <div id={`${navBg || currentPath === "/contact" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certi" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? "kl" : "ll"}`} className="search_bar">
-                      <input type="text" placeholder="Search" />
+                      <input onChange={() => router.push("/catalog")} type="text" placeholder="Search" />
                       {
                         navBg || currentPath === "/contact" || currentPath === "/bis-mark" | currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certi" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? <svg
                           width={20}
@@ -2290,13 +2315,13 @@ export default function Navbar(props) {
                               {/* <Link href={"/logout"}>
                                 <GlobalLogout /> Logout
                               </Link> */}
-                              <a onClick={() =>{
-                                  localStorage.removeItem("insta_Access")
-                                  localStorage.removeItem("insta_User")
-                                  setAccessToken(null)
-                                  setInstaUser(null)
-                                  alert("Successfuly logout")
-                                  
+                              <a onClick={() => {
+                                localStorage.removeItem("insta_Access")
+                                localStorage.removeItem("insta_User")
+                                setAccessToken(null)
+                                setInstaUser(null)
+                                alert("Successfuly logout")
+
                               }}>
                                 <span>Logout</span>
                               </a>

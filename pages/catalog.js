@@ -305,6 +305,28 @@ export default function catalog(pageProp) {
     }
 };
 
+const fetchProductBySearch = async (name) => {
+  try {
+    const resp = await fetch(`https://admin.instacertify.com/search?query=${name}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+
+
+    if (resp.status === 200) {
+      const formateddata = await resp.json();
+      console.log(formateddata);
+      setAllProduct(formateddata?.products);
+   
+
+    }
+  } catch (error) {
+    console.error("There was an error fetching the news by category:", error);
+  }
+};
+
 
 
 
@@ -381,8 +403,10 @@ export default function catalog(pageProp) {
 
             <div className="catalog_cards">
               <div className="catalog_card">
+                {/* <input onChange={()=> fetchProductBySearch(product?.name)}/> */}
                 {currentItems.map((product, index) => (
                   <div key={index} className="catalog_box">
+
                     <img
                       className="catalog_img"
                       src={product?.image}
