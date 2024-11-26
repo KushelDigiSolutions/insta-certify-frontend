@@ -3476,7 +3476,11 @@ justify-content: center !important;
 
 }
 
-
+@media only screen and (max-width:1065px){
+  .apple{
+    flex-wrap: wrap !important;
+  }
+}
 
 @media(max-width:962px) {
 
@@ -3510,9 +3514,15 @@ justify-content: center !important;
 
   }
 
-  .col-three {
-    padding: 40px 115px 50px 115px !important;
+  .apple{
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
   }
+
+  /* .col-three {
+    padding: 40px 115px 50px 115px !important;
+  } */
 }
 
 @media(max-width:450px) {
