@@ -3367,7 +3367,18 @@ justify-content: center !important;
   fill: white;
 
 }
-
+.test_input{
+  margin: 20px 0px;
+}
+.surii{
+  width: 100%;
+}
+.surii input{
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  /* margin: 20px 0px; */
+}
 .last {
 
   background-image: url("https://admin.instacertify.com/backend/admin/media/background-last.png");
@@ -3386,7 +3397,13 @@ justify-content: center !important;
   color: #FFFFFF;
   margin-bottom: 30px !important;
 }
-
+.tryingh{
+  background-color: #EC691F !important;
+  padding: 15px;
+  color: white;
+  border-radius: 3px;
+  font-size: 16px;
+}
 .main-content-1 {
 
   flex-direction: column;

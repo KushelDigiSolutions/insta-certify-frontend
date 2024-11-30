@@ -208,7 +208,7 @@ export default function catalog(pageProp) {
     }
   };
 
-  
+
 
   const fetchCategory = async () => {
     try {
@@ -287,45 +287,45 @@ export default function catalog(pageProp) {
 
   const fetchProductByCat = async (slug) => {
     try {
-        const resp = await fetch(`https://admin.instacertify.com/api/products/category/${slug}?limit=20&offset=0`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
-        if (resp.status === 200) {
-            const formateddata = await resp.json();
-            console.log(formateddata);
-            setAllProduct(formateddata?.products);
-            
+      const resp = await fetch(`https://admin.instacertify.com/api/products/category/${slug}?limit=20&offset=0`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
         }
-    } catch (error) {
-        console.error("There was an error fetching the news by category:", error);
-    }
-};
+      });
 
-const fetchProductBySearch = async (name) => {
-  try {
-    const resp = await fetch(`https://admin.instacertify.com/search?query=${name}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
+      if (resp.status === 200) {
+        const formateddata = await resp.json();
+        console.log(formateddata);
+        setAllProduct(formateddata?.products);
+
       }
-    });
-
-
-    if (resp.status === 200) {
-      const formateddata = await resp.json();
-      console.log(formateddata);
-      setAllProduct(formateddata?.products);
-   
-
+    } catch (error) {
+      console.error("There was an error fetching the news by category:", error);
     }
-  } catch (error) {
-    console.error("There was an error fetching the news by category:", error);
-  }
-};
+  };
+
+  const fetchProductBySearch = async (name) => {
+    try {
+      const resp = await fetch(`https://admin.instacertify.com/search?query=${name}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+
+      if (resp.status === 200) {
+        const formateddata = await resp.json();
+        console.log(formateddata);
+        setAllProduct(formateddata?.products);
+
+
+      }
+    } catch (error) {
+      console.error("There was an error fetching the news by category:", error);
+    }
+  };
 
 
 
@@ -363,7 +363,7 @@ const fetchProductBySearch = async (name) => {
                 <div className={`left_dropdown ${isDropdownVisible ? 'show' : 'hide'}`}>
                   {allCategory?.map((item, index) => (
                     <div key={index} className="sincategos cursor-pointer">
-                      <p onClick={()=> fetchProductByCat(item?.slug)}>{item.name}</p>
+                      <p onClick={() => fetchProductByCat(item?.slug)}>{item.name}</p>
                       {/* <input   type="checkbox" className="sicatchcbox" /> */}
                     </div>
                   ))}
@@ -436,6 +436,7 @@ const fetchProductBySearch = async (name) => {
                         <button
                           onClick={() => {
                             // addToCartApi logic here
+                            addToCartApi()
                           }}
                         >
                           <svg
