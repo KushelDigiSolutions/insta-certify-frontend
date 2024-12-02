@@ -468,7 +468,8 @@ export default function catalog(pageProp) {
               {
                 start === 1 && (
                   <div className="description_information">
-                    <p>{productdetail?.product_detail}</p>
+                    {/* <p>{productdetail?.product_detail}</p> */}
+                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{  __html: productdetail?.product_detail}}/></p>
                   </div>
                 )
               }
@@ -476,7 +477,8 @@ export default function catalog(pageProp) {
               {
                 start === 2 && (
                   <div className="description_information">
-                    <p>{productdetail?.product_specification}</p>
+                    {/* <p>{productdetail?.product_specification}</p> */}
+                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{  __html: productdetail?.product_specification}}/></p>
                   </div>
                 )
               }
