@@ -185,7 +185,7 @@ export default function catalog(pageProp) {
 
   const fetchProduct = async () => {
     try {
-      const resp = await fetch("https://admin.instacertify.com/api/products?limit=20&offset=0&all=1", {
+      const resp = await fetch("https://admin.instacertify.com/api/products?limit=1000&offset=0&all=1", {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
