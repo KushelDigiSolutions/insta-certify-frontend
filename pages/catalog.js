@@ -287,7 +287,7 @@ export default function catalog(pageProp) {
 
   const fetchProductByCat = async (slug) => {
     try {
-      const resp = await fetch(`https://admin.instacertify.com/api/products/category/${slug}?limit=20&offset=0`, {
+      const resp = await fetch(`https://admin.instacertify.com/api/products/category/${slug}?limit=1000&offset=0`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -305,27 +305,7 @@ export default function catalog(pageProp) {
     }
   };
 
-  const fetchProductBySearch = async (name) => {
-    try {
-      const resp = await fetch(`https://admin.instacertify.com/search?query=${name}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-
-
-      if (resp.status === 200) {
-        const formateddata = await resp.json();
-        console.log(formateddata);
-        setAllProduct(formateddata?.products);
-
-
-      }
-    } catch (error) {
-      console.error("There was an error fetching the news by category:", error);
-    }
-  };
+  
 
 
 
