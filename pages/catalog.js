@@ -234,9 +234,8 @@ export default function catalog(pageProp) {
   };
 
   const addToCartApi = async (id) => {
-    // http://localhost:8081/instacertify-backend/public/api/cart/add
 
-    const resp = fetch('https://admin.instacertify.com/api/cart/add', {
+    const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -250,7 +249,6 @@ export default function catalog(pageProp) {
       .then(data => console.log('Success:', data))
       .catch(error => console.error('Error:', error));
 
-    console.log("vresp ", resp);
 
   }
 

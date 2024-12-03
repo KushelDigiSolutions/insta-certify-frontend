@@ -82,11 +82,13 @@ export default function Cart() {
 
           console.log("reponse" , response);
 
-          if (response.ok) {
+          // if (response.ok) {
               const data = await response.json();
               console.log(data);
+              // set the cart ddata 
+              setCartData(data?.cart);
              
-          } 
+          // } 
       } catch (error) {
       } 
   };
