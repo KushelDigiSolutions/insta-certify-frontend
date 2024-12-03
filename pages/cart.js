@@ -10,6 +10,7 @@ import CartItems from "../components/common/Cart/cart-items";
 import EventDetMinus from "../components/common/svg/eventDetials/minus";
 import EventDetPlus from "../components/common/svg/eventDetials/plus";
 import GlobalHeaderFooter from "../utils/common/global-header-footer";
+import { constrainedMemory } from "process";
 
 export default function Cart() {
   const [cartLoad, setCartLoad] = useState(true);
@@ -21,72 +22,74 @@ export default function Cart() {
 
 
   //Get Cart
-  const getCartDetails = async () => {
+  // const getCartDetails = async () => {
     
-    if (typeof nx_cart_id != "undefined" && nx_cart_id != "") {
-      const getCart = await fetch(process.env.next.api_url + "cart/get", {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cart_id: nx_cart_id }),
-      });
-      const cartRes = await getCart.json();
+  //   if (typeof nx_cart_id != "undefined" && nx_cart_id != "") {
+  //     const getCart = await fetch(process.env.next.api_url + "cart/get", {
+  //       method: "post",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ cart_id: nx_cart_id }),
+  //     });
+  //     const cartRes = await getCart.json();
 
       
-      if (cartRes?.status && cartRes?.status == 404) {
-        setCartEnpty(true);
-        setCartLoad(false);
-        Cookies.remove("nx_cart_id");
-        setCartUpdate(false);
-        return false;
-      }
-      if (typeof cartRes?.data != "undefined") {
-        setCartEnpty(false);
-        setCartLoad(false);
-        setCartData(cartRes?.data);
-        setCartUpdate(false);
-        return false;
-      }
-    }else{
-      setCartEnpty(true);
-      setCartLoad(false);
-      setCartUpdate(false);
-      Cookies.remove("nx_cart_id");
-      return false;
-    }
-  };
+  //     if (cartRes?.status && cartRes?.status == 404) {
+  //       setCartEnpty(true);
+  //       setCartLoad(false);
+  //       Cookies.remove("nx_cart_id");
+  //       setCartUpdate(false);
+  //       return false;
+  //     }
+  //     if (typeof cartRes?.data != "undefined") {
+  //       setCartEnpty(false);
+  //       setCartLoad(false);
+  //       setCartData(cartRes?.data);
+  //       setCartUpdate(false);
+  //       return false;
+  //     }
+  //   }else{
+  //     setCartEnpty(true);
+  //     setCartLoad(false);
+  //     setCartUpdate(false);
+  //     Cookies.remove("nx_cart_id");
+  //     return false;
+  //   }
+  // };
   
-  useEffect(function () {
-    getCartDetails();
-  }, []);
-
-  //   useEffect(() => {
-  //     getCarts(); 
+  // useEffect(function () {
+  //   getCartDetails();
   // }, []);
 
+    useEffect(() => {
+      getCarts(); 
+  }, []);
 
-  // const getCarts = async () => {
 
-  //   // https://admin.instacertify.com/instacertify-backend/public/api/cart
-  //     try {
-  //         const response = await fetch("https://admin.instacertify.com/api/cart", {
-  //             method: "GET",
-  //             headers: {
-  //                 "Content-Type": "application/json",
-  //             }
-  //         });
+  const getCarts = async () => {
 
-  //         console.log("reponse" , response);
+    // https://admin.instacertify.com/instacertify-backend/public/api/cart
+      try {
+          const response = await fetch("https://admin.instacertify.com/api/cart", {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json",
+                   "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+              }
+          });
 
-  //         if (response.ok) {
-  //             const data = await response.json();
+          console.log("reponse" , response);
+
+          if (response.ok) {
+              const data = await response.json();
+              console.log(data);
              
-  //         } 
-  //     } catch (error) {
-  //     } 
-  // };
+          } 
+      } catch (error) {
+      } 
+  };
 
   
   return (
