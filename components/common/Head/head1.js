@@ -30,17 +30,6 @@ export default function HeadSEO1(props) {
         {props?.image != false ? (<meta property="og:image" content={props?.image} />):""}
         <meta property="og:title" content={props?.title} />
         <meta property="og:description" content={props?.description} />
-
-        {/* <!-- Google tag (gtag.js) --> */}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JWRJBJHX6T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JWRJBJHX6T');
-</script>
-        
       </Head>
     </>
   )
