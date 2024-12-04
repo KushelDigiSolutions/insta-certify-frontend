@@ -182,7 +182,7 @@ export default function Footer(footerProps) {
                         </div>
 
                         <span className='bas'>A-34, Sector 63 A, Noida, <br/>
-                        Chotpur, Uttar Pradesh 201307</span>
+                         Uttar Pradesh 201307</span>
 
                       </li>
                      

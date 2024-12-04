@@ -402,7 +402,7 @@ export default function catalog(pageProp) {
                         </span>
                       </Link>
                       <div className="tensile_price">
-                        <span className="real">₹{product?.sale_price}</span>
+                        <span className="real">₹{(product?.sale_price)?.toLocaleString()}</span>
                         <span className="fake">₹{product?.price}</span>
                       </div>
                       <div className="reviews">
