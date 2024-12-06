@@ -161,6 +161,8 @@ export default function Cart() {
   }
 
 
+  console.log("ctada" , cartData);
+
   return (
     <div className={style.cartBody}>
       <HeadSEO
@@ -230,21 +232,21 @@ export default function Cart() {
                           <td className={style.item_td_3}>
                             <div className={style.formIncrement + " parentFormIncrement"}>
                               <button onClick={() =>
-                                setCartData((prev) => ({
-                                  ...prev,
-                                  [val.quantity]: val.quantity - 1,
-                                  
-                                }))
+                             setCartData((prev)=>(
+                              prev.map((item)=>(
+                                item.product_id === val.product_id ? {...item , quantity: Math.max(0 , item.quantity-1)} : item
+                              ))
+                             ))
                               } className={style.btnIncDec + " qtyDecrement"} type="button">
                                 <EventDetMinus />
                               </button>
                               <span className={style.inputQty}>{val.quantity}</span>
                               <button  onClick={() =>
-                                setCartData((prev) => ({
-                                  ...prev,
-                                  [val.quantity]: val.quantity + 1,
-                                  
-                                }))
+                                setCartData((prev)=>(
+                                  prev.map((item)=>(
+                                    item.product_id === val.product_id ? {...item , quantity: Math.max(0 , item.quantity+1)} : item
+                                  ))
+                                 ))
                               } className={style.btnIncDec + " qtyIncrement"} type="button">
                                 <EventDetPlus />
                               </button>
