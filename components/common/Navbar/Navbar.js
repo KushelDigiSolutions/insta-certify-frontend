@@ -1769,6 +1769,7 @@ export default function Navbar(props) {
                                 setAccessToken(null)
                                 setInstaUser(null)
                                 alert("Successfuly logout")
+                                window.location.href ="/"
 
                               }}>
                                 <span>Logout</span>
@@ -2261,7 +2262,8 @@ export default function Navbar(props) {
                                             localStorage.removeItem("insta_User")
                                             setAccessToken(null)
                                             setInstaUser(null)
-                                            alert("Successfuly logout")
+                                            alert("Successfuly logout");
+                                            window.location.href = "/";
 
                                           }}>
                                             <span>Logout</span>
@@ -2322,7 +2324,8 @@ export default function Navbar(props) {
                                 localStorage.removeItem("insta_User")
                                 setAccessToken(null)
                                 setInstaUser(null)
-                                alert("Successfuly logout")
+                                alert("Successfuly logout");
+                                window.location.href = "/";
 
                               }}>
                                 <span>Logout</span>

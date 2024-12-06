@@ -267,6 +267,28 @@ export default function catalog(pageProp) {
     }
   }, [productdetail])
 
+  const addToCartApi = async (id) => {
+
+    const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+         "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+      },
+      body: JSON.stringify({
+        product_id: id,
+        quantity: count,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => alert(data?.message))
+      .catch(error => console.error('Error:', error));
+
+      // alert(resp)
+
+
+  }
+
   return (
     
     <div className="page_shopping_list sop">
@@ -368,7 +390,10 @@ export default function catalog(pageProp) {
                       </div>
 
                       {/* right  */}
-                      <button className="addtocart">
+                      <button  onClick={() => {
+                            // addToCartApi logic here
+                            addToCartApi(productdetail?.id)
+                          }} className="addtocart">
                         <img src='./images/Vector.png' alt="" /> <span>ADD TO CART</span>
                       </button>
                     </div>

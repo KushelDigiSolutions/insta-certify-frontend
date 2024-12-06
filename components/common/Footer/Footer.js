@@ -1,19 +1,5 @@
-import React from 'react'
-import style from "../../../pages/css/footer.module.scss";
+import React, { useState } from 'react'
 import Link from 'next/link';
-import FaceBookSocial from '../svg/social/facebook';
-import LinkedinSocial from '../svg/social/linkedin';
-import InstagramSocial from '../svg/social/instagram';
-import TwitterSocial from '../svg/social/twitter';
-import moment from 'moment';
-import Image from 'next/image';
-// import ins1 from '../../../public/images/fb.svg';
-// import ins2 from '../../../public/images/twitter.svg';
-// import ins3 from '../../../public/images/linkedin.svg';
-// import ins4 from '../../../public/images/insta.svg'
-
-import twitter from '../../../components/img/twitter.svg'
-
 export default function Footer(footerProps) {
   if (typeof footerProps.footerProps == "undefined" || footerProps.footerProps == false) { return ""; }
   else {
@@ -35,6 +21,47 @@ export default function Footer(footerProps) {
       document.getElementById("jj").style.scrollBehavior = "none"
     }
 
+    const [value,setValue] = useState({
+      name:"",
+      email:"",
+      phone:"",
+      message:""
+    })
+
+    const changeHandler = (e)=>{
+      const {name , value} = e.target;
+  
+       setValue((prev)=>({
+        ...prev ,
+        [name]:value
+       }))
+    }
+
+    const submitForm = async (e) => {
+      e.preventDefault();
+      const resp = await fetch('https://mailer.instacertify.com/api/v1/sendMail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+           name:value.name,
+           email:value.email,
+           phone:value.phone,
+           message:value.message
+        }),
+      })
+        .then(response => response.json())
+        .then(data => alert(data.message))
+        .catch(error => console.error('Error:', error));
+  
+        setValue({
+          name:"",
+          email:"",
+          phone:"",
+          message:""
+        })
+    }
 
     return (
 
@@ -393,9 +420,7 @@ export default function Footer(footerProps) {
                   <div className="widget">
                     
                     <form
-                      method="post"
-                      action="phpmailer/sendmail_footer.php"
-                      id="footerForm"
+                      onSubmit={submitForm}
                     >
                       <h4 className="footer-title quick jk_tit">Quick Contact</h4>
                       <div className="footerformarea">
@@ -407,7 +432,9 @@ export default function Footer(footerProps) {
                                 <i className="ti-user text-primary" />
                               </span>{" "}
                               <input
-                                name="ainame"
+                                name="name"
+                                value={value.name}
+                                onChange={changeHandler}
                                 type="text"
                                 required=""
                                 className=""
@@ -424,7 +451,9 @@ export default function Footer(footerProps) {
                                 <i className="ti-email text-primary" />
                               </span>{" "}
                               <input
-                                name="aiemail"
+                                name="email"
+                                value={value.email}
+                                onChange={changeHandler}
                                 type="email"
                                 className=""
                                 required=""
@@ -441,7 +470,9 @@ export default function Footer(footerProps) {
                                 <i className="ti-mobile text-primary" />
                               </span>{" "}
                               <input
-                                name="aimobile"
+                                name="phone"
+                                value={value.phone}
+                                onChange={changeHandler}
                                 type="text"
                                 required=""
                                 maxLength={12}
@@ -464,7 +495,9 @@ export default function Footer(footerProps) {
                                 <i className="ti-agenda text-primary" />
                               </span>
                               <textarea
-                                name="aimessage"
+                                name="message"
+                                value={value.message}
+                                onChange={changeHandler}
                                 rows={4}
                                 className=""
                                 required=""

@@ -239,9 +239,10 @@ export default function catalog(pageProp) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+         "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
       },
       body: JSON.stringify({
-        product_id: 20,
+        product_id: id,
         quantity: 1,
       }),
     })
@@ -416,7 +417,7 @@ export default function catalog(pageProp) {
                         <button
                           onClick={() => {
                             // addToCartApi logic here
-                            addToCartApi()
+                            addToCartApi(product?.id)
                           }}
                         >
                           <svg

@@ -3411,7 +3411,25 @@ justify-content: center !important;
   gap: 20px;
 
 }
-
+.test_carting td{
+  width: 25%;
+}
+.site_button1{
+  display: block;
+  width: auto !important;
+  margin: auto;
+  margin-top: 40px;
+  font-size: 18px;
+  color: white;
+  padding: 10px 30px;
+  height: auto !important;
+}
+/* .no_cart{
+  text-align: center !important;
+} */
+.test_suru{
+  margin-top: 50px;
+}
 .hash-code {
 
   background-color: #FF751C !important;

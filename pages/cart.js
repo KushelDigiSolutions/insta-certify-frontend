@@ -16,14 +16,18 @@ export default function Cart() {
   const [cartLoad, setCartLoad] = useState(true);
   const [cartEnpty, setCartEnpty] = useState(false);
   const [cartUpdate, setCartUpdate] = useState(false);
-  const [cartData, setCartData] = useState({});
+  const [cartData, setCartData] = useState([]);
   const { data: session, status } = useSession();
   const nx_cart_id = Cookies.get("nx_cart_id");
+
+  const [count, setCount] = useState(1);
+
+  // const [refreshFlag,setrefreshFlag] = useState(false);
 
 
   //Get Cart
   // const getCartDetails = async () => {
-    
+
   //   if (typeof nx_cart_id != "undefined" && nx_cart_id != "") {
   //     const getCart = await fetch(process.env.next.api_url + "cart/get", {
   //       method: "post",
@@ -35,7 +39,7 @@ export default function Cart() {
   //     });
   //     const cartRes = await getCart.json();
 
-      
+
   //     if (cartRes?.status && cartRes?.status == 404) {
   //       setCartEnpty(true);
   //       setCartLoad(false);
@@ -58,42 +62,105 @@ export default function Cart() {
   //     return false;
   //   }
   // };
-  
+
   // useEffect(function () {
   //   getCartDetails();
   // }, []);
 
-    useEffect(() => {
-      getCarts(); 
+  useEffect(() => {
+    getCarts();
   }, []);
 
 
   const getCarts = async () => {
 
     // https://admin.instacertify.com/instacertify-backend/public/api/cart
-      try {
-          const response = await fetch("https://admin.instacertify.com/api/cart", {
-              method: "GET",
-              headers: {
-                  "Content-Type": "application/json",
-                   "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-              }
-          });
+    try {
+      const response = await fetch("https://admin.instacertify.com/api/cart", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        }
+      });
 
-          console.log("reponse" , response);
+      console.log("reponse", response);
 
-          // if (response.ok) {
-              const data = await response.json();
-              console.log(data);
-              // set the cart ddata 
-              setCartData(data?.cart);
-             
-          // } 
-      } catch (error) {
-      } 
+      // if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+      // set the cart ddata 
+      setCartData(data?.cart);
+
+      // } 
+    } catch (error) {
+    }
   };
 
-  
+  const removeCarts = async (id) => {
+    try {
+      const response = await fetch("https://admin.instacertify.com/api/cart/remove", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        },
+        body: JSON.stringify({
+          product_id: id,
+        }),
+      });
+
+      console.log("reponse", response);
+
+      // if (response.ok) {
+      const data = await response.json();
+      alert(data?.message);
+      // setrefreshFlag(!refreshFlag)
+      // set the cart ddata 
+      setCartData(data?.cart);
+
+      // } 
+    } catch (error) {
+    }
+  }
+
+  const clearCarts = async () => {
+    try {
+      const response = await fetch("https://admin.instacertify.com/api/cart/clear", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        },
+        // body: JSON.stringify({
+        //   product_id: id,
+        // }),
+      });
+
+      console.log("reponse", response);
+
+      // if (response.ok) {
+      const data = await response.json();
+      alert(data?.message)
+      // set the cart ddata 
+      setCartData(data?.cart);
+
+      // } 
+    } catch (error) {
+    }
+  }
+
+
+
+  const handlePlus = () => {
+    setCount(count + 1)
+  }
+
+  const handleMinus = () => {
+    setCount(count - 1)
+  }
+
+
   return (
     <div className={style.cartBody}>
       <HeadSEO
@@ -102,41 +169,124 @@ export default function Cart() {
         image={false}
       />
 
-      { cartUpdate == true ? (<span className='loadingOverlay' style={{display:'block', position:'fixed'}} />) : "" }
+      {cartUpdate == true ? (<span className='loadingOverlay' style={{ display: 'block', position: 'fixed' }} />) : ""}
 
       {cartEnpty === false ? (
         <div className="container cart_container">
+          {
+            cartData?.length > 0 ?
+              <table
+                className={
 
-          <table
-            className={
-              cartLoad == true
-                ? style.cartTabel + " " + style.isLoading
-                : style.cartTabel
-            }
-          >
-            <thead>
-              <tr>
-                <th className={style.item_th_1}>Product</th>
-                <th className={style.item_th_2}>Price</th>
-                <th className={style.item_th_3}>Quantity</th>
-                <th className={style.item_th_4}>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-              {cartLoad == true ? (
-                <>
-                  <CartItemsLoading />
-                  <CartItemsLoading />
-                  <CartItemsLoading />
-                </>
-              ) : (
-                 cartData?.line_items?.physical_items?.map((ls,i) => (
-                  <CartItems key={i} items={ls} stateCartUpdate={[cartUpdate,setCartUpdate]} getCartDetails={getCartDetails} cartData={cartData} />
-                 ))
-              )}
-            </tbody>
-          </table>
+                  style.cartTabel
+                }
+              >
+                <thead>
+                  <tr>
+                    <th className={style.item_th_1}>Product</th>
+                    <th className={style.item_th_2}>Price</th>
+                    <th className={style.item_th_3}>Quantity</th>
+                    <th className={style.item_th_4}>Total</th>
+                  </tr>
+                </thead>
+                {
+                  cartData?.map((val, index) => {
+                    return (
+                      <tbody className="test_carting" key={index}>
+
+
+                        <>
+
+                          <td className={style.item_td_1}>
+                            <div className={style.imageWithContent}>
+                              <div className={style.left}>
+                                {/* <Link href={'/cart'}>
+                    <Image
+                        className={style.figure}
+                        src={"/images/login-back.png"}
+                        width="200"
+                        height="212"
+                        alt={"ls.title"}
+                        quality={100}
+                    />
+                  </Link> */}
+                                <img width="200" height="212" src={val?.image} />
+                              </div>
+                              <div className={style.right}>
+                                <h4>{val?.name}</h4>
+                                {/* <p>{val?.}</p> */}
+                                <button onClick={() => {
+                                  removeCarts(val.id)
+                                }} type="button">Remove</button>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td className={style.item_td_2}>
+                            {/* <span className={style.eleTitle}>Price: </span> */}
+                            <span>₹{val?.price}</span>
+                          </td>
+
+                          <td className={style.item_td_3}>
+                            <div className={style.formIncrement + " parentFormIncrement"}>
+                              <button onClick={() =>
+                                setCartData((prev) => ({
+                                  ...prev,
+                                  [val.quantity]: val.quantity - 1,
+                                  
+                                }))
+                              } className={style.btnIncDec + " qtyDecrement"} type="button">
+                                <EventDetMinus />
+                              </button>
+                              <span className={style.inputQty}>{val.quantity}</span>
+                              <button  onClick={() =>
+                                setCartData((prev) => ({
+                                  ...prev,
+                                  [val.quantity]: val.quantity + 1,
+                                  
+                                }))
+                              } className={style.btnIncDec + " qtyIncrement"} type="button">
+                                <EventDetPlus />
+                              </button>
+                            </div>
+                          </td>
+
+                          <td className={style.item_td_4}>
+                            {/* <span className={style.eleTitle}>Total:</span> */}
+                            <span>₹{val?.price * val.quantity}</span>
+                          </td>
+                        </>
+
+
+                      </tbody>
+                    )
+
+                  })
+
+
+
+
+                }
+
+              </table>
+              :
+
+              <div className="container">
+                <div className={style.cart_empty}>
+                  <svg fill="#1C2E33" width="26" height="28" viewBox="0 0 26 28">
+                    <path d="M10 24c0 1.094-0.906 2-2 2s-2-0.906-2-2 0.906-2 2-2 2 0.906 2 2zM24 24c0 1.094-0.906 2-2 2s-2-0.906-2-2 0.906-2 2-2 2 0.906 2 2zM26 7v8c0 0.5-0.391 0.938-0.891 1l-16.312 1.906c0.078 0.359 0.203 0.719 0.203 1.094 0 0.359-0.219 0.688-0.375 1h14.375c0.547 0 1 0.453 1 1s-0.453 1-1 1h-16c-0.547 0-1-0.453-1-1 0-0.484 0.703-1.656 0.953-2.141l-2.766-12.859h-3.187c-0.547 0-1-0.453-1-1s0.453-1 1-1h4c1.047 0 1.078 1.25 1.234 2h18.766c0.547 0 1 0.453 1 1z"></path>
+                  </svg>
+                  <h2>Your cart is empty</h2>
+                  <Link href={"/"}>Go to Home</Link>
+                </div>
+              </div>
+
+          }
+
+
+          {
+            cartData?.length > 0 && <button onClick={() => clearCarts()} className="site-button site_button1">Clear Carts</button>
+          }
 
           {cartLoad == false ? (
             <div className={style.cartSummary}>
@@ -158,9 +308,9 @@ export default function Cart() {
                 Discount codes can be applied during checkout.
               </p>
 
-              {status == "authenticated" ? (<Link href={cartData?.redirect_urls?.checkout_url} className={style.btnCheckout}>Checkout</Link>):(<Link href={'/login'} className={style.btnCheckout}>Checkout</Link>)}
-              
-              
+              {status == "authenticated" ? (<Link href={cartData?.redirect_urls?.checkout_url} className={style.btnCheckout}>Checkout</Link>) : (<Link href={'/login'} className={style.btnCheckout}>Checkout</Link>)}
+
+
             </div>
           ) : (
             ""
@@ -183,7 +333,7 @@ export default function Cart() {
 
 export async function getServerSideProps(context) {
   try {
-    
+
     const globalSettings = await GlobalHeaderFooter();
     return {
       props: {
@@ -194,7 +344,7 @@ export async function getServerSideProps(context) {
     };
 
   } catch (error) {
-    
+
     return {
       props: {
         page_content: false,
