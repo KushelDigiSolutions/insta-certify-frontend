@@ -234,7 +234,7 @@ export default function Cart() {
                               <button onClick={() =>
                              setCartData((prev)=>(
                               prev.map((item)=>(
-                                item.product_id === val.product_id ? {...item , quantity: Math.max(0 , item.quantity-1)} : item
+                                item.product_id === val.product_id ? {...item , quantity: Math.max(1 , item.quantity-1)} : item
                               ))
                              ))
                               } className={style.btnIncDec + " qtyDecrement"} type="button">
@@ -244,7 +244,7 @@ export default function Cart() {
                               <button  onClick={() =>
                                 setCartData((prev)=>(
                                   prev.map((item)=>(
-                                    item.product_id === val.product_id ? {...item , quantity: Math.max(0 , item.quantity+1)} : item
+                                    item.product_id === val.product_id ? {...item , quantity: Math.max(1 , item.quantity+1)} : item
                                   ))
                                  ))
                               } className={style.btnIncDec + " qtyIncrement"} type="button">
