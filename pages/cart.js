@@ -114,7 +114,7 @@ export default function Cart() {
 
       // if (response.ok) {
       const data = await response.json();
-      alert(data?.message);
+      console.log(data);
       // setrefreshFlag(!refreshFlag)
       // set the cart ddata 
       setCartData(data?.cart);
@@ -149,17 +149,6 @@ export default function Cart() {
     } catch (error) {
     }
   }
-
-
-
-  const handlePlus = () => {
-    setCount(count + 1)
-  }
-
-  const handleMinus = () => {
-    setCount(count - 1)
-  }
-
 
   console.log("ctada" , cartData);
 
