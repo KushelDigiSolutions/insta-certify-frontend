@@ -97,7 +97,8 @@ export default function Cart() {
     }
   };
 
-  const removeCarts = async (id) => {
+  const removeCarts = async (id,qty) => {
+    console.log("id",id);
     try {
       const response = await fetch("https://admin.instacertify.com/api/cart/remove", {
         method: "POST",
@@ -107,8 +108,11 @@ export default function Cart() {
         },
         body: JSON.stringify({
           product_id: id,
+          quantity:qty
         }),
       });
+
+      
 
       console.log("reponse", response);
 
@@ -121,6 +125,7 @@ export default function Cart() {
 
       // } 
     } catch (error) {
+       console.log(error);
     }
   }
 
@@ -207,7 +212,7 @@ export default function Cart() {
                                 <h4>{val?.name}</h4>
                                 {/* <p>{val?.}</p> */}
                                 <button onClick={() => {
-                                  removeCarts(val.id)
+                                  removeCarts(val.product_id,val.quantity)
                                 }} type="button">Remove</button>
                               </div>
                             </div>
