@@ -87,7 +87,7 @@ export default function CreateAccount() {
                 setConEmail('');
                 setPassword('');
                 setFormSubmit(false);
-                window.location.href="/login"
+                window.location.href = "/login"
             }
 
         } catch (error) {
@@ -166,24 +166,24 @@ export default function CreateAccount() {
 
     const submitAccount = async (e) => {
         e.preventDefault();
-    
+
         if (email === "" || conEmail === "" || password === "" || name === "") {
             return alert("Please Fill all fields");
         }
-    
+
         if (email !== conEmail) {
             return alert("Email Do not Match");
         }
-    
+
 
         const url = "https://admin.instacertify.com/api/registration"
         const payload = {
             name: name,
             email: email,
-            last_name:name,
+            last_name: name,
             password: password,
         };
-    
+
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -193,25 +193,25 @@ export default function CreateAccount() {
                 body: JSON.stringify(payload),
             });
 
-    
+
             if (!response.status) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-    
+
             const data = await response.json();
 
-            console.log("Dataa " ,data);
+            console.log("Dataa ", data);
 
-            if(data?.status){
+            if (data?.status) {
                 alert("Successfuly register");
                 router.push("/login");
             }
 
-            if(!data?.status){
-                if(data?.message?.password){
+            if (!data?.status) {
+                if (data?.message?.password) {
                     alert(data?.message?.password[0]);
                 }
-                else{
+                else {
                     alert(data?.message?.email[0]);
                 }
             }
@@ -219,8 +219,8 @@ export default function CreateAccount() {
             console.error("Error during registration:", error);
         }
     };
-    
-    
+
+
     return (
         <div>
             <Head>
@@ -255,18 +255,58 @@ export default function CreateAccount() {
                             {message != '' ? (<span className={style.formMessge} dangerouslySetInnerHTML={{ __html: message }}></span>) : ""}
 
                             <form onSubmit={submitAccount}>
-                                <div className={style.form_control}>
-                                    <input  ref={nameRef} required type="text" placeholder="Name" value={name} onChange={(e) => { setName(e.target.value); setMessage("") }} />
+                                <div className='syst'>
+                                    <div className='syst_left'>
+                                        <div className={style.form_control}>
+                                            <input ref={nameRef} required type="text" placeholder="First Name" value={name} onChange={(e) => { setName(e.target.value); setMessage("") }} />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input ref={emailRef} required type="email" placeholder="Email address" value={email} onChange={(e) => { setEmail(e.target.value); setMessage("") }} maxLength={'50'} />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input ref={conEmailRef} required type="email" placeholder="Confirm email address" value={conEmail} onChange={(e) => { setConEmail(e.target.value); setMessage("") }} maxLength={'50'} />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input ref={passwordRef} required type="password" placeholder="Create a secure password" value={password} onChange={(e) => { setPassword(e.target.value); setMessage("") }} maxLength={'20'} />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input type="text" placeholder="Company Name" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input type="text" placeholder="Designation" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <select>
+                                                <option>Interested in</option>
+                                                <option>Certification</option>
+                                                <option>Testing</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div className='syst_right'>
+                                        <div className={style.form_control}>
+                                            <input required type="text" placeholder="Last Name" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input required type="text" placeholder="GST" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input required type="text" placeholder="Office Address" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input required type="text" placeholder="Country" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input required type="text" placeholder="State" />
+                                        </div>
+                                        <div className={style.form_control}>
+                                            <input required type="text" placeholder="Pin Code" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className={style.form_control}>
-                                    <input ref={emailRef} required type="email" placeholder="Email address" value={email} onChange={(e) => { setEmail(e.target.value); setMessage("") }} maxLength={'50'} />
-                                </div>
-                                <div className={style.form_control}>
-                                    <input ref={conEmailRef} required type="email" placeholder="Confirm email address" value={conEmail} onChange={(e) => { setConEmail(e.target.value); setMessage("") }} maxLength={'50'} />
-                                </div>
-                                <div className={style.form_control}>
-                                    <input ref={passwordRef} required type="password" placeholder="Create a secure password" value={password} onChange={(e) => { setPassword(e.target.value); setMessage("") }} maxLength={'20'} />
-                                </div>
+
+                               
 
                                 <button className={style.faf_btn_primary}>Create Account</button>
                             </form>

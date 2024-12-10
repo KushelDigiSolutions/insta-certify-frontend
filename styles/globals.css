@@ -1432,7 +1432,48 @@ color:#FFFFFF;
   align-items: center;
   gap: 10px;
 }
-
+.login_loginForm__7N326 .login_faf_btn_primary__mmfd7{
+  height: 45px !important;
+  width: 84% !important;
+  margin-top: 0px !important;
+}
+.login_loginForm__7N326 form input{
+  height: 40px !important;
+}
+.login_loginForm__7N326 form select {
+  display: block;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #e1e3ea;
+  border-radius: 6px;
+  margin: 12px 0px;
+  padding: 0px 15px;
+  font-weight: 400;
+  color: #5e6278;
+}
+.syst{
+  display: flex;
+  gap: 10px;
+}
+.syst_left{
+  width: 100% !important;
+}
+.syst_right{
+  width: 100% !important;
+}
+.login_loginForm__7N326 form{
+  margin-top: 0px !important;
+}
+.login_loginForm__7N326 h1{
+  margin: 0px !important;
+}
+.login_loginForm__7N326 .login_faf_btn_primary__mmfd7{
+  width: 100% !important;
+}
+/* .login_parent_registeration__8WcSy .login_left__rxQyo{
+  padding-top: 50px !important;
+} */
 /* .toppad {
   margin-top: -30px;
 } */
@@ -4313,6 +4354,15 @@ justify-content: center !important;
     flex-direction: column;
     gap: 24px;
     background-color: white;
+  }
+  .syst_left{
+    width: 100% !important;
+  }
+  .syst_right{
+    width: 100% !important;
+  }
+  .login_loginForm__7N326 .login_faf_btn_primary__mmfd7{
+    width: 100% !important;
   }
 }
 
