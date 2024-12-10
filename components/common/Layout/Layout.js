@@ -6,6 +6,7 @@ const Layout = ({children, pageProps}) => {
     <>
    
       <Navbar navbarProps={pageProps.navbar} />
+      
       <main role="main">{children}</main>
       <Footer footerProps={pageProps.footer} />
       

@@ -13,7 +13,8 @@ import "slick-carousel/slick/slick-theme.css";
 import ShoppingProductSlider from "../components/common/shopping/product-slider";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import ShoppingCollections from "../components/common/shopping/collections";
-
+import toast from "react-hot-toast";
+import { Toaster } from 'react-hot-toast';
 
 var settingsMorePhotos = {
   arrows: true,
@@ -247,12 +248,10 @@ export default function catalog(pageProp) {
       }),
     })
       .then(response => response.json())
-      .then(data => alert(data?.message))
+      .then(data => toast.success(data?.message))
       .catch(error => console.error('Error:', error));
 
       // alert(resp)
-
-
   }
 
   useEffect(() => {
@@ -315,7 +314,7 @@ export default function catalog(pageProp) {
   return (
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
-
+      <Toaster/>
       <div className="catalogs">
 
         <div className="catalogcont">
@@ -416,8 +415,9 @@ export default function catalog(pageProp) {
                       <div className="add_cart_btn">
                         <button
                           onClick={() => {
+                            JSON?.parse(localStorage.getItem("insta_Access")) ? addToCartApi(product?.id) : toast.error("Please login to continue")
                             // addToCartApi logic here
-                            addToCartApi(product?.id)
+                            
                           }}
                         >
                           <svg
