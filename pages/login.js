@@ -165,7 +165,7 @@ export default function Login() {
                         width="800"
                         height="1024"
                         quality={100}
-                        alt={'fairchild'} />
+                        alt={'InstaCertify'} />
                     </div>
                 </div>
             </div>
