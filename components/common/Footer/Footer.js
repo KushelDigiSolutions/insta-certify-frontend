@@ -557,7 +557,7 @@ export default function Footer(footerProps) {
           >
             <div className='foot_map'>
               <ul className='foot_site'>
-                <li><a>PRIVACY POLICY</a></li>
+                <li><a href='https://instacertify.com/privacy-policy' >PRIVACY POLICY</a></li>
                 <li><a>REFUND POLICY</a></li>
                 <li><a>TERMS AND CONDITIONS</a></li>
                 <li><Link href={"/about"}>ABOUT US</Link></li>
