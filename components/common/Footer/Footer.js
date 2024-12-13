@@ -559,7 +559,7 @@ export default function Footer(footerProps) {
               <ul className='foot_site'>
                 <li><a href='https://instacertify.com/privacy-policy' >PRIVACY POLICY</a></li>
                 <li><a>REFUND POLICY</a></li>
-                <li><a>TERMS AND CONDITIONS</a></li>
+                <li><a href="https://instacertify.com/terms-and-condition">TERMS AND CONDITIONS</a></li>
                 <li><Link href={"/about"}>ABOUT US</Link></li>
                 <li><Link href={"/contact"}>CONTACT US</Link></li>
               </ul>
