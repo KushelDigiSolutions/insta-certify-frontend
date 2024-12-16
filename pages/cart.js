@@ -6,7 +6,7 @@ import HeadSEO from "../components/common/Head/head";
 import CartItemsLoading from "../components/common/Cart/cart-items-loading";
 import { useSession } from "next-auth/react";
 import CartItems from "../components/common/Cart/cart-items";
-
+import { useRouter } from 'next/router';
 import EventDetMinus from "../components/common/svg/eventDetials/minus";
 import EventDetPlus from "../components/common/svg/eventDetials/plus";
 import GlobalHeaderFooter from "../utils/common/global-header-footer";
@@ -24,6 +24,9 @@ export default function Cart(props) {
   const [cartData, setCartData] = useState([]);
   const { data: session, status } = useSession();
   const nx_cart_id = Cookies.get("nx_cart_id");
+
+  const router = useRouter();
+
 
   const [count, setCount] = useState(1);
 
@@ -292,6 +295,20 @@ export default function Cart(props) {
             }
 
             }} className="site-button site_button1">Clear Carts</button>
+          }
+
+{
+            cartData?.length > 0 && <button onClick={() => {
+
+              const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+           if(isLoggedIn){
+              alert("Checkout functionality will added soon")
+            }
+            else{
+              router.push('/login'); 
+            }
+
+            }} className="site-button site_button1">Checkout</button>
           }
 
           {cartLoad == false ? (

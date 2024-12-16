@@ -204,6 +204,26 @@ window.location.href = "/";
     }
 
 
+    const addToCartApi = async (id , access) => {
+
+        const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+             "Authorization":`Bearer ${access}`
+          },
+          body: JSON.stringify({
+            product_id: id,
+            quantity: 1,
+          }),
+        })
+          .then(response => response.json())
+         
+          .catch(error => console.error('Error:', error));
+    
+      }
+
+
     const submitLogin = async (e) => {
         e.preventDefault(); 
     
@@ -228,11 +248,18 @@ window.location.href = "/";
             }
     
             const data = await response.json(); 
-            console.log("Login successful:", data);
              if(data.status){
                 localStorage.setItem("insta_Access" , JSON.stringify(data?.data?.access_token));
                 localStorage.setItem("insta_User" , JSON.stringify(data?.data?.user_info));
-                    // window.location.href = "/"
+
+                // added the carts into the user carts 
+                let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+                for(let cart of allCarts){
+                     console.log("cart" , cart);
+                    await addToCartApi(cart?.id , data?.data?.access_token);
+                }
+           
                     router.push("/");
 }
         } catch (error) {

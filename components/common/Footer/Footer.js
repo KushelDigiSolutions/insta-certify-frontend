@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+
 export default function Footer(footerProps) {
   if (typeof footerProps.footerProps == "undefined" || footerProps.footerProps == false) { return ""; }
   else {
@@ -36,6 +39,10 @@ export default function Footer(footerProps) {
         [name]:value
        }))
     }
+
+    const handleRecaptchaChange = (value) => {
+      console.log('Captcha value:', value);
+    };
 
     const submitForm = async (e) => {
       e.preventDefault();
@@ -525,6 +532,13 @@ export default function Footer(footerProps) {
                           id="utm_campaign"
                           defaultValue="Direct"
                         />
+
+      <ReCAPTCHA
+      size='normal'
+        sitekey="6LfCVJ0qAAAAANSJX8eycxotMBzwuCHuMndZOSbY"
+        onChange={handleRecaptchaChange}
+      />
+
 
                         <div className="col-lg-12 col-md-12">
                           {" "}
