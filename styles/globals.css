@@ -4388,3 +4388,14 @@ justify-content: center !important;
     line-height: 24px;
   }
 }
+
+.cartnumbershow{
+  position: relative;
+}
+
+.countCart{
+  position: absolute;
+  top: 0px;
+  right: 20%;
+  transform: translateX(8px) translateY(-12px);
+}

@@ -12,7 +12,12 @@ import EventDetPlus from "../components/common/svg/eventDetials/plus";
 import GlobalHeaderFooter from "../utils/common/global-header-footer";
 import { constrainedMemory } from "process";
 
-export default function Cart() {
+export default function Cart(props) {
+
+  console.log("cartprob",props);
+
+  const {toggleBoolValue , boolValue} = props;
+
   const [cartLoad, setCartLoad] = useState(true);
   const [cartEnpty, setCartEnpty] = useState(false);
   const [cartUpdate, setCartUpdate] = useState(false);
@@ -67,14 +72,9 @@ export default function Cart() {
   //   getCartDetails();
   // }, []);
 
-  useEffect(() => {
-    getCarts();
-  }, []);
-
 
   const getCarts = async () => {
 
-    // https://admin.instacertify.com/instacertify-backend/public/api/cart
     try {
       const response = await fetch("https://admin.instacertify.com/api/cart", {
         method: "GET",
@@ -84,21 +84,13 @@ export default function Cart() {
         }
       });
 
-      console.log("reponse", response);
-
-      // if (response.ok) {
       const data = await response.json();
-      console.log(data);
-      // set the cart ddata 
       setCartData(data?.cart);
-
-      // } 
     } catch (error) {
     }
   };
 
   const removeCarts = async (id,qty) => {
-    console.log("id",id);
     try {
       const response = await fetch("https://admin.instacertify.com/api/cart/remove", {
         method: "POST",
@@ -112,15 +104,11 @@ export default function Cart() {
         }),
       });
 
-      
-
-      console.log("reponse", response);
-
+    
       // if (response.ok) {
       const data = await response.json();
       console.log(data);
-      // setrefreshFlag(!refreshFlag)
-      // set the cart ddata 
+      toggleBoolValue();
       setCartData(data?.cart);
 
       // } 
@@ -137,25 +125,32 @@ export default function Cart() {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
         },
-        // body: JSON.stringify({
-        //   product_id: id,
-        // }),
+      
       });
-
-      console.log("reponse", response);
-
-      // if (response.ok) {
       const data = await response.json();
       alert(data?.message)
-      // set the cart ddata 
       setCartData(data?.cart);
+      toggleBoolValue();
 
-      // } 
+
     } catch (error) {
     }
   }
 
-  console.log("ctada" , cartData);
+
+  useEffect(()=>{
+    const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+     if(isLoggedIn){
+      sessionStorage.removeItem("cartItems");
+      getCarts();
+     }
+     else{
+         let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+         setCartData(allCarts);
+     }
+  },[boolValue])
+
+
 
   return (
     <div className={style.cartBody}>
@@ -196,24 +191,26 @@ export default function Cart() {
                           <td className={style.item_td_1}>
                             <div className={style.imageWithContent}>
                               <div className={style.left}>
-                                {/* <Link href={'/cart'}>
-                    <Image
-                        className={style.figure}
-                        src={"/images/login-back.png"}
-                        width="200"
-                        height="212"
-                        alt={"ls.title"}
-                        quality={100}
-                    />
-                  </Link> */}
+                            
                                 <img width="200" height="212" src={val?.image} />
                               </div>
                               <div className={style.right}>
                                 <h4>{val?.name}</h4>
-                                {/* <p>{val?.}</p> */}
                                 <button onClick={() => {
-                                  removeCarts(val.product_id,val.quantity)
-                                }} type="button">Remove</button>
+  const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+  if(isLoggedIn){
+    removeCarts(val.product_id,val.quantity);
+
+  }
+  else{
+   const filterdata = cartData?.filter(data => data?.id !== val?.id);
+    setCartData(filterdata);
+    sessionStorage.setItem("cartItems" , JSON.stringify(filterdata));
+    toggleBoolValue();
+
+  }
+
+}} type="button">Remove</button>
                               </div>
                             </div>
                           </td>
@@ -281,7 +278,20 @@ export default function Cart() {
 
 
           {
-            cartData?.length > 0 && <button onClick={() => clearCarts()} className="site-button site_button1">Clear Carts</button>
+            cartData?.length > 0 && <button onClick={() => {
+
+              const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+           if(isLoggedIn){
+             clearCarts();
+
+            }
+            else{
+              sessionStorage.setItem("cartItems", JSON.stringify([]));
+              setCartData([]);
+              toggleBoolValue();
+            }
+
+            }} className="site-button site_button1">Clear Carts</button>
           }
 
           {cartLoad == false ? (

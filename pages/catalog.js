@@ -30,6 +30,9 @@ export default function catalog(pageProp) {
   const customFields = product?.customFields;
 
 
+  console.log("pageProp" , pageProp);
+  const {toggleBoolValue  } = pageProp;
+
   //   const [section1, SetSection1] = useState(()=>{
   //     if(customFields?.edges?.length > 0) {
   //       customFields?.edges?.map(async (ls)=>{
@@ -208,8 +211,6 @@ export default function catalog(pageProp) {
     }
   };
 
-
-
   const fetchCategory = async () => {
     try {
 
@@ -247,7 +248,10 @@ export default function catalog(pageProp) {
       }),
     })
       .then(response => response.json())
-      .then(data => alert(data?.message))
+      .then(data => {
+        alert(data?.message)
+        toggleBoolValue();
+      })
       .catch(error => console.error('Error:', error));
 
       // alert(resp)
@@ -262,22 +266,17 @@ export default function catalog(pageProp) {
 
   const [showdropdown, setshowdropdown] = useState(false);
 
-  // State to manage the current page
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Number of items per page
   const itemsPerPage = 6;
 
-  // Calculate the total pages
   const totalPages = Math.ceil(allProduct.length / itemsPerPage);
 
-  // Get items for the current page
   const currentItems = allProduct.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Change page handler
   const changePage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
@@ -303,11 +302,6 @@ export default function catalog(pageProp) {
       console.error("There was an error fetching the news by category:", error);
     }
   };
-
-  
-
-
-
 
 
   return (
@@ -382,7 +376,6 @@ export default function catalog(pageProp) {
 
             <div className="catalog_cards">
               <div className="catalog_card">
-                {/* <input onChange={()=> fetchProductBySearch(product?.name)}/> */}
                 {currentItems.map((product, index) => (
                   <div key={index} className="catalog_box">
 
@@ -413,12 +406,38 @@ export default function catalog(pageProp) {
                       </div>
                       <div className="add_cart_btn">
                         <button
-                          onClick={() => {
-                            JSON?.parse(localStorage.getItem("insta_Access")) ? addToCartApi(product?.id) : alert("Please login to continue")
-                            // addToCartApi logic here
-                            
-                          }}
+                          // onClick={() => {
+                          //   JSON?.parse(localStorage.getItem("insta_Access")) ? addToCartApi(product?.id) : alert("Please login to continue") }}
+
+                           onClick={async()=>{
+                            const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+                            const productId = product?.id;
+
+                             if(isLoggedIn){
+                             await addToCartApi(productId);
+                             }
+                             else{
+                              const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+                               const productExit = cartItems?.some(item => item.id === productId);
+
+                                   if(!productExit){
+                                    product.quantity = 1;
+                                  cartItems.push(product);
+                               }
+
+                               sessionStorage.setItem("cartItems" , JSON.stringify(cartItems));
+                               alert("Product successfuly added");
+                               toggleBoolValue();
+
+                             }
+
+                           
+                             
+                           }}
+
                         >
+
                           <svg
                             width="13"
                             height="13"

@@ -2643,6 +2643,11 @@ import { useRouter } from "next/router";
 import { signOut } from "next-auth/react";
 
 export default function Navbar(props) {
+
+  const {boolValue} = props;
+
+  console.log("pro",props);
+
   const [menuToggel, setMenuToggel] = useState(false);
   const [authPopup, setAuthPopup] = useState(false);
   const [authPopup1, setAuthPopup1] = useState(false)
@@ -3007,7 +3012,38 @@ export default function Navbar(props) {
       setIsDropdownOpen4((prev) => !prev);
     };
 
+    const [countCart , setCountCart] = useState(0);
+
     
+  const getCarts = async () => {
+
+    try {
+      const response = await fetch("https://admin.instacertify.com/api/cart", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        }
+      });
+
+      const data = await response.json();
+      setCountCart(data?.cart?.length);
+    } catch (error) {
+    }
+  };
+
+  useEffect(()=>{
+      const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+       if(isLoggedIn){
+        getCarts();
+       }
+       else{
+           let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+           setCountCart(allCarts?.length);
+       }
+    },[boolValue])
+  
+     
 
     // console.log(instaUser?.email);
     const fetchProductByCat = async (name) => {
@@ -4415,7 +4451,8 @@ export default function Navbar(props) {
 
                   </li>
                   <li>
-                    <Link href={"/cart"}><div className="cart">
+                    <Link href={"/cart"}>
+                    <div className="cart cartnumbershow">
                       <svg
                         width={24}
                         height={24}
@@ -4429,7 +4466,12 @@ export default function Navbar(props) {
                         />
                       </svg>
                       <span id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
-                    </div></Link>
+
+                      <p className="countCart">{countCart}</p>
+
+                    </div>
+
+                    </Link>
                   </li>
 
                   <li ref={dropdownRef4} className="ponh1" style={{ cursor: "pointer" }}>
@@ -5148,7 +5190,8 @@ export default function Navbar(props) {
                               </defs>
                             </svg>
                             </Link> :
-                              <Link href={"/cart"}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <Link href={"/cart"}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g opacity="0.8" clip-path="url(#clip0_295_362)">
                                   <path d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z" fill="#444444" />
                                 </g>
