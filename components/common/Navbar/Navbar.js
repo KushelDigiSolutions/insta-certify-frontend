@@ -2646,7 +2646,8 @@ export default function Navbar(props) {
 
   const {boolValue} = props;
 
-  console.log("pro",props);
+  const [countCart , setCountCart] = useState(0);
+
 
   const [menuToggel, setMenuToggel] = useState(false);
   const [authPopup, setAuthPopup] = useState(false);
@@ -2700,6 +2701,8 @@ export default function Navbar(props) {
       window.removeEventListener('scroll', changeNavBg);
     }
   }, [])
+
+
   const { data: userSession } = useSession();
   const router = useRouter();
   MenuToggel();
@@ -2918,6 +2921,38 @@ export default function Navbar(props) {
     };
   }, [isDropdownOpen4]);
 
+
+  const getCarts = async () => {
+
+    try {
+      const response = await fetch("https://admin.instacertify.com/api/cart", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        }
+      });
+
+      const data = await response.json();
+      setCountCart(data?.cart?.length);
+    } catch (error) {
+    }
+  };
+
+
+   
+  useEffect(() => {
+    const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+    if (isLoggedIn) {
+      getCarts(); // Call getCarts if logged in
+    } else {
+      let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+      setCountCart(allCarts?.length); // Use sessionStorage if not logged in
+    }
+  }, [boolValue]); // Only run this effect once when the component mounts
+
+
+
   const jok = {
     backgroundColor: "white !important"
   }
@@ -3012,37 +3047,8 @@ export default function Navbar(props) {
       setIsDropdownOpen4((prev) => !prev);
     };
 
-    const [countCart , setCountCart] = useState(0);
-
     
-  const getCarts = async () => {
 
-    try {
-      const response = await fetch("https://admin.instacertify.com/api/cart", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-        }
-      });
-
-      const data = await response.json();
-      setCountCart(data?.cart?.length);
-    } catch (error) {
-    }
-  };
-
-  useEffect(()=>{
-      const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
-       if(isLoggedIn){
-        getCarts();
-       }
-       else{
-           let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
-           setCountCart(allCarts?.length);
-       }
-    },[boolValue])
-  
      
 
     // console.log(instaUser?.email);
@@ -3069,6 +3075,7 @@ export default function Navbar(props) {
       }
     };
 
+  
     return (
       <>
         {/* desktop view  */}

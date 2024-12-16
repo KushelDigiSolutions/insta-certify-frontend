@@ -199,49 +199,9 @@ export default function Login() {
     const { status } = useSession()
 
     if(status == "authenticated"){
-        //router.push("/");
 window.location.href = "/";      
   return;
     }
-
-    // const submitLogin = async (e) => {
-    //     e.preventDefault();
-    //     if(status == "authenticated"){
-    //         router.push("/");
-    //         return;
-    //     }
-    //     if(email == ""){
-    //         setMessage("Please enter the correct email address.")
-    //         setFormSubmit(false);
-    //         emailRef.current.focus();
-    //         return false;
-    //     }
-    //     else if(password == ""){
-    //         setMessage("Please enter the password.")
-    //         setFormSubmit(false);
-    //         passwordRef.current.focus();
-    //         return false;
-    //     }
-    //     else {
-    //         setFormSubmit(true);
-
-    //         signIn("nextjs-mainlogin-form", {username: email, password:password, redirect:false, callbackUrl:'/'}).then(async ({ ok, error }) => {
-    //             console.log('ok')
-    //             console.log(ok)
-    //             console.log(error)
-    //             if (ok) {
-    //                 setMessage("User Login Successfully.");
-    //                 window.location.href = "/"
-    //             } else {
-    //                 signOut({redirect:false})
-    //                 setMessage("Credentials do not match!")
-    //                 setFormSubmit(false);
-    //             }
-    //         })
-
-    //         return true;
-    //     }
-    // }
 
 
     const submitLogin = async (e) => {
@@ -343,3 +303,45 @@ window.location.href = "/";
     </div>
   )
 }
+
+
+
+
+    // const submitLogin = async (e) => {
+    //     e.preventDefault();
+    //     if(status == "authenticated"){
+    //         router.push("/");
+    //         return;
+    //     }
+    //     if(email == ""){
+    //         setMessage("Please enter the correct email address.")
+    //         setFormSubmit(false);
+    //         emailRef.current.focus();
+    //         return false;
+    //     }
+    //     else if(password == ""){
+    //         setMessage("Please enter the password.")
+    //         setFormSubmit(false);
+    //         passwordRef.current.focus();
+    //         return false;
+    //     }
+    //     else {
+    //         setFormSubmit(true);
+
+    //         signIn("nextjs-mainlogin-form", {username: email, password:password, redirect:false, callbackUrl:'/'}).then(async ({ ok, error }) => {
+    //             console.log('ok')
+    //             console.log(ok)
+    //             console.log(error)
+    //             if (ok) {
+    //                 setMessage("User Login Successfully.");
+    //                 window.location.href = "/"
+    //             } else {
+    //                 signOut({redirect:false})
+    //                 setMessage("Credentials do not match!")
+    //                 setFormSubmit(false);
+    //             }
+    //         })
+
+    //         return true;
+    //     }
+    // }
