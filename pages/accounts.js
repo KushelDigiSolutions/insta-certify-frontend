@@ -20,8 +20,6 @@ export default function Accounts() {
   const nx_cart_id = Cookies.get("nx_cart_id");
 
 
-  
-
   // const getCarts = async () => {
 
   //   // https://admin.instacertify.com/instacertify-backend/public/api/cart

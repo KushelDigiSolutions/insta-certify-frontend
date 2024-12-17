@@ -161,8 +161,8 @@ export default function EventDetails(pageProp) {
                 
                 const cart_id = cartRes?.data?.id;
                 if(typeof cart_id != "undefined" && cart_id != ""){
-                    console.log(cartRes?.data)
-                    Cookies.set('nx_cart_id', cart_id, { expires: 4  });
+                    console.log("caart_id" , cart_id);
+                    Cookies.set('nx_cart_id', cart_id, { expires: 7  });
                     router.push('/cart');
                 }else{
                     Cookies.remove('nx_cart_id');

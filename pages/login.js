@@ -260,7 +260,7 @@ window.location.href = "/";
                     await addToCartApi(cart?.id , data?.data?.access_token);
                 }
            
-                    router.push("/");
+                router.push("/");
 }
         } catch (error) {
             console.error("Error during login:", error);
