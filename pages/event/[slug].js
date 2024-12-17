@@ -190,7 +190,8 @@ export default function EventDetails(pageProp) {
             setFormSubmit(false)
         }
     }
-    
+
+ 
     
     return (
         <div className={style.eventDetails}>

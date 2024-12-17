@@ -22,7 +22,9 @@
 } */
 body {
   overflow-x: hidden;
-}
+  top: 0px !important;
+} 
+
 
 * {
   padding: 0;
@@ -4401,3 +4403,10 @@ justify-content: center !important;
 }
 
 
+
+.google_translte{
+  transform: translateX(-20px) translateY(-5px) ;
+  max-width: 170px;
+  overflow: hidden;
+  font-size: 10px;
+}

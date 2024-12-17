@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Navigation from "./navigation";
 import GlobalHeaderFooter from "../../utils/common/global-header-footer";
+import { cookies } from "next/dist/client/components/headers";
 
 export default function AddressBook(props) {
   
@@ -17,11 +18,10 @@ export default function AddressBook(props) {
   const [message, setMessage] = useState("");
   const addressesList = props?.page_content?.addressesList;
 
-  console.log(props.page_content)
 
   const editHandle = (id) => {
-    console.log("cookisetid" , id);
     Cookies.set("customer_address",id , {expires:7});
+    
     router.push('/account/address')
   }
 
@@ -55,6 +55,8 @@ export default function AddressBook(props) {
       setMessage("Something went wrong.")
     }
     Cookies.remove('customer_address');
+
+    
   },[])
 
   return (

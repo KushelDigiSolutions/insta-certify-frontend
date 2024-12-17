@@ -28,7 +28,28 @@ const Layout = ({ children, pageProps }) => {
   useEffect(() => {
     const storedBoolValue = JSON.parse(sessionStorage.getItem("boolValue") || "false");
     setBoolValue(storedBoolValue);
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+      // Google Translate Initialization Function
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "en", // Default language
+          includedLanguages: "en,hi,es,fr,de", // Specify allowed languages (English, Hindi, Spanish, French, German)
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        "google_translate_element"
+      );
+    };
+
   }, []);
+
 
   useEffect(() => {
     sessionStorage.setItem("boolValue", JSON.stringify(boolValue));
@@ -36,6 +57,7 @@ const Layout = ({ children, pageProps }) => {
 
   return (
     <>
+
       <Navbar navbarProps={pageProps.navbar} boolValue={boolValue} />
       
       <main role="main">
@@ -43,6 +65,8 @@ const Layout = ({ children, pageProps }) => {
       </main>
 
       <Footer footerProps={pageProps.footer} />
+
+      
     </>
   );
 };
