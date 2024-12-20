@@ -317,13 +317,13 @@ export default function CreateAccount() {
                     </div>
                     <div className={style.right}>
                         <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-                            <Image
+                            {/* <Image
                                 className={style.faf_logo}
                                 src={'/images/create-account-back.png'}
                                 width="800"
                                 height="1024"
                                 quality={100}
-                                alt={'InstaCertify'} />
+                                alt={'InstaCertify'} /> */}
                         </div>
                     </div>
                 </div>

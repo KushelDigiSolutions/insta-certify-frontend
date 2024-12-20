@@ -44,8 +44,12 @@ export default function Footer(footerProps) {
       console.log('Captcha value:', value);
     };
 
+    const [sendvalue , setsetndvalue] = useState(false);
+
     const submitForm = async (e) => {
       e.preventDefault();
+      setsetndvalue(true);
+      // https://mailer.instacertify.com/api/v1/sendMail
       const resp = await fetch('https://mailer.instacertify.com/api/v1/sendMail', {
         method: 'POST',
         headers: {
@@ -68,121 +72,16 @@ export default function Footer(footerProps) {
           phone:"",
           message:""
         })
+
+        console.log("resp" , resp);
+
+        setsetndvalue(false);
+
     }
 
     return (
 
-      // <footer className={style.footer} style={itemsSetting} role="contentinfo">
-
-
-      //   <div className='container foot_coming'>
-
-      //     <div className={style.parent}>
-
-      //       <div className={style.left}>
-
-      //         {
-
-      //           footerData?.footer_logo != null ? (
-      //             <img  className="kalish" src="https://res.cloudinary.com/ecommerce-website/image/upload/v1725449711/60logo_1_m7ttuc.svg" alt="" />
-      //           )
-      //           :
-      //           (<h4 className={style.footerTitle} dangerouslySetInnerHTML={ {__html:footerData?.global_title} }></h4>)
-      //          }
-
-      //         <div className={style.footerSubTitle} dangerouslySetInnerHTML={ {__html:footerData?.sub_title} }></div>
-
-      //       </div>
-
-      //       <div className={style.right}>
-      //           {footerItems != null ? (
-      //             footerItems.map((ls, i)=>(
-      //               <div key={i} id={ls.parentId} className={style.footerItems}>
-
-      //                 <h4 className={style.footerItemsHead}>
-      //                   {ls.parentItems.link != '' ? (<a href={ls.parentItems.link} target={ls.parentItems.linkType == 'true' ? "_blank" : "_self" }>{ls.parentItems.title}</a>): ls.parentItems.title}
-      //                 </h4>
-
-
-      //                 {ls.subItems.length > 0 ? (
-      //                 <ul className={style.footerItemsUL}>
-      //                     {ls.subItems.map((lss, ii)=>(
-      //                       <li key={ii}>
-
-
-      //                         {
-      //                           lss.link?.match('tel:') ? (
-      //                               <a href={""+lss?.link} target={lss?.linkType == 'true' ? "_blank" : "_self" }>{lss?.title}</a>
-      //                             )
-      //                             :
-      //                             (
-      //                               lss.link?.match('mailto:') ? (
-      //                                 <a href={lss?.link} target={lss?.linkType == 'true' ? "_blank" : "_self" }>{lss?.title}</a>
-      //                               ):(
-      //                                 <a href={lss?.link} target={lss?.linkType == 'true' ? "_blank" : "_self" }>{lss?.title}</a>
-      //                               )
-
-      //                             )
-      //                         }
-
-      //                       </li>
-      //                     ))}
-      //                 </ul>
-      //                 ) :""}
-
-      //               </div>
-      //             ))
-      //           ):""}
-      //       </div>
-
-      //     </div>
-
-
-
-      //   </div>
-
-      //   <div className={style.copyRight}>
-      //     <div className='container'>
-      //       <div className={style.crParent}>
-      //         <div className={style.crLeft}>
-      //           <p>Copyrights ©{ moment().format('Y') } Instacertify Solutions.</p>
-      //         </div>
-      //         <div className={style.crRight}>
-      //           <ul>
-      //           <p className='connect'>Connect:</p>
-      //             <li>
-      //               <Link href={'https://twitter.com/'} target='_blank' >
-      //                 <img src='./images/fb.svg'/>
-      //               </Link>
-      //             </li> 
-      //             <li>
-      //               <a href={'https://www.facebook.com/FUNaddictFairchild/'} target='_blank' >
-      //                 {/* <FaceBookSocial /> */}
-      //                 <img src='./images/twitter.svg'/>
-      //               </a>
-      //             </li>
-      //             <li>
-      //               <a href={'https://www.linkedin.com/company/fairchildairforcebase/'} target='_blank' >
-      //                 {/* <LinkedinSocial /> */}
-      //                 <img src='./images/linkedin.svg'/>
-      //               </a>
-      //             </li>
-      //             <li>
-      //               <a href={'https://www.instagram.com/fairchildfun/'} target='_blank' >
-      //                 {/* <InstagramSocial /> */}
-      //                 <img src='./images/insta.svg'/>
-      //               </a>
-      //             </li>
-
-      //           </ul>
-      //         </div>
-      //       </div>
-      //     </div>
-      //   </div>
-
-
-      // </footer>
-
+  
       <>
         <footer
           className="site-footer style1"
@@ -192,7 +91,8 @@ export default function Footer(footerProps) {
 
               <div className="row rwing">
 
-                <div className="col-md-3 col-sm-12">
+              {/* col-md-3 col-sm-12 */}
+                <div className="rwing1">
                   <div className="widget widget_getintuch" height="240px">
                     <div className='foot_logs'>
                         <img src='../images/lo.svg'/>
@@ -263,7 +163,8 @@ export default function Footer(footerProps) {
                 {
                   footerItems?.length > 0 && 
                    footerItems?.map((footer , index)=>(
-                    <div key={index} className="col-md-3 col-sm-12">
+                    // col-md-3 col-sm-12
+                    <div key={index} className="rwing2">
                     <div className="widget">
                       <h4 className="footer-title">{footer?.parentItems?.title}</h4>
                       {
@@ -274,7 +175,7 @@ export default function Footer(footerProps) {
                           behavior="static"
                           direction="up"
                           scrollamount={2}
-                          height="250px"
+                          height="415px"
                           onmouseover={() => { this.behavior = "static" }}
                           onmouseout={() => { this.behavior = "scroll" }}
                         >
@@ -303,6 +204,178 @@ export default function Footer(footerProps) {
                 }
 
              
+
+
+{/* col-md-3 col-sm-12 */}
+                <div className="rwing3 margin-top25">
+
+                <div className="google_translte" id="google_translate_element" ></div>
+
+
+                  <div className="widget">
+                    
+                    <form onSubmit={submitForm}  >
+                      <h4 className="footer-title quick jk_tit">Quick Contact</h4>
+                      <div className="footerformarea">
+                        <div className=" footer-form-pad0">
+                          <div className="">
+
+                            <div className="input-group">
+                              
+                              <span className="input-group-addon">
+                                <i className="ti-user text-primary" />
+                              </span>
+                              <input
+                                name="name"
+                                value={value.name}
+                                onChange={changeHandler}
+                                type="text"
+                                required=""
+                                className=""
+                                placeholder="Name"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" footer-form-pad0">
+                          <div className="">
+                            <div className="input-group">
+                              {" "}
+                              <span className="input-group-addon">
+                                <i className="ti-email text-primary" />
+                              </span>{" "}
+                              <input
+                                name="email"
+                                value={value.email}
+                                onChange={changeHandler}
+                                type="email"
+                                className=""
+                                required=""
+                                placeholder="Email Id"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className=" footer-form-pad0">
+                          <div className="">
+                            <div className="input-group">
+                              {" "}
+                              <span className="input-group-addon">
+                                <i className="ti-mobile text-primary" />
+                              </span>{" "}
+                              <input
+                                name="phone"
+                                value={value.phone}
+                                onChange={changeHandler}
+                                type="text"
+                                required=""
+                                maxLength={12}
+                                className=""
+                                placeholder="10 digit mobile No."
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <input
+                          type="hidden"
+                          name="page_url"
+                          defaultValue="https://alephindia.in/"
+                        />
+                        <div className=" footer-form-pad0">
+                          <div className="">
+                            <div className="input-group">
+                              {" "}
+                              <span className="input-group-addon">
+                                <i className="ti-agenda text-primary" />
+                              </span>
+                              <textarea
+                                name="message"
+                                value={value.message}
+                                onChange={changeHandler}
+                                rows={4}
+                                className=""
+                                required=""
+                                placeholder="Message"
+                                defaultValue={""}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <input
+                          type="hidden"
+                          name="utm_source"
+                          id="utm_source"
+                          defaultValue="Direct"
+                        />
+                        <input
+                          type="hidden"
+                          name="utm_medium"
+                          id="utm_medium"
+                          defaultValue="Direct"
+                        />
+                        <input
+                          type="hidden"
+                          name="utm_campaign"
+                          id="utm_campaign"
+                          defaultValue="Direct"
+                        />
+
+      <ReCAPTCHA size='normal' sitekey="6LfCVJ0qAAAAANSJX8eycxotMBzwuCHuMndZOSbY"   onChange={handleRecaptchaChange} />
+
+
+                        <div className="col-lg-12 col-md-12">
+                         
+                          <button
+                            type="submit"
+                            className="site-button width100"
+                          >
+                            {
+                              sendvalue?  
+                              <span class="loader2"></span>
+                              :  <span>Submit</span>
+                            }
+
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+
+              </div>
+
+            
+
+            </div>
+          </div>
+
+          <div  className="footer-bottom footer-line">
+            <div className='foot_map'>
+              <ul className='foot_site'>
+                <li><a href='https://instacertify.com/privacy-policy' >PRIVACY POLICY</a></li>
+                <li><a href="https://instacertify.com/refund-policy" >REFUND POLICY</a></li>
+                <li><a href="https://instacertify.com/terms-and-condition">TERMS AND CONDITIONS</a></li>
+                <li><Link href={"/about"}>ABOUT US</Link></li>
+                <li><Link href={"/contact"}>CONTACT US</Link></li>
+              </ul>
+            </div>
+
+            <div className='lower_footer'>
+              <span>Copyright © Instacertify Labs Private Limited</span>
+            </div>
+          </div>
+
+        </footer >
+
+      </>
+
+    )
+  }
+}
+
+
+
 
                 {/* <div className="col-md-3 col-sm-12">
                   <div className="widget">
@@ -423,171 +496,115 @@ export default function Footer(footerProps) {
                   </div>
                 </div> */}
 
-                <div className="col-md-3 col-sm-12 margin-top25">
-                  <div className="widget">
-                    
-                    <form
-                      onSubmit={submitForm}
-                    >
-                      <h4 className="footer-title quick jk_tit">Quick Contact</h4>
-                      <div className="footerformarea">
-                        <div className="col-lg-12 col-md-12 footer-form-pad0">
-                          <div className="">
-                            <div className="input-group">
-                              {" "}
-                              <span className="input-group-addon">
-                                <i className="ti-user text-primary" />
-                              </span>{" "}
-                              <input
-                                name="name"
-                                value={value.name}
-                                onChange={changeHandler}
-                                type="text"
-                                required=""
-                                className=""
-                                placeholder="Name"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12 footer-form-pad0">
-                          <div className="">
-                            <div className="input-group">
-                              {" "}
-                              <span className="input-group-addon">
-                                <i className="ti-email text-primary" />
-                              </span>{" "}
-                              <input
-                                name="email"
-                                value={value.email}
-                                onChange={changeHandler}
-                                type="email"
-                                className=""
-                                required=""
-                                placeholder="Email Id"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-12 col-md-12 footer-form-pad0">
-                          <div className="">
-                            <div className="input-group">
-                              {" "}
-                              <span className="input-group-addon">
-                                <i className="ti-mobile text-primary" />
-                              </span>{" "}
-                              <input
-                                name="phone"
-                                value={value.phone}
-                                onChange={changeHandler}
-                                type="text"
-                                required=""
-                                maxLength={12}
-                                className=""
-                                placeholder="10 digit mobile No."
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <input
-                          type="hidden"
-                          name="page_url"
-                          defaultValue="https://alephindia.in/"
-                        />
-                        <div className="col-lg-12 col-md-12 footer-form-pad0">
-                          <div className="">
-                            <div className="input-group">
-                              {" "}
-                              <span className="input-group-addon">
-                                <i className="ti-agenda text-primary" />
-                              </span>
-                              <textarea
-                                name="message"
-                                value={value.message}
-                                onChange={changeHandler}
-                                rows={4}
-                                className=""
-                                required=""
-                                placeholder="Message"
-                                defaultValue={""}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <input
-                          type="hidden"
-                          name="utm_source"
-                          id="utm_source"
-                          defaultValue="Direct"
-                        />
-                        <input
-                          type="hidden"
-                          name="utm_medium"
-                          id="utm_medium"
-                          defaultValue="Direct"
-                        />
-                        <input
-                          type="hidden"
-                          name="utm_campaign"
-                          id="utm_campaign"
-                          defaultValue="Direct"
-                        />
-
-      <ReCAPTCHA
-      size='normal'
-        sitekey="6LfCVJ0qAAAAANSJX8eycxotMBzwuCHuMndZOSbY"
-        onChange={handleRecaptchaChange}
-      />
 
 
-                        <div className="col-lg-12 col-md-12">
-                          {" "}
-                          <button
-                            name="submit"
-                            type="submit"
-                            value="Submit"
-                            className="site-button width100"
-                          >
-                            <span>Submit</span>
-                          </button>
-                        </div>
-                      </div>
-                    </form>
+                    // <footer className={style.footer} style={itemsSetting} role="contentinfo">
 
-                  </div>
-                </div>
 
-              </div>
+      //   <div className='container foot_coming'>
 
-              <div className="row">
-                <div className="col-md-12" />
-              </div>
+      //     <div className={style.parent}>
 
-            </div>
-          </div>
+      //       <div className={style.left}>
 
-          <div
-            className="footer-bottom footer-line"
-          >
-            <div className='foot_map'>
-              <ul className='foot_site'>
-                <li><a href='https://instacertify.com/privacy-policy' >PRIVACY POLICY</a></li>
-                <li><a href="https://instacertify.com/refund-policy" >REFUND POLICY</a></li>
-                <li><a href="https://instacertify.com/terms-and-condition">TERMS AND CONDITIONS</a></li>
-                <li><Link href={"/about"}>ABOUT US</Link></li>
-                <li><Link href={"/contact"}>CONTACT US</Link></li>
-              </ul>
-            </div>
+      //         {
 
-            <div className='lower_footer'>
-              <span>Copyright © Instacertify Labs Private Limited</span>
-            </div>
-          </div>
+      //           footerData?.footer_logo != null ? (
+      //             <img  className="kalish" src="https://res.cloudinary.com/ecommerce-website/image/upload/v1725449711/60logo_1_m7ttuc.svg" alt="" />
+      //           )
+      //           :
+      //           (<h4 className={style.footerTitle} dangerouslySetInnerHTML={ {__html:footerData?.global_title} }></h4>)
+      //          }
 
-        </footer >
+      //         <div className={style.footerSubTitle} dangerouslySetInnerHTML={ {__html:footerData?.sub_title} }></div>
 
-      </>
+      //       </div>
 
-    )
-  }
-}
+      //       <div className={style.right}>
+      //           {footerItems != null ? (
+      //             footerItems.map((ls, i)=>(
+      //               <div key={i} id={ls.parentId} className={style.footerItems}>
+
+      //                 <h4 className={style.footerItemsHead}>
+      //                   {ls.parentItems.link != '' ? (<a href={ls.parentItems.link} target={ls.parentItems.linkType == 'true' ? "_blank" : "_self" }>{ls.parentItems.title}</a>): ls.parentItems.title}
+      //                 </h4>
+
+
+      //                 {ls.subItems.length > 0 ? (
+      //                 <ul className={style.footerItemsUL}>
+      //                     {ls.subItems.map((lss, ii)=>(
+      //                       <li key={ii}>
+
+
+      //                         {
+      //                           lss.link?.match('tel:') ? (
+      //                               <a href={""+lss?.link} target={lss?.linkType == 'true' ? "_blank" : "_self" }>{lss?.title}</a>
+      //                             )
+      //                             :
+      //                             (
+      //                               lss.link?.match('mailto:') ? (
+      //                                 <a href={lss?.link} target={lss?.linkType == 'true' ? "_blank" : "_self" }>{lss?.title}</a>
+      //                               ):(
+      //                                 <a href={lss?.link} target={lss?.linkType == 'true' ? "_blank" : "_self" }>{lss?.title}</a>
+      //                               )
+
+      //                             )
+      //                         }
+
+      //                       </li>
+      //                     ))}
+      //                 </ul>
+      //                 ) :""}
+
+      //               </div>
+      //             ))
+      //           ):""}
+      //       </div>
+
+      //     </div>
+
+
+
+      //   </div>
+
+      //   <div className={style.copyRight}>
+      //     <div className='container'>
+      //       <div className={style.crParent}>
+      //         <div className={style.crLeft}>
+      //           <p>Copyrights ©{ moment().format('Y') } Instacertify Solutions.</p>
+      //         </div>
+      //         <div className={style.crRight}>
+      //           <ul>
+      //           <p className='connect'>Connect:</p>
+      //             <li>
+      //               <Link href={'https://twitter.com/'} target='_blank' >
+      //                 <img src='./images/fb.svg'/>
+      //               </Link>
+      //             </li> 
+      //             <li>
+      //               <a href={'https://www.facebook.com/FUNaddictFairchild/'} target='_blank' >
+      //                 {/* <FaceBookSocial /> */}
+      //                 <img src='./images/twitter.svg'/>
+      //               </a>
+      //             </li>
+      //             <li>
+      //               <a href={'https://www.linkedin.com/company/fairchildairforcebase/'} target='_blank' >
+      //                 {/* <LinkedinSocial /> */}
+      //                 <img src='./images/linkedin.svg'/>
+      //               </a>
+      //             </li>
+      //             <li>
+      //               <a href={'https://www.instagram.com/fairchildfun/'} target='_blank' >
+      //                 {/* <InstagramSocial /> */}
+      //                 <img src='./images/insta.svg'/>
+      //               </a>
+      //             </li>
+
+      //           </ul>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+
+
+      // </footer>

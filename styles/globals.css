@@ -1492,7 +1492,6 @@ color:#FFFFFF;
 }
 
 .tes1wrap {
-  /* background-: red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2928,6 +2927,8 @@ color:#FFFFFF;
   background-color: #EC691F;
   border-radius: 26.5px;
   margin-top: 10px;
+  cursor: pointer;
+  z-index: 100 !important;
 }
 
 .site-button span {
@@ -2974,7 +2975,54 @@ color:#FFFFFF;
 
 .rwing {
   display: flex !important;
-  justify-content: space-around;
+  gap: 20px;
+  padding: 0px 20px;
+  justify-content: space-between;
+  flex-wrap: nowrap !important;
+}
+
+.rwing1{
+  max-width: 287px;
+  width: 100%;
+}
+
+.rwing2{
+  max-width: 287px;
+  width: 100%;
+}
+.rwing3{
+  max-width: 287px;
+  width: 100%;
+}
+
+
+@media (max-width:1150px) {
+  .rwing{
+    flex-wrap: wrap !important;
+    
+  }
+  .rwing3{
+    max-width: 100% !important;
+    width: 100%;
+    margin-top: 30px !important;
+  }
+  .footerformarea{
+    width: 100%;
+    /* margin-top: 100px; */
+  }
+}
+
+@media (max-width:950px) {
+  .rwing{
+    display: grid !important;
+    grid-template-columns: repeat(2 , 1fr);
+  }
+}
+
+@media (max-width:600px) {
+  .rwing{
+    grid-template-columns: repeat(1 , 1fr);
+  }
 }
 
 .catalog_img {
@@ -4405,8 +4453,51 @@ justify-content: center !important;
 
 
 .google_translte{
-  transform: translateX(-20px) translateY(-5px) ;
+  transform: translateY(-24px);
   max-width: 170px;
   overflow: hidden;
   font-size: 10px;
 }
+
+.allaboutoverall{
+  overflow-x: hidden;
+}
+
+.footerformarea{
+  width: 100% !important;
+  width: 300px !important;
+}
+
+.footer-form-pad0{
+  width: 100%;
+}
+
+@media (max-width:1200px) {
+  .insta-certify-banner-container{
+    padding: 100px 50px 50px 50px !important;
+  }
+  .navbars{
+    padding: 10px 30px !important;
+  }
+}
+
+
+.loader2 {
+  width: 18px !important;
+  height: 18px !important;
+  border: 3px solid #FFF !important;
+  border-bottom-color: #FF3D00 !important;
+  border-radius: 50% !important;
+  display: inline-block ;
+  box-sizing: border-box ;
+  animation: rotation 1s linear infinite ;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg) !important;
+  }
+  100% {
+      transform: rotate(360deg) !important;
+  }
+  } 

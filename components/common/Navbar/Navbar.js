@@ -1200,7 +1200,10 @@ export default function Navbar(props) {
                       </svg>
                       <span id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
 
+                     {
+                      countCart > 0 && 
                       <p className="countCart">{countCart}</p>
+                     }
 
                     </div>
 
@@ -1210,7 +1213,6 @@ export default function Navbar(props) {
                   <li ref={dropdownRef4} className="ponh1" style={{ cursor: "pointer" }}>
                   
   
-<div className="google_translte" id="google_translate_element" ></div>
 
 
                   

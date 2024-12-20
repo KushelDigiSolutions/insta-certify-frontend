@@ -56,7 +56,7 @@ const Layout = ({ children, pageProps }) => {
   }, [boolValue]);
 
   return (
-    <>
+    <div className='allaboutoverall'>
 
       <Navbar navbarProps={pageProps.navbar} boolValue={boolValue} />
       
@@ -67,7 +67,7 @@ const Layout = ({ children, pageProps }) => {
       <Footer footerProps={pageProps.footer} />
 
       
-    </>
+    </div>
   );
 };
 
