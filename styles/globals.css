@@ -2976,27 +2976,27 @@ color:#FFFFFF;
 .rwing {
   display: flex !important;
   gap: 20px;
-  padding: 0px 20px;
+  padding: 0px 20px !important;
   justify-content: space-between;
   flex-wrap: nowrap !important;
 }
 
 .rwing1{
-  max-width: 287px;
+  max-width: 287px !important;
   width: 100%;
 }
 
 .rwing2{
-  max-width: 287px;
+  max-width: 287px !important;
   width: 100%;
 }
 .rwing3{
-  max-width: 287px;
+  max-width: 287px !important;
   width: 100%;
 }
 
 
-@media (max-width:1150px) {
+@media (max-width:1350px) {
   .rwing{
     flex-wrap: wrap !important;
     
