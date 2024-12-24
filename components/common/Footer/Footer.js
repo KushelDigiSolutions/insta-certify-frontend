@@ -95,7 +95,7 @@ export default function Footer(footerProps) {
                 <div className="rwing1">
                   <div className="widget widget_getintuch" height="240px">
                     <div className='foot_logs'>
-                        <img src='../images/lo.svg' alt='footerImg'/>
+                        <img src='../images/lo.svg' alt='hh'/>
                     </div>
                     <h4 className="footer-title kl_title">Contact Us</h4>
 
@@ -190,8 +190,6 @@ export default function Footer(footerProps) {
                             </li>
                             ))
                           }
-                       
-                        
                         </marquee>
                       </ul>
 

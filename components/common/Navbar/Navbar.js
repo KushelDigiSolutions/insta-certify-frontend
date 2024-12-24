@@ -1239,7 +1239,7 @@ export default function Navbar(props) {
               <div className="">
                 <div id="some" className={style.headerParent}>
                   <div id="left_nav" className={style.hpLeft}>
-                    <a href={"/"}>
+                    <a href={"/"} aria-label="logo">
                       {settings?.default_logo == "" ? (
                         <div
                           dangerouslySetInnerHTML={{ __html: settings?.text }}
