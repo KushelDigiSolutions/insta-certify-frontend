@@ -4501,3 +4501,22 @@ justify-content: center !important;
       transform: rotate(360deg) !important;
   }
   } 
+  #google_translate_element {
+    position: relative;
+    z-index: 10;
+}
+
+/* Dropdown ki positioning fix karna */
+.goog-te-menu-frame {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 10px !important; /* Footer ke andar alignment ke liye */
+  left: 0 !important;
+  z-index: 9999 !important; /* Ensure it stays above other elements */
+}
+
+/* Dropdown ke andar ki styling */
+.goog-te-menu2 {
+  overflow-y: scroll !important; /* Dropdown scrolling ke liye */
+  max-height: 200px !important; /* Height set karo */
+}

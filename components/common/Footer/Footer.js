@@ -79,6 +79,8 @@ export default function Footer(footerProps) {
 
     }
 
+   
+  
     return (
 
   
@@ -207,7 +209,7 @@ export default function Footer(footerProps) {
 {/* col-md-3 col-sm-12 */}
                 <div className="rwing3 margin-top25">
 
-                <div className="google_translte" id="google_translate_element" ></div>
+                {/* <div className="google_translte" id="google_translate_element" ></div> */}
 
 
                   <div className="widget">
