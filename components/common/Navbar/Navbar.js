@@ -404,7 +404,7 @@ export default function Navbar(props) {
     };
 
     const handleDropdownToggle2 = () => {
-      setIsDropdownOpen2(false);
+      // setIsDropdownOpen2(false);
       setIsDropdownOpen2((prev) => !prev);
     };
 
@@ -476,11 +476,17 @@ export default function Navbar(props) {
                       {
                         navbarItems?.map((l, index) => (
                           index === 0 ?
-                            <li ref={dropdownRef} key={index}  className="sog addbgred">
+                            <li onClick={()=>{
+                              if(isDropdownOpen){
+                                 setIsDropdownOpen(false);
+                              }
+                            }}  ref={dropdownRef} key={index}  className="sog addbgred">
                               <div
+
+
                              
                                 id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
-                                {l?.parentItems?.title}
+                                {l?.parentItems?.title} 
                                 {isDropdownOpen &&
                                   <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d_295_242)">
@@ -1014,9 +1020,11 @@ export default function Navbar(props) {
 
                               :
                               index === 2 ?
-                                <li ref={dropdownRef2} className="soki">
+                                <li  ref={dropdownRef2} className="soki">
                                   <div id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
-                                    {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    {isDropdownOpen2 &&
+                                    
+                                    <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                                       <g filter="url(#filter0_d_295_242)">
                                         <path d="M49.5 24L58.5933 36.75H40.4067L49.5 24Z" fill="#EC691F" />
                                       </g>
