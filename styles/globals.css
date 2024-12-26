@@ -4437,6 +4437,9 @@ justify-content: center !important;
     font-size: 14px;
     line-height: 24px;
   }
+  .lopl marquee{
+    height: 185px !important;
+  }
 }
 
 .cartnumbershow{
