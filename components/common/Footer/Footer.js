@@ -172,6 +172,7 @@ export default function Footer(footerProps) {
                       
                       <ul className="list-2 font-opensans lopl">
                         <marquee
+                          
                           behavior="static"
                           direction="up"
                           scrollamount={2}

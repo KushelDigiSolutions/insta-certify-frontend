@@ -21,9 +21,9 @@ import { signOut } from "next-auth/react";
 
 export default function Navbar(props) {
 
-  const {boolValue} = props;
+  const { boolValue } = props;
 
-  const [countCart , setCountCart] = useState(0);
+  const [countCart, setCountCart] = useState(0);
 
 
   const [menuToggel, setMenuToggel] = useState(false);
@@ -217,7 +217,7 @@ export default function Navbar(props) {
 
   const [isDropdownOpen4, setIsDropdownOpen4] = useState(false);
 
-  
+
   const currentPath = router.asPath;
 
   const dropdownRef = useRef(null);
@@ -315,7 +315,7 @@ export default function Navbar(props) {
   };
 
 
-   
+
   useEffect(() => {
     const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
     if (isLoggedIn) {
@@ -324,7 +324,7 @@ export default function Navbar(props) {
       let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
       setCountCart(allCarts?.length); // Use sessionStorage if not logged in
     }
-  }, [boolValue]); 
+  }, [boolValue]);
 
   const jok = {
     backgroundColor: "white !important"
@@ -396,7 +396,7 @@ export default function Navbar(props) {
       backgroundColor: "white",
     }
 
-    
+
 
     const handleDropdownToggle = () => {
       setIsDropdownOpen(false);
@@ -418,9 +418,9 @@ export default function Navbar(props) {
       setIsDropdownOpen4((prev) => !prev);
     };
 
-    
 
-     
+
+
 
     // console.log(instaUser?.email);
     const fetchProductByCat = async (name) => {
@@ -446,7 +446,7 @@ export default function Navbar(props) {
       }
     };
 
-  
+
     return (
       <>
         {/* desktop view  */}
@@ -476,8 +476,9 @@ export default function Navbar(props) {
                       {
                         navbarItems?.map((l, index) => (
                           index === 0 ?
-                            <li key={index} ref={dropdownRef} className="sog addbgred">
+                            <li ref={dropdownRef} key={index}  className="sog addbgred">
                               <div
+                             
                                 id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
                                 {l?.parentItems?.title}
                                 {isDropdownOpen &&
@@ -1138,7 +1139,7 @@ export default function Navbar(props) {
                     {
                       isDropdownOpen3 && (
                         <div className="sofar1">
-                      
+
                           {accessToken === null ||
                             typeof accessToken === "undefined" ? (
                             <>
@@ -1162,14 +1163,14 @@ export default function Navbar(props) {
                               <Link href="/accounts">
                                 <span>Account Info</span>
                               </Link>
-                             
+
                               <a onClick={() => {
                                 localStorage.removeItem("insta_Access")
                                 localStorage.removeItem("insta_User")
                                 setAccessToken(null)
                                 setInstaUser(null)
                                 alert("Successfuly logout")
-                                window.location.href ="/"
+                                window.location.href = "/"
 
                               }}>
                                 <span>Logout</span>
@@ -1185,37 +1186,37 @@ export default function Navbar(props) {
                   </li>
                   <li>
                     <Link href={"/cart"}>
-                    <div className="cart cartnumbershow">
-                      <svg
-                        width={24}
-                        height={24}
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z"
-                          fill={`${navBg || currentPath === "/contact" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" || currentPath === "/accounts" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certi" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? "#444444" : "#ffffff"}`}
-                        />
-                      </svg>
-                      <span id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
+                      <div className="cart cartnumbershow">
+                        <svg
+                          width={24}
+                          height={24}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z"
+                            fill={`${navBg || currentPath === "/contact" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" || currentPath === "/accounts" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certi" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? "#444444" : "#ffffff"}`}
+                          />
+                        </svg>
+                        <span id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" ? "koi" : "loi"}`} className="e_cart pii1">Cart</span>
 
-                     {
-                      countCart > 0 && 
-                      <p className="countCart">{countCart}</p>
-                     }
+                        {
+                          countCart > 0 &&
+                          <p className="countCart">{countCart}</p>
+                        }
 
-                    </div>
+                      </div>
 
                     </Link>
                   </li>
 
                   <li ref={dropdownRef4} className="ponh1" style={{ cursor: "pointer" }}>
-                  
-  
 
 
-                  
+
+
+
                   </li>
 
                 </ul>
@@ -1860,15 +1861,15 @@ export default function Navbar(props) {
                             </Link> :
                               <Link href={"/cart"}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g opacity="0.8" clip-path="url(#clip0_295_362)">
-                                  <path d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z" fill="#444444" />
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_295_362">
-                                    <rect width="24" height="24" fill="white" />
-                                  </clipPath>
-                                </defs>
-                              </svg>
+                                  <g opacity="0.8" clip-path="url(#clip0_295_362)">
+                                    <path d="M8 4.23529H24L21.3333 16.9412H5.33333V2.82353H0V0H8V4.23529ZM8 7.05882V14.1176H19.2L20.6667 7.05882H8ZM5.33333 24V21.1765H10.2667V24H5.33333ZM14.6667 24V21.1765H19.6V24H14.6667Z" fill="#444444" />
+                                  </g>
+                                  <defs>
+                                    <clipPath id="clip0_295_362">
+                                      <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                  </defs>
+                                </svg>
                               </Link>
 
                           }
@@ -1975,7 +1976,7 @@ export default function Navbar(props) {
 
 
 
-  {/* <div onClick={handleDropdownToggle4} className="lng">
+{/* <div onClick={handleDropdownToggle4} className="lng">
                       {
                         navBg || currentPath === "/contact" || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" || currentPath === "/cart" || currentPath === "/accounts" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certi" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys" || currentPath === "/metal-alloys" || currentPath === "/polymers-&-plastic" || currentPath === "/construction-&-engineering" || currentPath === "/wireless" || currentPath === "/cosmetics" || currentPath === "/software" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? <svg
                           width={24}
@@ -2044,9 +2045,9 @@ export default function Navbar(props) {
 
 
 
-                    // OTHERS 
-                    
-                  {/* <li ref={dropdownRef} className="sog">
+// OTHERS 
+
+{/* <li ref={dropdownRef} className="sog">
 
                     <div id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "kom" : "mom"}`} className={`normailcs ${isDropdownOpen && "makecolor"}`} onClick={handleDropdownToggle} href="">
                     Our Services
@@ -2569,11 +2570,11 @@ export default function Navbar(props) {
 
 
 
-                  {/* <li>
+{/* <li>
                     <Link href={"/about"} className={`${currentPath === "/about" ? "makecolor2" : ""}`}> About Us </Link>
                   </li> */}
 
-                  {/* <li ref={dropdownRef2} className="soki">
+{/* <li ref={dropdownRef2} className="soki">
                     <div id={`${navBg || currentPath === "/about" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-testing" ? "nom" : "tom"}`} onClick={handleDropdownToggle2} className={`normailcs ${isDropdownOpen2 && "makecolor"}`} >Resources
                       {isDropdownOpen2 && <svg className="soka" width="99" height="93" viewBox="0 0 99 93" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g filter="url(#filter0_d_295_242)">
@@ -2673,14 +2674,14 @@ export default function Navbar(props) {
                     }
                   </li> */}
 
-                  {/* <li>
+{/* <li>
                     <Link href={"/contact"} className={`${currentPath === "/contact" ? "makecolor2" : ""}`}> Contact us </Link>
                   </li> */}
 
 
-                  // OTHERS SS
+// OTHERS SS
 
-                  // import React, { useEffect, useRef, useState } from "react";
+// import React, { useEffect, useRef, useState } from "react";
 // import style from "../../../pages/css/header.module.scss";
 // import Image from "next/image";
 // import Link from "next/link";
