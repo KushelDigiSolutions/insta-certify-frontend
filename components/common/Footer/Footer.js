@@ -33,6 +33,10 @@ export default function Footer(footerProps) {
 
     const changeHandler = (e)=>{
       const {name , value} = e.target;
+
+      if (name === "phone" && value.length > 10) {
+        return
+    }
   
        setValue((prev)=>({
         ...prev ,
@@ -269,9 +273,8 @@ export default function Footer(footerProps) {
                                 name="phone"
                                 value={value.phone}
                                 onChange={changeHandler}
-                                type="text"
+                                type="number"
                                 required=""
-                                maxLength={12}
                                 className=""
                                 placeholder="10 digit mobile No."
                               />

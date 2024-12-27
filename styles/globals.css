@@ -4503,7 +4503,28 @@ justify-content: center !important;
   100% {
       transform: rotate(360deg) !important;
   }
+  
   } 
+
+  .loader3{
+    width: 18px !important;
+    height: 18px !important;
+    border: 3px solid #FFF !important;
+    border-bottom-color: #FF3D00 !important;
+    border-radius: 50% !important;
+    display: inline-block ;
+    box-sizing: border-box ;
+    animation: rotation1 1s linear infinite ;
+  }
+  @keyframes rotation1 {
+    0% {
+        transform: rotate(0deg) !important;
+    }
+    100% {
+        transform: rotate(360deg) !important;
+    }
+    
+    } 
   #google_translate_element {
     position: relative;
     z-index: 10;

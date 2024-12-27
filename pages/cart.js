@@ -14,9 +14,9 @@ import { constrainedMemory } from "process";
 
 export default function Cart(props) {
 
-  console.log("cartprob",props);
+  // console.log("cartprob",props);
 
-  const {toggleBoolValue , boolValue} = props;
+  const { toggleBoolValue, boolValue } = props;
 
   const [cartLoad, setCartLoad] = useState(true);
   const [cartEnpty, setCartEnpty] = useState(false);
@@ -88,12 +88,13 @@ export default function Cart(props) {
       });
 
       const data = await response.json();
+      console.log(data?.cart);
       setCartData(data?.cart);
     } catch (error) {
     }
   };
 
-  const removeCarts = async (id,qty) => {
+  const removeCarts = async (id, qty) => {
     try {
       const response = await fetch("https://admin.instacertify.com/api/cart/remove", {
         method: "POST",
@@ -103,11 +104,11 @@ export default function Cart(props) {
         },
         body: JSON.stringify({
           product_id: id,
-          quantity:qty
+          quantity: qty
         }),
       });
 
-    
+
       // if (response.ok) {
       const data = await response.json();
       console.log(data);
@@ -116,7 +117,7 @@ export default function Cart(props) {
 
       // } 
     } catch (error) {
-       console.log(error);
+      console.log(error);
     }
   }
 
@@ -128,7 +129,7 @@ export default function Cart(props) {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
         },
-      
+
       });
       const data = await response.json();
       alert(data?.message)
@@ -141,17 +142,17 @@ export default function Cart(props) {
   }
 
 
-  useEffect(()=>{
+  useEffect(() => {
     const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
-     if(isLoggedIn){
+    if (isLoggedIn) {
       sessionStorage.removeItem("cartItems");
       getCarts();
-     }
-     else{
-         let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
-         setCartData(allCarts);
-     }
-  },[boolValue])
+    }
+    else {
+      let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+      setCartData(allCarts);
+    }
+  }, [boolValue])
 
 
 
@@ -194,26 +195,26 @@ export default function Cart(props) {
                           <td className={style.item_td_1}>
                             <div className={style.imageWithContent}>
                               <div className={style.left}>
-                            
-                                <img width="200" height="212" src={val?.image} />
+
+                                <img width="200" height="212" src={val?.image || val?.images} />
                               </div>
                               <div className={style.right}>
-                                <h4>{val?.name}</h4>
+                                <h4>{val?.name || val?.product_name}</h4>
                                 <button onClick={() => {
-  const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
-  if(isLoggedIn){
-    removeCarts(val.product_id,val.quantity);
+                                  const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+                                  if (isLoggedIn) {
+                                    removeCarts(val.product_id, val.quantity);
 
-  }
-  else{
-   const filterdata = cartData?.filter(data => data?.id !== val?.id);
-    setCartData(filterdata);
-    sessionStorage.setItem("cartItems" , JSON.stringify(filterdata));
-    toggleBoolValue();
+                                  }
+                                  else {
+                                    const filterdata = cartData?.filter(data => data?.id !== val?.id);
+                                    setCartData(filterdata);
+                                    sessionStorage.setItem("cartItems", JSON.stringify(filterdata));
+                                    toggleBoolValue();
 
-  }
+                                  }
 
-}} type="button">Remove</button>
+                                }} type="button">Remove</button>
                               </div>
                             </div>
                           </td>
@@ -226,21 +227,21 @@ export default function Cart(props) {
                           <td className={style.item_td_3}>
                             <div className={style.formIncrement + " parentFormIncrement"}>
                               <button onClick={() =>
-                             setCartData((prev)=>(
-                              prev.map((item)=>(
-                                item.product_id === val.product_id ? {...item , quantity: Math.max(1 , item.quantity-1)} : item
-                              ))
-                             ))
+                                setCartData((prev) => (
+                                  prev.map((item) => (
+                                    item.product_id === val.product_id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+                                  ))
+                                ))
                               } className={style.btnIncDec + " qtyDecrement"} type="button">
                                 <EventDetMinus />
                               </button>
-                              <span className={style.inputQty}>{val.quantity}</span>
-                              <button  onClick={() =>
-                                setCartData((prev)=>(
-                                  prev.map((item)=>(
-                                    item.product_id === val.product_id ? {...item , quantity: Math.max(1 , item.quantity+1)} : item
+                              <span className={style.inputQty}>{val?.quantity}</span>
+                              <button onClick={() =>
+                                setCartData((prev) => (
+                                  prev.map((item) => (
+                                    item.product_id === val.product_id ? { ...item, quantity: Math.max(1, item.quantity + 1) } : item
                                   ))
-                                 ))
+                                ))
                               } className={style.btnIncDec + " qtyIncrement"} type="button">
                                 <EventDetPlus />
                               </button>
@@ -249,7 +250,7 @@ export default function Cart(props) {
 
                           <td className={style.item_td_4}>
                             {/* <span className={style.eleTitle}>Total:</span> */}
-                            <span>₹{val?.price * val.quantity}</span>
+                            <span>₹{val?.price * val?.quantity}</span>
                           </td>
                         </>
 
@@ -284,29 +285,29 @@ export default function Cart(props) {
             cartData?.length > 0 && <button onClick={() => {
 
               const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
-           if(isLoggedIn){
-             clearCarts();
+              if (isLoggedIn) {
+                clearCarts();
 
-            }
-            else{
-              sessionStorage.setItem("cartItems", JSON.stringify([]));
-              setCartData([]);
-              toggleBoolValue();
-            }
+              }
+              else {
+                sessionStorage.setItem("cartItems", JSON.stringify([]));
+                setCartData([]);
+                toggleBoolValue();
+              }
 
             }} className="site-button site_button1">Clear Carts</button>
           }
 
-{
+          {
             cartData?.length > 0 && <button onClick={() => {
 
               const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
-           if(isLoggedIn){
-              alert("Checkout functionality will added soon")
-            }
-            else{
-              router.push('/login'); 
-            }
+              if (isLoggedIn) {
+                alert("Checkout functionality will added soon")
+              }
+              else {
+                router.push('/login');
+              }
 
             }} className="site-button site_button1">Checkout</button>
           }

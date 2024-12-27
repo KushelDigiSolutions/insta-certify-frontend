@@ -35,7 +35,11 @@ var settingsMorePhotos = {
 export default function catalog(pageProp) {
 
   const product = pageProp.page_content.product;
+
+  const { toggleBoolValue } = pageProp;
   const customFields = product?.customFields;
+
+
 
   const [count, setCount] = useState(1);
 
@@ -200,7 +204,7 @@ export default function catalog(pageProp) {
 
   const router = useRouter();
   const { id } = router.query;
-  
+
   const [productdetail, setProductDetails] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -267,13 +271,90 @@ export default function catalog(pageProp) {
     }
   }, [productdetail])
 
+  // const addToCartApi = async (id) => {
+
+  //   const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //        "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+  //     },
+  //     body: JSON.stringify({
+  //       product_id: id,
+  //       quantity: count,
+  //     }),
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => alert(data?.message))
+  //     .catch(error => console.error('Error:', error));
+
+  //     // alert(resp)
+
+
+  // }
+
+  const [sendvalue, setsetndvalue] = useState(false);
+
+  const [value, setValue] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  })
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "phone" && value.length > 10) {
+      return
+    }
+
+    setValue((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    setsetndvalue(true);
+    // https://mailer.instacertify.com/api/v1/sendMail
+    const resp = await fetch('https://mailer.instacertify.com/api/v1/sendMail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: value.name,
+        email: value.email,
+        phone: value.phone,
+        message: value.message
+      }),
+    })
+      .then(response => response.json())
+      .then(data => alert(data.message))
+      .catch(error => console.error('Error:', error));
+
+    setValue({
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+    })
+
+    console.log("resp", resp);
+
+    setsetndvalue(false);
+
+  }
+
   const addToCartApi = async (id) => {
 
     const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-         "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
       },
       body: JSON.stringify({
         product_id: id,
@@ -281,16 +362,17 @@ export default function catalog(pageProp) {
       }),
     })
       .then(response => response.json())
-      .then(data => alert(data?.message))
+      .then(data => {
+        alert(data?.message)
+        toggleBoolValue();
+      })
       .catch(error => console.error('Error:', error));
 
-      // alert(resp)
-
-
+    // alert(resp)
   }
 
   return (
-    
+
     <div className="page_shopping_list sop">
       <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
 
@@ -390,10 +472,32 @@ export default function catalog(pageProp) {
                       </div>
 
                       {/* right  */}
-                      <button  onClick={() => {
-                            // addToCartApi logic here
-                            addToCartApi(productdetail?.id)
-                          }} className="addtocart">
+                      <button onClick={async () => {
+                        const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
+                        const productId = productdetail?.id;
+
+                        if (isLoggedIn) {
+                          await addToCartApi(productId);
+                        }
+                        else {
+                          const cartItems = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+
+                          const productExit = cartItems?.some(item => item.id === productId);
+
+                          if (!productExit) {
+                            productdetail.quantity = 1;
+                            cartItems.push(productdetail);
+                          }
+
+                          sessionStorage.setItem("cartItems", JSON.stringify(cartItems));
+                          alert("Product successfuly added");
+                          toggleBoolValue();
+
+                        }
+
+
+
+                      }} className="addtocart">
                         <img src='./images/Vector.png' alt="" /> <span>ADD TO CART</span>
                       </button>
                     </div>
@@ -412,14 +516,20 @@ export default function catalog(pageProp) {
                           <img className="cursor-pointer" onClick={() => setPopup(false)} width={20} src="./images/same.avif" />
                         </div>
                         <div className="contact_formaaa">
-                          <form className="foml">
-                            <input type="text" name="name" placeholder="Name" />
-                            <input type="email" name="Email" placeholder="Email Address" />
-                            <input type="number" placeholder="Phone Number" />
+                          <form onSubmit={submitForm} className="foml">
+                            <input value={value?.name} onChange={changeHandler} type="text" name="name" placeholder="Name" />
+                            <input value={value.email} onChange={changeHandler} type="email" name="email" placeholder="Email Address" />
+                            <input name="phone" value={value?.phone} onChange={changeHandler} type="number" placeholder="Phone Number" />
                             {/* <input type="number" placeholder="Quantity" /> */}
-                            <textarea placeholder="Message" />
+                            <textarea name="message" value={value?.message} onChange={changeHandler} placeholder="Message" />
 
-                            <button>Message</button>
+                            <button type="submit">
+                            {
+                              sendvalue?  
+                              <span class="loader3"></span>
+                              :  <span>Submit</span>
+                            }
+                            </button>
 
                           </form>
                         </div>
@@ -434,8 +544,8 @@ export default function catalog(pageProp) {
 
                     <div className="socialimgs">
 
-                     <a href="https://www.facebook.com/people/Instacertify-Labs-Private-Limited/61564980525561/" target="_blank"><img src="./images//Facebook.png" alt="" /></a>
-                      <img  src='./images/Instagram.png' alt="" />
+                      <a href="https://www.facebook.com/people/Instacertify-Labs-Private-Limited/61564980525561/" target="_blank"><img src="./images//Facebook.png" alt="" /></a>
+                      <img src='./images/Instagram.png' alt="" />
                       <img onClick={whatAppHandler} src='./images/whatsapp 1.png' alt="" />
 
                     </div>
@@ -494,7 +604,7 @@ export default function catalog(pageProp) {
                 start === 1 && (
                   <div className="description_information">
                     {/* <p>{productdetail?.product_detail}</p> */}
-                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{  __html: productdetail?.product_detail}}/></p>
+                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{ __html: productdetail?.product_detail }} /></p>
                   </div>
                 )
               }
@@ -503,7 +613,7 @@ export default function catalog(pageProp) {
                 start === 2 && (
                   <div className="description_information">
                     {/* <p>{productdetail?.product_specification}</p> */}
-                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{  __html: productdetail?.product_specification}}/></p>
+                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{ __html: productdetail?.product_specification }} /></p>
                   </div>
                 )
               }
@@ -536,7 +646,7 @@ export default function catalog(pageProp) {
                     <img className="catalog_img" src={prod?.image} alt="tensile" />
                     <div className="catalog_content">
                       {/* <span className="tensile_content">{prod?.name}</span> */}
-                      <Link style={{ textDecoration: "none" }} href={`/catalogdetail?id=${prod?.slug}`}><span className="tensile_content">{(prod?.name).slice(0,44)}... </span></Link>
+                      <Link style={{ textDecoration: "none" }} href={`/catalogdetail?id=${prod?.slug}`}><span className="tensile_content">{(prod?.name).slice(0, 44)}... </span></Link>
                       <div className="tensile_price">
                         <span className="real">₹{prod?.sale_price}</span>
                         <span className="fake">₹{prod?.price}</span>
