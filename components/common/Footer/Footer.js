@@ -236,7 +236,7 @@ export default function Footer(footerProps) {
                                 value={value.name}
                                 onChange={changeHandler}
                                 type="text"
-                                required=""
+                                required
                                 className=""
                                 placeholder="Name"
                               />
@@ -256,7 +256,7 @@ export default function Footer(footerProps) {
                                 onChange={changeHandler}
                                 type="email"
                                 className=""
-                                required=""
+                                required
                                 placeholder="Email Id"
                               />
                             </div>
@@ -274,7 +274,7 @@ export default function Footer(footerProps) {
                                 value={value.phone}
                                 onChange={changeHandler}
                                 type="number"
-                                required=""
+                                 required
                                 className=""
                                 placeholder="10 digit mobile No."
                               />
@@ -299,7 +299,7 @@ export default function Footer(footerProps) {
                                 onChange={changeHandler}
                                 rows={4}
                                 className=""
-                                required=""
+                                required
                                 placeholder="Message"
                                 defaultValue={""}
                               />

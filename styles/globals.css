@@ -2283,9 +2283,11 @@ color:#FFFFFF;
 .soka {
   position: absolute;
   left: 0;
-  top: 8px;
+  top: 10px;
 }
-
+.foka{
+  left: -8px
+}
 .nav_test {
   display: flex;
   align-items: center;
