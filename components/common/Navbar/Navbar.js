@@ -71,9 +71,9 @@ export default function Navbar(props) {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', changeNavBg);
+    window?.addEventListener('scroll', changeNavBg);
     return () => {
-      window.removeEventListener('scroll', changeNavBg);
+      window?.removeEventListener('scroll', changeNavBg);
     }
   }, [])
 
@@ -254,45 +254,45 @@ export default function Navbar(props) {
 
   useEffect(() => {
     if (isDropdownOpen) {
-      document.addEventListener("click", handleClickOutside);
+      document?.addEventListener("click", handleClickOutside);
     } else {
-      document.removeEventListener("click", handleClickOutside);
+      document?.removeEventListener("click", handleClickOutside);
     }
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document?.removeEventListener("click", handleClickOutside);
     };
   }, [isDropdownOpen]);
 
   useEffect(() => {
     if (isDropdownOpen2) {
-      document.addEventListener("click", handleClickOutside2);
+      document?.addEventListener("click", handleClickOutside2);
     } else {
-      document.removeEventListener("click", handleClickOutside2);
+      document?.removeEventListener("click", handleClickOutside2);
     }
     return () => {
-      document.removeEventListener("click", handleClickOutside2);
+      document?.removeEventListener("click", handleClickOutside2);
     };
   }, [isDropdownOpen2]);
 
   useEffect(() => {
     if (isDropdownOpen3) {
-      document.addEventListener("click", handleClickOutside3);
+      document?.addEventListener("click", handleClickOutside3);
     } else {
-      document.removeEventListener("click", handleClickOutside3);
+      document?.removeEventListener("click", handleClickOutside3);
     }
     return () => {
-      document.removeEventListener("click", handleClickOutside3);
+      document?.removeEventListener("click", handleClickOutside3);
     };
   }, [isDropdownOpen3]);
 
   useEffect(() => {
     if (isDropdownOpen4) {
-      document.addEventListener("click", handleClickOutside4);
+      document?.addEventListener("click", handleClickOutside4);
     } else {
-      document.removeEventListener("click", handleClickOutside4);
+      document?.removeEventListener("click", handleClickOutside4);
     }
     return () => {
-      document.removeEventListener("click", handleClickOutside4);
+      document?.removeEventListener("click", handleClickOutside4);
     };
   }, [isDropdownOpen4]);
 
