@@ -183,7 +183,7 @@ export default function Footer(footerProps) {
                           behavior="static"
                           direction="up"
                           scrollamount={2}
-                          height="415px"
+                          height="260px"
                           onmouseover={() => { this.behavior = "static" }}
                           onmouseout={() => { this.behavior = "scroll" }}
                         >

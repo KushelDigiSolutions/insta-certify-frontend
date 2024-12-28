@@ -69,7 +69,7 @@ export default function Navbar(props) {
   const [navBg, setNavBg] = useState(false);
 
   const changeNavBg = () => {
-    window.scrollY >= 100 ? setNavBg(true) : setNavBg(false);
+    window.scrollY >= 40 ? setNavBg(true) : setNavBg(false);
   }
 
   useEffect(() => {
@@ -1248,7 +1248,7 @@ export default function Navbar(props) {
 
 
         {/* ipad mobile  */}
-        <div onScroll={changeNavBg}>
+        <div className="IpAD" onScroll={changeNavBg}>
           <header
             id={`${navBg ? "lower" : "lower_head"}`}
             className={style.header}
