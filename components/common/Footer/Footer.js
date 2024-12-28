@@ -325,7 +325,7 @@ export default function Footer(footerProps) {
                           defaultValue="Direct"
                         />
 
-      <ReCAPTCHA size='normal' sitekey="6LfCVJ0qAAAAANSJX8eycxotMBzwuCHuMndZOSbY"   onChange={handleRecaptchaChange} />
+      <ReCAPTCHA className='hghglol' size='normal' sitekey="6LfCVJ0qAAAAANSJX8eycxotMBzwuCHuMndZOSbY"   onChange={handleRecaptchaChange} />
 
 
                         <div className="col-lg-12 col-md-12">
