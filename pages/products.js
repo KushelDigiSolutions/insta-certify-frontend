@@ -37,8 +37,6 @@ export default function products(pageProp) {
   const router = useRouter();
   const { search } = router.query;
 
-  console.log("search" , search);
-
   
   const fetchProduct = async () => {
     try {
@@ -52,14 +50,12 @@ export default function products(pageProp) {
 
       if (resp.status === 200) {
         const formateddata = await resp.json();
-        console.log("formateddata" , formateddata);
         const filterdata = formateddata?.products?.filter((data) => {
             if (typeof data?.name === "string") {
               return data.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
             }
             return false; 
           });
-        console.log("filterdata" , filterdata);
         setAllProduct(filterdata);
 
       }
