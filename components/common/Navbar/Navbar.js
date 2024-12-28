@@ -399,17 +399,21 @@ export default function Navbar(props) {
 
 
     const handleDropdownToggle = () => {
-      setIsDropdownOpen(false);
+      // setIsDropdownOpen(false);
+      setIsDropdownOpen2(false)
+      setIsDropdownOpen3(false)
       setIsDropdownOpen((prev) => !prev);
     };
 
     const handleDropdownToggle2 = () => {
-      // setIsDropdownOpen2(false);
+      setIsDropdownOpen(false);
+      setIsDropdownOpen3(false)
       setIsDropdownOpen2((prev) => !prev);
     };
 
     const handleDropdownToggle3 = () => {
-      setIsDropdownOpen3(false);
+      setIsDropdownOpen(false);
+      setIsDropdownOpen2(false)
       setIsDropdownOpen3((prev) => !prev);
     };
 
@@ -476,11 +480,7 @@ export default function Navbar(props) {
                       {
                         navbarItems?.map((l, index) => (
                           index === 0 ?
-                            <li onClick={()=>{
-                              if(isDropdownOpen){
-                                 setIsDropdownOpen(false);
-                              }
-                            }}  ref={dropdownRef} key={index}  className="sog addbgred">
+                            <li   ref={dropdownRef} key={index}  className="sog addbgred">
                               <div
 
 
@@ -513,7 +513,7 @@ export default function Navbar(props) {
 
                                 <div className="navItem">
 
-                                  <div className="sidebar_nav1">
+                                  <div  className="sidebar_nav1">
 
                                     <ul className="certify">
                                       {
