@@ -36,6 +36,29 @@ export default function EventLists(pageProp) {
 
   const isActive = (path) => path === pathName
 
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const totalPages = Math.ceil(eventList.length / itemsPerPage);
+
+   const currentItems = eventList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
   return (
     <div>
       <HeadSEO title={eventCategory?.seo_title} description={eventCategory?.seo_description} image={eventCategory?.image} />
@@ -44,9 +67,7 @@ export default function EventLists(pageProp) {
       <div className={style.page_top_banner}>
         <div className="container">
           <h1 className={style.banner_heading}>
-            {/* {eventCategory?.name} */}
-            {/* "Creating memories that last a <br /> lifetime - Join us at our
-            events!" */}
+          
             <div className="soma">
               <h5 className="head-part">Home</h5>
               <svg
@@ -81,27 +102,17 @@ export default function EventLists(pageProp) {
         />
       </div>
 
-      {/* Section category */}
+
       <div className="container">
         <ul className={style.categoryList}>
           {category_all?.map((ls, i) => (
             <li key={ls.id} className={eventCategory?.id == ls?.id ? style.card + " " + style.is_active : style.card}>
               <Link className={isActive(ls.path) ? 'active' : ''} href={ls.slug}>
-                {/* <div className={style.figureContainer}>
-                  {ls?.image != null ? (
-                    <Image
-                      className={style.figure}
-                      src={ls.image}
-                      width="200"
-                      height="204"
-                      alt="Event List"
-                    />
-                  ) : ""}
-                </div> */}
+                
                 <div className={`${isActive(ls.path) ? 'active' : ''} alloys`}>
                 <h4 className={style.cateTitle}>{ls?.name}</h4>
                 </div>
-                {/* <span className={style.cateCount}>{ls?.count} events</span> */}
+              
               </Link>
             </li>
           ))}
@@ -120,16 +131,6 @@ export default function EventLists(pageProp) {
               <>
 
                 <div className={style.filterEvents} ref={refFilterEvents}>
-
-                  {/* <button type="button" className="ff_btn ff_btn_primary" onClick={()=> {setFilterEvents(value => !value);}}>
-                Filter Events
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M10 18H14V16H10V18ZM3 6V8H21V6H3ZM6 13H18V11H6V13Z"
-                    fill="white"
-                  />
-                </svg>
-              </button> */}
 
                   <div className="serach_dasa">
                     <input type="text" placeholder="Search Upcoming events information" />
@@ -186,12 +187,11 @@ export default function EventLists(pageProp) {
         </div>
       </div>
 
-      {/* Section Event All List */}
       <div className={'container ' + style.eleEventList}>
         <span className={style.eleEventListTop} id="eventList">&nbsp;</span>
         {eventList?.length > 0 ? (
           <ul className={style.eventlistGrid}>
-            {eventList?.map((ls, i) => (
+            {currentItems?.map((ls, i) => (
               <li key={ls.id} className={style.eventlist}>
                 <div className={style.parent}>
 
@@ -277,6 +277,7 @@ export default function EventLists(pageProp) {
                 </div>
               </li>
             ))}
+
           </ul>
         )
           :
@@ -284,6 +285,27 @@ export default function EventLists(pageProp) {
             <p className={style.notEvent}>There are no events in {eventCategory?.name.toLowerCase()} category.</p>
           )
         }
+
+<div className={style.pagination}>
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 1}
+          className={style.paginationButton}
+        >
+          Previous
+        </button>
+        <span className={style.pageIndicator}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+          className={style.paginationButton}
+        >
+          Next
+        </button>
+      </div>
+      
       </div>
     </div>
   );

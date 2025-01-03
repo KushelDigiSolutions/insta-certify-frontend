@@ -20,6 +20,7 @@ export default function AddressBook(props) {
 
 
   const editHandle = (id) => {
+    console.log("cookies id" , id);
     Cookies.set("customer_address",id , {expires:7});
     
     router.push('/account/address')
