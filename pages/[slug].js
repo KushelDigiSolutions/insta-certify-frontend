@@ -78,4 +78,26 @@ export async function getServerSideProps(context) {
         };  
     }
 }
+export async function addToCartApi (id)  {
+
+  const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+       "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+    },
+    body: JSON.stringify({
+      product_id: id,
+      quantity: 1,
+    }),
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert(data?.message)
+      toggleBoolValue();
+    })
+    .catch(error => console.error('Error:', error));
+
+    // alert(resp)
+}
   
