@@ -76,7 +76,7 @@
     padding: 0;
 
     .card{
-        width: calc(16.66% - 34px);
+        // width: calc(16.66% - 34px);
         > a{
             display: flex;
             align-items: center;
@@ -125,17 +125,17 @@
 
     }
 
-    @include sm-desktop{
-        gap: 30px;
-        .card{ width: calc(25% - 26px); }
-    }
-    @include md-phone{
-        .card{ width: calc(33.33% - 26px); }
-    }
-    @include emd-phone{
-        justify-content: center;
-        .card{ width: calc(50% - 26px); }
-    }
+    // @include sm-desktop{
+    //     gap: 30px;
+    //     .card{ width: calc(25% - 26px); }
+    // }
+    // @include md-phone{
+    //     .card{ width: calc(33.33% - 26px); }
+    // }
+    // @include emd-phone{
+    //     justify-content: center;
+    //     .card{ width: calc(50% - 26px); }
+    // }
 }
 
 

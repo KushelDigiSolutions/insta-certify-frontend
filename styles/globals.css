@@ -4147,6 +4147,10 @@ justify-content: center !important;
     font-size: 10px;
     line-height: 17px;
   }
+  .eventList_categoryList__HtwVZ{
+    flex-wrap: column  !important;
+    /* width: 60% !important; */
+  }
 }
 
 @media (max-width:365px) {
@@ -4504,6 +4508,7 @@ justify-content: center !important;
   .footerformarea input,.footerformarea textarea{
     width: 273px !important;
   }
+  
 }
 /* @media only screen and (max-width:362px){
   .footerformarea{
