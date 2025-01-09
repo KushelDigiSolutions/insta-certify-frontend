@@ -264,11 +264,13 @@ export default function newssdetail(pageProp) {
         fetchallnews();
     }, [])
 
+    console.log(aboutnew?.seo_title);
+
 
     return (
 
         <div className="page_shopping_list sop">
-            <HeadSEO title={product?.seo?.pageTitle == "" ? product?.name : product?.seo?.pageTitle} description={product?.seo?.metaDescription} image={null} />
+            <HeadSEO title={aboutnew?.seo_title} description={aboutnew?.seo_description} image={null} />
 
             <div className="aboutwrap">
 
