@@ -1,10 +1,40 @@
 import Link from 'next/link';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import HeadSEO from '../components/common/Head/head';
 
 export default function ContentDetails(pageProp) {
 
+  // const [slug,setSlug] = useState({});
+
     const pageBuilder = pageProp?.page_content?.page;
+
+    // const fetchCategory = async () => {
+    //   try {
+  
+    //     const resp = await fetch(`https://admin.instacertify.com/api/pages?slug=/about`, {
+    //       method: 'GET',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       }
+    //     });
+  
+       
+    //       const formateddata = await resp.json();
+    //       console.log(formateddata);
+    //       setSlug(formateddata?.page)
+  
+        
+  
+  
+    //   } catch (error) {
+  
+    //     console.error("There was an error fetching the categories:", error);
+    //   }
+    // };
+
+    // useEffect(()=>{
+    //   fetchCategory();
+    // },[])
     
     return (
         <div>
