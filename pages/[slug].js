@@ -5,6 +5,7 @@ import HeadSEO from '../components/common/Head/head';
 export default function ContentDetails(pageProp) {
 
     const pageBuilder = pageProp?.page_content?.page;
+    console.log(pageBuilder?.seo_title);
     
     return (
         <div>
@@ -16,11 +17,15 @@ export default function ContentDetails(pageProp) {
 
 export async function getServerSideProps(context) {
     const urlSlug = context.params.slug;
+    console.log(urlSlug)
     if(urlSlug != ""){
   
       try {
-        const contentFetch = await fetch(process.env.server.api+"pages?slug=/"+urlSlug);
+        // const contentFetch = await fetch(process.env.server.api+"pages?slug=/"+urlSlug);
+        const contentFetch = await fetch(`https://admin.instacertify.com/api/pages?slug=/`+`${urlSlug}`);
         const contentDetial = await contentFetch.json();
+
+        console.log(contentDetial);
 
 
         if(contentDetial.page == null){
