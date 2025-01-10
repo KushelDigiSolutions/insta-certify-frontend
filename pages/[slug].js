@@ -22,7 +22,7 @@ export async function getServerSideProps(context) {
   
       try {
         // const contentFetch = await fetch(process.env.server.api+"pages?slug=/"+urlSlug);
-        const contentFetch = await fetch(`https://admin.instacertify.com/api/pages?slug=/`+`${urlSlug}`);
+        const contentFetch = await fetch(`https://admin.instacertify.com/api/pages?slug=/about`);
         const contentDetial = await contentFetch.json();
 
         console.log(contentDetial);
