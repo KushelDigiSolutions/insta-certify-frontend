@@ -7,6 +7,9 @@ export default function ContentDetails(pageProp) {
   // const [slug,setSlug] = useState({});
 
     const pageBuilder = pageProp?.page_content?.page;
+    const seo_data = pageProp?.seo_data;
+
+    console.log("seo_data",seo_data);
 
     // const fetchCategory = async () => {
     //   try {
@@ -32,13 +35,37 @@ export default function ContentDetails(pageProp) {
     //   }
     // };
 
+
+    // const addToCartApi = async (id) => {
+    //  alert(1);
+    //   const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //        "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+    //     },
+    //     body: JSON.stringify({
+    //       product_id: id,
+    //       quantity: 1,
+    //     }),
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       alert(data?.message)
+    //       toggleBoolValue();
+    //     })
+    //     .catch(error => console.error('Error:', error));
+  
+    //     // alert(resp)
+    // }
+
     // useEffect(()=>{
     //   fetchCategory();
     // },[])
     
     return (
         <div>
-          <HeadSEO title={pageBuilder?.seo_title} description={pageBuilder?.seo_description} image={false}  />
+          <HeadSEO title={seo_data?.seo_title} description={seo_data?.seo_description} image={false}  />
           <div role="article" dangerouslySetInnerHTML={ {__html:pageProp?.page_content} }></div>
         </div>
     )
@@ -46,11 +73,16 @@ export default function ContentDetails(pageProp) {
 
 export async function getServerSideProps(context) {
     const urlSlug = context.params.slug;
+    console.log("urlSlug",urlSlug);
     if(urlSlug != ""){
   
       try {
         const contentFetch = await fetch(process.env.server.api+"pages?slug=/"+urlSlug);
+        console.log("hi")
+        console.log(process.env.server.api)
         const contentDetial = await contentFetch.json();
+
+        console.log("fetch",contentDetial);
 
 
         if(contentDetial.page == null){
@@ -77,7 +109,8 @@ export async function getServerSideProps(context) {
               props: {
                   page_content: htmlFinal,
                   navbar: headerData,
-                  footer: contentDetial?.footer
+                  footer: contentDetial?.footer,
+                  seo_data: contentDetial?.page
               },
           };
         }
@@ -108,26 +141,5 @@ export async function getServerSideProps(context) {
         };  
     }
 }
-export async function addToCartApi (id)  {
 
-  const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-       "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-    },
-    body: JSON.stringify({
-      product_id: id,
-      quantity: 1,
-    }),
-  })
-    .then(response => response.json())
-    .then(data => {
-      alert(data?.message)
-      toggleBoolValue();
-    })
-    .catch(error => console.error('Error:', error));
-
-    // alert(resp)
-}
   

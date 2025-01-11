@@ -6,7 +6,7 @@ const nextConfig = {
     next:{
       api_url:"https://www.instacertify.com/api/v1/"
     },
-
+    
     server : {
 		path:"https://admin.instacertify.com/",
    		api:"https://admin.instacertify.com/api/",
