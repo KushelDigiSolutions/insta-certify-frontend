@@ -4,12 +4,14 @@ import HeadSEO from '../components/common/Head/head';
 export default function ContentDetails(pageProp) {
   const pageBuilder = pageProp?.page_content?.page;
 
+  const seo_data = pageProp?.seo_data;
+
    console.log(pageBuilder);
 
   
   return (
     <div>
-      <HeadSEO title={pageBuilder?.seo_title} description={pageBuilder?.seo_description} image={false} />
+      <HeadSEO title={seo_data?.seo_title} description={seo_data?.seo_description} image={false} />
       <div  dangerouslySetInnerHTML={{ __html: pageProp?.page_content }}></div>
     </div>
   )
@@ -45,7 +47,8 @@ export async function getServerSideProps(context) {
         props: {
           page_content: htmlFinal,
           navbar: headerData,
-          footer: contentDetial?.footer
+          footer: contentDetial?.footer,
+          seo_data: contentDetial?.page
         },
       };
     }
