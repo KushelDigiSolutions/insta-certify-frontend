@@ -468,7 +468,7 @@ export default function Navbar(props) {
             <div className="nav_test">
 
               <div className="nav_logo">
-                <a href="/"><img src={`${navBg || currentPath === "/contact" || currentPath === "/epr-used-oil-testing"  || currentPath === "/bis-isi-mark-foreign-manufacturers" || currentPath === "/bis-crs-mark" || currentPath === "/analytical-measurement-testing"  || currentPath === "/bee-certification" || currentPath === "/labware" || currentPath === "/products" || currentPath.startsWith("/products") || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about-us" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-product-testing" || currentPath === "/cart" || currentPath === "/accounts" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certification" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys-product-testing" || currentPath === "/metal-alloys-product-testing" || currentPath === "/polymers-plastic" || currentPath === "/construction-engineering" || currentPath === "/wireless-product-testing" || currentPath === "/cosmetics-equpments" || currentPath === "/software-product-testing" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? "../images/sodag.svg" : "../images/sad.svg"}`} alt="" /></a>
+                <a href="/"><img src={`${navBg || currentPath === "/contact" || currentPath === "/epr-used-oil-testing" || currentPath === "/bis-isi-mark-foreign-manufacturers" || currentPath === "/bis-crs-mark" || currentPath === "/analytical-measurement-testing" || currentPath === "/bee-certification" || currentPath === "/labware" || currentPath === "/products" || currentPath.startsWith("/products") || currentPath === "/bis-mark" || currentPath === "/catalog" || currentPath === "/catalogdetail" || currentPath.startsWith("/catalogdetail") || currentPath === "/about-us" || currentPath === "/news" || currentPath === "/eventsnew" || currentPath === "/food-product-testing" || currentPath === "/cart" || currentPath === "/accounts" || currentPath === "/bis-isi-foreign" || currentPath === "/bis-isi-domestic" || currentPath === "/epr-plastic-waste" || currentPath === "/epr-e-waste" || currentPath === "/epr-battery-waste" || currentPath === "/epr-used-oil" || currentPath === "/epr-tyre" || currentPath === "/perso-certification" || currentPath === "/nsic-msme" || currentPath === "/stqc-certification" || currentPath === "/fssai-registration" || currentPath === "/cdsco-registration" || currentPath === "/noc-steel" || currentPath === "/bee-certification" || currentPath === "/wpc-eta-certification" || currentPath === "/iso-certification" || currentPath === "/haccp" || currentPath === "/halal" || currentPath === "/saber" || currentPath === "/g-mark-toys" || currentPath === "/g-mark-lved" || currentPath === "/sfda-rice" || currentPath === "/sfda-food" || currentPath === "/sfda-cosmetics" || currentPath === "/ce-certification" || currentPath === "/fcc-certification" || currentPath === "/imei-reg" || currentPath === "/tec-approval" || currentPath === "/imei-icdr-reg" || currentPath === "/testing-electronic-electricity" || currentPath === "/chemicals" || currentPath === "/toys-product-testing" || currentPath === "/metal-alloys-product-testing" || currentPath === "/polymers-plastic" || currentPath === "/construction-engineering" || currentPath === "/wireless-product-testing" || currentPath === "/cosmetics-equpments" || currentPath === "/software-product-testing" || currentPath === "/environment" || currentPath === "/general-laboratory-consumable" || currentPath === "/occupation-safety-security" || currentPath === "/veccum-tech-dry" || currentPath === "/distillation-dsf" || currentPath === "/industrial-specifiac-bundle" || currentPath === "/optical-instrumental-microscopes" || currentPath === "/analytic-measure-test" || currentPath === "/cleaning-&-ster" || currentPath === " /labware" || currentPath === "/lab-chemicals" || currentPath === "/qco-orders" || currentPath === "/case-study" || currentPath === "/certification" || currentPath === "/testing" || currentPath === "/equipments" || currentPath === "/newss" || currentPath === "/account/account-details" ? "../images/sodag.svg" : "../images/sad.svg"}`} alt="" /></a>
               </div>
 
 
@@ -1446,11 +1446,11 @@ export default function Navbar(props) {
                                 onChange={(e) => setSearchbar(e.target.value)}
                               />
                               <svg
-                              onClick={() => {
-                                router.push(`/products?search=${encodeURIComponent(searchbar)}`);
-                                setMenuToggel(false)
-                                // router?.refresh(); 
-                              }}
+                                onClick={() => {
+                                  router.push(`/products?search=${encodeURIComponent(searchbar)}`);
+                                  setMenuToggel(false)
+                                  // router?.refresh(); 
+                                }}
                                 width="20"
                                 height="20"
                                 viewBox="0 0 20 20"
@@ -1733,11 +1733,11 @@ export default function Navbar(props) {
                     <div className="search_das">
                       <input onChange={(e) => setSearchbar(e.target.value)} value={searchbar} type="text" placeholder="Search" />
                       <svg
-                      onClick={() => {
+                        onClick={() => {
 
-                        router.push(`/products?search=${encodeURIComponent(searchbar)}`);
+                          router.push(`/products?search=${encodeURIComponent(searchbar)}`);
 
-                      }}
+                        }}
                         width="20"
                         height="20"
                         viewBox="0 0 20 20"
