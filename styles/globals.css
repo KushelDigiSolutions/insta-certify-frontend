@@ -4086,7 +4086,9 @@ justify-content: center !important;
   justify-content: space-between;
   height: 100%;
 }
-
+.error_cont{
+  height: 75px !important;
+}
 .steicons {
   display: flex;
   align-items: center;
