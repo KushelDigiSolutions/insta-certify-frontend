@@ -154,6 +154,85 @@ export default function Cart(props) {
     }
   }, [boolValue])
 
+  useEffect(() => {
+    const loadRazorpayScript = async () => {
+      // Check if Razorpay script is not already loaded
+      if (!window.Razorpay) {
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    };
+
+    loadRazorpayScript();
+  }, []); // Empty dependency array ensures it runs only once after mount
+
+  
+   const paymentHandler = async()=>{
+
+    //  const products = cart.map(product => product._id);
+
+  //  console.log(cartData[0].total)
+
+  
+
+      // console.log("rpduct" , products);
+
+    //  const token = localStorage.getItem("ecomm_userToken");
+
+
+    //  const response = await fetch("https://ecomm-backend-aopz.onrender.com/api/v1/payment/capturePayment",
+    //    {
+    //      method: "POST",
+    //      headers: {
+    //        "content-type": "application/json",
+    //       //  Authorization: `Bearer ${token}`,
+ 
+    //      },
+    //      body: JSON.stringify({products}),
+    //    }
+    //  );
+    
+
+    //  const formattedResponse = await response.json();
+
+    //  let amount = formattedResponse.message.amount/100;
+     
+    for ( let index in cartData){
+      let val = cartData[index];
+      console.log(val.total);
+    }
+
+     const options = {
+    key:"rzp_live_qmaktzPiRRIRtX", 
+    amount:(1000 * 100), 
+    currency: "INR",
+    name: "Nikhil",
+    description: "product transaction",
+    // order_id: formattedResponse?.message?.id,
+    // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${token}`,
+    prefill: {
+        name: "login user name",
+        email: "loginEmail.com",
+        contact: "contactNumber" , 
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#121212"
+    }
+     }
+ 
+     const paymentObject = new window.Razorpay(options);
+
+      paymentObject.open();
+
+   
+ 
+   }
+
 
 
   return (
@@ -303,7 +382,7 @@ export default function Cart(props) {
 
               const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
               if (isLoggedIn) {
-                alert("Checkout functionality will added soon")
+                paymentHandler();
               }
               else {
                 router.push('/login');

@@ -36,33 +36,40 @@ export default function ContentDetails(pageProp) {
     // };
 
 
-    // const addToCartApi = async (id) => {
-    //  alert(1);
-    //   const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //        "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-    //     },
-    //     body: JSON.stringify({
-    //       product_id: id,
-    //       quantity: 1,
-    //     }),
-    //   })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       alert(data?.message)
-    //       toggleBoolValue();
-    //     })
-    //     .catch(error => console.error('Error:', error));
-  
-    //     // alert(resp)
-    // }
+    
 
     // useEffect(()=>{
     //   fetchCategory();
     // },[])
+
+
+    const addToCartApi = async (id) => {
+     alert(1);
+      const resp = await fetch('https://admin.instacertify.com/api/cart/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+           "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        },
+        body: JSON.stringify({
+          product_id: id,
+          quantity: 1,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data?.message)
+          toggleBoolValue();
+        })
+        .catch(error => console.error('Error:', error));
+  
+        // alert(resp)
+    }
     
+    if (typeof window !== "undefined") {
+      window.addToCartApi = addToCartApi;
+    }
+
     return (
         <div>
           <HeadSEO title={seo_data?.seo_title} description={seo_data?.seo_description} image={false}  />
