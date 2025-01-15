@@ -206,7 +206,7 @@ export default function Cart(props) {
 
      const options = {
     key:"rzp_live_qmaktzPiRRIRtX", 
-    amount:(1000 * 100), 
+    amount:(cartData[0].total) * 100, 
     currency: "INR",
     name: "Nikhil",
     description: "product transaction",
