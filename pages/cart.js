@@ -142,6 +142,33 @@ export default function Cart(props) {
     }
   }
 
+   const [datas,setDatas] = useState([]);
+  
+      const getAddress = async () => {
+  
+          try {
+            const response = await fetch("https://admin.instacertify.com/api/listalladdress", {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+              }
+            });
+      
+            const data1 = await response.json();
+            setDatas(data1?.data)
+            console.log(data1.data)
+            // setData(data1?.data);
+            // console.log(data?.user_id);
+            
+          } catch (error) {
+          }
+        };
+  
+        useEffect(()=>{
+           getAddress();
+        },[])
+
 
   useEffect(() => {
     const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
@@ -169,19 +196,18 @@ export default function Cart(props) {
     loadRazorpayScript();
   }, []); // Empty dependency array ensures it runs only once after mount
 
+
+   const [instaUser, setInstaUser] = useState(null);
+  
+       useEffect(() => {
+         if (typeof window !== "undefined") { // Ensures code only runs in the browser
+           const storedInstaUser = localStorage.getItem("insta_User");
+           setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
+         }
+       }, []);
+
   
    const paymentHandler = async()=>{
-
-  //    const products = cart.map(product => product._id);
-
-  //  console.log(cartData[0].total)
-
-  
-
-      // console.log("rpduct" , products);
-
-    //  const token = localStorage.getItem("ecomm_userToken");
-
 
      const response = await fetch("https://admin.instacertify.com/api/order/create",
        {
@@ -192,35 +218,41 @@ export default function Cart(props) {
  
          },
          body: JSON.stringify(
-          {"products":[{
-            id:cartData[0]?.product_id,
-            qty:cartData[0].quantity
-          }],
-            "address_id":3
-          }
+            {
+              products: cartData?.map(x =>(
+                {
+                  id:x?.product_id,
+                  qty: x.quantity
+                }
+              ))
+              ,
+              address_id: datas[0]?.id
+            }
          ),
        }
      );
     
 
      const formattedResponse = await response.json();
-    console.log(formattedResponse);
+    //  let order_id = form
+     console.log(formattedResponse);
     //  let amount = formattedResponse.message.amount/100;
      
   
 
      const options = {
-    // key:"rzp_live_qmaktzPiRRIRtX", 
-    key:"rzp_test_CwqqqkGACAHRpy",
-    amount:1, 
+    key:"rzp_live_qmaktzPiRRIRtX", 
+    // key:"rzp_test_CwqqqkGACAHRpy",
+    order_id:formattedResponse?.id,
+    amount:formattedResponse?.grand_total_price * 100 , 
     currency: "INR",
     name: "Nikhil",
     description: "product transaction",
-    order_id: 2,
-    callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
+   
+    // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
     prefill: {
-        name: "login user name",
-        email: "loginEmail.com",
+        name: instaUser?.name,
+        email: instaUser?.email,
         contact: "contactNumber" , 
     },
     "notes": {
@@ -231,9 +263,12 @@ export default function Cart(props) {
     }
      }
  
-     const paymentObject = new window.Razorpay(options);
+     const paymentObject = new window.Razorpay(options,instaUser);
+
 
       paymentObject.open();
+
+      // console.log(paymentObject);
 
    
  
@@ -388,7 +423,13 @@ export default function Cart(props) {
 
               const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
               if (isLoggedIn) {
-                paymentHandler();
+                if(datas[0]?.id){
+                  paymentHandler()
+                }
+                else{
+                  router.push("/address")
+                }
+                // paymentHandler();
               }
               else {
                 router.push('/login');
