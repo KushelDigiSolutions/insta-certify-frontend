@@ -182,7 +182,7 @@ export default function Cart(props) {
             const formattedResponse = await response.json();
             console.log(formattedResponse);
             alert(formattedResponse?.message)
-
+            router.push("/cart")
             //  if(formattedResponse.success){
             //   localStorage.removeItem("ecomm_user");
             //   var userObjectString = JSON.stringify(formattedResponse.userDetails);
@@ -221,7 +221,8 @@ export default function Cart(props) {
 
             const formattedResponse = await response.json();
             console.log(formattedResponse);
-            alert(formattedResponse?.message)
+            alert(formattedResponse?.message);
+            router.push("/cart")
 
             //  if(formattedResponse.success){
             //   localStorage.removeItem("ecomm_user");
@@ -259,74 +260,8 @@ export default function Cart(props) {
                 image={false}
             />
             <div className="container">
-                <div className="form_address">
-                    <form className="form_add" onSubmit={createAddressHandler}>
-
-                        <div className="address_flex">
-                            <div className="address_input">
-                                <label htmlFor="name">Name</label>
-                                <input id="name" name="name" onChange={handleAddressChange} value={instaUser?.name ? instaUser?.name : addressDetail?.name} className="form-control" type="text" placeholder="Name" />
-                            </div>
-                            <div className="address_input">
-                                <label htmlFor="landmark">Landmark</label>
-                                <input id="landmark" name="landmark" onChange={handleAddressChange} value={addressDetail?.landmark} type="text" placeholder="Landmark" />
-                            </div>
-                        </div>
-                        <div className="address_flex">
-
-                            <div className="address_input">
-                                <label htmlFor="address1">Address1</label>
-                                <textarea id="address1" name="address1" onChange={handleAddressChange} value={addressDetail?.address1} placeholder="Address1" />
-                            </div>
-                            <div className="address_input">
-                                <label htmlFor="address2">Address2</label>
-                                <textarea name="address2" onChange={handleAddressChange} value={addressDetail?.address2} placeholder="Address2" />
-                            </div>
-                        </div>
-
-
-
-                        <div className="address_flex">
-                            <div className="address_input">
-                                <label htmlFor="phone">Address2</label>
-                                <input id="phone" name="phone" value={addressDetail?.phone} onChange={handleAddressChange} type="number" placeholder="Phone Number" />
-                            </div>
-                            <div className="address_input">
-                                <label htmlFor="city">City</label>
-                                <input id="city" name="city" onChange={handleAddressChange} value={addressDetail?.city} type="text" placeholder="City" />
-                            </div>
-                        </div>
-
-
-                        <div className="address_flex">
-                            <div className="address_input">
-                                <label htmlFor="state">State</label>
-                                <input id="state" name="state" onChange={handleAddressChange} value={addressDetail?.state} type="text" placeholder="State" />
-                            </div>
-                            <div className="address_input">
-                                <label htmlFor="pincode">PinCode</label>
-                                <input id="pincode" value={addressDetail?.pincode} name="pincode" onChange={handleAddressChange} type="text" placeholder="PinCode" />
-                            </div>
-                        </div>
-
-
-                        {/* <div className="address_flex">
-                            <div className="address_input">
-                                <input name="address_type" value={addressDetail?.address_type} onChange={handleAddressChange} type="text" placeholder="Address_type" />
-                            </div>
-                            <div className="address_input">
-                                <input name="status" value={addressDetail?.status} onChange={handleAddressChange} type="text" placeholder="Status" />
-                            </div>
-                        </div> */}
-
-                        <button type="submit" className="btn save_address">Save Address</button>
-
-                    </form>
-
-                </div>
-
-                {/* ===============update========= */}
-                <div className="suing">
+                {
+                    datas[0]?.id ?   <div className="">
 
                     <h1>Update Address</h1>
 
@@ -396,6 +331,77 @@ export default function Cart(props) {
 
                     </div>
                 </div>
+                :
+                <div className="form_address">
+                <form className="form_add" onSubmit={createAddressHandler}>
+
+                    <div className="address_flex">
+                        <div className="address_input">
+                            <label htmlFor="name">Name</label>
+                            <input id="name" name="name" onChange={handleAddressChange} value={instaUser?.name ? instaUser?.name : addressDetail?.name} className="form-control" type="text" placeholder="Name" />
+                        </div>
+                        <div className="address_input">
+                            <label htmlFor="landmark">Landmark</label>
+                            <input id="landmark" name="landmark" onChange={handleAddressChange} value={addressDetail?.landmark} type="text" placeholder="Landmark" />
+                        </div>
+                    </div>
+                    <div className="address_flex">
+
+                        <div className="address_input">
+                            <label htmlFor="address1">Address1</label>
+                            <textarea id="address1" name="address1" onChange={handleAddressChange} value={addressDetail?.address1} placeholder="Address1" />
+                        </div>
+                        <div className="address_input">
+                            <label htmlFor="address2">Address2</label>
+                            <textarea name="address2" onChange={handleAddressChange} value={addressDetail?.address2} placeholder="Address2" />
+                        </div>
+                    </div>
+
+
+
+                    <div className="address_flex">
+                        <div className="address_input">
+                            <label htmlFor="phone">Address2</label>
+                            <input id="phone" name="phone" value={addressDetail?.phone} onChange={handleAddressChange} type="number" placeholder="Phone Number" />
+                        </div>
+                        <div className="address_input">
+                            <label htmlFor="city">City</label>
+                            <input id="city" name="city" onChange={handleAddressChange} value={addressDetail?.city} type="text" placeholder="City" />
+                        </div>
+                    </div>
+
+
+                    <div className="address_flex">
+                        <div className="address_input">
+                            <label htmlFor="state">State</label>
+                            <input id="state" name="state" onChange={handleAddressChange} value={addressDetail?.state} type="text" placeholder="State" />
+                        </div>
+                        <div className="address_input">
+                            <label htmlFor="pincode">PinCode</label>
+                            <input id="pincode" value={addressDetail?.pincode} name="pincode" onChange={handleAddressChange} type="text" placeholder="PinCode" />
+                        </div>
+                    </div>
+
+
+                    {/* <div className="address_flex">
+                        <div className="address_input">
+                            <input name="address_type" value={addressDetail?.address_type} onChange={handleAddressChange} type="text" placeholder="Address_type" />
+                        </div>
+                        <div className="address_input">
+                            <input name="status" value={addressDetail?.status} onChange={handleAddressChange} type="text" placeholder="Status" />
+                        </div>
+                    </div> */}
+
+                    <button type="submit" className="btn save_address">Save Address</button>
+
+                </form>
+
+            </div>
+                }
+              
+
+                {/* ===============update========= */}
+               
             </div>
         </div>
     );
