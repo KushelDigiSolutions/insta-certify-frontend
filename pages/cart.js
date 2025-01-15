@@ -11,6 +11,7 @@ import EventDetMinus from "../components/common/svg/eventDetials/minus";
 import EventDetPlus from "../components/common/svg/eventDetials/plus";
 import GlobalHeaderFooter from "../utils/common/global-header-footer";
 import { constrainedMemory } from "process";
+import { format } from "path";
 
 export default function Cart(props) {
 
@@ -171,7 +172,7 @@ export default function Cart(props) {
   
    const paymentHandler = async()=>{
 
-    //  const products = cart.map(product => product._id);
+  //    const products = cart.map(product => product._id);
 
   //  console.log(cartData[0].total)
 
@@ -182,36 +183,41 @@ export default function Cart(props) {
     //  const token = localStorage.getItem("ecomm_userToken");
 
 
-    //  const response = await fetch("https://ecomm-backend-aopz.onrender.com/api/v1/payment/capturePayment",
-    //    {
-    //      method: "POST",
-    //      headers: {
-    //        "content-type": "application/json",
-    //       //  Authorization: `Bearer ${token}`,
+     const response = await fetch("https://admin.instacertify.com/api/order/create",
+       {
+         method: "POST",
+         headers: {
+           "content-type": "application/json",
+           "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
  
-    //      },
-    //      body: JSON.stringify({products}),
-    //    }
-    //  );
+         },
+         body: JSON.stringify(
+          {"products":[{
+            id:cartData[0]?.product_id,
+            qty:cartData[0].quantity
+          }],
+            "address_id":3
+          }
+         ),
+       }
+     );
     
 
-    //  const formattedResponse = await response.json();
-
+     const formattedResponse = await response.json();
+    console.log(formattedResponse);
     //  let amount = formattedResponse.message.amount/100;
      
-    for ( let index in cartData){
-      let val = cartData[index];
-      console.log(val.total);
-    }
+  
 
      const options = {
-    key:"rzp_live_qmaktzPiRRIRtX", 
-    amount:(cartData[0].total) * 100, 
+    // key:"rzp_live_qmaktzPiRRIRtX", 
+    key:"rzp_test_CwqqqkGACAHRpy",
+    amount:1, 
     currency: "INR",
     name: "Nikhil",
     description: "product transaction",
-    // order_id: formattedResponse?.message?.id,
-    // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${token}`,
+    order_id: 2,
+    callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
     prefill: {
         name: "login user name",
         email: "loginEmail.com",

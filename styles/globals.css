@@ -4579,3 +4579,38 @@ justify-content: center !important;
   overflow-y: scroll !important; /* Dropdown scrolling ke liye */
   max-height: 200px !important; /* Height set karo */
 }
+.form_add{
+  width: 100% !important;
+}
+.address_input{
+  width: 100%;
+}
+.address_input input,.address_input textarea{
+  width: 100% !important;
+  padding: 15px;
+  font-weight: 500;
+  border: 1px solid #080D17;
+  border-radius: 5px;
+}
+.address_input input{
+  height: 50px;
+  outline: none;
+  margin: 15px 0px;
+}
+.address_input textarea{
+  height: 100px;
+  resize: none;
+  outline: none;
+  margin: 15px 0px;
+}
+.address_flex{
+  display: flex ;
+  justify-content: center;
+  gap: 15px;
+}
+.save_address{
+  padding: 14px 30px;
+  background-color: #ec691f;
+  color: white;
+  border-radius: 5px;
+}

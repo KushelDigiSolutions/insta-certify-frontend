@@ -335,6 +335,8 @@ export default function Navbar(props) {
   const [accessToken, setAccessToken] = useState(null);
   const [instaUser, setInstaUser] = useState(null);
 
+  console.log(instaUser)
+
 
 
   const [allProduct, setAllProduct] = useState();

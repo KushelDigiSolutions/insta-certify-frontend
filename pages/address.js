@@ -14,264 +14,248 @@ import { constrainedMemory } from "process";
 
 export default function Cart(props) {
 
-  // console.log("cartprob",props);
+    // console.log("cartprob",props);
 
-  const { toggleBoolValue, boolValue } = props;
+    const { toggleBoolValue, boolValue } = props;
 
-  const [cartLoad, setCartLoad] = useState(true);
-  const [cartEnpty, setCartEnpty] = useState(false);
-  const [cartUpdate, setCartUpdate] = useState(false);
-  const [cartData, setCartData] = useState([]);
-  const { data: session, status } = useSession();
-  const nx_cart_id = Cookies.get("nx_cart_id");
+    const [cartLoad, setCartLoad] = useState(true);
+    const [cartEnpty, setCartEnpty] = useState(false);
+    const [cartUpdate, setCartUpdate] = useState(false);
+    const [cartData, setCartData] = useState([]);
+    const { data: session, status } = useSession();
+    const nx_cart_id = Cookies.get("nx_cart_id");
 
-  const router = useRouter();
-
-
-  const [count, setCount] = useState(1);
-
-  // const [refreshFlag,setrefreshFlag] = useState(false);
+    const router = useRouter();
 
 
-  //Get Cart
-  // const getCartDetails = async () => {
+    const [count, setCount] = useState(1);
 
-  //   if (typeof nx_cart_id != "undefined" && nx_cart_id != "") {
-  //     const getCart = await fetch(process.env.next.api_url + "cart/get", {
-  //       method: "post",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ cart_id: nx_cart_id }),
-  //     });
-  //     const cartRes = await getCart.json();
+    // const [refreshFlag,setrefreshFlag] = useState(false);
 
 
-  //     if (cartRes?.status && cartRes?.status == 404) {
-  //       setCartEnpty(true);
-  //       setCartLoad(false);
-  //       Cookies.remove("nx_cart_id");
-  //       setCartUpdate(false);
-  //       return false;
-  //     }
-  //     if (typeof cartRes?.data != "undefined") {
-  //       setCartEnpty(false);
-  //       setCartLoad(false);
-  //       setCartData(cartRes?.data);
-  //       setCartUpdate(false);
-  //       return false;
-  //     }
-  //   }else{
-  //     setCartEnpty(true);
-  //     setCartLoad(false);
-  //     setCartUpdate(false);
-  //     Cookies.remove("nx_cart_id");
-  //     return false;
-  //   }
-  // };
+    //Get Cart
+    // const getCartDetails = async () => {
 
-  // useEffect(function () {
-  //   getCartDetails();
-  // }, []);
+    //   if (typeof nx_cart_id != "undefined" && nx_cart_id != "") {
+    //     const getCart = await fetch(process.env.next.api_url + "cart/get", {
+    //       method: "post",
+    //       headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ cart_id: nx_cart_id }),
+    //     });
+    //     const cartRes = await getCart.json();
 
 
-  const getCarts = async () => {
+    //     if (cartRes?.status && cartRes?.status == 404) {
+    //       setCartEnpty(true);
+    //       setCartLoad(false);
+    //       Cookies.remove("nx_cart_id");
+    //       setCartUpdate(false);
+    //       return false;
+    //     }
+    //     if (typeof cartRes?.data != "undefined") {
+    //       setCartEnpty(false);
+    //       setCartLoad(false);
+    //       setCartData(cartRes?.data);
+    //       setCartUpdate(false);
+    //       return false;
+    //     }
+    //   }else{
+    //     setCartEnpty(true);
+    //     setCartLoad(false);
+    //     setCartUpdate(false);
+    //     Cookies.remove("nx_cart_id");
+    //     return false;
+    //   }
+    // };
 
-    try {
-      const response = await fetch("https://admin.instacertify.com/api/cart", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-        }
-      });
-
-      const data = await response.json();
-      console.log(data?.cart);
-      setCartData(data?.cart);
-    } catch (error) {
-    }
-  };
-
-  const removeCarts = async (id, qty) => {
-    try {
-      const response = await fetch("https://admin.instacertify.com/api/cart/remove", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-        },
-        body: JSON.stringify({
-          product_id: id,
-          quantity: qty
-        }),
-      });
+    // useEffect(function () {
+    //   getCartDetails();
+    // }, []);
 
 
-      // if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      toggleBoolValue();
-      setCartData(data?.cart);
+    //  const []
 
-      // } 
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  const clearCarts = async () => {
-    try {
-      const response = await fetch("https://admin.instacertify.com/api/cart/clear", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-        },
-
-      });
-      const data = await response.json();
-      alert(data?.message)
-      setCartData(data?.cart);
-      toggleBoolValue();
-
-
-    } catch (error) {
-    }
-  }
-
-
-  useEffect(() => {
-    const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
-    if (isLoggedIn) {
-      sessionStorage.removeItem("cartItems");
-      getCarts();
-    }
-    else {
-      let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
-      setCartData(allCarts);
-    }
-  }, [boolValue])
-
-  useEffect(() => {
-    const loadRazorpayScript = async () => {
-      // Check if Razorpay script is not already loaded
-      if (!window.Razorpay) {
-        const script = document.createElement('script');
-        script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    };
-
-    loadRazorpayScript();
-  }, []); // Empty dependency array ensures it runs only once after mount
-
-  
-   const paymentHandler = async()=>{
-
-    //  const products = cart.map(product => product._id);
-
-  //  console.log(cartData[0].total)
-
-  
-
-      // console.log("rpduct" , products);
-
-    //  const token = localStorage.getItem("ecomm_userToken");
-
-
-    //  const response = await fetch("https://ecomm-backend-aopz.onrender.com/api/v1/payment/capturePayment",
-    //    {
-    //      method: "POST",
-    //      headers: {
-    //        "content-type": "application/json",
-    //       //  Authorization: `Bearer ${token}`,
- 
-    //      },
-    //      body: JSON.stringify({products}),
-    //    }
-    //  );
     
 
-    //  const formattedResponse = await response.json();
+    const [addressDetail, setAddressDetail] = useState({
+        name: "",
+        state: "",
+        city: "",
+        status: "",
+        address1: "",
+        address2: "",
+        pincode: "",
+        landmark: "",
+        phone: "",
+        address_type: ""
+    });
 
-    //  let amount = formattedResponse.message.amount/100;
-     
-    for ( let index in cartData){
-      let val = cartData[index];
-      console.log(val.total);
+    const handleAddressChange = (e) => {
+
+        const { name, value } = e.target;
+        setAddressDetail((prevAddressDetail) => ({
+            ...prevAddressDetail,
+            [name]: value,
+        }));
+
+    };
+
+    // useEffect(() => {
+    //     const checkUser = localStorage.getItem("insta_User");
+    
+    //     if (checkUser) {
+    //       var storedUserObject = JSON.parse(checkUser);
+    
+    //       const { name,state,city } = storedUserObject;
+    
+    //       setFormData((prev) => ({
+    //         ...prev,
+    //         name: name,
+    //         state: state,
+    //         city: city,
+    //       }));
+    
+          
+    //     }
+    //   }, []);
+
+    const createAddressHandler = async (e) => {
+        // let token = localStorage.getItem("ecomm_userToken");
+        e.preventDefault();
+        try {
+            const response = await fetch(
+                "https://admin.instacertify.com/api/createaddress",
+                {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json",
+                        "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+
+                    },
+                    body: JSON.stringify(addressDetail),
+                }
+            );
+
+            const formattedResponse = await response.json();
+            console.log(formattedResponse);
+
+            //  if(formattedResponse.success){
+            //   localStorage.removeItem("ecomm_user");
+            //   var userObjectString = JSON.stringify(formattedResponse.userDetails);
+
+            //   localStorage.setItem("ecomm_user" , userObjectString);
+            //   setUserDetails(formattedResponse?.userDetails);
+
+            //   alert("succesfuly Updated the address");
+            //   onNext();
+            //  }
+            //  else{
+            //   alert(formattedResponse.message);
+            //  }
+
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-     const options = {
-    key:"rzp_live_qmaktzPiRRIRtX", 
-    amount:(cartData[0].total) * 100, 
-    currency: "INR",
-    name: "Nikhil",
-    description: "product transaction",
-    // order_id: formattedResponse?.message?.id,
-    // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${token}`,
-    prefill: {
-        name: "login user name",
-        email: "loginEmail.com",
-        contact: "contactNumber" , 
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#121212"
-    }
-     }
- 
-     const paymentObject = new window.Razorpay(options);
-
-      paymentObject.open();
-
-   
- 
-   }
 
 
 
-  return (
-    <div className={style.cartBody}>
-      <HeadSEO
-        title={"Shopping Cart"}
-        description={"Shopping Cart"}
-        image={false}
-      />
+    return (
+        <div className={style.cartBody}>
+            <HeadSEO
+                title={"Shopping Cart"}
+                description={"Shopping Cart"}
+                image={false}
+            />
+            <div className="container">
+                <div className="form_address">
+                    <form className="form_add" onSubmit={createAddressHandler}>
 
-       <div>
-          <h2>hi</h2>
-       </div>
-    </div>
-  );
+                        <div className="address_flex">
+                            <div className="address_input">
+                                <input name="name" onChange={handleAddressChange} value={addressDetail?.name} className="form-control" type="text" placeholder="Name" />
+                            </div>
+                            <div className="address_input">
+                                <input name="landmark" onChange={handleAddressChange} value={addressDetail?.landmark} type="text" placeholder="Landmark" />
+                            </div>
+                        </div>
+                        <div className="address_flex">
+
+                            <div className="address_input">
+                                <textarea name="address1" onChange={handleAddressChange} value={addressDetail?.address1} placeholder="Address1" />
+                            </div>
+                            <div className="address_input">
+                                <textarea name="address2" onChange={handleAddressChange} value={addressDetail?.address2} placeholder="Address2" />
+                            </div>
+                        </div>
+
+
+
+                        <div className="address_flex">
+                            <div className="address_input">
+                                <input name="phone" value={addressDetail?.phone} onChange={handleAddressChange} type="number" placeholder="Phone Number" />
+                            </div>
+                            <div className="address_input">
+                                <input name="city" onChange={handleAddressChange} value={addressDetail?.city} type="text" placeholder="City" />
+                            </div>
+                        </div>
+
+
+                        <div className="address_flex">
+                            <div className="address_input">
+                                <input name="state" onChange={handleAddressChange} value={addressDetail?.state} type="text" placeholder="State" />
+                            </div>
+                            <div className="address_input">
+                                <input value={addressDetail?.pincode} name="pincode" onChange={handleAddressChange} type="text" placeholder="PinCode" />
+                            </div>
+                        </div>
+
+
+                        <div className="address_flex">
+                            <div className="address_input">
+                                <input name="address_type" value={addressDetail?.address_type} onChange={handleAddressChange} type="text" placeholder="Address_type" />
+                            </div>
+                            <div className="address_input">
+                                <input name="status" value={addressDetail?.status} onChange={handleAddressChange} type="text" placeholder="Status" />
+                            </div>
+                        </div>
+
+                        <button type="submit" className="btn save_address">Save Address</button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export async function getServerSideProps(context) {
-  try {
+    try {
 
-    const globalSettings = await GlobalHeaderFooter();
-    return {
-      props: {
-        page_content: false,
-        navbar: globalSettings?.header,
-        footer: globalSettings?.footer
-      },
-    };
+        const globalSettings = await GlobalHeaderFooter();
+        return {
+            props: {
+                page_content: false,
+                navbar: globalSettings?.header,
+                footer: globalSettings?.footer
+            },
+        };
 
-  } catch (error) {
+    } catch (error) {
 
-    return {
-      props: {
-        page_content: false,
-        navbar: false,
-        footer: false
-      },
-      notFound: true
-    };
+        return {
+            props: {
+                page_content: false,
+                navbar: false,
+                footer: false
+            },
+            notFound: true
+        };
 
-  }
+    }
 }
