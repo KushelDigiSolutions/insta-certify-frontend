@@ -32,6 +32,8 @@ export default function Cart(props) {
 
   const [count, setCount] = useState(1);
 
+  const [payment,setPayment] = useState({})
+
   // const [refreshFlag,setrefreshFlag] = useState(false);
 
 
@@ -237,6 +239,9 @@ export default function Cart(props) {
     const formattedResponse = await response.json();
     //  let order_id = form
     console.log(formattedResponse);
+
+    setPayment(formattedResponse);
+    console.log(payment.grand_total_price);
     //  let amount = formattedResponse.message.amount/100;
 
 
@@ -250,11 +255,9 @@ export default function Cart(props) {
       description: "product transaction",
       handler:function(response){
         var payment_id = response.payment_method
-        // console.log(response);
-        // if(response){
-        //   clearCarts();
-        // }
-        console.log(response);
+        if(response){
+          clearCarts();
+        }
       },
       // reference_id:formattedResponse?.order_id,
       // order_id: order_N8FRN5zTm5S3wx,
