@@ -294,7 +294,7 @@ export default function Cart(props) {
 
                             <div className="address_flex">
                                 <div className="address_input">
-                                    <label htmlFor="phone">Address2</label>
+                                    <label htmlFor="phone">Phone</label>
                                     <input id="phone" name="phone" value={addressDetail1?.phone ? addressDetail1?.phone : datas[0]?.phone} onChange={handleAddressChange1} type="number" placeholder="Phone Number" />
                                 </div>
                                 <div className="address_input">
@@ -338,7 +338,7 @@ export default function Cart(props) {
                     <div className="address_flex">
                         <div className="address_input">
                             <label htmlFor="name">Name</label>
-                            <input id="name" name="name" onChange={handleAddressChange} value={instaUser?.name ? instaUser?.name : addressDetail?.name} className="form-control" type="text" placeholder="Name" />
+                            <input id="name" name="name" onChange={handleAddressChange} value={addressDetail?.name} className="form-control" type="text" placeholder="Name" />
                         </div>
                         <div className="address_input">
                             <label htmlFor="landmark">Landmark</label>
@@ -353,7 +353,7 @@ export default function Cart(props) {
                         </div>
                         <div className="address_input">
                             <label htmlFor="address2">Address2</label>
-                            <textarea name="address2" onChange={handleAddressChange} value={addressDetail?.address2} placeholder="Address2" />
+                            <textarea id="address2" name="address2" onChange={handleAddressChange} value={addressDetail?.address2} placeholder="Address2" />
                         </div>
                     </div>
 
@@ -361,7 +361,7 @@ export default function Cart(props) {
 
                     <div className="address_flex">
                         <div className="address_input">
-                            <label htmlFor="phone">Address2</label>
+                            <label htmlFor="phone">Phone</label>
                             <input id="phone" name="phone" value={addressDetail?.phone} onChange={handleAddressChange} type="number" placeholder="Phone Number" />
                         </div>
                         <div className="address_input">

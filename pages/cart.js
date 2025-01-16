@@ -142,32 +142,32 @@ export default function Cart(props) {
     }
   }
 
-   const [datas,setDatas] = useState([]);
-  
-      const getAddress = async () => {
-  
-          try {
-            const response = await fetch("https://admin.instacertify.com/api/listalladdress", {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-              }
-            });
-      
-            const data1 = await response.json();
-            setDatas(data1?.data)
-            console.log(data1.data)
-            // setData(data1?.data);
-            // console.log(data?.user_id);
-            
-          } catch (error) {
-          }
-        };
-  
-        useEffect(()=>{
-           getAddress();
-        },[])
+  const [datas, setDatas] = useState([]);
+
+  const getAddress = async () => {
+
+    try {
+      const response = await fetch("https://admin.instacertify.com/api/listalladdress", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        }
+      });
+
+      const data1 = await response.json();
+      setDatas(data1?.data)
+      console.log(data1.data)
+      // setData(data1?.data);
+      // console.log(data?.user_id);
+
+    } catch (error) {
+    }
+  };
+
+  useEffect(() => {
+    getAddress();
+  }, [])
 
 
   useEffect(() => {
@@ -197,82 +197,83 @@ export default function Cart(props) {
   }, []); // Empty dependency array ensures it runs only once after mount
 
 
-   const [instaUser, setInstaUser] = useState(null);
-  
-       useEffect(() => {
-         if (typeof window !== "undefined") { // Ensures code only runs in the browser
-           const storedInstaUser = localStorage.getItem("insta_User");
-           setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
-         }
-       }, []);
+  const [instaUser, setInstaUser] = useState(null);
 
-  
-   const paymentHandler = async()=>{
+  useEffect(() => {
+    if (typeof window !== "undefined") { // Ensures code only runs in the browser
+      const storedInstaUser = localStorage.getItem("insta_User");
+      setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
+    }
+  }, []);
 
-     const response = await fetch("https://admin.instacertify.com/api/order/create",
-       {
-         method: "POST",
-         headers: {
-           "content-type": "application/json",
-           "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
- 
-         },
-         body: JSON.stringify(
-            {
-              products: cartData?.map(x =>(
-                {
-                  id:x?.product_id,
-                  qty: x.quantity
-                }
-              ))
-              ,
-              address_id: datas[0]?.id
-            }
-         ),
-       }
-     );
-    
 
-     const formattedResponse = await response.json();
+  const paymentHandler = async () => {
+
+    const response = await fetch("https://admin.instacertify.com/api/order/create",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+
+        },
+        body: JSON.stringify(
+          {
+            products: cartData?.map(x => (
+              {
+                id: x?.product_id,
+                qty: x.quantity
+              }
+            ))
+            ,
+            address_id: datas[0]?.id
+          }
+        ),
+      }
+    );
+
+
+    const formattedResponse = await response.json();
     //  let order_id = form
-     console.log(formattedResponse);
+    console.log(formattedResponse);
     //  let amount = formattedResponse.message.amount/100;
-     
-  
 
-     const options = {
-    key:"rzp_live_qmaktzPiRRIRtX", 
-    // key:"rzp_test_CwqqqkGACAHRpy",
-    order_id:formattedResponse?.order_id,
-    amount:formattedResponse?.grand_total_price * 100 , 
-    currency: "INR",
-    name: "Nikhil",
-    description: "product transaction",
-   
-    // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
-    prefill: {
+
+
+    const options = {
+      // key: "rzp_live_qmaktzPiRRIRtX",
+      key:"rzp_test_DX6ueqOBegFqPz",
+      amount: formattedResponse?.grand_total_price * 100,
+      currency: "INR",
+      name: "Nikhil",
+      description: "product transaction",
+      // reference_id:formattedResponse?.order_id,
+      // order_id: order_N8FRN5zTm5S3wx,
+
+      // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
+      prefill: {
         name: instaUser?.name,
         email: instaUser?.email,
-        contact: "contactNumber" , 
-    },
-    "notes": {
+        contact: "contactNumber",
+      },
+      "notes": {
         "address": "Razorpay Corporate Office"
-    },
-    "theme": {
+      },
+      "theme": {
         "color": "#121212"
+      }
     }
-     }
- 
-     const paymentObject = new window.Razorpay(options,instaUser);
+
+    const paymentObject = new window.Razorpay(options, instaUser);
 
 
-      paymentObject.open();
+    paymentObject.open();
 
-      // console.log(paymentObject);
+    // console.log(paymentObject);
 
-   
- 
-   }
+
+
+  }
 
 
 
@@ -423,10 +424,10 @@ export default function Cart(props) {
 
               const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
               if (isLoggedIn) {
-                if(datas[0]?.id){
+                if (datas[0]?.id) {
                   paymentHandler()
                 }
-                else{
+                else {
                   router.push("/address")
                 }
                 // paymentHandler();
