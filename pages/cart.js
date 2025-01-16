@@ -12,6 +12,7 @@ import EventDetPlus from "../components/common/svg/eventDetials/plus";
 import GlobalHeaderFooter from "../utils/common/global-header-footer";
 import { constrainedMemory } from "process";
 import { format } from "path";
+import handler from "./api/hello";
 
 export default function Cart(props) {
 
@@ -247,20 +248,28 @@ export default function Cart(props) {
       currency: "INR",
       name: "Nikhil",
       description: "product transaction",
+      handler:function(response){
+        var payment_id = response.payment_method
+        // console.log(response);
+        // if(response){
+        //   clearCarts();
+        // }
+        console.log(response);
+      },
       // reference_id:formattedResponse?.order_id,
       // order_id: order_N8FRN5zTm5S3wx,
-
+      
       // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
       prefill: {
         name: instaUser?.name,
         email: instaUser?.email,
-        contact: "contactNumber",
+        contact: datas[0]?.phone
       },
       "notes": {
         "address": "Razorpay Corporate Office"
       },
       "theme": {
-        "color": "#121212"
+        "color": "#EC691F"
       }
     }
 
@@ -269,11 +278,16 @@ export default function Cart(props) {
 
     paymentObject.open();
 
+
+    // clearCarts();
+
     // console.log(paymentObject);
 
 
 
   }
+
+  
 
 
 
