@@ -242,7 +242,7 @@ export default function Cart(props) {
 
     const options = {
       // key: "rzp_live_qmaktzPiRRIRtX",
-      key:"rzp_test_DX6ueqOBegFqPz",
+      key:"rzp_test_pX78hyqIUdIzIN",
       amount: formattedResponse?.grand_total_price * 100,
       currency: "INR",
       name: "Nikhil",
