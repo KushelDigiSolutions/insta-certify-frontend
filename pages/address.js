@@ -383,14 +383,14 @@ export default function Cart(props) {
                     </div>
 
 
-                    {/* <div className="address_flex">
+                    <div className="address_flex">
                         <div className="address_input">
                             <input name="address_type" value={addressDetail?.address_type} onChange={handleAddressChange} type="text" placeholder="Address_type" />
                         </div>
                         <div className="address_input">
                             <input name="status" value={addressDetail?.status} onChange={handleAddressChange} type="text" placeholder="Status" />
                         </div>
-                    </div> */}
+                    </div>
 
                     <button type="submit" className="btn save_address">Save Address</button>
 

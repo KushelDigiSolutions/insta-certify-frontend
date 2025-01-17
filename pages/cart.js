@@ -147,6 +147,8 @@ export default function Cart(props) {
 
   const [datas, setDatas] = useState([]);
 
+  const [order,setOrder] = useState([]);
+
   const getAddress = async () => {
 
     try {
@@ -168,8 +170,34 @@ export default function Cart(props) {
     }
   };
 
+  const fetchOrders = async () => {
+    try {
+
+      const resp = await fetch("https://admin.instacertify.com/api/orders", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+           "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+        }
+      });
+
+
+        const formateddata = await resp.json();
+        console.log(formateddata);
+        setOrder(formateddata)
+
+      
+
+
+    } catch (error) {
+
+      console.error("There was an error fetching the categories:", error);
+    }
+  };
+
   useEffect(() => {
     getAddress();
+    fetchOrders();
   }, [])
 
 
@@ -208,6 +236,8 @@ export default function Cart(props) {
       setInstaUser(storedInstaUser ? JSON.parse(storedInstaUser) : null);
     }
   }, []);
+
+
 
 
   const paymentHandler = async () => {
@@ -253,14 +283,15 @@ export default function Cart(props) {
       currency: "INR",
       name: "Nikhil",
       description: "product transaction",
+      order_id: formattedResponse?.order_id,
       handler:function(response){
-        var payment_id = response.payment_method
+       console.log(response);
         if(response){
           clearCarts();
         }
       },
       // reference_id:formattedResponse?.order_id,
-      // order_id: order_N8FRN5zTm5S3wx,
+      
       
       // callback_url: `https://ecomm-backend-aopz.onrender.com/api/v1/payment/verifySignature/${JSON?.parse(localStorage.getItem("insta_Access"))}`,
       prefill: {
