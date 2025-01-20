@@ -274,21 +274,45 @@ export default function Cart(props) {
     console.log(payment.grand_total_price);
     //  let amount = formattedResponse.message.amount/100;
 
+    // http://localhost/instacertify-backend/public/api/ecommerce/transactions
 
 
     const options = {
       // key: "rzp_live_qmaktzPiRRIRtX",
       key:"rzp_test_pX78hyqIUdIzIN",
-      amount: formattedResponse?.grand_total_price * 100,
+      amount: formattedResponse?.grand_sale_price * 100,
       currency: "INR",
       name: "Nikhil",
       description: "product transaction",
       order_id: formattedResponse?.order_id,
-      handler:function(response){
-       console.log(response);
-        if(response){
-          clearCarts();
-        }
+      handler: async function(response){
+      //  console.log(response);
+      //   if(response){
+      //     clearCarts();
+      //   }
+
+      const resp = await fetch("https://admin.instacertify.com/api/ecommerce/transactions",{
+        method:"POST",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+
+        },
+        body: JSON.stringify({
+          razorpay_payment_id:response.razorpay_payment_id,
+          razorpay_order_id:response.razorpay_order_id,
+          razorpay_signature:response.razorpay_signature
+        })
+        
+
+
+      })
+
+      const formatData = await resp.json();
+      console.log(formatData);
+      alert(formatData?.message);
+      clearCarts();
+      
       },
       // reference_id:formattedResponse?.order_id,
       
