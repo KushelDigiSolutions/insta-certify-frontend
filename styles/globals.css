@@ -2706,11 +2706,22 @@ color:#FFFFFF;
   align-items: center;
   padding-left: 0px !important;
 }
-
+.pinterest{
+  max-width: 100% !important;
+  width: 21px !important;
+  cursor: pointer !important;
+}
 .okking {
   display: none;
 }
 
+.qr_footer img{
+  max-width: 100px !important;
+  width: 100% !important;
+}
+.widget22:last-child img{
+  display: none !important;
+}
 .sys:hover .logo_img .okking {
   display: block !important;
 }
@@ -2868,7 +2879,7 @@ color:#FFFFFF;
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .quick {
@@ -2885,7 +2896,12 @@ color:#FFFFFF;
   margin-left: 20px;
   line-height: 26px;
 }
-
+.qr_png{
+  margin-left: 20px;
+  position: relative;
+  top: -20px;
+  width: 80px !important;
+}
 .oklo {
   position: relative !important;
   top: -5px !important;
@@ -3056,7 +3072,7 @@ color:#FFFFFF;
 .foot_site {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 20px 20px;
   gap: 50px;
   margin-top: 32px;
