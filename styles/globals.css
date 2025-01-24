@@ -3024,8 +3024,20 @@ color:#FFFFFF;
   max-width: 287px !important;
   width: 100%;
 }
-
-
+.tender_footers{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -180px;
+}
+.mlol{
+  margin-top: 20px !important;
+}
+.razor_logo{
+  width: 170px;
+  max-width: 100%;
+}
 @media (max-width:1350px) {
   .rwing3{
     /* max-width: 100% !important; */
@@ -3040,7 +3052,6 @@ color:#FFFFFF;
 @media only screen and (max-width:1250px){
   .rwing{
     flex-wrap: wrap !important;
-    
   }
 }
 @media (max-width:950px) {
@@ -3106,7 +3117,11 @@ color:#FFFFFF;
   font-family: "Poppins", sans-serif !important;
   opacity: 80%;
 }
-
+.payments_footering{
+  position: relative;
+  left: 380px;
+  top: -100px;
+}
 @media only screen and (max-width:1200px) {
   .header_header__UxNqT .header_navItemsLeave1__Z0_2Y {
     border-left: 10px solid #065175 !important;
@@ -3140,6 +3155,11 @@ color:#FFFFFF;
 
   .jk_tit {
     margin-top: 10px !important;
+  }
+  .payments_footering{
+    position: relative;
+    left: 0px;
+    top: 0px;
   }
 }
 
