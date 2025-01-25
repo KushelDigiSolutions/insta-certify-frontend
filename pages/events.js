@@ -13,9 +13,15 @@ export default function EventLists(pageProp) {
 
   const category_all = pageProp.page_content?.events?.category_all;
 
+  // const category_all1 = pageProp.page_content;
+
+  console.log(pageProp);
+
   const pathName = usePathname();
 
   const isActive = (path) => path === pathName;
+
+  console.log(isActive);
 
   return (
     <div>

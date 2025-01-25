@@ -29,6 +29,7 @@ export default function HeadSEO(props) {
         {props?.image != false ? (<meta property="og:image" content={props?.image} />):""}
         <meta property="og:title" content={props?.title} />
         <meta property="og:description" content={props?.description} />
+        
       </Head>
     </>
   )
