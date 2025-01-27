@@ -524,11 +524,11 @@ export default function catalog(pageProp) {
                             <textarea name="message" value={value?.message} onChange={changeHandler} placeholder="Message" />
 
                             <button type="submit">
-                            {
-                              sendvalue?  
-                              <span class="loader3"></span>
-                              :  <span>Submit</span>
-                            }
+                              {
+                                sendvalue ?
+                                  <span class="loader3"></span>
+                                  : <span>Submit</span>
+                              }
                             </button>
 
                           </form>

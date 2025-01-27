@@ -1101,7 +1101,7 @@ export default function Navbar(props) {
                                 :
 
                                 <li>
-                                  <Link href={"/contact"} className={`${currentPath === "/contact" ? "makecolor2" : ""}`}> Contact us </Link>
+                                  <a href={"/contact"} className={`${currentPath === "/contact" ? "makecolor2" : ""}`}> Contact us </a>
                                 </li>
 
 
