@@ -16,20 +16,20 @@ export default function HeadSEO(props) {
         {/* Google / Search Engine Tags */}
         <meta itemprop="name" content={props?.title} />
         <meta itemprop="description" content={props?.description} />
-        
-        {props?.image != false ? (<meta itemprop="image" content={props?.image} />):""}
-        
+
+        {props?.image != false ? (<meta itemprop="image" content={props?.image} />) : ""}
+
         {/* Twitter */}
-        {props?.image != false ? (<meta property="twitter:image" content={props?.image} />):""}
+        {props?.image != false ? (<meta property="twitter:image" content={props?.image} />) : ""}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={props?.title} />
         <meta property="twitter:description" content={props?.description} />
 
         {/* Facebook & Others */}
-        {props?.image != false ? (<meta property="og:image" content={props?.image} />):""}
+        {props?.image != false ? (<meta property="og:image" content={props?.image} />) : ""}
         <meta property="og:title" content={props?.title} />
         <meta property="og:description" content={props?.description} />
-        
+
       </Head>
     </>
   )
