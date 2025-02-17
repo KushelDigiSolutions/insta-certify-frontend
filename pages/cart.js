@@ -209,6 +209,7 @@ export default function Cart(props) {
     }
     else {
       let allCarts = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+      console.log("alllca0" , allCarts);
       setCartData(allCarts);
     }
   }, [boolValue])
@@ -337,12 +338,6 @@ export default function Cart(props) {
     paymentObject.open();
 
 
-    // clearCarts();
-
-    // console.log(paymentObject);
-
-
-
   }
 
   
@@ -397,7 +392,6 @@ export default function Cart(props) {
                                   const isLoggedIn = JSON?.parse(localStorage.getItem("insta_Access"));
                                   if (isLoggedIn) {
                                     removeCarts(val.product_id, val.quantity);
-
                                   }
                                   else {
                                     const filterdata = cartData?.filter(data => data?.id !== val?.id);
@@ -413,27 +407,36 @@ export default function Cart(props) {
                           </td>
 
                           <td className={style.item_td_2}>
-                            {/* <span className={style.eleTitle}>Price: </span> */}
                             <span>₹{val?.price}</span>
                           </td>
 
                           <td className={style.item_td_3}>
                             <div className={style.formIncrement + " parentFormIncrement"}>
-                              <button onClick={() =>
-                                setCartData((prev) => (
-                                  prev.map((item) => (
-                                    item.product_id === val.product_id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
-                                  ))
+                              <button onClick={() =>{
+                                 setCartData((prev) => (
+                                  prev.map((item) => {
+                                  if(item.id){
+                                    return item.id === val.id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+                                  }
+                                  else{
+                                    return item.product_id === val.product_id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+                                  }
+                              })
                                 ))
-                              } className={style.btnIncDec + " qtyDecrement"} type="button">
+                              } } className={style.btnIncDec + " qtyDecrement"} type="button">
                                 <EventDetMinus />
                               </button>
                               <span className={style.inputQty}>{val?.quantity}</span>
                               <button onClick={() =>
                                 setCartData((prev) => (
-                                  prev.map((item) => (
-                                    item.product_id === val.product_id ? { ...item, quantity: Math.max(1, item.quantity + 1) } : item
-                                  ))
+                                  prev.map((item) => {
+                                     if(item?.id){
+                                     return item.id === val.id ? { ...item, quantity: Math.max(1, item.quantity + 1) } : item
+                                     }
+                                     else{
+                                    return  item.product_id === val.product_id ? { ...item, quantity: Math.max(1, item.quantity + 1) } : item
+                                     }
+                                  })
                                 ))
                               } className={style.btnIncDec + " qtyIncrement"} type="button">
                                 <EventDetPlus />

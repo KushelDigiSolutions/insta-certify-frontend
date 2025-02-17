@@ -29,8 +29,6 @@ export default function catalog(pageProp) {
   const product = pageProp.page_content.product;
   const customFields = product?.customFields;
 
-
-  console.log("pageProp" , pageProp);
   const {toggleBoolValue  } = pageProp;
 
   //   const [section1, SetSection1] = useState(()=>{
@@ -200,7 +198,6 @@ export default function catalog(pageProp) {
         const formateddata = await resp.json();
         console.log(formateddata);
         setAllProduct(formateddata?.products);
-        // setAllCategory(formateddata?.categories)
 
       }
 
