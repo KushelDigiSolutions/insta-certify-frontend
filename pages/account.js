@@ -6,6 +6,7 @@ import { Router } from 'next/router';
 export default function Account(pageProp) {
 
     const product = pageProp.page_content.product;
+    
     const customFields = product?.customFields;
 
     console.log(customFields);
