@@ -6,8 +6,10 @@ import { Router } from 'next/router';
 export default function Account(pageProp) {
 
     const product = pageProp.page_content.product;
-  const customFields = product?.customFields;
-   
+    const customFields = product?.customFields;
+
+    console.log(customFields);
+
     const [pageLoad, setPageLoad] = useState(false);
     const [message, setMessage] = useState('');
     const [name, setName] = useState('');
@@ -21,29 +23,29 @@ export default function Account(pageProp) {
 
 
     const submitHandler = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
-        setPageLoad(true); 
+        setPageLoad(true);
 
         try {
             const response = await fetch("https://admin.instacertify.com/api/profile-update", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))} `
+                    "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))} `
                 },
                 body: JSON.stringify({
                     name: name,
                     last_name: lastName,
                     email: email
-                 
+
                 })
             });
 
             const data = await response.json();
 
             console.log(data);
-            
+
             if (response.ok) {
                 setMessage("Profile updated successfully!");
                 // setRefreshFlag(!refreshFlag)
@@ -53,13 +55,13 @@ export default function Account(pageProp) {
         } catch (error) {
             setMessage("An error occurred while updating profile");
         } finally {
-            setPageLoad(false); 
+            setPageLoad(false);
         }
     };
 
-      useEffect(() => {
+    useEffect(() => {
         const fetchUserProfile = async () => {
-            setPageLoad(true); 
+            setPageLoad(true);
 
             try {
                 const response = await fetch("https://admin.instacertify.com/api/user-profile", {
@@ -67,23 +69,23 @@ export default function Account(pageProp) {
                     headers: {
                         "Content-Type": "application/json",
                         // Add authorization header if needed
-                        "Authorization":`Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
-                        
+                        "Authorization": `Bearer ${JSON?.parse(localStorage.getItem("insta_Access"))}`
+
                     }
                 });
 
-                console.log("response" , response);
+                console.log("response", response);
 
-             
-                    const data = await response.json();
-                    console.log(data);
-                    // setRefreshFlag(!refreshFlag)
-                    setName(data?.name);
-                    setLastName(data?.last_name);
-                    setEmail(data?.email);
 
-                    
-                 
+                const data = await response.json();
+                console.log(data);
+                // setRefreshFlag(!refreshFlag)
+                setName(data?.name);
+                setLastName(data?.last_name);
+                setEmail(data?.email);
+
+
+
             } catch (error) {
                 setMessage("An error occurred while fetching profile data");
             } finally {
@@ -92,7 +94,7 @@ export default function Account(pageProp) {
         };
 
         fetchUserProfile();
-    }, []); 
+    }, []);
 
     return (
         <div className={style.pageAccountBG}>
@@ -110,8 +112,8 @@ export default function Account(pageProp) {
                     <div className={style.accountContainer}>
                         <div className={style.formBuilder}>
                             <form method='POST' encType="multipart/form-data"
-                             onSubmit={submitHandler}
-                             >
+                                onSubmit={submitHandler}
+                            >
                                 {/* Form fields go here, e.g., firstName, lastName, etc. */}
                                 <div className={style.formGroup}>
                                     <div className={style.formControl}>
@@ -127,7 +129,7 @@ export default function Account(pageProp) {
                                         <input type="email" name="email" value={email && email} onChange={(e) => setEmail(e.target.value)} maxLength="30" />
                                     </div>
                                 </div>
-                                
+
                                 {/* Add the rest of your form fields here */}
 
                                 <div className={style.formAction}>
@@ -146,26 +148,26 @@ export default function Account(pageProp) {
 
 export async function getServerSideProps(context) {
     try {
-  
-      const globalSettings = await GlobalHeaderFooter();
-      return {
-        props: {
-          page_content: false,
-          navbar: globalSettings?.header,
-          footer: globalSettings?.footer
-        },
-      };
-  
+
+        const globalSettings = await GlobalHeaderFooter();
+        return {
+            props: {
+                page_content: false,
+                navbar: globalSettings?.header,
+                footer: globalSettings?.footer
+            },
+        };
+
     } catch (error) {
-  
-      return {
-        props: {
-          page_content: false,
-          navbar: false,
-          footer: false
-        },
-        notFound: true
-      };
-  
+
+        return {
+            props: {
+                page_content: false,
+                navbar: false,
+                footer: false
+            },
+            notFound: true
+        };
+
     }
-  }
+}
