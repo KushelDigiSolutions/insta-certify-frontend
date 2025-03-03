@@ -594,9 +594,9 @@ export default function catalog(pageProp) {
         <div className="container_section">
           <div className="container">
             <div className="description_flex">
-              <p onClick={func1} id="fast">Product Overview</p>
-              <p onClick={func2} id="second">Product specifications</p>
-              <p onClick={func3} id="third">Ratings & Reviews</p>
+              <p onClick={func1} id="fast">Overview</p>
+              <p onClick={func2} id="second">Details</p>
+              <p onClick={func3} id="third">Faqs</p>
             </div>
 
             <div className="description_content">
