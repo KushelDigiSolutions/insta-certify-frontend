@@ -41,6 +41,7 @@ export default function EventDetails(pageProp) {
 
     const router = useRouter();
     const eventObj = pageProp.page_content?.event;
+    console.log(eventObj);
     const [message, setMessage] = useState('');
     const [showPhotos, setShowPhotos] = useState(false);
     const [showMap, setShowMap] = useState(false);
@@ -382,7 +383,7 @@ export default function EventDetails(pageProp) {
                     {/* left */}
                     <div className={style.left}>
 
-                        <div className={style.whenWhere}>
+                       { /* <div className={style.whenWhere}>
                             <h2>About this event</h2>
                         </div>
 
@@ -399,7 +400,7 @@ export default function EventDetails(pageProp) {
                                 <EventDetWatch />
                                 <span>Mobile eTicket</span>
                             </div>
-                        </div>
+                        </div>  */}
 
                     </div>
                 </div>
