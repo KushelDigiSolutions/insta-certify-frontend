@@ -576,7 +576,7 @@ export default function catalog(pageProp) {
 
                       </div>
                       <div className="right_guidance">
-                        <button>CONTACT US</button>
+                      <a href="tel:+919999118039"><button>CONTACT US</button></a>
                       </div>
                     </div>
 
