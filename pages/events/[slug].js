@@ -18,6 +18,8 @@ export default function EventLists(pageProp) {
   const router = useRouter();
   const [filterEvents, setFilterEvents] = useState(false);
   const [filterType, setFilterType] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const refFilterEvents = useRef(null);
   useBodyOutsideClick(refFilterEvents, () => { setFilterEvents(false) });
 
@@ -25,6 +27,10 @@ export default function EventLists(pageProp) {
   const eventList = pageProp.page_content?.events?.event;
   const category_all = pageProp.page_content?.events?.category_all;
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    console.log(searchTerm)
+  };
 
   useEffect(() => {
     const element = document.getElementById("eventList")
@@ -45,6 +51,10 @@ export default function EventLists(pageProp) {
    const currentItems = eventList.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
+  );
+
+  const filteredProducts = currentItems.filter((product) =>
+    product.slug.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleNext = () => {
@@ -133,7 +143,8 @@ export default function EventLists(pageProp) {
                 <div className={style.filterEvents} ref={refFilterEvents}>
 
                   <div className="serach_dasa">
-                    <input type="text" placeholder="Search Upcoming events information" />
+                    <input type="text" placeholder="Search Upcoming events information" value={searchTerm}
+                    onChange={handleSearch} />
                     <svg
                       width="20"
                       height="20"
@@ -191,7 +202,7 @@ export default function EventLists(pageProp) {
         <span className={style.eleEventListTop} id="eventList">&nbsp;</span>
         {eventList?.length > 0 ? (
           <ul className={style.eventlistGrid}>
-            {currentItems?.map((ls, i) => (
+            {(filteredProducts ||currentItems)?.map((ls, i) => (
               <li key={ls.id} className={style.eventlist}>
                 <div className={style.parent}>
 
