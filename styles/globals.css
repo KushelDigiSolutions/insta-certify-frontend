@@ -3671,6 +3671,13 @@ justify-content: center !important;
   text-align: left;
 
 }
+.makepoppinsfont ol, .makepoppinsfont ul{
+  margin-left: 30px;
+  /* margin-top: 15px; */
+}
+.singblogw ol, .singblogw ul{
+  margin-left: 30px;
+}
 @media only screen and (max-width:1252px){
   .footer-top{
     height: auto !important;

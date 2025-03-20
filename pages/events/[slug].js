@@ -53,9 +53,11 @@ export default function EventLists(pageProp) {
     currentPage * itemsPerPage
   );
 
-  const filteredProducts = currentItems.filter((product) =>
-    product.slug.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredProducts = currentItems.filter((product) => {
+    const searchWords = searchTerm.toLowerCase().trim().split(/\s+/);
+    const slug = product.slug.toLowerCase();
+    return searchWords.every((word) => slug.includes(word)); 
+  });
 
   const handleNext = () => {
     if (currentPage < totalPages) {
