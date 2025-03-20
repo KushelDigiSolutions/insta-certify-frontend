@@ -621,14 +621,15 @@ export default function catalog(pageProp) {
               {
                 start === 3 && (
                   <div className="description_information">
-                    {
+                    {/* {
                       reviews?.map((r, index) => (
                         <div key={index} className="singreview">
                           <h4>{r?.detail}</h4>
                           <p>Post At: {new Date(r?.created_at).toLocaleDateString('en-GB')}</p>
                         </div>
                       ))
-                    }
+                    } */}
+                    <p><div className="makepoppinsfont" dangerouslySetInnerHTML={{ __html: productdetail?.faq }} /></p>
                   </div>
                 )
               }
